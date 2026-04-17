@@ -71,11 +71,23 @@
       margin-bottom: 24px;
     }
 
-    .intro-desc {
+    .intro-subdesc {
       font-size: 24px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 80px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.02em;
+      margin-bottom: 64px;
+      position: relative;
+      padding-top: 16px;
+    }
+
+    .intro-subdesc::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 auto 16px;
     }
 
     .intro-mentors {
@@ -306,6 +318,16 @@
       border-top-color: var(--c-jobs);
     }
 
+    .card-label {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      margin-bottom: 12px;
+      display: block;
+    }
+
     .fp-section.active .m-cards {
       opacity: 1;
       transform: translateY(0);
@@ -334,40 +356,122 @@
       font-size: 16px !important;
     }
 
+    /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
     @media (max-width: 1000px) {
       .mentor-inner {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
         text-align: center;
-      }
-
-      .m-quote {
-        border-left: none;
-        border-top: 6px solid;
-        padding-left: 0;
-        padding-top: 24px;
-        display: inline-block;
-      }
-
-      .card-q,
-      .card-a {
-        text-align: center;
+        max-width: 90%;
       }
 
       .m-photo {
-        margin: 0 auto 40px auto;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 24px;
       }
 
-      .intro-title {
-        font-size: 48px;
+      .m-name-ko {
+        font-size: 56px;
+      }
+
+      .m-quote {
+        font-size: 24px;
+        border-left: none;
+        border-top: 4px solid;
+        padding: 16px 0 0 0;
+        margin-top: 24px;
+        display: inline-block;
+      }
+
+      .m-cards {
+        padding: 32px;
       }
 
       .card-q {
         font-size: 28px;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
       }
 
       .card-a {
         font-size: 20px;
+      }
+    }
+
+    /* MOBILE EXTREME (Phones) - Adjusted for Image 2 Balance */
+    @media (max-width: 600px) {
+      .intro-title {
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      .intro-subdesc {
+        font-size: 16px;
+        margin-bottom: 32px;
+        word-break: keep-all;
+      }
+
+      .intro-mentors {
+        gap: 16px;
+      }
+
+      .intro-photo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .intro-card-name {
+        font-size: 16px;
+      }
+
+      .mentor-section {
+        padding: 32px 16px;
+      }
+
+      .m-photo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 12px;
+      }
+
+      .m-name-ko {
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+
+      .m-quote {
+        font-size: 15px;
+        margin-top: 12px;
+        line-height: 1.4;
+      }
+
+      .m-cards {
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 16px;
+        max-width: 100%;
+      }
+
+      .card-label {
+        font-size: 11px;
+        margin-bottom: 8px;
+      }
+
+      .card-q {
+        font-size: 19px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+      }
+
+      .card-a {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      /* fullpage navigation optimization */
+      #fp-nav {
+        display: none;
       }
     }
   </style>
@@ -381,7 +485,7 @@
     <div class="section" id="section-intro">
       <p class="intro-label">서울대학교 최고위과정 AI 리더십</p>
       <h1 class="intro-title">나의 경영 멘토</h1>
-      <p class="intro-desc">당신의 가장 깊은 고민, 시대의 거인들이 직언합니다.</p>
+      <p class="intro-subdesc">AI로 내가 직접 만든 멘토이기에, 언제 어디서든 꺼내 물을 수 있습니다.</p>
 
       <div class="intro-mentors">
         <div class="intro-card" data-idx="1" onclick="fullpage_api.moveTo(2)">
@@ -416,7 +520,9 @@
           <p class="m-quote">"시련은 있어도 실패는 없다.<br>살아 있는 한 끝난 게 아니야."</p>
         </div>
         <div class="m-cards">
+          <span class="card-label">CEO의 경영 고민</span>
           <p class="card-q">"직원들이 수동적이고 주인의식이 전혀 없습니다."</p>
+          <span class="card-label">거인의 실전 해법</span>
           <p class="card-a">해보기나 했어? 사장인 자네가 먼저 책상머리에서 일어나 현장으로 뛰어나가 봤냐 이 말이야. 주인의식이란 월급 몇 푼 더 준다고 생기는 게 아니야. 사장이 먼저 작업복
             입고 기름때 묻혀가며 목숨 걸고 일하는 등짝을 보여줘야지!</p>
         </div>
@@ -432,7 +538,9 @@
           <p class="m-quote">"직원들의 마음은 경영자의 마음을<br>비추는 거울과 같습니다."</p>
         </div>
         <div class="m-cards">
+          <span class="card-label">CEO의 경영 고민</span>
           <p class="card-q">"기존 매출이 정체되었습니다.<br>신사업에 투자해야 할까요?"</p>
+          <span class="card-label">거인의 실전 해법</span>
           <p class="card-a">그 신사업을 하려는 동기가 선한가, 사심은 없는가 반문하십시오. 매출을 올리기 위한 허영심이라면 반드시 실패합니다. 세상과 사람에게 진정으로 도움이 된다는 순수한
             확신이 들 때까지 밤을 새워 번민하십시오.</p>
         </div>
@@ -448,7 +556,9 @@
           <p class="m-quote">"경영은 사람의 약점을 고치는 것이<br>아니라 강점을 극대화하는 것입니다."</p>
         </div>
         <div class="m-cards">
+          <span class="card-label">CEO의 경영 고민</span>
           <p class="card-q">"핵심 인재가 임금을 올려주지 않으면<br>경쟁사로 가겠다고 합니다."</p>
+          <span class="card-label">거인의 실전 해법</span>
           <p class="card-a">조직의 원칙을 무너뜨리는 예외를 허용할 때 생기는 잠재적 붕괴 비용과, 그 사람을 잃었을 때의 단기적 비용 중 무엇이 더 치명적인지 철저하게 지표로 측정하십시오.
           </p>
         </div>
@@ -464,7 +574,9 @@
           <p class="m-quote">"마누라와 자식 빼고 다 바꿔라."</p>
         </div>
         <div class="m-cards">
+          <span class="card-label">CEO의 경영 고민</span>
           <p class="card-q">"어떻게 해야 회사가 1류가 될 수 있습니까?"</p>
+          <span class="card-label">거인의 실전 해법</span>
           <p class="card-a">지금 회사는 1.5류입니까, 2류입니까? 처절한 '위기의식'이 없다면 아무것도 변하지 않습니다. 신사업을 하겠다면 껍데기만 살짝 칠하는 수준이 아니라, 설계도부터
             엔진까지 모든 것을 마하의 속도로 뒤흔들 초일류적 파괴를 감행하십시오.</p>
         </div>
@@ -480,7 +592,9 @@
           <p class="m-quote">"천 가지 아이디어에 'NO'라고<br>말하는 것이 진짜 혁신입니다."</p>
         </div>
         <div class="m-cards">
+          <span class="card-label">CEO의 경영 고민</span>
           <p class="card-q">"직원들이 수동적이고 주인의식이 전혀 없습니다."</p>
+          <span class="card-label">거인의 실전 해법</span>
           <p class="card-a">당신의 조직에 'B급 인재'들이 가득 차 있는 건 아닙니까? 세상을 바꿀 수 있다는 '미치도록 훌륭한' 목표가 없다면 우수한 사람들은 지루해서 떠나고 맙니다. 어설픈
             타협을 버리고 완벽을 향해 소리칠 때 비로소 거대한 혁신이 폭발합니다.</p>
         </div>
