@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나의 경영 멘토 | 서울대 최고위과정 AI 리더십</title>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.20/dist/fullpage.min.css">
+
+  <style>
+    /* ═══════════════════════════ BASE ═══════════════════════════ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg: #090909;
+      --c-jung: #C8501F;
+      --c-ina: #2A62BC;
+      --c-drucker: #347A37;
+      --c-lee: #C9A620;
+      --c-jobs: #D8D8D8;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ═══════════════════════════ INTRO ═══════════════════════════ */
+    #section-intro {
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-label {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 24px;
+    }
+
+    .intro-title {
+      font-size: clamp(60px, 8vw, 110px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+
+    .intro-desc {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 80px;
+    }
+
+    .intro-mentors {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .intro-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .intro-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .intro-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+    }
+
+    .intro-card[data-idx="1"]:hover .intro-photo {
+      border-color: var(--c-jung);
+      filter: grayscale(0%);
+      box-shadow: 0 0 30px rgba(200, 80, 31, 0.5);
+    }
+
+    .intro-card[data-idx="2"]:hover .intro-photo {
+      border-color: var(--c-ina);
+      filter: grayscale(0%);
+      box-shadow: 0 0 30px rgba(42, 98, 188, 0.5);
+    }
+
+    .intro-card[data-idx="3"]:hover .intro-photo {
+      border-color: var(--c-drucker);
+      filter: grayscale(0%);
+      box-shadow: 0 0 30px rgba(52, 122, 55, 0.5);
+    }
+
+    .intro-card[data-idx="4"]:hover .intro-photo {
+      border-color: var(--c-lee);
+      filter: grayscale(0%);
+      box-shadow: 0 0 30px rgba(201, 166, 32, 0.5);
+    }
+
+    .intro-card[data-idx="5"]:hover .intro-photo {
+      border-color: var(--c-jobs);
+      filter: grayscale(0%);
+      box-shadow: 0 0 30px rgba(216, 216, 216, 0.5);
+    }
+
+    .intro-card-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .intro-card:hover .intro-card-name {
+      color: #fff;
+    }
+
+    /* ═══════════════════════════ MENTOR SECTIONS ═══════════════════════════ */
+    .mentor-section {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      padding: 0 72px;
+      position: relative;
+    }
+
+    #s-jung {
+      background: linear-gradient(140deg, #0C0B0A 0%, #1E0D07 60%, #0C0B0A 100%);
+    }
+
+    #s-ina {
+      background: linear-gradient(140deg, #09090C 0%, #091426 60%, #09090C 100%);
+    }
+
+    #s-drucker {
+      background: linear-gradient(140deg, #090C09 0%, #0A160A 60%, #090C09 100%);
+    }
+
+    #s-lee {
+      background: linear-gradient(140deg, #0C0B07 0%, #1A1100 60%, #0C0B07 100%);
+    }
+
+    #s-jobs {
+      background: #090909;
+    }
+
+    .mentor-inner {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* LEFT INFO */
+    .m-info {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.8s ease;
+    }
+
+    .fp-section.active .m-info {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .m-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+    }
+
+    #s-jung .m-photo {
+      border-color: var(--c-jung);
+      box-shadow: 0 0 60px rgba(200, 80, 31, 0.4);
+    }
+
+    #s-ina .m-photo {
+      border-color: var(--c-ina);
+      box-shadow: 0 0 60px rgba(42, 98, 188, 0.4);
+    }
+
+    #s-drucker .m-photo {
+      border-color: var(--c-drucker);
+      box-shadow: 0 0 60px rgba(52, 122, 55, 0.4);
+    }
+
+    #s-lee .m-photo {
+      border-color: var(--c-lee);
+      box-shadow: 0 0 60px rgba(201, 166, 32, 0.4);
+    }
+
+    #s-jobs .m-photo {
+      border-color: var(--c-jobs);
+      box-shadow: 0 0 60px rgba(216, 216, 216, 0.2);
+    }
+
+    .m-name-ko {
+      font-size: 72px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: -0.04em;
+    }
+
+    .m-quote {
+      font-size: 32px;
+      line-height: 1.5;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.8);
+      border-left: 6px solid;
+      padding-left: 24px;
+      margin-top: 40px;
+      word-break: keep-all;
+    }
+
+    #s-jung .m-quote {
+      border-color: var(--c-jung);
+    }
+
+    #s-ina .m-quote {
+      border-color: var(--c-ina);
+    }
+
+    #s-drucker .m-quote {
+      border-color: var(--c-drucker);
+    }
+
+    #s-lee .m-quote {
+      border-color: var(--c-lee);
+    }
+
+    #s-jobs .m-quote {
+      border-color: var(--c-jobs);
+    }
+
+    /* RIGHT CONTENT (Text Box) */
+    .m-cards {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease 0.3s;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      border-top: 4px solid transparent;
+    }
+
+    #s-jung .m-cards {
+      border-top-color: var(--c-jung);
+    }
+
+    #s-ina .m-cards {
+      border-top-color: var(--c-ina);
+    }
+
+    #s-drucker .m-cards {
+      border-top-color: var(--c-drucker);
+    }
+
+    #s-lee .m-cards {
+      border-top-color: var(--c-lee);
+    }
+
+    #s-jobs .m-cards {
+      border-top-color: var(--c-jobs);
+    }
+
+    .fp-section.active .m-cards {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-q {
+      font-size: 34px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.4;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      word-break: keep-all;
+    }
+
+    .card-a {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    #fp-nav ul li .fp-tooltip {
+      font-size: 16px !important;
+    }
+
+    @media (max-width: 1000px) {
+      .mentor-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+      }
+
+      .m-quote {
+        border-left: none;
+        border-top: 6px solid;
+        padding-left: 0;
+        padding-top: 24px;
+        display: inline-block;
+      }
+
+      .card-q,
+      .card-a {
+        text-align: center;
+      }
+
+      .m-photo {
+        margin: 0 auto 40px auto;
+      }
+
+      .intro-title {
+        font-size: 48px;
+      }
+
+      .card-q {
+        font-size: 28px;
+      }
+
+      .card-a {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="fullpage">
+
+    <!-- 0. INTRO -->
+    <div class="section" id="section-intro">
+      <p class="intro-label">서울대학교 최고위과정 AI 리더십</p>
+      <h1 class="intro-title">나의 경영 멘토</h1>
+      <p class="intro-desc">당신의 가장 깊은 고민, 시대의 거인들이 직언합니다.</p>
+
+      <div class="intro-mentors">
+        <div class="intro-card" data-idx="1" onclick="fullpage_api.moveTo(2)">
+          <img class="intro-photo" src="images/01_jung_ju-yung.jpg" alt="정주영">
+          <p class="intro-card-name">정주영</p>
+        </div>
+        <div class="intro-card" data-idx="2" onclick="fullpage_api.moveTo(3)">
+          <img class="intro-photo" src="images/02_inamori_kazuo.jpg" alt="이나모리 가즈오">
+          <p class="intro-card-name">이나모리 가즈오</p>
+        </div>
+        <div class="intro-card" data-idx="3" onclick="fullpage_api.moveTo(4)">
+          <img class="intro-photo" src="images/03_peter_drucker.jpg" alt="피터 드러커">
+          <p class="intro-card-name">피터 드러커</p>
+        </div>
+        <div class="intro-card" data-idx="4" onclick="fullpage_api.moveTo(5)">
+          <img class="intro-photo" src="images/04_lee_kun-hee.jpg" alt="이건희">
+          <p class="intro-card-name">이건희</p>
+        </div>
+        <div class="intro-card" data-idx="5" onclick="fullpage_api.moveTo(6)">
+          <img class="intro-photo" src="images/05_steve_jobs.jpg" alt="스티브 잡스">
+          <p class="intro-card-name">스티브 잡스</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. 정주영 -->
+    <div class="section mentor-section" id="s-jung">
+      <div class="mentor-inner">
+        <div class="m-info">
+          <img class="m-photo" src="images/01_jung_ju-yung.jpg" alt="정주영">
+          <h2 class="m-name-ko">정주영</h2>
+          <p class="m-quote">"시련은 있어도 실패는 없다.<br>살아 있는 한 끝난 게 아니야."</p>
+        </div>
+        <div class="m-cards">
+          <p class="card-q">"직원들이 수동적이고 주인의식이 전혀 없습니다."</p>
+          <p class="card-a">해보기나 했어? 사장인 자네가 먼저 책상머리에서 일어나 현장으로 뛰어나가 봤냐 이 말이야. 주인의식이란 월급 몇 푼 더 준다고 생기는 게 아니야. 사장이 먼저 작업복
+            입고 기름때 묻혀가며 목숨 걸고 일하는 등짝을 보여줘야지!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 이나모리 가즈오 -->
+    <div class="section mentor-section" id="s-ina">
+      <div class="mentor-inner">
+        <div class="m-info">
+          <img class="m-photo" src="images/02_inamori_kazuo.jpg" alt="이나모리 가즈오">
+          <h2 class="m-name-ko">이나모리 가즈오</h2>
+          <p class="m-quote">"직원들의 마음은 경영자의 마음을<br>비추는 거울과 같습니다."</p>
+        </div>
+        <div class="m-cards">
+          <p class="card-q">"기존 매출이 정체되었습니다.<br>신사업에 투자해야 할까요?"</p>
+          <p class="card-a">그 신사업을 하려는 동기가 선한가, 사심은 없는가 반문하십시오. 매출을 올리기 위한 허영심이라면 반드시 실패합니다. 세상과 사람에게 진정으로 도움이 된다는 순수한
+            확신이 들 때까지 밤을 새워 번민하십시오.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 피터 드러커 -->
+    <div class="section mentor-section" id="s-drucker">
+      <div class="mentor-inner">
+        <div class="m-info">
+          <img class="m-photo" src="images/03_peter_drucker.jpg" alt="피터 드러커">
+          <h2 class="m-name-ko">피터 드러커</h2>
+          <p class="m-quote">"경영은 사람의 약점을 고치는 것이<br>아니라 강점을 극대화하는 것입니다."</p>
+        </div>
+        <div class="m-cards">
+          <p class="card-q">"핵심 인재가 임금을 올려주지 않으면<br>경쟁사로 가겠다고 합니다."</p>
+          <p class="card-a">조직의 원칙을 무너뜨리는 예외를 허용할 때 생기는 잠재적 붕괴 비용과, 그 사람을 잃었을 때의 단기적 비용 중 무엇이 더 치명적인지 철저하게 지표로 측정하십시오.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 이건희 -->
+    <div class="section mentor-section" id="s-lee">
+      <div class="mentor-inner">
+        <div class="m-info">
+          <img class="m-photo" src="images/04_lee_kun-hee.jpg" alt="이건희">
+          <h2 class="m-name-ko">이건희</h2>
+          <p class="m-quote">"마누라와 자식 빼고 다 바꿔라."</p>
+        </div>
+        <div class="m-cards">
+          <p class="card-q">"어떻게 해야 회사가 1류가 될 수 있습니까?"</p>
+          <p class="card-a">지금 회사는 1.5류입니까, 2류입니까? 처절한 '위기의식'이 없다면 아무것도 변하지 않습니다. 신사업을 하겠다면 껍데기만 살짝 칠하는 수준이 아니라, 설계도부터
+            엔진까지 모든 것을 마하의 속도로 뒤흔들 초일류적 파괴를 감행하십시오.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 스티브 잡스 -->
+    <div class="section mentor-section" id="s-jobs">
+      <div class="mentor-inner">
+        <div class="m-info">
+          <img class="m-photo" src="images/05_steve_jobs.jpg" alt="스티브 잡스">
+          <h2 class="m-name-ko">스티브 잡스</h2>
+          <p class="m-quote">"천 가지 아이디어에 'NO'라고<br>말하는 것이 진짜 혁신입니다."</p>
+        </div>
+        <div class="m-cards">
+          <p class="card-q">"직원들이 수동적이고 주인의식이 전혀 없습니다."</p>
+          <p class="card-a">당신의 조직에 'B급 인재'들이 가득 차 있는 건 아닙니까? 세상을 바꿀 수 있다는 '미치도록 훌륭한' 목표가 없다면 우수한 사람들은 지루해서 떠나고 맙니다. 어설픈
+            타협을 버리고 완벽을 향해 소리칠 때 비로소 거대한 혁신이 폭발합니다.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.20/dist/fullpage.min.js"></script>
+  <script>
+    new fullpage('#fullpage', {
+      autoScrolling: true,
+      scrollingSpeed: 800,
+      easingcss3: 'cubic-bezier(0.77, 0, 0.175, 1)',
+      navigation: true,
+      navigationPosition: 'right',
+      navigationTooltips: ['인트로', '정주영', '이나모리 가즈오', '피터 드러커', '이건희', '스티브 잡스'],
+      showActiveTooltip: true,
+      verticalCentered: false
+    });
+  </script>
+
+</body>
+
+</html>
