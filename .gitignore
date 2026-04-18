@@ -1,0 +1,8 @@
+.gstack/
+.claude/
+.DS_Store
+Thumbs.db
+
+# Autobiography is a separate GitHub repo (jch2100/SNU_Autobiography)
+# The landing links to its GitHub Pages deployment instead
+Autobiography/
