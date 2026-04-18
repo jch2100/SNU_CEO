@@ -431,10 +431,39 @@
         display: none;
       }
     }
+
+    /* ─── Back to landing ─── */
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateX(-2px);
+    }
   </style>
 </head>
 
 <body>
+
+  <a href="../index.html" class="back-link">← 랜딩으로</a>
 
   <div class="nav-dots">
     <div class="dot active" data-target="section-intro"><span class="dot-label">인트로</span></div>
@@ -452,23 +481,23 @@
       <p class="intro-subdesc">AI로 직접 만든 멘토와 나누는 실전 경영 문답.</p>
       <div class="intro-mentors">
         <div class="intro-card" onclick="document.getElementById('s-jung').scrollIntoView();">
-          <img class="intro-photo" src="images/01_jung_ju-yung.jpg" alt="정주영">
+          <img class="intro-photo" src="assets/img/01_jung_ju-yung.jpg" alt="정주영">
           <p class="intro-card-name">정주영</p>
         </div>
         <div class="intro-card" onclick="document.getElementById('s-ina').scrollIntoView();">
-          <img class="intro-photo" src="images/02_inamori_kazuo.jpg" alt="이나모리">
+          <img class="intro-photo" src="assets/img/02_inamori_kazuo.jpg" alt="이나모리">
           <p class="intro-card-name">이나모리</p>
         </div>
         <div class="intro-card" onclick="document.getElementById('s-drucker').scrollIntoView();">
-          <img class="intro-photo" src="images/03_peter_drucker.jpg" alt="드러커">
+          <img class="intro-photo" src="assets/img/03_peter_drucker.jpg" alt="드러커">
           <p class="intro-card-name">피터 드러커</p>
         </div>
         <div class="intro-card" onclick="document.getElementById('s-lee').scrollIntoView();">
-          <img class="intro-photo" src="images/04_lee_kun-hee.jpg" alt="이건희">
+          <img class="intro-photo" src="assets/img/04_lee_kun-hee.jpg" alt="이건희">
           <p class="intro-card-name">이건희</p>
         </div>
         <div class="intro-card" onclick="document.getElementById('s-jobs').scrollIntoView();">
-          <img class="intro-photo" src="images/05_steve_jobs.jpg" alt="잡스">
+          <img class="intro-photo" src="assets/img/05_steve_jobs.jpg" alt="잡스">
           <p class="intro-card-name">스티브 잡스</p>
         </div>
       </div>
@@ -478,7 +507,7 @@
   <div id="s-jung" class="section mentor-section">
     <div class="mentor-inner">
       <div class="m-info">
-        <img class="m-photo" src="images/01_jung_ju-yung.jpg" alt="정주영">
+        <img class="m-photo" src="assets/img/01_jung_ju-yung.jpg" alt="정주영">
         <h2 class="m-name-ko">정주영</h2>
         <p class="m-quote">"시련은 있어도 실패는 없다.<br>살아 있는 한 끝난 게 아니야."</p>
       </div>
@@ -494,7 +523,7 @@
   <div id="s-ina" class="section mentor-section">
     <div class="mentor-inner">
       <div class="m-info">
-        <img class="m-photo" src="images/02_inamori_kazuo.jpg" alt="이나모리">
+        <img class="m-photo" src="assets/img/02_inamori_kazuo.jpg" alt="이나모리">
         <h2 class="m-name-ko">이나모리 가즈오</h2>
         <p class="m-quote">"직원들의 마음은 경영자의 마음을<br>비추는 거울과 같습니다."</p>
       </div>
@@ -510,7 +539,7 @@
   <div id="s-drucker" class="section mentor-section">
     <div class="mentor-inner">
       <div class="m-info">
-        <img class="m-photo" src="images/03_peter_drucker.jpg" alt="피터 드러커">
+        <img class="m-photo" src="assets/img/03_peter_drucker.jpg" alt="피터 드러커">
         <h2 class="m-name-ko">피터 드러커</h2>
         <p class="m-quote">"경영은 사람의 약점을 고치는 것이<br>아니라 강점을 극대화하는 것입니다."</p>
       </div>
@@ -526,7 +555,7 @@
   <div id="s-lee" class="section mentor-section">
     <div class="mentor-inner">
       <div class="m-info">
-        <img class="m-photo" src="images/04_lee_kun-hee.jpg" alt="이건희">
+        <img class="m-photo" src="assets/img/04_lee_kun-hee.jpg" alt="이건희">
         <h2 class="m-name-ko">이건희</h2>
         <p class="m-quote">"마누라와 자식 빼고 다 바꿔라."</p>
       </div>
@@ -542,7 +571,7 @@
   <div id="s-jobs" class="section mentor-section">
     <div class="mentor-inner">
       <div class="m-info">
-        <img class="m-photo" src="images/05_steve_jobs.jpg" alt="스티브 잡스">
+        <img class="m-photo" src="assets/img/05_steve_jobs.jpg" alt="스티브 잡스">
         <h2 class="m-name-ko">스티브 잡스</h2>
         <p class="m-quote">"천 가지 아이디어에 'NO'라고<br>말하는 것이 진짜 혁신입니다."</p>
       </div>

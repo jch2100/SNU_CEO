@@ -4,589 +4,1446 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>나의 경영 멘토 | 서울대 최고위과정 AI 리더십</title>
+  <meta name="description" content="서울대학교 미래사회융합설계 최고위과정 AI 리더십 교육 — 경영자를 위한 나만의 AI 참모 구축 8주 과정">
+  <title>SNU AI 리더십 | 나만의 AI 참모를 만드세요</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <style>
-    /* ═══════════════════════════ CLEAN STACK BASE ═══════════════════════════ */
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* ═══════════════ RESET ═══════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-      --bg: #090909;
-      --c-jung: #C8501F;
-      --c-ina: #2A62BC;
-      --c-drucker: #347A37;
-      --c-lee: #C9A620;
-      --c-jobs: #D8D8D8;
+      --bg:           #FAFAF7;
+      --navy:         #1A2F5A;
+      --navy-deep:    #0F1E3D;
+      --gold:         #C9A620;
+      --gold-light:   #E4BF3F;
+      --text:         #1A1A1A;
+      --text-sub:     #5A6578;
+      --card:         #FFFFFF;
+      --border:       #E8E4D9;
+      --shadow-sm:    0 2px 8px rgba(26, 47, 90, 0.06);
+      --shadow-md:    0 8px 24px rgba(26, 47, 90, 0.10);
+      --shadow-lg:    0 16px 48px rgba(26, 47, 90, 0.14);
     }
 
-    html {
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; font-size: 18px; }
 
     body {
       font-family: var(--font);
       background: var(--bg);
-      color: #fff;
+      color: var(--text);
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
-    /* ═══════════════════════════ LAYOUT ═══════════════════════════ */
+    img { max-width: 100%; height: auto; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ═══════════════ LAYOUT ═══════════════ */
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
     .section {
-      height: 100vh;
-      width: 100vw;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
+      padding: 96px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .section-subtitle {
+      margin-top: 16px;
+      font-size: 1.0625rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════ NAV ═══════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav-logo {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+
+    .nav.top-hero .nav-logo { color: #fff; }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .nav-cta:active { transform: translateY(0); }
+
+    /* ═══════════════ HERO ═══════════════ */
+    .hero {
       position: relative;
+      min-height: 100vh;
+      padding: 140px 0 80px;
+      background:
+        linear-gradient(135deg, rgba(15, 30, 61, 0.92) 0%, rgba(26, 47, 90, 0.85) 100%),
+        linear-gradient(180deg, #1A2F5A 0%, #0F1E3D 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
       overflow: hidden;
     }
 
-    /* ═══════════════════════════ NAVIGATION ═══════════════════════════ */
-    .nav-dots {
-      position: fixed;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .dot.active {
-      background: #fff;
-      transform: scale(1.3);
-    }
-
-    .dot-label {
+    .hero::before {
+      content: '';
       position: absolute;
-      right: 25px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 14px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.3s;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(201, 166, 32, 0.15), transparent 50%);
       pointer-events: none;
-      font-weight: 500;
     }
 
-    .dot.active .dot-label,
-    .dot:hover .dot-label {
-      opacity: 1;
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
-    /* ═══════════════════════════ COMPONENTS ═══════════════════════════ */
-    #section-intro {
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(201, 166, 32, 0.15);
+      border: 1px solid rgba(201, 166, 32, 0.4);
+      border-radius: 999px;
+      font-size: 0.875rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+
+    .hero-title .accent {
+      color: var(--gold-light);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      max-width: 560px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 56px;
+      padding: 0 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(201, 166, 32, 0.35);
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .hero-meta span::before {
+      content: '·';
+      margin-right: 8px;
+      color: var(--gold-light);
+    }
+
+    .hero-meta span:first-child::before { display: none; }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%);
+      text-align: center;
+      color: var(--gold-light);
+      font-size: 0.8125rem;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-hint .arrow {
+      display: block;
+      margin: 0 auto 6px;
+      font-size: 1.25rem;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
+      50%      { transform: translate(-50%, 6px); opacity: 1; }
+    }
+
+    /* ═══════════════ PILLARS ═══════════════ */
+    .pillars { background: var(--bg); }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .pillar-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
+
+    .pillar-icon {
+      font-size: 2.25rem;
+      margin-bottom: 16px;
+    }
+
+    .pillar-label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .pillar-title {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .pillar-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════ PRINCIPLES ═══════════════ */
+    .principles { background: #fff; }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .principle-item {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      background: var(--bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .principle-num {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .principle-body h3 {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .principle-body p {
+      font-size: 0.9375rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════ CURRICULUM ═══════════════ */
+    .curriculum { background: var(--bg); }
+
+    .part-block { margin-bottom: 36px; }
+
+    .part-header {
+      padding: 24px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+      color: #fff;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .part-label {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(201, 166, 32, 0.25);
+      color: var(--gold-light);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .part-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .part-desc {
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+    }
+
+    .weeks {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      overflow: hidden;
+    }
+
+    .week-row {
+      display: flex;
+      gap: 20px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .week-row:last-child { border-bottom: none; }
+
+    .week-num {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      background: var(--bg);
+      color: var(--navy);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 800;
+      min-width: 52px;
       text-align: center;
     }
 
-    .intro-label {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.4);
-      margin-bottom: 24px;
-      letter-spacing: 0.3em;
+    .week-topic {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 4px;
     }
 
-    .intro-title {
-      font-size: clamp(60px, 8vw, 110px);
-      font-weight: 900;
-      margin-bottom: 24px;
-    }
+    /* ═══════════════ RESULTS ═══════════════ */
+    .results { background: #fff; }
 
-    .intro-subdesc {
-      font-size: 24px;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 80px;
-    }
-
-    .intro-mentors {
+    .tabs {
       display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: 6px;
+      margin-bottom: 28px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
     }
 
-    .intro-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      cursor: pointer;
-      transition: transform 0.3s;
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex-shrink: 0;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      transition: all 0.2s;
     }
 
-    .intro-card:hover {
-      transform: translateY(-10px);
+    .tab-btn:hover { border-color: var(--gold); }
+
+    .tab-btn.active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
     }
 
-    .intro-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      filter: grayscale(100%);
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      transition: 0.3s;
+    .tab-panel {
+      display: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
     }
 
-    .intro-card:hover .intro-photo {
-      filter: grayscale(0%);
-      border-color: #fff;
-    }
+    .tab-panel.active { display: block; }
 
-    .intro-card-name {
-      font-size: 24px;
+    .tab-title {
+      font-size: 1.25rem;
       font-weight: 800;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--navy);
+      margin-bottom: 8px;
     }
 
-    /* MENTOR SECTIONS */
-    #s-jung {
-      background: linear-gradient(140deg, #0C0B0A 0%, #1E0D07 60%, #0C0B0A 100%);
-    }
-
-    #s-ina {
-      background: linear-gradient(140deg, #09090C 0%, #091426 60%, #09090C 100%);
-    }
-
-    #s-drucker {
-      background: linear-gradient(140deg, #090C09 0%, #0A160A 60%, #090C09 100%);
-    }
-
-    #s-lee {
-      background: linear-gradient(140deg, #0C0B07 0%, #1A1100 60%, #0C0B07 100%);
-    }
-
-    #s-jobs {
-      background: #090909;
-    }
-
-    .mentor-inner {
-      width: 100%;
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .m-info {
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: 1s ease;
-    }
-
-    .section.active .m-info {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .m-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 40px;
-      border: 4px solid rgba(255, 255, 255, 0.2);
-    }
-
-    #s-jung .m-photo {
-      border-color: var(--c-jung);
-      box-shadow: 0 0 60px rgba(200, 80, 31, 0.4);
-    }
-
-    #s-ina .m-photo {
-      border-color: var(--c-ina);
-      box-shadow: 0 0 60px rgba(42, 98, 188, 0.4);
-    }
-
-    #s-drucker .m-photo {
-      border-color: var(--c-drucker);
-      box-shadow: 0 0 60px rgba(52, 122, 55, 0.4);
-    }
-
-    #s-lee .m-photo {
-      border-color: var(--c-lee);
-      box-shadow: 0 0 60px rgba(201, 166, 32, 0.4);
-    }
-
-    #s-jobs .m-photo {
-      border-color: var(--c-jobs);
-      box-shadow: 0 0 60px rgba(216, 216, 216, 0.2);
-    }
-
-    .m-name-ko {
-      font-size: 72px;
-      font-weight: 900;
+    .tab-sub {
+      font-size: 0.9375rem;
+      color: var(--text-sub);
       margin-bottom: 20px;
     }
 
-    .m-quote {
-      font-size: 32px;
-      line-height: 1.5;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.8);
-      border-left: 6px solid;
-      padding-left: 24px;
-      word-break: keep-all;
+    .tab-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: #F0ECE2;
+      border: 2px dashed var(--gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-sub);
+      font-size: 0.9375rem;
+      margin-bottom: 20px;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
     }
 
-    #s-jung .m-quote {
-      border-color: var(--c-jung);
+    .tab-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
-    #s-ina .m-quote {
-      border-color: var(--c-ina);
+    .tab-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 48px;
+      padding: 0 20px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    #s-drucker .m-quote {
-      border-color: var(--c-drucker);
+    .tab-cta:hover { background: var(--navy-deep); transform: translateY(-1px); }
+
+    /* ═══════════════ OUTCOMES ═══════════════ */
+    .outcomes { background: var(--bg); }
+
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
     }
 
-    #s-lee .m-quote {
-      border-color: var(--c-lee);
+    .outcome-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
     }
 
-    #s-jobs .m-quote {
-      border-color: var(--c-jobs);
+    .outcome-from-to {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
-    .m-cards {
+    .outcome-title {
+      font-size: 1.1875rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .outcome-desc {
+      font-size: 0.9375rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .closing-quote {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .closing-quote::before {
+      content: '“';
+      font-family: Georgia, serif;
+      font-size: 5rem;
+      color: var(--gold);
+      position: absolute;
+      top: 12px;
+      left: 24px;
+      line-height: 1;
+      opacity: 0.4;
+    }
+
+    .closing-quote p {
+      font-size: 1.125rem;
+      line-height: 1.85;
+      font-weight: 500;
+      position: relative;
+    }
+
+    /* ═══════════════ INSTRUCTOR ═══════════════ */
+    .instructor { background: #fff; }
+
+    .instructor-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .instructor-name {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .instructor-title {
+      font-size: 1.625rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .instructor-bio {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .instructor-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+
+    .instructor-list li {
+      position: relative;
+      padding: 6px 0 6px 20px;
+      font-size: 0.9375rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .instructor-list li::before {
+      content: '•';
+      position: absolute;
+      left: 4px;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .instructor-books {
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9375rem;
+      color: var(--text-sub);
+    }
+
+    .instructor-books strong { color: var(--navy); }
+
+    /* ═══════════════ CONTACT ═══════════════ */
+    .contact {
+      background: linear-gradient(180deg, var(--bg) 0%, #F3EFE5 100%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .contact-heading {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .phone-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-phone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 60px;
+      padding: 0 24px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 1.0625rem;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(201, 166, 32, 0.3);
+      transition: transform 0.2s, background 0.2s;
+      margin-bottom: 16px;
+    }
+
+    .btn-phone:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .contact-hours {
+      font-size: 0.9375rem;
+      color: var(--text-sub);
+      text-align: center;
+    }
+
+    /* ─── FORM ─── */
+    .form-group { margin-bottom: 18px; }
+
+    .form-label {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-label .required { color: #D63D3D; margin-left: 4px; }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      min-height: 52px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 166, 32, 0.15);
+    }
+
+    .radio-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9375rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .radio-item:has(input:checked) {
+      border-color: var(--gold);
+      background: rgba(201, 166, 32, 0.06);
+    }
+
+    .radio-item input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--gold);
+    }
+
+    .btn-submit {
+      width: 100%;
+      min-height: 60px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 1.0625rem;
+      font-weight: 800;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--navy-deep); transform: translateY(-2px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-status {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.9375rem;
+      text-align: center;
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: #E8F5E9;
+      color: #1B5E20;
+      border: 1px solid #A5D6A7;
+    }
+
+    .form-status.error {
+      display: block;
+      background: #FFEBEE;
+      color: #B71C1C;
+      border: 1px solid #EF9A9A;
+    }
+
+    /* ═══════════════ FOOTER ═══════════════ */
+    .footer {
+      background: var(--navy-deep);
+      color: rgba(255, 255, 255, 0.75);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-size: 1.0625rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .footer-meta {
+      font-size: 0.9375rem;
+      line-height: 1.8;
+    }
+
+    .footer-meta a { color: var(--gold-light); }
+    .footer-meta a:hover { text-decoration: underline; }
+
+    .footer-copy {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ═══════════════ ANIMATIONS ═══════════════ */
+    .fade-in {
       opacity: 0;
-      transform: translateY(30px);
-      transition: 1s ease 0.3s;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 48px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(12px);
-      border-top: 4px solid transparent;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .section.active .m-cards {
+    .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    #s-jung .m-cards {
-      border-top-color: var(--c-jung);
-    }
-
-    #s-ina .m-cards {
-      border-top-color: var(--c-ina);
-    }
-
-    #s-drucker .m-cards {
-      border-top-color: var(--c-drucker);
-    }
-
-    #s-lee .m-cards {
-      border-top-color: var(--c-lee);
-    }
-
-    #s-jobs .m-cards {
-      border-top-color: var(--c-jobs);
-    }
-
-    .card-label {
-      font-size: 14px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.3);
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .card-q {
-      font-size: 34px;
-      font-weight: 800;
-      line-height: 1.4;
-      margin-bottom: 32px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      word-break: keep-all;
-    }
-
-    .card-a {
-      font-size: 24px;
-      font-weight: 400;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.75);
-      word-break: keep-all;
-    }
-
-    /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
-    @media (max-width: 1000px) {
-      .mentor-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-        max-width: 90%;
-      }
-
-      .m-photo {
-        width: 140px;
-        height: 140px;
-        margin: 0 auto 24px;
-      }
-
-      .m-name-ko {
-        font-size: 56px;
-      }
-
-      .m-quote {
-        font-size: 24px;
-        border-left: none;
-        border-top: 4px solid;
-        padding: 16px 0 0 0;
-        margin-top: 24px;
-        display: inline-block;
-      }
-
-      .m-cards {
-        padding: 32px;
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in, .scroll-hint {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
       }
     }
 
-    @media (max-width: 600px) {
-      .intro-title {
-        font-size: 34px;
-        line-height: 1.15;
+    /* ═══════════════ RESPONSIVE: TABLET+ ═══════════════ */
+    @media (min-width: 768px) {
+      html { font-size: 18px; }
+
+      .section { padding: 120px 0; }
+
+      .section-title { font-size: 2.5rem; }
+      .section-subtitle { font-size: 1.125rem; }
+
+      .hero { padding: 160px 0 100px; }
+      .hero-title { font-size: 3.75rem; }
+      .hero-sub { font-size: 1.25rem; }
+
+      .pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
       }
 
-      .intro-subdesc {
-        font-size: 16px;
-        margin-bottom: 32px;
+      .principles-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
       }
 
-      .intro-mentors {
+      .principle-item {
+        flex-direction: column;
         gap: 16px;
       }
 
-      .intro-photo {
-        width: 80px;
-        height: 80px;
+      .week-row {
+        padding: 24px 32px;
       }
 
-      .intro-card-name {
-        font-size: 16px;
+      .outcomes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
       }
 
-      .mentor-section {
-        padding: 32px 16px;
+      .closing-quote { padding: 64px 48px; }
+      .closing-quote p { font-size: 1.375rem; }
+
+      .contact-grid {
+        grid-template-columns: 1fr 1.4fr;
+        gap: 28px;
       }
 
-      .m-photo {
-        width: 80px;
-        height: 80px;
-      }
+      .contact-card { padding: 40px 36px; }
 
-      .m-name-ko {
-        font-size: 28px;
-      }
+      .radio-row { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+      .radio-item { flex: 1 1 auto; min-width: 180px; }
+    }
 
-      .m-quote {
-        font-size: 15px;
-      }
-
-      .m-cards {
-        padding: 20px;
-        border-radius: 20px;
-        margin-top: 16px;
-      }
-
-      .card-q {
-        font-size: 19px;
-      }
-
-      .card-a {
-        font-size: 15px;
-      }
-
-      .nav-dots {
-        display: none;
-      }
+    @media (min-width: 1024px) {
+      .section-title { font-size: 2.75rem; }
+      .hero-title { font-size: 4.25rem; }
+      .pillar-card { padding: 44px 32px; }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="nav-dots">
-    <div class="dot active" data-target="section-intro"><span class="dot-label">인트로</span></div>
-    <div class="dot" data-target="s-jung"><span class="dot-label">정주영</span></div>
-    <div class="dot" data-target="s-ina"><span class="dot-label">이나모리 가즈오</span></div>
-    <div class="dot" data-target="s-drucker"><span class="dot-label">피터 드러커</span></div>
-    <div class="dot" data-target="s-lee"><span class="dot-label">이건희</span></div>
-    <div class="dot" data-target="s-jobs"><span class="dot-label">스티브 잡스</span></div>
-  </div>
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav class="nav top-hero" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">SNU AI 리더십</a>
+      <a href="#contact" class="nav-cta">📞 지금 문의</a>
+    </div>
+  </nav>
 
-  <div id="section-intro" class="section">
-    <div>
-      <p class="intro-label">서울대학교 최고위과정 AI 리더십</p>
-      <h1 class="intro-title">나의 경영 멘토</h1>
-      <p class="intro-subdesc">AI로 직접 만든 멘토와 나누는 실전 경영 문답.</p>
-      <div class="intro-mentors">
-        <div class="intro-card" onclick="document.getElementById('s-jung').scrollIntoView();">
-          <img class="intro-photo" src="images/01_jung_ju-yung.jpg" alt="정주영">
-          <p class="intro-card-name">정주영</p>
+  <!-- ═══════════ 1. HERO ═══════════ -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+      <span class="hero-badge">서울대학교 미래사회융합설계 최고위과정</span>
+      <h1 class="hero-title">
+        AI 도구가 아닌,
+        <span class="accent">나만의 AI 참모를 만드세요</span>
+      </h1>
+      <p class="hero-sub">
+        의사결정을 함께하고, 조직을 지휘하고, 인생을 기록하는<br>
+        서울대 최고위 AI 리더십 <strong>8주 과정</strong>
+      </p>
+      <div class="hero-cta-row">
+        <a href="tel:010-0000-0000" class="btn btn-primary">📞 전화 문의</a>
+        <a href="#contact" class="btn btn-outline">✉ 이메일 문의</a>
+      </div>
+      <div class="hero-meta">
+        <span>2026년 06월 개강</span>
+        <span>호암교수회관</span>
+        <span>8주 · 주 1회</span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span class="arrow">↓</span>
+      아래로 스크롤
+    </div>
+  </section>
+
+  <!-- ═══════════ 2. PILLARS ═══════════ -->
+  <section id="pillars" class="section pillars">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">단 하나의 도구로, 세 가지 변화를</h2>
+        <p class="section-subtitle">
+          ChatGPT Plus 하나로 경영자의 의사결정, 조직 혁신, 인생의 유산까지 만들어 냅니다
+        </p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card fade-in">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-label">Consultant</div>
+          <h3 class="pillar-title">나만의 AI 참모</h3>
+          <p class="pillar-desc">
+            누구에게도 말 못할 경영 고민을 끝장 토론하는 전략 참모를 구축합니다.
+            당신의 철학을 이해한 AI가 언제든 명쾌한 해답을 드립니다.
+          </p>
         </div>
-        <div class="intro-card" onclick="document.getElementById('s-ina').scrollIntoView();">
-          <img class="intro-photo" src="images/02_inamori_kazuo.jpg" alt="이나모리">
-          <p class="intro-card-name">이나모리</p>
+        <div class="pillar-card fade-in">
+          <div class="pillar-icon">🏛️</div>
+          <div class="pillar-label">Leadership</div>
+          <h3 class="pillar-title">조직 혁신 지휘</h3>
+          <p class="pillar-desc">
+            직원 결과물의 허점을 꿰뚫고 AI 도입의 병목을 해결하는 거버넌스 역량.
+            회사 전체의 AI 적용 밑그림을 직접 스케치합니다.
+          </p>
         </div>
-        <div class="intro-card" onclick="document.getElementById('s-drucker').scrollIntoView();">
-          <img class="intro-photo" src="images/03_peter_drucker.jpg" alt="드러커">
-          <p class="intro-card-name">피터 드러커</p>
-        </div>
-        <div class="intro-card" onclick="document.getElementById('s-lee').scrollIntoView();">
-          <img class="intro-photo" src="images/04_lee_kun-hee.jpg" alt="이건희">
-          <p class="intro-card-name">이건희</p>
-        </div>
-        <div class="intro-card" onclick="document.getElementById('s-jobs').scrollIntoView();">
-          <img class="intro-photo" src="images/05_steve_jobs.jpg" alt="잡스">
-          <p class="intro-card-name">스티브 잡스</p>
+        <div class="pillar-card fade-in">
+          <div class="pillar-icon">📖</div>
+          <div class="pillar-label">Masterpiece</div>
+          <h3 class="pillar-title">인생의 유산</h3>
+          <p class="pillar-desc">
+            경영 철학과 삶의 궤적을 자서전과 예술적 비전 아트로 영구 형상화합니다.
+            내 손에 남는 확실한 자산이 됩니다.
+          </p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="s-jung" class="section mentor-section">
-    <div class="mentor-inner">
-      <div class="m-info">
-        <img class="m-photo" src="images/01_jung_ju-yung.jpg" alt="정주영">
-        <h2 class="m-name-ko">정주영</h2>
-        <p class="m-quote">"시련은 있어도 실패는 없다.<br>살아 있는 한 끝난 게 아니야."</p>
+  <!-- ═══════════ 3. PRINCIPLES ═══════════ -->
+  <section id="principles" class="section principles">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">누구나 쉽게 결과를 만듭니다</h2>
+        <p class="section-subtitle">복잡한 암기가 아닌, 편안한 실습 중심의 운영 원칙</p>
       </div>
-      <div class="m-cards">
-        <span class="card-label">CEO의 경영 고민</span>
-        <p class="card-q">"직원들이 수동적이고 주인의식이 전혀 없습니다."</p>
-        <span class="card-label">멘토의 실전 해법</span>
-        <p class="card-a">해보기나 했어? 사장인 자네가 먼저 책상머리에서 일어나 현장으로 뛰어나가 봤냐 이 말이야. 사장이 먼저 기름때 묻혀가며 일하는 등짝을 보여줘야지!</p>
+      <div class="principles-grid">
+        <div class="principle-item fade-in">
+          <div class="principle-num">1</div>
+          <div class="principle-body">
+            <h3>1일 1 AI 도구</h3>
+            <p>하루에 하나의 방법론만. 혼란 없이 한 번에 하나씩 확실히 익힙니다.</p>
+          </div>
+        </div>
+        <div class="principle-item fade-in">
+          <div class="principle-num">2</div>
+          <div class="principle-body">
+            <h3>ChatGPT Plus 단일 사용</h3>
+            <p>추가 결제 없이 월 $20 하나로만 진행. 복잡한 도구 전환이 없습니다.</p>
+          </div>
+        </div>
+        <div class="principle-item fade-in">
+          <div class="principle-num">3</div>
+          <div class="principle-body">
+            <h3>조교 1:1 밀착 지원</h3>
+            <p>매시간 손 안에 결과물을 쥐고 수료합니다. 혼자 남겨두지 않습니다.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="s-ina" class="section mentor-section">
-    <div class="mentor-inner">
-      <div class="m-info">
-        <img class="m-photo" src="images/02_inamori_kazuo.jpg" alt="이나모리">
-        <h2 class="m-name-ko">이나모리 가즈오</h2>
-        <p class="m-quote">"직원들의 마음은 경영자의 마음을<br>비추는 거울과 같습니다."</p>
+  <!-- ═══════════ 4. CURRICULUM ═══════════ -->
+  <section id="curriculum" class="section curriculum">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">8주 동안 이렇게 배웁니다</h2>
+        <p class="section-subtitle">3개의 파트, 8개의 주차. 체계적으로 누적되는 커리큘럼</p>
       </div>
-      <div class="m-cards">
-        <span class="card-label">CEO의 경영 고민</span>
-        <p class="card-q">"신사업에 무리하게 투자해야 할까요?"</p>
-        <span class="card-label">멘토의 실전 해법</span>
-        <p class="card-a">그 동기가 선한가, 사심은 없는가 반문하십시오. 세상과 사람에게 진정으로 도움이 된다는 순수한 확신이 들 때까지 밤을 새워 번민하십시오.</p>
+
+      <!-- PART 1 -->
+      <div class="part-block fade-in">
+        <div class="part-header">
+          <span class="part-label">PART 1 · 1~3주</span>
+          <h3 class="part-title">나의 AI 컨설턴트 고용하기</h3>
+          <p class="part-desc">
+            내 마음을 가장 잘 알아주고, 언제든 명쾌한 해답을 주는 컨설턴트를 채용합니다.
+          </p>
+        </div>
+        <div class="weeks">
+          <div class="week-row">
+            <span class="week-num">1주</span>
+            <span class="week-topic">마법의 질문법 익히기 — 나만의 Prompt Book 작성</span>
+          </div>
+          <div class="week-row">
+            <span class="week-num">2주</span>
+            <span class="week-topic">나만의 경영 멘토 만들기 — 존경하는 인물을 AI로 부활</span>
+          </div>
+          <div class="week-row">
+            <span class="week-num">3주</span>
+            <span class="week-topic">시장 트렌드 및 최신 뉴스 요약 보고 받기</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 2 -->
+      <div class="part-block fade-in">
+        <div class="part-header">
+          <span class="part-label">PART 2 · 4~6주</span>
+          <h3 class="part-title">나의 삶을 작품으로</h3>
+          <p class="part-desc">
+            AI를 통해 젊은 시절의 열정을 시각화하고, 지나온 궤적을 근사한 글로 남겨봅니다.
+          </p>
+        </div>
+        <div class="weeks">
+          <div class="week-row">
+            <span class="week-num">4주</span>
+            <span class="week-topic">대화하며 편하게 완성하는 AI 자서전 작성</span>
+          </div>
+          <div class="week-row">
+            <span class="week-num">5주</span>
+            <span class="week-topic">위트 있는 프로필 이미지와 자서전 표지 제작</span>
+          </div>
+          <div class="week-row">
+            <span class="week-num">6주</span>
+            <span class="week-topic">수업 내용 바탕 나만의 기획안 프로젝트</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 3 -->
+      <div class="part-block fade-in">
+        <div class="part-header">
+          <span class="part-label">PART 3 · 7~8주</span>
+          <h3 class="part-title">우리 기업에 AI 도입하기</h3>
+          <p class="part-desc">
+            직원을 움직이는 기획안부터 우리 회사 전체의 AI 적용 밑그림까지 스케치합니다.
+          </p>
+        </div>
+        <div class="weeks">
+          <div class="week-row">
+            <span class="week-num">7주</span>
+            <span class="week-topic">내 아이디어를 직원 지시용 슬라이드 초안으로</span>
+          </div>
+          <div class="week-row">
+            <span class="week-num">8주</span>
+            <span class="week-topic">우리 회사 AI 도입 시나리오 스케치</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="s-drucker" class="section mentor-section">
-    <div class="mentor-inner">
-      <div class="m-info">
-        <img class="m-photo" src="images/03_peter_drucker.jpg" alt="피터 드러커">
-        <h2 class="m-name-ko">피터 드러커</h2>
-        <p class="m-quote">"경영은 사람의 약점을 고치는 것이<br>아니라 강점을 극대화하는 것입니다."</p>
+  <!-- ═══════════ 5. RESULTS ═══════════ -->
+  <section id="results" class="section results">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">이런 결과물을 직접 가져가십니다</h2>
+        <p class="section-subtitle">8주 후, 손에 남는 실제 산출물을 미리 확인하세요</p>
       </div>
-      <div class="m-cards">
-        <span class="card-label">CEO의 경영 고민</span>
-        <p class="card-q">"핵심 인재가 임금 인상을 요구하며 떠나려 합니다."</p>
-        <span class="card-label">멘토의 실전 해법</span>
-        <p class="card-a">조직의 원칙을 무너뜨리는 예외를 허용할 때의 붕괴 비용과, 인재를 잃는 단기적 비용 중 무엇이 더 치명적인지 철저히 측정하십시오.</p>
+
+      <div class="tabs fade-in" role="tablist">
+        <button class="tab-btn active" data-tab="mentor" role="tab">🎯 AI 경영 멘토</button>
+        <button class="tab-btn" data-tab="autobio" role="tab">📖 AI 자서전</button>
+        <button class="tab-btn" data-tab="slide" role="tab">📊 지시용 슬라이드</button>
+        <button class="tab-btn" data-tab="report" role="tab">📰 자동 뉴스 보고</button>
+      </div>
+
+      <!-- mentor -->
+      <div class="tab-panel active fade-in" id="tab-mentor">
+        <h3 class="tab-title">AI 경영 멘토</h3>
+        <p class="tab-sub">2주차 산출물 · 존경하는 경영자 5인과의 대화 인터페이스</p>
+        <div class="tab-image">
+          <img src="CEO_Mentor/assets/img/01_jung_ju-yung.jpg" alt="AI 경영 멘토 데모 미리보기" loading="lazy"
+               onerror="this.parentElement.innerHTML='예시 이미지 준비 중'">
+        </div>
+        <a href="CEO_Mentor/index.html" class="tab-cta">라이브 데모 보기 →</a>
+      </div>
+
+      <!-- autobiography -->
+      <div class="tab-panel fade-in" id="tab-autobio">
+        <h3 class="tab-title">AI 자서전 — “찬찬히 하나씩”</h3>
+        <p class="tab-sub">4~5주차 산출물 · 강사 정찬훈의 실제 자서전 플립북 (24페이지)</p>
+        <div class="tab-image">
+          <img src="images/autobio_cover.jpg" alt="자서전 표지 — 찬찬히 하나씩" loading="lazy"
+               onerror="this.parentElement.innerHTML='예시 이미지 준비 중'">
+        </div>
+        <a href="https://jch2100.github.io/SNU_Autobiography/" class="tab-cta" target="_blank" rel="noopener">플립북 보기 →</a>
+      </div>
+
+      <!-- slide -->
+      <div class="tab-panel fade-in" id="tab-slide">
+        <h3 class="tab-title">지시용 슬라이드</h3>
+        <p class="tab-sub">7주차 산출물 · 내 아이디어를 직원 전달용 슬라이드로</p>
+        <div class="tab-image">예시 이미지 준비 중</div>
+      </div>
+
+      <!-- report -->
+      <div class="tab-panel fade-in" id="tab-report">
+        <h3 class="tab-title">자동 뉴스 보고서</h3>
+        <p class="tab-sub">3주차 산출물 · 업계 트렌드 요약을 매일 아침 자동으로</p>
+        <div class="tab-image">예시 이미지 준비 중</div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="s-lee" class="section mentor-section">
-    <div class="mentor-inner">
-      <div class="m-info">
-        <img class="m-photo" src="images/04_lee_kun-hee.jpg" alt="이건희">
-        <h2 class="m-name-ko">이건희</h2>
-        <p class="m-quote">"마누라와 자식 빼고 다 바꿔라."</p>
+  <!-- ═══════════ 6. OUTCOMES ═══════════ -->
+  <section id="outcomes" class="section outcomes">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">8주 후, 이렇게 바뀝니다</h2>
+        <p class="section-subtitle">수료생이 직접 체감하는 3가지 변화</p>
       </div>
-      <div class="m-cards">
-        <span class="card-label">CEO의 경영 고민</span>
-        <p class="card-q">"어떻게 해야 회사가 초일류가 됩니까?"</p>
-        <span class="card-label">멘토의 실전 해법</span>
-        <p class="card-a">처절한 '위기의식'이 없다면 변하는 건 없습니다. 껍데기만 칠하지 말고 설계도부터 엔진까지 모든 것을 마하의 속도로 뒤흔드십시오.</p>
+
+      <div class="outcomes-grid">
+        <div class="outcome-card fade-in">
+          <div class="outcome-from-to">두려움 → 재미</div>
+          <h3 class="outcome-title">AI를 다루는 즐거움</h3>
+          <p class="outcome-desc">
+            "AI는 어렵다"는 벽이 무너지고, 매일 새로운 도구를 시도하는 자신감이 생깁니다.
+          </p>
+        </div>
+        <div class="outcome-card fade-in">
+          <div class="outcome-from-to">모호함 → 명확함</div>
+          <h3 class="outcome-title">빠르고 정확한 소통</h3>
+          <p class="outcome-desc">
+            생각이 바로 슬라이드 초안으로 옮겨지고, 직원 지시가 훨씬 구체적이고 빨라집니다.
+          </p>
+        </div>
+        <div class="outcome-card fade-in">
+          <div class="outcome-from-to">휘발 → 자산</div>
+          <h3 class="outcome-title">내 손에 남는 자산</h3>
+          <p class="outcome-desc">
+            자서전, 비전 이미지, Prompt Book — 수업 후에도 계속 쓰는 실질적 결과물이 남습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="closing-quote fade-in">
+        <p>
+          복잡한 것을 외우는 교육이 아닙니다.<br>
+          편안한 마음으로 즐기다 보면,<br>
+          어느덧 <strong>시대의 변화를 즐기고 있는 자신</strong>을 발견하게 될 것입니다.
+        </p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="s-jobs" class="section mentor-section">
-    <div class="mentor-inner">
-      <div class="m-info">
-        <img class="m-photo" src="images/05_steve_jobs.jpg" alt="스티브 잡스">
-        <h2 class="m-name-ko">스티브 잡스</h2>
-        <p class="m-quote">"천 가지 아이디어에 'NO'라고<br>말하는 것이 진짜 혁신입니다."</p>
+  <!-- ═══════════ 7. INSTRUCTOR ═══════════ -->
+  <section id="instructor" class="section instructor">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">검증된 강사의 실전형 커리큘럼</h2>
+        <p class="section-subtitle">C-Level 임원 대상 AI 리더십 교육 전담</p>
       </div>
-      <div class="m-cards">
-        <span class="card-label">CEO의 경영 고민</span>
-        <p class="card-q">"혁신은 어디서부터 시작됩니까?"</p>
-        <span class="card-label">멘토의 실전 해법</span>
-        <p class="card-a">당신의 핵심 역량 하나에만 집중하고 나머지는 쓰레기통에 넣으십시오. 어설픈 타협을 버리고 완벽을 향해 소리칠 때 혁신은 폭발합니다.</p>
+
+      <div class="instructor-card fade-in">
+        <div class="instructor-name">강사</div>
+        <h3 class="instructor-title">정찬훈</h3>
+        <p class="instructor-bio">
+          C-Level 임원 대상 AI 리더십 및 AI 거버넌스 교육을 전담하고 있습니다.
+          경영자의 실무 의사결정 구조에 AI를 녹여내는 데 집중합니다.
+        </p>
+        <ul class="instructor-list">
+          <li>하나생명 임원 AI 코칭 프로그램</li>
+          <li>한화제약 임원 그룹 AI 역량 강화 과정</li>
+          <li>삼성전자 DS 부문 AI Business Development</li>
+        </ul>
+        <div class="instructor-books">
+          <strong>저서</strong> 『그들의 새벽간 거짓말』 · 『절대 취업』
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
+  <!-- ═══════════ 8. CONTACT ═══════════ -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">지금 시작하세요</h2>
+        <p class="section-subtitle">전화 또는 이메일로 편하게 문의하실 수 있습니다</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- 전화 -->
+        <div class="contact-card fade-in">
+          <div class="contact-label">Phone</div>
+          <h3 class="contact-heading">전화 문의</h3>
+          <div class="phone-number">010-XXXX-XXXX</div>
+          <a href="tel:010-0000-0000" class="btn-phone">📞 전화 걸기</a>
+          <p class="contact-hours">평일 오전 9시 ~ 오후 6시</p>
+        </div>
+
+        <!-- 이메일 폼 -->
+        <div class="contact-card fade-in">
+          <div class="contact-label">Email</div>
+          <h3 class="contact-heading">이메일 문의</h3>
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="f-name">성함 <span class="required">*</span></label>
+              <input class="form-input" id="f-name" name="name" type="text" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-phone">연락처 <span class="required">*</span></label>
+              <input class="form-input" id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="010-0000-0000">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-email">이메일 <span class="required">*</span></label>
+              <input class="form-input" id="f-email" name="email" type="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label class="form-label">관심 과정</label>
+              <div class="radio-row">
+                <label class="radio-item"><input type="radio" name="interest" value="mentor" checked>AI 경영 멘토</label>
+                <label class="radio-item"><input type="radio" name="interest" value="autobio">AI 자서전</label>
+                <label class="radio-item"><input type="radio" name="interest" value="full">전체 과정</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-message">문의 내용</label>
+              <textarea class="form-textarea" id="f-message" name="message" rows="4" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">문의 내용 보내기</button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-title">SNU 미래사회융합설계 최고위과정 AI 리더십</div>
+      <div class="footer-meta">
+        <a href="mailto:ckohoon@gmail.com">ckohoon@gmail.com</a> · <a href="tel:010-0000-0000">010-XXXX-XXXX</a><br>
+        2026년 06월 개강 · 호암교수회관
+      </div>
+      <div class="footer-copy">© 2026 SNU AI Leadership Program. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ═══════════ EmailJS ═══════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // Intersection Observer for Scroll Snap Animations & Nav Sync
-    const sections = document.querySelectorAll('.section');
-    const dots = document.querySelectorAll('.dot');
+    // EmailJS 설정: https://emailjs.com
+    // 1. Gmail 서비스 연결 → 2. 템플릿 생성 → 3. 아래 3곳 교체
+    // 수신 이메일: ckohoon@gmail.com (템플릿에 설정)
+    const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+    const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
 
-    const observerOptions = { threshold: 0.6 };
+    // ─── Nav scroll state ───
+    const nav = document.getElementById('nav');
+    const hero = document.getElementById('hero');
+    function updateNav() {
+      const scrolled = window.scrollY > 40;
+      const pastHero = window.scrollY > (hero.offsetHeight - 80);
+      nav.classList.toggle('scrolled', scrolled);
+      nav.classList.toggle('top-hero', !pastHero);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Remove active from all
-          sections.forEach(s => s.classList.remove('active'));
-          dots.forEach(d => d.classList.remove('active'));
-
-          // Add to current
-          entry.target.classList.add('active');
-          const dot = document.querySelector(`.dot[data-target="${entry.target.id}"]`);
-          if (dot) dot.classList.add('active');
+    // ─── Fade-in on scroll ───
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-in').forEach((el) => io.observe(el));
 
-    sections.forEach(section => observer.observe(section));
-
-    // Dot Navigation Click
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const targetId = dot.getAttribute('data-target');
-        document.getElementById(targetId).scrollIntoView();
+    // ─── Tabs ───
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.tab;
+        tabBtns.forEach((b) => b.classList.toggle('active', b === btn));
+        tabPanels.forEach((p) => p.classList.toggle('active', p.id === 'tab-' + name));
       });
+    });
+
+    // ─── Contact form (EmailJS) ───
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    const emailjsReady =
+      EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY' &&
+      EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' &&
+      EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
+
+    if (emailjsReady && window.emailjs) {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.className = 'form-status';
+      status.textContent = '';
+
+      // basic validation
+      const data = Object.fromEntries(new FormData(form));
+      if (!data.name || !data.phone || !data.email) {
+        status.className = 'form-status error';
+        status.textContent = '필수 항목을 모두 입력해주세요.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '전송 중...';
+
+      try {
+        if (!emailjsReady) {
+          // EmailJS not yet configured — fall back to mailto
+          const body = encodeURIComponent(
+            `성함: ${data.name}\n연락처: ${data.phone}\n이메일: ${data.email}\n` +
+            `관심 과정: ${data.interest}\n\n${data.message || ''}`
+          );
+          window.location.href = `mailto:ckohoon@gmail.com?subject=${encodeURIComponent('SNU AI 리더십 문의 - ' + data.name)}&body=${body}`;
+          status.className = 'form-status success';
+          status.textContent = '이메일 앱이 열렸습니다. 전송을 완료해주세요.';
+        } else {
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            from_name: data.name,
+            phone: data.phone,
+            email: data.email,
+            interest: data.interest,
+            message: data.message || '(내용 없음)',
+            to_email: 'ckohoon@gmail.com'
+          });
+          status.className = 'form-status success';
+          status.textContent = '문의가 정상적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.';
+          form.reset();
+        }
+      } catch (err) {
+        console.error(err);
+        status.className = 'form-status error';
+        status.textContent = '전송에 실패했습니다. 전화로 문의 부탁드립니다.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '문의 내용 보내기';
+      }
     });
   </script>
 </body>
-
 </html>
