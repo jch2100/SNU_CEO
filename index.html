@@ -6,55 +6,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="서울대학교 미래사회융합설계 최고위과정 AI 리더십 교육 — 경영자를 위한 나만의 AI 참모 구축 8주 과정">
   <title>SNU AI 리더십 | 나만의 AI 참모를 만드세요</title>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <style>
     /* ═══════════════ RESET ═══════════════ */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-      --bg:           #FAFAF7;
-      --navy:         #1A2F5A;
-      --navy-deep:    #0F1E3D;
-      --gold:         #C9A620;
-      --gold-light:   #E4BF3F;
-      --text:         #1A1A1A;
-      --text-sub:     #5A6578;
-      --card:         #FFFFFF;
-      --border:       #E8E4D9;
-      --shadow-sm:    0 2px 8px rgba(26, 47, 90, 0.06);
-      --shadow-md:    0 8px 24px rgba(26, 47, 90, 0.10);
-      --shadow-lg:    0 16px 48px rgba(26, 47, 90, 0.14);
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; font-size: 18px; }
+    :root {
+      --font-display: 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-text: 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+      /* Apple palette */
+      --black: #000000;
+      --light-gray: #f5f5f7;
+      --near-black: #1d1d1f;
+      --white: #ffffff;
+      --apple-blue: #0071e3;
+      --link-blue: #0066cc;
+      --link-blue-dark: #2997ff;
+      --text-sub-light: rgba(0, 0, 0, 0.64);
+      --text-sub-dark: rgba(255, 255, 255, 0.72);
+
+      /* Cards */
+      --card-dark: #1c1c1e;
+      --card-light: #ffffff;
+
+      /* Shadow */
+      --shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 17px;
+    }
 
     body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.75;
+      font-family: var(--font-text);
+      background: var(--light-gray);
+      color: var(--near-black);
+      line-height: 1.47;
+      letter-spacing: -0.374px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
-    img { max-width: 100%; height: auto; display: block; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    a { color: inherit; text-decoration: none; }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     /* ═══════════════ LAYOUT ═══════════════ */
     .container {
       width: 100%;
-      max-width: 1080px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
     .section {
-      padding: 96px 0;
+      padding: 100px 0;
     }
 
     .section-header {
@@ -63,130 +91,145 @@
     }
 
     .section-title {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-      line-height: 1.3;
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: normal;
+      line-height: 1.10;
+    }
+
+    .section-title--light {
+      color: var(--white);
+    }
+
+    .section-title--dark {
+      color: var(--near-black);
     }
 
     .section-subtitle {
       margin-top: 16px;
       font-size: 1.0625rem;
-      color: var(--text-sub);
-      line-height: 1.7;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+    }
+
+    .section-subtitle--light {
+      color: var(--text-sub-dark);
+    }
+
+    .section-subtitle--dark {
+      color: var(--text-sub-light);
+    }
+
+    /* Alternating backgrounds */
+    .bg-black {
+      background: var(--black);
+    }
+
+    .bg-light {
+      background: var(--light-gray);
     }
 
     /* ═══════════════ NAV ═══════════════ */
     .nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      padding: 16px 0;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .nav.scrolled {
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-sm);
+      height: 48px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
     }
 
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1080px;
+      height: 100%;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
     .nav-logo {
-      font-size: 1.125rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.01em;
+      font-family: var(--font-text);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -0.12px;
     }
-
-    .nav.top-hero .nav-logo { color: #fff; }
 
     .nav-cta {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      background: var(--gold);
-      color: #fff;
-      font-size: 0.9375rem;
-      font-weight: 700;
-      transition: transform 0.2s, background 0.2s;
+      height: 32px;
+      padding: 0 15px;
+      border-radius: 980px;
+      background: var(--apple-blue);
+      color: var(--white);
+      font-family: var(--font-text);
+      font-size: 0.875rem;
+      font-weight: 400;
+      transition: opacity 0.2s;
     }
 
-    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .nav-cta:active { transform: translateY(0); }
+    .nav-cta:hover {
+      opacity: 0.88;
+    }
 
-    /* ═══════════════ HERO ═══════════════ */
+    /* ═══════════════ HERO (black) ═══════════════ */
     .hero {
       position: relative;
       min-height: 100vh;
-      padding: 140px 0 80px;
-      background:
-        linear-gradient(135deg, rgba(15, 30, 61, 0.92) 0%, rgba(26, 47, 90, 0.85) 100%),
-        linear-gradient(180deg, #1A2F5A 0%, #0F1E3D 100%);
-      color: #fff;
+      padding: 140px 0 96px;
+      background: var(--black);
+      color: var(--white);
       display: flex;
       align-items: center;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 30%, rgba(201, 166, 32, 0.15), transparent 50%);
-      pointer-events: none;
     }
 
     .hero-inner {
       position: relative;
       width: 100%;
-      max-width: 1080px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
     .hero-badge {
       display: inline-block;
-      padding: 8px 16px;
-      background: rgba(201, 166, 32, 0.15);
-      border: 1px solid rgba(201, 166, 32, 0.4);
-      border-radius: 999px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 980px;
       font-size: 0.875rem;
-      color: var(--gold-light);
-      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 400;
       margin-bottom: 28px;
     }
 
     .hero-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      line-height: 1.25;
-      letter-spacing: -0.025em;
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.07;
+      letter-spacing: -0.28px;
       margin-bottom: 24px;
+      color: var(--white);
     }
 
     .hero-title .accent {
-      color: var(--gold-light);
+      color: var(--link-blue-dark);
       display: block;
     }
 
     .hero-sub {
-      font-size: 1.125rem;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.0625rem;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: rgba(255, 255, 255, 0.72);
       margin-bottom: 40px;
       max-width: 560px;
     }
@@ -198,60 +241,84 @@
       margin-bottom: 48px;
     }
 
-    .btn {
+    /* Apple buttons */
+    .btn-apple-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 56px;
-      padding: 0 28px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 700;
-      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+      padding: 8px 20px;
+      border-radius: 8px;
+      background: var(--apple-blue);
+      color: var(--white);
+      font-family: var(--font-text);
+      font-size: 1.0625rem;
+      font-weight: 400;
+      min-height: 44px;
+      transition: opacity 0.2s;
       white-space: nowrap;
     }
 
-    .btn-primary {
-      background: var(--gold);
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(201, 166, 32, 0.35);
+    .btn-apple-primary:hover {
+      opacity: 0.88;
     }
 
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-    .btn-primary:active { transform: translateY(0); }
-
-    .btn-outline {
+    .btn-apple-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 20px;
+      border-radius: 980px;
       background: transparent;
-      color: #fff;
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      font-family: var(--font-text);
+      font-size: 1.0625rem;
+      font-weight: 400;
+      min-height: 44px;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
     }
 
-    .btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; }
+    .btn-apple-pill:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-apple-pill--dark {
+      color: var(--link-blue);
+      border-color: var(--link-blue);
+    }
+
+    .btn-apple-pill--dark:hover {
+      background: rgba(0, 113, 227, 0.06);
+    }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
       font-size: 0.9375rem;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: -0.224px;
     }
 
     .hero-meta span::before {
       content: '·';
       margin-right: 8px;
-      color: var(--gold-light);
+      color: rgba(255, 255, 255, 0.4);
     }
 
-    .hero-meta span:first-child::before { display: none; }
+    .hero-meta span:first-child::before {
+      display: none;
+    }
 
     .scroll-hint {
       position: absolute;
       left: 50%;
-      bottom: 32px;
+      bottom: 36px;
       transform: translateX(-50%);
       text-align: center;
-      color: var(--gold-light);
+      color: rgba(255, 255, 255, 0.4);
       font-size: 0.8125rem;
       animation: bounce 2s infinite;
     }
@@ -259,17 +326,24 @@
     .scroll-hint .arrow {
       display: block;
       margin: 0 auto 6px;
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
-      50%      { transform: translate(-50%, 6px); opacity: 1; }
+
+      0%,
+      100% {
+        transform: translate(-50%, 0);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translate(-50%, 6px);
+        opacity: 0.9;
+      }
     }
 
-    /* ═══════════════ PILLARS ═══════════════ */
-    .pillars { background: var(--bg); }
-
+    /* ═══════════════ PILLARS (light) ═══════════════ */
     .pillars-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -277,51 +351,45 @@
     }
 
     .pillar-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 28px;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      background: var(--card-light);
+      border-radius: 12px;
+      padding: 40px 32px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .pillar-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--gold);
-    }
-
-    .pillar-icon {
-      font-size: 2.25rem;
-      margin-bottom: 16px;
+      box-shadow: rgba(0, 0, 0, 0.28) 3px 8px 36px 0px;
     }
 
     .pillar-label {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--apple-blue);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .pillar-title {
-      font-size: 1.375rem;
-      font-weight: 800;
-      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 1.3125rem;
+      font-weight: 600;
+      color: var(--near-black);
       margin-bottom: 12px;
-      letter-spacing: -0.01em;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
     }
 
     .pillar-desc {
-      font-size: 1rem;
-      color: var(--text-sub);
-      line-height: 1.7;
+      font-size: 0.9375rem;
+      color: var(--text-sub-light);
+      line-height: 1.6;
+      letter-spacing: -0.224px;
     }
 
-    /* ═══════════════ PRINCIPLES ═══════════════ */
-    .principles { background: #fff; }
-
+    /* ═══════════════ PRINCIPLES (black) ═══════════════ */
     .principles-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -331,117 +399,120 @@
     .principle-item {
       display: flex;
       gap: 20px;
-      padding: 24px;
-      background: var(--bg);
-      border-radius: 16px;
-      border: 1px solid var(--border);
+      padding: 28px;
+      background: #1c1c1e;
+      border-radius: 12px;
       align-items: flex-start;
     }
 
     .principle-num {
       flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      background: var(--navy);
+      width: 40px;
+      height: 40px;
+      background: var(--apple-blue);
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1rem;
+      font-weight: 600;
+      font-size: 0.9375rem;
     }
 
     .principle-body h3 {
-      font-size: 1.125rem;
-      font-weight: 800;
-      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--white);
       margin-bottom: 6px;
+      line-height: 1.19;
     }
 
     .principle-body p {
       font-size: 0.9375rem;
-      color: var(--text-sub);
-      line-height: 1.7;
+      color: var(--text-sub-dark);
+      line-height: 1.6;
+      letter-spacing: -0.224px;
     }
 
-    /* ═══════════════ CURRICULUM ═══════════════ */
-    .curriculum { background: var(--bg); }
-
-    .part-block { margin-bottom: 36px; }
+    /* ═══════════════ CURRICULUM (light) ═══════════════ */
+    .part-block {
+      margin-bottom: 32px;
+    }
 
     .part-header {
-      padding: 24px;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+      padding: 28px 32px;
+      background: var(--near-black);
       color: #fff;
-      border-radius: 16px 16px 0 0;
+      border-radius: 12px 12px 0 0;
     }
 
     .part-label {
       display: inline-block;
       padding: 4px 12px;
-      background: rgba(201, 166, 32, 0.25);
-      color: var(--gold-light);
+      background: rgba(0, 113, 227, 0.25);
+      color: var(--link-blue-dark);
       border-radius: 6px;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.08em;
       margin-bottom: 10px;
     }
 
     .part-title {
+      font-family: var(--font-display);
       font-size: 1.25rem;
-      font-weight: 800;
-      line-height: 1.4;
+      font-weight: 600;
+      line-height: 1.19;
       margin-bottom: 8px;
     }
 
     .part-desc {
       font-size: 0.9375rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.6;
+      letter-spacing: -0.224px;
     }
 
     .weeks {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-top: none;
-      border-radius: 0 0 16px 16px;
+      background: var(--white);
+      border-radius: 0 0 12px 12px;
       overflow: hidden;
     }
 
     .week-row {
       display: flex;
       gap: 20px;
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       align-items: flex-start;
     }
 
-    .week-row:last-child { border-bottom: none; }
+    .week-row:last-child {
+      border-bottom: none;
+    }
 
     .week-num {
       flex-shrink: 0;
-      padding: 6px 12px;
-      background: var(--bg);
-      color: var(--navy);
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 800;
+      padding: 5px 12px;
+      background: var(--light-gray);
+      color: var(--near-black);
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
       min-width: 52px;
       text-align: center;
     }
 
     .week-topic {
-      font-size: 1rem;
-      color: var(--text);
+      font-size: 0.9375rem;
+      color: var(--near-black);
       line-height: 1.6;
-      padding-top: 4px;
+      padding-top: 3px;
+      letter-spacing: -0.224px;
     }
 
-    /* ═══════════════ RESULTS ═══════════════ */
-    .results { background: #fff; }
-
+    /* ═══════════════ RESULTS (black) ═══════════════ */
     .tabs {
       display: flex;
       gap: 6px;
@@ -451,63 +522,73 @@
       scrollbar-width: none;
     }
 
-    .tabs::-webkit-scrollbar { display: none; }
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
 
     .tab-btn {
       flex-shrink: 0;
-      min-height: 48px;
+      min-height: 40px;
       padding: 0 18px;
-      border-radius: 999px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--text-sub);
+      border-radius: 980px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-family: var(--font-text);
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.72);
       transition: all 0.2s;
+      letter-spacing: -0.224px;
     }
 
-    .tab-btn:hover { border-color: var(--gold); }
+    .tab-btn:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #fff;
+    }
 
     .tab-btn.active {
-      background: var(--navy);
+      background: var(--apple-blue);
       color: #fff;
-      border-color: var(--navy);
+      border-color: var(--apple-blue);
     }
 
     .tab-panel {
       display: none;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
+      background: #1c1c1e;
+      border-radius: 12px;
+      padding: 32px;
     }
 
-    .tab-panel.active { display: block; }
+    .tab-panel.active {
+      display: block;
+    }
 
     .tab-title {
+      font-family: var(--font-display);
       font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--navy);
+      font-weight: 600;
+      color: var(--white);
       margin-bottom: 8px;
+      line-height: 1.19;
     }
 
     .tab-sub {
-      font-size: 0.9375rem;
-      color: var(--text-sub);
+      font-size: 0.875rem;
+      color: var(--text-sub-dark);
       margin-bottom: 20px;
+      letter-spacing: -0.224px;
     }
 
     .tab-image {
       width: 100%;
       aspect-ratio: 16/10;
-      background: #F0ECE2;
-      border: 2px dashed var(--gold);
-      border-radius: 12px;
+      background: #2c2c2e;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-sub);
-      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.875rem;
       margin-bottom: 20px;
       text-align: center;
       padding: 20px;
@@ -518,28 +599,30 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 6px;
     }
 
     .tab-cta {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      min-height: 48px;
-      padding: 0 20px;
-      background: var(--navy);
+      min-height: 40px;
+      padding: 8px 18px;
+      background: var(--apple-blue);
       color: #fff;
-      border-radius: 10px;
+      border-radius: 8px;
+      font-family: var(--font-text);
       font-size: 0.9375rem;
-      font-weight: 700;
-      transition: background 0.2s, transform 0.2s;
+      font-weight: 400;
+      transition: opacity 0.2s;
+      letter-spacing: -0.224px;
     }
 
-    .tab-cta:hover { background: var(--navy-deep); transform: translateY(-1px); }
+    .tab-cta:hover {
+      opacity: 0.88;
+    }
 
-    /* ═══════════════ OUTCOMES ═══════════════ */
-    .outcomes { background: var(--bg); }
-
+    /* ═══════════════ OUTCOMES (light) ═══════════════ */
     .outcomes-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -548,96 +631,101 @@
     }
 
     .outcome-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: var(--shadow);
     }
 
     .outcome-from-to {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--apple-blue);
       letter-spacing: 0.06em;
       margin-bottom: 10px;
       text-transform: uppercase;
     }
 
     .outcome-title {
-      font-size: 1.1875rem;
-      font-weight: 800;
-      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--near-black);
       margin-bottom: 10px;
+      line-height: 1.19;
     }
 
     .outcome-desc {
       font-size: 0.9375rem;
-      color: var(--text-sub);
-      line-height: 1.7;
+      color: var(--text-sub-light);
+      line-height: 1.6;
+      letter-spacing: -0.224px;
     }
 
     .closing-quote {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+      background: var(--near-black);
       color: #fff;
-      border-radius: 20px;
-      padding: 48px 32px;
+      border-radius: 12px;
+      padding: 56px 48px;
       text-align: center;
       position: relative;
     }
 
     .closing-quote::before {
-      content: '“';
+      content: '"';
       font-family: Georgia, serif;
       font-size: 5rem;
-      color: var(--gold);
+      color: var(--apple-blue);
       position: absolute;
       top: 12px;
-      left: 24px;
+      left: 28px;
       line-height: 1;
       opacity: 0.4;
     }
 
     .closing-quote p {
+      font-family: var(--font-display);
       font-size: 1.125rem;
-      line-height: 1.85;
-      font-weight: 500;
+      line-height: 1.7;
+      font-weight: 400;
       position: relative;
+      color: rgba(255, 255, 255, 0.88);
     }
 
-    /* ═══════════════ INSTRUCTOR ═══════════════ */
-    .instructor { background: #fff; }
-
+    /* ═══════════════ INSTRUCTOR (black) ═══════════════ */
     .instructor-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 28px;
+      background: #1c1c1e;
+      border-radius: 12px;
+      padding: 40px 36px;
       max-width: 680px;
       margin: 0 auto;
+      box-shadow: var(--shadow);
     }
 
     .instructor-name {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--apple-blue);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 6px;
     }
 
     .instructor-title {
+      font-family: var(--font-display);
       font-size: 1.625rem;
-      font-weight: 800;
-      color: var(--navy);
+      font-weight: 600;
+      color: var(--white);
       margin-bottom: 20px;
+      line-height: 1.14;
     }
 
     .instructor-bio {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.8;
+      font-size: 0.9375rem;
+      color: var(--text-sub-dark);
+      line-height: 1.7;
       margin-bottom: 20px;
+      letter-spacing: -0.224px;
     }
 
     .instructor-list {
@@ -650,32 +738,32 @@
       position: relative;
       padding: 6px 0 6px 20px;
       font-size: 0.9375rem;
-      color: var(--text-sub);
+      color: var(--text-sub-dark);
       line-height: 1.6;
+      letter-spacing: -0.224px;
     }
 
     .instructor-list li::before {
-      content: '•';
+      content: '·';
       position: absolute;
       left: 4px;
-      color: var(--gold);
-      font-weight: 800;
+      color: var(--apple-blue);
+      font-weight: 700;
     }
 
     .instructor-books {
       padding-top: 16px;
-      border-top: 1px solid var(--border);
-      font-size: 0.9375rem;
-      color: var(--text-sub);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.875rem;
+      color: var(--text-sub-dark);
+      letter-spacing: -0.224px;
     }
 
-    .instructor-books strong { color: var(--navy); }
-
-    /* ═══════════════ CONTACT ═══════════════ */
-    .contact {
-      background: linear-gradient(180deg, var(--bg) 0%, #F3EFE5 100%);
+    .instructor-books strong {
+      color: var(--white);
     }
 
+    /* ═══════════════ CONTACT (light) ═══════════════ */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -683,35 +771,37 @@
     }
 
     .contact-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px 24px;
-      box-shadow: var(--shadow-sm);
+      background: var(--white);
+      border-radius: 12px;
+      padding: 36px 28px;
+      box-shadow: var(--shadow);
     }
 
     .contact-label {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--apple-blue);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 8px;
     }
 
     .contact-heading {
-      font-size: 1.375rem;
-      font-weight: 800;
-      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 1.3125rem;
+      font-weight: 600;
+      color: var(--near-black);
       margin-bottom: 20px;
+      line-height: 1.19;
     }
 
     .phone-number {
+      font-family: var(--font-display);
       font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 16px;
-      letter-spacing: 0.02em;
+      font-weight: 600;
+      color: var(--near-black);
+      margin-bottom: 20px;
+      letter-spacing: -0.28px;
     }
 
     .btn-phone {
@@ -720,113 +810,106 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      min-height: 60px;
+      min-height: 56px;
       padding: 0 24px;
-      background: var(--gold);
+      background: var(--apple-blue);
       color: #fff;
-      border-radius: 12px;
+      border-radius: 8px;
+      font-family: var(--font-text);
       font-size: 1.0625rem;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(201, 166, 32, 0.3);
-      transition: transform 0.2s, background 0.2s;
+      font-weight: 400;
+      transition: opacity 0.2s;
       margin-bottom: 16px;
     }
 
-    .btn-phone:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-phone:hover {
+      opacity: 0.88;
+    }
 
     .contact-hours {
-      font-size: 0.9375rem;
-      color: var(--text-sub);
+      font-size: 0.875rem;
+      color: var(--text-sub-light);
       text-align: center;
+      letter-spacing: -0.224px;
     }
 
     /* ─── FORM ─── */
-    .form-group { margin-bottom: 18px; }
+    .form-group {
+      margin-bottom: 18px;
+    }
 
     .form-label {
       display: block;
       font-size: 0.9375rem;
       font-weight: 600;
-      color: var(--text);
+      color: var(--near-black);
       margin-bottom: 8px;
+      letter-spacing: -0.224px;
     }
 
-    .form-label .required { color: #D63D3D; margin-left: 4px; }
+    .form-label .required {
+      color: #D63D3D;
+      margin-left: 4px;
+    }
 
     .form-input,
     .form-textarea {
       width: 100%;
       min-height: 52px;
       padding: 14px 16px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 1rem;
-      color: var(--text);
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: 8px;
+      font-family: var(--font-text);
+      font-size: 0.9375rem;
+      color: var(--near-black);
       background: #fff;
       transition: border-color 0.2s, box-shadow 0.2s;
+      letter-spacing: -0.224px;
     }
 
-    .form-textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
 
     .form-input:focus,
     .form-textarea:focus {
       outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(201, 166, 32, 0.15);
-    }
-
-    .radio-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .radio-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 0 16px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.9375rem;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .radio-item:has(input:checked) {
-      border-color: var(--gold);
-      background: rgba(201, 166, 32, 0.06);
-    }
-
-    .radio-item input {
-      width: 20px;
-      height: 20px;
-      accent-color: var(--gold);
+      border-color: var(--apple-blue);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.18);
     }
 
     .btn-submit {
       width: 100%;
-      min-height: 60px;
-      background: var(--navy);
+      min-height: 52px;
+      background: var(--apple-blue);
       color: #fff;
-      border-radius: 12px;
+      border-radius: 8px;
+      font-family: var(--font-text);
       font-size: 1.0625rem;
-      font-weight: 800;
-      transition: background 0.2s, transform 0.2s;
+      font-weight: 400;
+      transition: opacity 0.2s;
+      letter-spacing: -0.374px;
     }
 
-    .btn-submit:hover { background: var(--navy-deep); transform: translateY(-2px); }
-    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-submit:hover {
+      opacity: 0.88;
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
     .form-status {
       margin-top: 14px;
       padding: 12px 16px;
-      border-radius: 10px;
-      font-size: 0.9375rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
       text-align: center;
       display: none;
+      letter-spacing: -0.224px;
     }
 
     .form-status.success {
@@ -845,33 +928,41 @@
 
     /* ═══════════════ FOOTER ═══════════════ */
     .footer {
-      background: var(--navy-deep);
-      color: rgba(255, 255, 255, 0.75);
+      background: var(--black);
+      color: rgba(255, 255, 255, 0.6);
       padding: 40px 0;
       text-align: center;
     }
 
     .footer-title {
-      font-size: 1.0625rem;
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 600;
       color: #fff;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .footer-meta {
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
       line-height: 1.8;
+      letter-spacing: -0.224px;
     }
 
-    .footer-meta a { color: var(--gold-light); }
-    .footer-meta a:hover { text-decoration: underline; }
+    .footer-meta a {
+      color: var(--link-blue-dark);
+    }
+
+    .footer-meta a:hover {
+      text-decoration: underline;
+    }
 
     .footer-copy {
       margin-top: 20px;
       padding-top: 20px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.8125rem;
-      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: -0.12px;
     }
 
     /* ═══════════════ ANIMATIONS ═══════════════ */
@@ -887,7 +978,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade-in, .scroll-hint {
+
+      .fade-in,
+      .scroll-hint {
         animation: none;
         transition: none;
         opacity: 1;
@@ -897,16 +990,25 @@
 
     /* ═══════════════ RESPONSIVE: TABLET+ ═══════════════ */
     @media (min-width: 768px) {
-      html { font-size: 18px; }
+      .section {
+        padding: 120px 0;
+      }
 
-      .section { padding: 120px 0; }
+      .section-title {
+        font-size: 3rem;
+      }
 
-      .section-title { font-size: 2.5rem; }
-      .section-subtitle { font-size: 1.125rem; }
+      .hero {
+        padding: 160px 0 100px;
+      }
 
-      .hero { padding: 160px 0 100px; }
-      .hero-title { font-size: 3.75rem; }
-      .hero-sub { font-size: 1.25rem; }
+      .hero-title {
+        font-size: 4.25rem;
+      }
+
+      .hero-sub {
+        font-size: 1.125rem;
+      }
 
       .pillars-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -924,7 +1026,7 @@
       }
 
       .week-row {
-        padding: 24px 32px;
+        padding: 24px 36px;
       }
 
       .outcomes-grid {
@@ -932,24 +1034,32 @@
         gap: 20px;
       }
 
-      .closing-quote { padding: 64px 48px; }
-      .closing-quote p { font-size: 1.375rem; }
+      .closing-quote {
+        padding: 64px 56px;
+      }
+
+      .closing-quote p {
+        font-size: 1.25rem;
+      }
 
       .contact-grid {
         grid-template-columns: 1fr 1.4fr;
         gap: 28px;
       }
 
-      .contact-card { padding: 40px 36px; }
-
-      .radio-row { flex-direction: row; flex-wrap: wrap; gap: 12px; }
-      .radio-item { flex: 1 1 auto; min-width: 180px; }
+      .contact-card {
+        padding: 44px 40px;
+      }
     }
 
     @media (min-width: 1024px) {
-      .section-title { font-size: 2.75rem; }
-      .hero-title { font-size: 4.25rem; }
-      .pillar-card { padding: 44px 32px; }
+      .section-title {
+        font-size: 3.5rem;
+      }
+
+      .hero-title {
+        font-size: 4.75rem;
+      }
     }
   </style>
 </head>
@@ -957,15 +1067,15 @@
 <body>
 
   <!-- ═══════════ NAV ═══════════ -->
-  <nav class="nav top-hero" id="nav">
+  <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">SNU AI 리더십</a>
-      <a href="#contact" class="nav-cta">📞 지금 문의</a>
+      <a href="#contact" class="nav-cta">지금 문의</a>
     </div>
   </nav>
 
-  <!-- ═══════════ 1. HERO ═══════════ -->
-  <section id="hero" class="hero">
+  <!-- ═══════════ 1. HERO (black) ═══════════ -->
+  <section id="hero" class="hero bg-black">
     <div class="hero-inner">
       <span class="hero-badge">서울대학교 미래사회융합설계 최고위과정</span>
       <h1 class="hero-title">
@@ -977,8 +1087,8 @@
         서울대 최고위 AI 리더십 <strong>8주 과정</strong>
       </p>
       <div class="hero-cta-row">
-        <a href="tel:010-0000-0000" class="btn btn-primary">📞 전화 문의</a>
-        <a href="#contact" class="btn btn-outline">✉ 이메일 문의</a>
+        <a href="tel:010-0000-0000" class="btn-apple-primary">전화 문의</a>
+        <a href="#contact" class="btn-apple-pill">이메일 문의</a>
       </div>
       <div class="hero-meta">
         <span>2026년 06월 개강</span>
@@ -992,18 +1102,17 @@
     </div>
   </section>
 
-  <!-- ═══════════ 2. PILLARS ═══════════ -->
-  <section id="pillars" class="section pillars">
+  <!-- ═══════════ 2. PILLARS (light) ═══════════ -->
+  <section id="pillars" class="section bg-light">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">단 하나의 도구로, 세 가지 변화를</h2>
-        <p class="section-subtitle">
+        <h2 class="section-title section-title--dark">단 하나의 도구로, 세 가지 변화를</h2>
+        <p class="section-subtitle section-subtitle--dark">
           ChatGPT Plus 하나로 경영자의 의사결정, 조직 혁신, 인생의 유산까지 만들어 냅니다
         </p>
       </div>
       <div class="pillars-grid">
         <div class="pillar-card fade-in">
-          <div class="pillar-icon">🎯</div>
           <div class="pillar-label">Consultant</div>
           <h3 class="pillar-title">나만의 AI 참모</h3>
           <p class="pillar-desc">
@@ -1012,7 +1121,6 @@
           </p>
         </div>
         <div class="pillar-card fade-in">
-          <div class="pillar-icon">🏛️</div>
           <div class="pillar-label">Leadership</div>
           <h3 class="pillar-title">조직 혁신 지휘</h3>
           <p class="pillar-desc">
@@ -1021,7 +1129,6 @@
           </p>
         </div>
         <div class="pillar-card fade-in">
-          <div class="pillar-icon">📖</div>
           <div class="pillar-label">Masterpiece</div>
           <h3 class="pillar-title">인생의 유산</h3>
           <p class="pillar-desc">
@@ -1033,12 +1140,12 @@
     </div>
   </section>
 
-  <!-- ═══════════ 3. PRINCIPLES ═══════════ -->
-  <section id="principles" class="section principles">
+  <!-- ═══════════ 3. PRINCIPLES (black) ═══════════ -->
+  <section id="principles" class="section bg-black">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">누구나 쉽게 결과를 만듭니다</h2>
-        <p class="section-subtitle">복잡한 암기가 아닌, 편안한 실습 중심의 운영 원칙</p>
+        <h2 class="section-title section-title--light">누구나 쉽게 결과를 만듭니다</h2>
+        <p class="section-subtitle section-subtitle--light">복잡한 암기가 아닌, 편안한 실습 중심의 운영 원칙</p>
       </div>
       <div class="principles-grid">
         <div class="principle-item fade-in">
@@ -1066,12 +1173,12 @@
     </div>
   </section>
 
-  <!-- ═══════════ 4. CURRICULUM ═══════════ -->
-  <section id="curriculum" class="section curriculum">
+  <!-- ═══════════ 4. CURRICULUM (light) ═══════════ -->
+  <section id="curriculum" class="section bg-light">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">8주 동안 이렇게 배웁니다</h2>
-        <p class="section-subtitle">3개의 파트, 8개의 주차. 체계적으로 누적되는 커리큘럼</p>
+        <h2 class="section-title section-title--dark">8주 동안 이렇게 배웁니다</h2>
+        <p class="section-subtitle section-subtitle--dark">3개의 파트, 8개의 주차. 체계적으로 누적되는 커리큘럼</p>
       </div>
 
       <!-- PART 1 -->
@@ -1147,19 +1254,19 @@
     </div>
   </section>
 
-  <!-- ═══════════ 5. RESULTS ═══════════ -->
-  <section id="results" class="section results">
+  <!-- ═══════════ 5. RESULTS (black) ═══════════ -->
+  <section id="results" class="section bg-black">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">이런 결과물을 직접 가져가십니다</h2>
-        <p class="section-subtitle">8주 후, 손에 남는 실제 산출물을 미리 확인하세요</p>
+        <h2 class="section-title section-title--light">이런 결과물을 직접 가져가십니다</h2>
+        <p class="section-subtitle section-subtitle--light">8주 후, 손에 남는 실제 산출물을 미리 확인하세요</p>
       </div>
 
       <div class="tabs fade-in" role="tablist">
-        <button class="tab-btn active" data-tab="mentor" role="tab">🎯 AI 경영 멘토</button>
-        <button class="tab-btn" data-tab="autobio" role="tab">📖 AI 자서전</button>
-        <button class="tab-btn" data-tab="slide" role="tab">📊 지시용 슬라이드</button>
-        <button class="tab-btn" data-tab="report" role="tab">📰 자동 뉴스 보고</button>
+        <button class="tab-btn active" data-tab="mentor" role="tab">AI 경영 멘토</button>
+        <button class="tab-btn" data-tab="autobio" role="tab">AI 자서전</button>
+        <button class="tab-btn" data-tab="slide" role="tab">지시용 슬라이드</button>
+        <button class="tab-btn" data-tab="report" role="tab">자동 뉴스 보고</button>
       </div>
 
       <!-- mentor -->
@@ -1168,20 +1275,21 @@
         <p class="tab-sub">2주차 산출물 · 존경하는 경영자 5인과의 대화 인터페이스</p>
         <div class="tab-image">
           <img src="CEO_Mentor/assets/img/01_jung_ju-yung.jpg" alt="AI 경영 멘토 데모 미리보기" loading="lazy"
-               onerror="this.parentElement.innerHTML='예시 이미지 준비 중'">
+            onerror="this.parentElement.innerHTML='예시 이미지 준비 중'">
         </div>
         <a href="CEO_Mentor/index.html" class="tab-cta">라이브 데모 보기 →</a>
       </div>
 
       <!-- autobiography -->
       <div class="tab-panel fade-in" id="tab-autobio">
-        <h3 class="tab-title">AI 자서전 — “찬찬히 하나씩”</h3>
+        <h3 class="tab-title">AI 자서전 — "찬찬히 하나씩"</h3>
         <p class="tab-sub">4~5주차 산출물 · 강사 정찬훈의 실제 자서전 플립북 (24페이지)</p>
         <div class="tab-image">
           <img src="images/autobio_cover.jpg" alt="자서전 표지 — 찬찬히 하나씩" loading="lazy"
-               onerror="this.parentElement.innerHTML='예시 이미지 준비 중'">
+            onerror="this.parentElement.innerHTML='예시 이미지 준비 중'">
         </div>
-        <a href="https://jch2100.github.io/SNU_Autobiography/" class="tab-cta" target="_blank" rel="noopener">플립북 보기 →</a>
+        <a href="https://jch2100.github.io/SNU_Autobiography/" class="tab-cta" target="_blank" rel="noopener">플립북 보기
+          →</a>
       </div>
 
       <!-- slide -->
@@ -1200,12 +1308,12 @@
     </div>
   </section>
 
-  <!-- ═══════════ 6. OUTCOMES ═══════════ -->
-  <section id="outcomes" class="section outcomes">
+  <!-- ═══════════ 6. OUTCOMES (light) ═══════════ -->
+  <section id="outcomes" class="section bg-light">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">8주 후, 이렇게 바뀝니다</h2>
-        <p class="section-subtitle">수료생이 직접 체감하는 3가지 변화</p>
+        <h2 class="section-title section-title--dark">8주 후, 이렇게 바뀝니다</h2>
+        <p class="section-subtitle section-subtitle--dark">수료생이 직접 체감하는 3가지 변화</p>
       </div>
 
       <div class="outcomes-grid">
@@ -1242,12 +1350,12 @@
     </div>
   </section>
 
-  <!-- ═══════════ 7. INSTRUCTOR ═══════════ -->
-  <section id="instructor" class="section instructor">
+  <!-- ═══════════ 7. INSTRUCTOR (black) ═══════════ -->
+  <section id="instructor" class="section bg-black">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">검증된 강사의 실전형 커리큘럼</h2>
-        <p class="section-subtitle">C-Level 임원 대상 AI 리더십 교육 전담</p>
+        <h2 class="section-title section-title--light">검증된 강사의 실전형 커리큘럼</h2>
+        <p class="section-subtitle section-subtitle--light">C-Level 임원 대상 AI 리더십 교육 전담</p>
       </div>
 
       <div class="instructor-card fade-in">
@@ -1269,12 +1377,12 @@
     </div>
   </section>
 
-  <!-- ═══════════ 8. CONTACT ═══════════ -->
-  <section id="contact" class="section contact">
+  <!-- ═══════════ 8. CONTACT (light) ═══════════ -->
+  <section id="contact" class="section bg-light">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">지금 시작하세요</h2>
-        <p class="section-subtitle">전화 또는 이메일로 편하게 문의하실 수 있습니다</p>
+        <h2 class="section-title section-title--dark">지금 시작하세요</h2>
+        <p class="section-subtitle section-subtitle--dark">전화 또는 이메일로 편하게 문의하실 수 있습니다</p>
       </div>
 
       <div class="contact-grid">
@@ -1284,7 +1392,7 @@
           <div class="contact-label">Phone</div>
           <h3 class="contact-heading">전화 문의</h3>
           <div class="phone-number">010-XXXX-XXXX</div>
-          <a href="tel:010-0000-0000" class="btn-phone">📞 전화 걸기</a>
+          <a href="tel:010-0000-0000" class="btn-phone">전화 걸기</a>
           <p class="contact-hours">평일 오전 9시 ~ 오후 6시</p>
         </div>
 
@@ -1299,23 +1407,17 @@
             </div>
             <div class="form-group">
               <label class="form-label" for="f-phone">연락처 <span class="required">*</span></label>
-              <input class="form-input" id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="010-0000-0000">
+              <input class="form-input" id="f-phone" name="phone" type="tel" required autocomplete="tel"
+                placeholder="010-0000-0000">
             </div>
             <div class="form-group">
               <label class="form-label" for="f-email">이메일 <span class="required">*</span></label>
               <input class="form-input" id="f-email" name="email" type="email" required autocomplete="email">
             </div>
             <div class="form-group">
-              <label class="form-label">관심 과정</label>
-              <div class="radio-row">
-                <label class="radio-item"><input type="radio" name="interest" value="mentor" checked>AI 경영 멘토</label>
-                <label class="radio-item"><input type="radio" name="interest" value="autobio">AI 자서전</label>
-                <label class="radio-item"><input type="radio" name="interest" value="full">전체 과정</label>
-              </div>
-            </div>
-            <div class="form-group">
               <label class="form-label" for="f-message">문의 내용</label>
-              <textarea class="form-textarea" id="f-message" name="message" rows="4" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
+              <textarea class="form-textarea" id="f-message" name="message" rows="4"
+                placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
             </div>
             <button type="submit" class="btn-submit" id="submitBtn">문의 내용 보내기</button>
             <div class="form-status" id="formStatus"></div>
@@ -1344,21 +1446,9 @@
     // EmailJS 설정: https://emailjs.com
     // 1. Gmail 서비스 연결 → 2. 템플릿 생성 → 3. 아래 3곳 교체
     // 수신 이메일: ckohoon@gmail.com (템플릿에 설정)
-    const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
-    const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+    const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
     const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-
-    // ─── Nav scroll state ───
-    const nav = document.getElementById('nav');
-    const hero = document.getElementById('hero');
-    function updateNav() {
-      const scrolled = window.scrollY > 40;
-      const pastHero = window.scrollY > (hero.offsetHeight - 80);
-      nav.classList.toggle('scrolled', scrolled);
-      nav.classList.toggle('top-hero', !pastHero);
-    }
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
 
     // ─── Fade-in on scroll ───
     const io = new IntersectionObserver((entries) => {
@@ -1401,7 +1491,6 @@
       status.className = 'form-status';
       status.textContent = '';
 
-      // basic validation
       const data = Object.fromEntries(new FormData(form));
       if (!data.name || !data.phone || !data.email) {
         status.className = 'form-status error';
@@ -1414,10 +1503,8 @@
 
       try {
         if (!emailjsReady) {
-          // EmailJS not yet configured — fall back to mailto
           const body = encodeURIComponent(
-            `성함: ${data.name}\n연락처: ${data.phone}\n이메일: ${data.email}\n` +
-            `관심 과정: ${data.interest}\n\n${data.message || ''}`
+            `성함: ${data.name}\n연락처: ${data.phone}\n이메일: ${data.email}\n\n${data.message || ''}`
           );
           window.location.href = `mailto:ckohoon@gmail.com?subject=${encodeURIComponent('SNU AI 리더십 문의 - ' + data.name)}&body=${body}`;
           status.className = 'form-status success';
@@ -1427,7 +1514,6 @@
             from_name: data.name,
             phone: data.phone,
             email: data.email,
-            interest: data.interest,
             message: data.message || '(내용 없음)',
             to_email: 'ckohoon@gmail.com'
           });
@@ -1446,4 +1532,5 @@
     });
   </script>
 </body>
+
 </html>
