@@ -515,12 +515,10 @@
 
     /* ═══════════════ RESULTS (black) ═══════════════ */
     .tabs {
-      display: flex;
-      gap: 6px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
       margin-bottom: 28px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: none;
     }
 
     .tabs::-webkit-scrollbar {
@@ -1030,6 +1028,12 @@
         padding: 24px 36px;
       }
 
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
+
       .outcomes-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
@@ -1297,14 +1301,24 @@
       <div class="tab-panel fade-in" id="tab-slide">
         <h3 class="tab-title">지시용 슬라이드</h3>
         <p class="tab-sub">7주차 산출물 · 내 아이디어를 직원 전달용 슬라이드로</p>
-        <div class="tab-image">예시 이미지 준비 중</div>
+        <div class="tab-image"
+          style="padding: 0; background: #fff; overflow: hidden; aspect-ratio: auto; height: 600px; -webkit-overflow-scrolling: touch;">
+          <iframe src="instruction-slide-section.html" title="지시용 슬라이드"
+            style="width: 100%; height: 100%; border: none; display: block;"></iframe>
+        </div>
+        <a href="instruction-slide-section.html" class="tab-cta" target="_blank" rel="noopener">전체 화면 보기 →</a>
       </div>
 
       <!-- report -->
       <div class="tab-panel fade-in" id="tab-report">
         <h3 class="tab-title">자동 뉴스 보고서</h3>
         <p class="tab-sub">3주차 산출물 · 업계 트렌드 요약을 매일 아침 자동으로</p>
-        <div class="tab-image">예시 이미지 준비 중</div>
+        <div class="tab-image"
+          style="padding: 0; background: #fff; overflow: hidden; aspect-ratio: auto; height: 600px; -webkit-overflow-scrolling: touch;">
+          <iframe src="news-brief-section.html" title="자동 뉴스 보고서"
+            style="width: 100%; height: 100%; border: none; display: block;"></iframe>
+        </div>
+        <a href="news-brief-section.html" class="tab-cta" target="_blank" rel="noopener">전체 화면 보기 →</a>
       </div>
     </div>
   </section>
