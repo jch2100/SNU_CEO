@@ -397,6 +397,8 @@
       margin-bottom: 12px;
       line-height: 1.19;
       letter-spacing: 0.231px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .pillar-desc {
@@ -404,6 +406,8 @@
       color: var(--text-sub-light);
       line-height: 1.6;
       letter-spacing: -0.224px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     /* ═══════════════ PRINCIPLES (black) ═══════════════ */
@@ -486,6 +490,8 @@
       font-weight: 600;
       line-height: 1.19;
       margin-bottom: 8px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .part-desc {
@@ -493,6 +499,8 @@
       color: rgba(255, 255, 255, 0.72);
       line-height: 1.6;
       letter-spacing: -0.224px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .weeks {
@@ -531,6 +539,8 @@
       line-height: 1.6;
       padding-top: 3px;
       letter-spacing: -0.224px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     /* ═══════════════ RESULTS (black) ═══════════════ */
@@ -676,6 +686,8 @@
       color: var(--near-black);
       margin-bottom: 10px;
       line-height: 1.19;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .outcome-desc {
@@ -683,6 +695,8 @@
       color: var(--text-sub-light);
       line-height: 1.6;
       letter-spacing: -0.224px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .closing-quote {
@@ -825,6 +839,8 @@
       color: var(--near-black);
       margin-bottom: 20px;
       line-height: 1.19;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .phone-number {
@@ -1046,6 +1062,19 @@
         line-height: 1.58;
       }
 
+      .hero-meta {
+        display: block;
+        line-height: 1.8;
+      }
+
+      .hero-meta span {
+        display: block;
+      }
+
+      .hero-meta span::before {
+        display: none;
+      }
+
       .principle-item {
         gap: 18px;
         padding: 28px 24px;
@@ -1158,7 +1187,7 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">경영자를 위한 AI 마스터과정</a>
-      <a href="FORM_URL_TBD" class="nav-cta" target="_blank" rel="noopener">문의하기</a>
+      <a href="https://forms.gle/LwdhqzFy1xWAjxGD9" class="nav-cta" target="_blank" rel="noopener">문의하기</a>
     </div>
   </nav>
 
@@ -1175,7 +1204,7 @@
         나만의 실행 방식으로 가져가는 <strong>경영자를 위한 AI 마스터과정</strong>
       </p>
       <div class="hero-cta-row">
-        <a href="FORM_URL_TBD" class="btn-apple-primary" target="_blank" rel="noopener">문의 남기기</a>
+        <a href="https://forms.gle/LwdhqzFy1xWAjxGD9" class="btn-apple-primary" target="_blank" rel="noopener">문의 남기기</a>
         <a href="#contact" class="btn-apple-pill">전화 문의 보기</a>
       </div>
       <div class="hero-meta">
@@ -1495,7 +1524,7 @@
           <div class="contact-label">Inquiry</div>
           <h3 class="contact-heading">온라인 문의</h3>
           <div class="phone-number phone-number--email">ceo2219@naver.com</div>
-          <a href="FORM_URL_TBD" class="btn-phone" target="_blank" rel="noopener">문의 남기기</a>
+          <a href="https://forms.gle/LwdhqzFy1xWAjxGD9" class="btn-phone" target="_blank" rel="noopener">문의 남기기</a>
           <p class="contact-hours">문의 내용을 남겨 주시면 확인 후 안내드립니다</p>
         </div>
 
