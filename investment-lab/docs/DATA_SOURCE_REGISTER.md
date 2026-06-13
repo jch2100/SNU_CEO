@@ -61,13 +61,19 @@ The tenbagger tab is a game-like teaching tool. It uses qualitative candidate da
 |---|---|---|---|
 | SK hynix | SK hynix Newsroom | https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/ | Manual before class |
 | Samsung Electronics | Samsung Electronics IR | https://www.samsung.com/global/ir/ | Manual before class |
+| Hanmi Semiconductor | Hanmi Semiconductor official site | https://www.hanmisemi.com/ | Manual before class |
+| ISC | ISC official site | https://isc21.kr/ | Manual before class |
 | Hanwha Aerospace | Hanwha Aerospace IR | https://m.hanwhaaerospace.com/eng/ir/earning-release.do | Manual before class |
 | LIG Nex1 | LIG Nex1 official site | https://www.lignex1.com/ | Manual before class |
 | Hanwha Systems | Hanwha Systems financial information | https://www.hanwhasystems.com/en/investment/financial-info.do | Manual before class |
 | Hyundai Rotem | Hyundai Rotem official site | https://www.hyundai-rotem.co.kr/ | Manual before class |
 | KAI | KAI annual report | https://www.koreaaero.com/EN/IR/AnnualReport.aspx | Manual before class |
+| AP Satellite | AP Satellite official site | https://www.apsi.co.kr/en/index.php | Manual before class |
+| CONTEC | CONTEC official site | https://www.contec.kr/ | Manual before class |
 | NAVER | NAVER earnings | https://www.navercorp.com/en/investment/earnings | Manual before class |
 | Douzone Bizon | Douzone investor relations | https://en.douzone.com/invest/return.jsp | Manual before class |
+| Saltlux | Saltlux official site | https://www.saltlux.com/eng/ | Manual before class |
+| ESTsoft | ESTsoft investment information | https://estsoft.ai/en/investment-2 | Manual before class |
 | Doosan Robotics | Doosan Robotics IR | https://www.doosanrobotics.com/en/investment/ir/irdata/ | Manual before class |
 | Rainbow Robotics | Rainbow Robotics official site | https://www.rainbow-robotics.com/ | Manual before class |
 | Samsung Biologics | Samsung Biologics Newsroom | https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results | Manual before class |
@@ -75,6 +81,8 @@ The tenbagger tab is a game-like teaching tool. It uses qualitative candidate da
 | NVIDIA | NVIDIA 2025 Annual Report | https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf | Manual before class |
 | AMD | AMD Investor Relations | https://ir.amd.com/ | Manual before class |
 | Broadcom | Broadcom Investor Relations | https://investors.broadcom.com/ | Manual before class |
+| Astera Labs | Astera Labs Investor Relations | https://asteralabs.gcs-web.com/ | Manual before class |
+| Credo Technology | Credo official site | https://www.credosemi.com/ | Manual before class |
 | Palantir | Palantir Investor Relations | https://investors.palantir.com/ | Manual before class |
 | ServiceNow | ServiceNow Investor Relations | https://investor.servicenow.com/overview/default.aspx | Manual before class |
 | Snowflake | Snowflake FY2025 results | https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2025/ | Manual before class |

@@ -8,7 +8,14 @@ const state = {
   activeIndustryId: "technology"
 };
 
-const dataVersion = "20260613-tenbagger-wide";
+const dataVersion = "20260613-tenbagger-size";
+
+const tenbaggerThemeCoreTags = {
+  "ai-infra": ["ai-infra", "semiconductor", "data-center"],
+  "ai-software": ["ai-software", "enterprise-ai"],
+  "defense-space": ["defense", "space"],
+  "robotics-bio": ["robotics", "bio", "automation"]
+};
 
 const won = new Intl.NumberFormat("ko-KR", {
   style: "currency",
@@ -335,15 +342,19 @@ function selectedTenbaggerOptions() {
 
 function scoreTenbaggerCandidate(candidate, selectedOptions) {
   const themeOption = selectedOptions.find((option) => option.questionId === "theme");
-  const themeTags = themeOption ? themeOption.tags : [];
+  const sizeOption = selectedOptions.find((option) => option.questionId === "size");
+  const themeTags = themeOption ? (tenbaggerThemeCoreTags[themeOption.id] || themeOption.tags) : [];
+  const sizeTags = sizeOption ? sizeOption.tags : [];
   const supportTags = selectedOptions
-    .filter((option) => option.questionId !== "theme")
+    .filter((option) => option.questionId !== "theme" && option.questionId !== "size")
     .flatMap((option) => option.tags);
   const themeMatches = candidate.tags.filter((tag) => themeTags.includes(tag));
+  const sizeMatches = candidate.tags.filter((tag) => sizeTags.includes(tag));
   const supportMatches = candidate.tags.filter((tag) => supportTags.includes(tag));
-  const uniqueMatches = [...new Set([...themeMatches, ...supportMatches])];
+  const uniqueMatches = [...new Set([...themeMatches, ...sizeMatches, ...supportMatches])];
   const themeBonus = themeMatches.length > 0 ? 20 : -35;
-  const score = themeMatches.length * 40 + supportMatches.length * 10 + themeBonus;
+  const sizePenalty = sizeMatches.length > 0 ? 0 : -70;
+  const score = themeMatches.length * 40 + sizeMatches.length * 35 + supportMatches.length * 10 + themeBonus + sizePenalty;
   return { ...candidate, matchedTags: uniqueMatches, score };
 }
 
