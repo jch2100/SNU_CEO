@@ -1,13 +1,14 @@
 const state = {
   assets: [],
   industries: [],
-  macro: [],
+  tenbagger: null,
+  tenbaggerAnswers: {},
   dataDate: "",
   activeTab: "compare",
   activeIndustryId: "technology"
 };
 
-const dataVersion = "20260613-historical-purpose";
+const dataVersion = "20260613-tenbagger";
 
 const won = new Intl.NumberFormat("ko-KR", {
   style: "currency",
@@ -46,23 +47,26 @@ function bindMoneyInput(input) {
 }
 
 async function loadData() {
-  const [assetResponse, macroResponse, industryResponse] = await Promise.all([
+  const [assetResponse, industryResponse, tenbaggerResponse] = await Promise.all([
     fetch(`data/assets.json?v=${dataVersion}`),
-    fetch(`data/macro.json?v=${dataVersion}`),
-    fetch(`data/industry-etfs.json?v=${dataVersion}`)
+    fetch(`data/industry-etfs.json?v=${dataVersion}`),
+    fetch(`data/tenbagger-candidates.json?v=${dataVersion}`)
   ]);
 
-  if (!assetResponse.ok || !macroResponse.ok || !industryResponse.ok) {
+  if (!assetResponse.ok || !industryResponse.ok || !tenbaggerResponse.ok) {
     throw new Error("데이터 파일을 불러오지 못했습니다.");
   }
 
   const assetData = await assetResponse.json();
-  const macroData = await macroResponse.json();
   const industryData = await industryResponse.json();
+  const tenbaggerData = await tenbaggerResponse.json();
   state.assets = assetData.assets;
   state.industries = industryData.industries;
-  state.macro = macroData.indicators;
-  state.dataDate = `${assetData.asOf} / ${macroData.asOf} / ${industryData.asOf}`;
+  state.tenbagger = tenbaggerData;
+  state.tenbaggerAnswers = Object.fromEntries(
+    tenbaggerData.questions.map((question) => [question.id, question.options[0].id])
+  );
+  state.dataDate = `${assetData.asOf} / ${industryData.asOf} / ${tenbaggerData.asOf}`;
   $("#dataDate").textContent = state.dataDate;
 }
 
@@ -320,22 +324,106 @@ function renderIndustry() {
   $("#industryPrompt").value = makeIndustryPrompt(industry, tenYear);
 }
 
-function renderMacro() {
-  $("#macroGrid").innerHTML = state.macro.map((indicator) => `
-    <article class="macro-card">
-      <span class="card-kicker">${indicator.asOf}</span>
-      <h3>${indicator.label}</h3>
-      <div class="macro-value">
-        <strong>${decimal.format(indicator.value)}</strong>
-        <span>${indicator.unit}</span>
+function selectedTenbaggerOptions() {
+  return state.tenbagger.questions.map((question) => (
+    question.options.find((option) => option.id === state.tenbaggerAnswers[question.id]) || question.options[0]
+  ));
+}
+
+function scoreTenbaggerCandidate(candidate, selectedOptions) {
+  const selectedTags = selectedOptions.flatMap((option) => option.tags);
+  const matchedTags = candidate.tags.filter((tag) => selectedTags.includes(tag));
+  const uniqueMatches = [...new Set(matchedTags)];
+  const score = uniqueMatches.length * 10 + (candidate.tags.includes("quality") ? 2 : 0);
+  return { ...candidate, matchedTags: uniqueMatches, score };
+}
+
+function tenbaggerResults() {
+  const selectedOptions = selectedTenbaggerOptions();
+  const scored = state.tenbagger.candidates
+    .map((candidate) => scoreTenbaggerCandidate(candidate, selectedOptions))
+    .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name, "ko"));
+
+  return {
+    selectedOptions,
+    korea: scored.filter((candidate) => candidate.market === "korea").slice(0, 2),
+    global: scored.filter((candidate) => candidate.market === "global").slice(0, 2)
+  };
+}
+
+function renderTenbagger() {
+  if (!state.tenbagger) return;
+  const result = tenbaggerResults();
+
+  $("#tenbaggerQuiz").innerHTML = state.tenbagger.questions.map((question, index) => `
+    <fieldset class="quiz-card">
+      <legend>${index + 1}. ${question.label}</legend>
+      <div class="quiz-options">
+        ${question.options.map((option) => `
+          <button class="${state.tenbaggerAnswers[question.id] === option.id ? "active" : ""}" type="button" data-question="${question.id}" data-option="${option.id}">
+            <strong>${option.label}</strong>
+            <span>${option.description}</span>
+          </button>
+        `).join("")}
       </div>
-      <p>${indicator.interpretation}</p>
-      <ol>
-        ${indicator.investorQuestions.map((question) => `<li>${question}</li>`).join("")}
-      </ol>
-      <a href="${indicator.sourceUrl}" target="_blank" rel="noopener">${indicator.sourceName}</a>
-    </article>
+    </fieldset>
   `).join("");
+
+  $("#tenbaggerResult").innerHTML = `
+    <div class="result-summary">
+      <strong>최종 결론</strong>
+      <p>당신의 답변으로는 국내 후보 2개와 해외 후보 2개를 먼저 공부해볼 만합니다. 이 결과는 매수 추천이 아니라, 어떤 근거를 더 확인해야 하는지 보여주는 수업용 결론입니다.</p>
+      <div class="answer-tags">
+        ${result.selectedOptions.map((option) => `<span>${option.label}</span>`).join("")}
+      </div>
+    </div>
+
+    <div class="tenbagger-groups">
+      ${renderTenbaggerGroup("국내 후보 2", result.korea)}
+      ${renderTenbaggerGroup("해외 후보 2", result.global)}
+    </div>
+  `;
+
+  $("#tenbaggerPrompt").value = makeTenbaggerPrompt(result);
+
+  document.querySelectorAll("[data-question][data-option]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.tenbaggerAnswers[button.dataset.question] = button.dataset.option;
+      renderTenbagger();
+    });
+  });
+}
+
+function renderTenbaggerGroup(title, candidates) {
+  return `
+    <section class="tenbagger-group">
+      <h3>${title}</h3>
+      <div class="tenbagger-list">
+        ${candidates.map((candidate) => `
+          <article class="tenbagger-card">
+            <div class="card-top">
+              <div>
+                <span class="card-kicker">${candidate.theme}</span>
+                <h4>${candidate.name}</h4>
+                <p>${candidate.ticker}</p>
+              </div>
+              <span class="plain-badge">${candidate.score}점</span>
+            </div>
+            <p class="tenbagger-thesis">${candidate.thesis}</p>
+            <div class="match-tags">
+              ${(candidate.matchedTags.length ? candidate.matchedTags : ["학습 후보"]).slice(0, 5).map((tag) => `<span>${tag}</span>`).join("")}
+            </div>
+            <h5>근거</h5>
+            <ul>
+              ${candidate.evidence.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+            <p class="risk-note"><strong>위험:</strong> ${candidate.risks}</p>
+            <a class="source-link" href="${candidate.sourceUrl}" target="_blank" rel="noopener">${candidate.sourceName}</a>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
 }
 
 function makeComparePrompt(scenario, results) {
@@ -383,6 +471,28 @@ function makeIndustryPrompt(industry, tenYear) {
 5. 이 ETF를 지금 사라는 결론 없이, 공부할 체크리스트만 작성`;
 }
 
+function makeTenbaggerPrompt(result) {
+  const rows = [...result.korea, ...result.global].map((candidate) => (
+    `- ${candidate.name}(${candidate.ticker}): ${candidate.theme}, 점수 ${candidate.score}, 논리: ${candidate.thesis}, 위험: ${candidate.risks}`
+  )).join("\n");
+  const answers = result.selectedOptions.map((option) => option.label).join(", ");
+
+  return `아래 결과를 투자 추천이 아니라 텐배거 후보를 공부하는 수업용 토론 자료로 정리해줘.
+
+[학습자 선택]
+${answers}
+
+[도출 후보]
+${rows}
+
+다음 형식으로 정리해줘.
+1. 왜 이 네 종목이 나왔는지
+2. 각 종목이 10배가 되려면 필요한 조건
+3. 반대로 실패할 수 있는 이유
+4. 실제 투자 전에 반드시 확인할 숫자와 공식 자료
+5. 매수/매도 결론 없이 토론 질문 3개`;
+}
+
 function copyText(textareaSelector, statusSelector) {
   const text = $(textareaSelector).value;
   navigator.clipboard.writeText(text).then(() => {
@@ -402,6 +512,7 @@ function copyText(textareaSelector, statusSelector) {
 function renderActiveTool() {
   if (state.activeTab === "compare") renderCompare();
   if (state.activeTab === "industry") renderIndustry();
+  if (state.activeTab === "tenbagger") renderTenbagger();
 }
 
 function renderAll() {
@@ -409,7 +520,7 @@ function renderAll() {
   renderAssumptions();
   renderCompare();
   renderIndustry();
-  renderMacro();
+  renderTenbagger();
 }
 
 function bindEvents() {
@@ -435,6 +546,7 @@ function bindEvents() {
 
   $("#copyCompare").addEventListener("click", () => copyText("#comparePrompt", "#compareCopyStatus"));
   $("#copyIndustry").addEventListener("click", () => copyText("#industryPrompt", "#industryCopyStatus"));
+  $("#copyTenbagger").addEventListener("click", () => copyText("#tenbaggerPrompt", "#tenbaggerCopyStatus"));
 }
 
 async function init() {

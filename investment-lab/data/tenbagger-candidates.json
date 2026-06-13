@@ -1,0 +1,252 @@
+{
+  "asOf": "2026-06-13",
+  "disclaimer": "교육용 게임형 후보입니다. 실제 매수 추천이 아니며, 텐배거는 매우 드물고 큰 손실 가능성을 동반합니다.",
+  "questions": [
+    {
+      "id": "theme",
+      "label": "어떤 산업이 10년 뒤 가장 커질 것 같나요?",
+      "options": [
+        {
+          "id": "ai-infra",
+          "label": "AI 인프라",
+          "description": "반도체, 메모리, 데이터센터 장비가 계속 부족해진다고 봅니다.",
+          "tags": ["ai-infra", "semiconductor", "data-center"]
+        },
+        {
+          "id": "ai-software",
+          "label": "AI 소프트웨어",
+          "description": "기업 업무와 의사결정에 AI 플랫폼이 깊게 들어간다고 봅니다.",
+          "tags": ["ai-software", "platform", "enterprise-ai"]
+        },
+        {
+          "id": "defense-space",
+          "label": "방산·우주",
+          "description": "안보, 우주, 위성 인프라 투자가 길게 이어진다고 봅니다.",
+          "tags": ["defense", "space", "order-backlog"]
+        },
+        {
+          "id": "robotics-bio",
+          "label": "로봇·바이오",
+          "description": "자동화와 고령화가 다음 성장 산업을 만든다고 봅니다.",
+          "tags": ["robotics", "bio", "automation"]
+        }
+      ]
+    },
+    {
+      "id": "size",
+      "label": "어떤 크기의 회사가 더 마음에 드나요?",
+      "options": [
+        {
+          "id": "leader",
+          "label": "이미 1등인 대형주",
+          "description": "큰 흐름을 타는 검증된 기업이 더 멀리 간다고 봅니다.",
+          "tags": ["leader", "quality"]
+        },
+        {
+          "id": "challenger",
+          "label": "실적이 붙는 도전자",
+          "description": "이미 매출은 있지만 아직 성장 여지가 큰 회사를 봅니다.",
+          "tags": ["challenger", "scaling"]
+        },
+        {
+          "id": "option",
+          "label": "작지만 폭발력 있는 회사",
+          "description": "실패 위험이 커도 방향이 맞으면 크게 갈 회사를 봅니다.",
+          "tags": ["optionality", "high-volatility"]
+        }
+      ]
+    },
+    {
+      "id": "proof",
+      "label": "어떤 근거를 가장 믿나요?",
+      "options": [
+        {
+          "id": "revenue",
+          "label": "이미 매출과 이익이 보인다",
+          "description": "숫자로 증명된 성장성을 더 믿습니다.",
+          "tags": ["revenue-visible", "profit-visible"]
+        },
+        {
+          "id": "backlog",
+          "label": "수주잔고가 쌓여 있다",
+          "description": "미래 매출로 이어질 계약과 납품 일정을 봅니다.",
+          "tags": ["order-backlog", "multi-year-demand"]
+        },
+        {
+          "id": "platform",
+          "label": "플랫폼 확장성이 있다",
+          "description": "고객이 늘수록 반복 매출과 데이터 효과가 커진다고 봅니다.",
+          "tags": ["platform", "enterprise-ai", "recurring"]
+        },
+        {
+          "id": "technology",
+          "label": "기술 옵션이 크다",
+          "description": "아직 숫자는 작아도 기술이 터질 가능성을 봅니다.",
+          "tags": ["technology-option", "optionality"]
+        }
+      ]
+    },
+    {
+      "id": "risk",
+      "label": "하락을 어디까지 견딜 수 있나요?",
+      "options": [
+        {
+          "id": "balanced",
+          "label": "크게 흔들리면 부담스럽다",
+          "description": "텐배거보다 먼저 살아남는 기업을 봅니다.",
+          "tags": ["quality", "moderate-risk"]
+        },
+        {
+          "id": "growth",
+          "label": "30~50% 하락은 감수한다",
+          "description": "성장주 변동성을 수업용으로 감당할 수 있습니다.",
+          "tags": ["growth-risk", "scaling"]
+        },
+        {
+          "id": "aggressive",
+          "label": "반토막도 각오한다",
+          "description": "작은 확률의 큰 상승을 노리는 시나리오가 재미있습니다.",
+          "tags": ["high-volatility", "optionality"]
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "market": "korea",
+      "ticker": "000660.KS",
+      "name": "SK하이닉스",
+      "shortName": "SK hynix",
+      "theme": "AI 메모리·HBM",
+      "tags": ["ai-infra", "semiconductor", "data-center", "leader", "quality", "revenue-visible", "profit-visible", "growth-risk"],
+      "thesis": "AI 서버 확산에서 HBM과 고성능 메모리가 병목이 된다는 가설에 베팅하는 후보입니다.",
+      "evidence": [
+        "AI 메모리와 HBM 경쟁력이 실적 회복의 핵심 근거입니다.",
+        "대형 고객의 AI 가속기 경쟁이 이어지면 고부가 DRAM 수요가 커질 수 있습니다.",
+        "이미 대형주라 10배 상승 난도는 높지만, 산업 대표성은 가장 직관적입니다."
+      ],
+      "risks": "메모리 사이클, 설비투자 부담, HBM 경쟁 심화, 이미 커진 시가총액",
+      "sourceName": "SK hynix Newsroom FY25 results",
+      "sourceUrl": "https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/"
+    },
+    {
+      "market": "korea",
+      "ticker": "012450.KS",
+      "name": "한화에어로스페이스",
+      "shortName": "Hanwha Aerospace",
+      "theme": "방산·우주·엔진",
+      "tags": ["defense", "space", "order-backlog", "leader", "quality", "multi-year-demand", "growth-risk"],
+      "thesis": "지정학 리스크와 국방 예산 증가가 장기 수주로 이어진다는 가설에 맞는 후보입니다.",
+      "evidence": [
+        "K9, 천무 등 수출형 방산 제품과 장기 납품 일정이 학습 포인트입니다.",
+        "방산은 실적보다 수주잔고와 납품 사이클을 먼저 확인해야 합니다.",
+        "우주·항공엔진까지 붙으면 단순 방산주보다 더 넓은 성장 서사가 생깁니다."
+      ],
+      "risks": "정책·수출 승인, 프로젝트 지연, 이미 크게 오른 기대감, 방산 사이클 둔화",
+      "sourceName": "Hanwha Aerospace earnings release",
+      "sourceUrl": "https://m.hanwhaaerospace.com/eng/ir/earning-release.do"
+    },
+    {
+      "market": "korea",
+      "ticker": "454910.KS",
+      "name": "두산로보틱스",
+      "shortName": "Doosan Robotics",
+      "theme": "협동로봇·자동화",
+      "tags": ["robotics", "automation", "challenger", "scaling", "technology-option", "optionality", "high-volatility"],
+      "thesis": "인건비 상승과 공장 자동화가 협동로봇 보급으로 이어진다는 가설에 맞는 고위험 후보입니다.",
+      "evidence": [
+        "로봇은 시장이 작을 때 침투율이 높아지는 구간을 찾는 산업입니다.",
+        "서비스, 물류, 팔레타이징처럼 실제 적용처가 넓어지는지가 핵심입니다.",
+        "적자가 이어질 수 있어 실적 확인 없이 스토리만 사면 위험합니다."
+      ],
+      "risks": "적자 지속, 경쟁 심화, 로봇 도입 속도 지연, 높은 밸류에이션",
+      "sourceName": "Doosan Robotics IR material",
+      "sourceUrl": "https://www.doosanrobotics.com/en/investment/ir/irdata/"
+    },
+    {
+      "market": "korea",
+      "ticker": "207940.KS",
+      "name": "삼성바이오로직스",
+      "shortName": "Samsung Biologics",
+      "theme": "바이오 CDMO",
+      "tags": ["bio", "leader", "quality", "revenue-visible", "profit-visible", "moderate-risk"],
+      "thesis": "글로벌 제약사의 위탁생산 수요가 장기적으로 늘어난다는 가설에 맞는 방어적 성장 후보입니다.",
+      "evidence": [
+        "바이오의약품 생산능력과 공장 가동률이 중요한 관찰 지표입니다.",
+        "신약 개발 한 종목보다 CDMO는 여러 고객 수요를 받는 구조입니다.",
+        "대형주라 폭발력은 제한될 수 있지만 사업 모델은 이해하기 쉽습니다."
+      ],
+      "risks": "공장 증설 부담, 고객사 집중, 약가·규제 리스크, 높은 기대치",
+      "sourceName": "Samsung Biologics FY2025 results",
+      "sourceUrl": "https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results"
+    },
+    {
+      "market": "global",
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "shortName": "NVIDIA",
+      "theme": "AI GPU·가속컴퓨팅",
+      "tags": ["ai-infra", "semiconductor", "data-center", "leader", "quality", "revenue-visible", "profit-visible", "global-leader", "growth-risk"],
+      "thesis": "AI 학습·추론 수요가 계속 커지고 GPU 생태계가 유지된다는 가설에 맞는 대표 후보입니다.",
+      "evidence": [
+        "데이터센터 매출이 AI 인프라 수요를 직접 보여주는 핵심 지표입니다.",
+        "칩뿐 아니라 CUDA 생태계와 네트워킹까지 함께 봐야 합니다.",
+        "이미 초대형주라 앞으로 10배가 되려면 AI 시장 자체가 훨씬 커져야 합니다."
+      ],
+      "risks": "초대형 시가총액, 고객 집중, 자체칩 경쟁, 수출 규제",
+      "sourceName": "NVIDIA 2025 Annual Report",
+      "sourceUrl": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf"
+    },
+    {
+      "market": "global",
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "shortName": "Broadcom",
+      "theme": "AI 네트워킹·커스텀칩",
+      "tags": ["ai-infra", "semiconductor", "data-center", "leader", "quality", "revenue-visible", "profit-visible", "global-leader"],
+      "thesis": "AI 데이터센터가 GPU뿐 아니라 네트워킹과 커스텀 ASIC까지 필요로 한다는 가설에 맞는 후보입니다.",
+      "evidence": [
+        "AI 반도체 매출 성장과 이더넷 네트워킹 수요가 핵심 관찰 지표입니다.",
+        "NVIDIA와 다른 방식으로 AI 인프라 병목을 해결하는 기업입니다.",
+        "소프트웨어 인수 사업까지 있어 단순 반도체 사이클과 다르게 봐야 합니다."
+      ],
+      "risks": "대형주 프리미엄, 고객 집중, AI 투자 둔화, 인수 통합 리스크",
+      "sourceName": "Broadcom investor relations",
+      "sourceUrl": "https://investors.broadcom.com/"
+    },
+    {
+      "market": "global",
+      "ticker": "PLTR",
+      "name": "Palantir Technologies",
+      "shortName": "Palantir",
+      "theme": "AI 소프트웨어·의사결정 플랫폼",
+      "tags": ["ai-software", "platform", "enterprise-ai", "defense", "challenger", "scaling", "revenue-visible", "recurring", "technology-option", "optionality", "high-volatility", "growth-risk"],
+      "thesis": "기업과 정부가 AI를 실제 업무 시스템에 붙이는 과정에서 플랫폼 기업이 커진다는 가설에 맞는 후보입니다.",
+      "evidence": [
+        "상업 고객 확대와 AI 플랫폼 도입 속도가 핵심 지표입니다.",
+        "AI를 데모가 아니라 정부·국방·기업 운영에 넣는 회사라는 점이 학습 포인트입니다.",
+        "성장 기대가 주가에 많이 반영되면 작은 실망에도 크게 흔들릴 수 있습니다."
+      ],
+      "risks": "높은 밸류에이션, 정부 매출 의존 논쟁, 경쟁 심화, 성장률 둔화",
+      "sourceName": "Palantir investor relations",
+      "sourceUrl": "https://investors.palantir.com/"
+    },
+    {
+      "market": "global",
+      "ticker": "RKLB",
+      "name": "Rocket Lab",
+      "shortName": "Rocket Lab",
+      "theme": "우주 발사·위성 시스템",
+      "tags": ["defense", "space", "order-backlog", "challenger", "technology-option", "optionality", "high-volatility", "multi-year-demand"],
+      "thesis": "소형 발사체와 위성 시스템 수요가 민간·국방 양쪽에서 늘어난다는 가설에 맞는 고위험 후보입니다.",
+      "evidence": [
+        "매출 규모는 작지만 발사 cadence, 수주잔고, 우주 시스템 매출이 관찰 지표입니다.",
+        "성공하면 시장이 크게 열리지만 실패하면 손실도 커질 수 있는 전형적 옵션형 후보입니다.",
+        "텐배거 토론용으로는 재미있지만 실전에서는 포지션 크기 관리가 핵심입니다."
+      ],
+      "risks": "적자와 현금소모, 발사 실패, 프로젝트 지연, 우주 산업 규제",
+      "sourceName": "Rocket Lab investor relations",
+      "sourceUrl": "https://investors.rocketlabcorp.com/"
+    }
+  ]
+}
