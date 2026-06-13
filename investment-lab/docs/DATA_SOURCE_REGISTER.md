@@ -26,7 +26,7 @@ Historical return and distribution inputs were calculated from Yahoo Finance cha
 
 ## Data Fields Required
 
-Every fund and macro data point must include:
+Every fund, ETF, tenbagger candidate, and macro data point must include:
 
 - `asOf`
 - `sourceName`
@@ -52,6 +52,21 @@ Every fund and macro data point must include:
 | USD/KRW | MOEF or official data | https://english.moef.go.kr/ | Manual before class |
 | U.S. 10-year yield | FRED DGS10 | https://fred.stlouisfed.org/series/DGS10 | Manual before class |
 | PHLX Semiconductor | FRED NASDAQSOX | https://fred.stlouisfed.org/series/NASDAQSOX | Manual before class |
+
+## Tenbagger Candidate Sources
+
+The tenbagger tab is a game-like teaching tool. It uses qualitative candidate data, not valuation targets or analyst price objectives.
+
+| Candidate | Source | URL | Update Method |
+|---|---|---|---|
+| SK hynix | SK hynix Newsroom | https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/ | Manual before class |
+| Hanwha Aerospace | Hanwha Aerospace IR | https://m.hanwhaaerospace.com/eng/ir/earning-release.do | Manual before class |
+| Doosan Robotics | Doosan Robotics IR | https://www.doosanrobotics.com/en/investment/ir/irdata/ | Manual before class |
+| Samsung Biologics | Samsung Biologics Newsroom | https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results | Manual before class |
+| NVIDIA | NVIDIA 2025 Annual Report | https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf | Manual before class |
+| Broadcom | Broadcom Investor Relations | https://investors.broadcom.com/ | Manual before class |
+| Palantir | Palantir Investor Relations | https://investors.palantir.com/ | Manual before class |
+| Rocket Lab | Rocket Lab Investor Relations | https://investors.rocketlabcorp.com/ | Manual before class |
 
 ## v2 Automation Candidate
 

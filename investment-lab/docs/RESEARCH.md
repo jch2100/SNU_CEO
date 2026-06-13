@@ -57,7 +57,7 @@ Source: https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equ
 
 ## Macro Research
 
-The dashboard uses macro indicators only as context. It must not imply that one indicator can predict a market move.
+The original dashboard used macro indicators only as context. In the current UI, the third tab has been replaced by a tenbagger quiz because learners needed a more memorable and discussion-friendly activity.
 
 Tracked v1 indicators:
 
@@ -76,6 +76,42 @@ Primary source candidates:
 - FRED NASDAQSOX: https://fred.stlouisfed.org/series/NASDAQSOX
 - U.S. BLS CPI release: https://www.bls.gov/news.release/cpi.nr0.htm
 - Korea MOEF indicators: https://english.moef.go.kr/
+
+## Tenbagger Quiz Research
+
+Purpose:
+
+- Make the third tab more engaging than a passive macro dashboard.
+- Force learners to choose an investment hypothesis before seeing candidate names.
+- Return two Korean and two global candidates as study prompts, not recommendations.
+
+Candidate logic:
+
+- AI infrastructure: SK hynix, NVIDIA, Broadcom.
+- AI software/platform: Palantir.
+- Defense/space: Hanwha Aerospace, Rocket Lab.
+- Robotics/automation: Doosan Robotics.
+- Bio CDMO: Samsung Biologics.
+
+The quiz asks four objective questions:
+
+- Long-term theme.
+- Preferred company size/stage.
+- Evidence type the learner trusts.
+- Drawdown tolerance.
+
+The result is a score-based match against qualitative tags. It deliberately avoids price targets, expected returns, or buy/sell language.
+
+Primary source candidates:
+
+- SK hynix Newsroom: https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/
+- Hanwha Aerospace IR: https://m.hanwhaaerospace.com/eng/ir/earning-release.do
+- Doosan Robotics IR: https://www.doosanrobotics.com/en/investment/ir/irdata/
+- Samsung Biologics FY2025 results: https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results
+- NVIDIA 2025 Annual Report: https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf
+- Broadcom IR: https://investors.broadcom.com/
+- Palantir IR: https://investors.palantir.com/
+- Rocket Lab IR: https://investors.rocketlabcorp.com/
 
 ## Expression Guardrails
 

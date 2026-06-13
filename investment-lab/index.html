@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="경영자를 위한 생성형 AI 마스터 과정 투자 시나리오 실험실">
   <title>투자 시나리오 실험실 | 경영자를 위한 생성형 AI 마스터 과정</title>
-  <link rel="stylesheet" href="styles.css?v=20260613-historical-purpose">
+  <link rel="stylesheet" href="styles.css?v=20260613-tenbagger">
 </head>
 <body>
   <header class="topbar">
@@ -24,7 +24,7 @@
       <h1 id="page-title">복잡한 투자 질문을 세 가지로 나눠 봅니다.</h1>
       <p class="hero-lead">
         이 페이지는 종목을 추천하지 않습니다. 1억 원을 10년 두면 어떤 차이가 나는지,
-        산업 ETF는 어떤 차이가 있는지, 지금 시장 지표는 어떤 질문을 남기는지 쉽게 보는 연습 도구입니다.
+        산업 ETF는 어떤 차이가 있는지, 텐배거 후보는 어떤 질문을 통과해야 하는지 쉽게 보는 연습 도구입니다.
       </p>
       <div class="notice" role="note">
         <strong>먼저 기억할 점</strong>
@@ -35,7 +35,7 @@
     <nav class="tool-tabs" aria-label="투자 도구 선택">
       <button class="tab-button active" type="button" data-tab="compare">1. 10년 비교</button>
       <button class="tab-button" type="button" data-tab="industry">2. 산업 ETF</button>
-      <button class="tab-button" type="button" data-tab="market">3. 시장 지표</button>
+      <button class="tab-button" type="button" data-tab="tenbagger">3. 텐배거</button>
     </nav>
 
     <section id="compareTab" class="tool-panel active" aria-labelledby="compare-title">
@@ -121,15 +121,29 @@
       </div>
     </section>
 
-    <section id="marketTab" class="tool-panel" aria-labelledby="market-title">
+    <section id="tenbaggerTab" class="tool-panel" aria-labelledby="tenbagger-title">
       <div class="panel-head">
         <div>
           <p class="eyebrow">Tool 3</p>
-          <h2 id="market-title">시장 지표는 어떤 질문을 남기나?</h2>
-          <p>금리, 물가, 환율, 반도체 지수는 결론이 아닙니다. 오늘 확인해야 할 질문으로 바꿔 보는 용도입니다.</p>
+          <h2 id="tenbagger-title">재미로 보는 텐배거 전략</h2>
+          <p>네 가지 질문에 답하면 국내 후보 2개와 해외 후보 2개가 나옵니다. 실제 추천이 아니라, 어떤 산업과 근거를 더 공부할지 정하는 게임형 도구입니다.</p>
         </div>
       </div>
-      <div id="macroGrid" class="macro-grid"></div>
+
+      <div class="explain-box">
+        <strong>먼저 선을 긋습니다</strong>
+        <p>텐배거는 10배 상승을 뜻하지만 실제로는 매우 드뭅니다. 여기서는 “살 종목”이 아니라 “왜 10배가 어려운지 토론할 종목”을 찾습니다.</p>
+      </div>
+
+      <div id="tenbaggerQuiz" class="quiz-grid" aria-live="polite"></div>
+      <div id="tenbaggerResult" aria-live="polite"></div>
+
+      <div class="copy-box">
+        <h3>ChatGPT에 이어서 물어볼 질문</h3>
+        <textarea id="tenbaggerPrompt" readonly></textarea>
+        <button id="copyTenbagger" class="primary-button" type="button">질문 복사</button>
+        <span id="tenbaggerCopyStatus" class="copy-status"></span>
+      </div>
     </section>
   </main>
 
@@ -138,6 +152,6 @@
     <p>데이터 기준일: <span id="dataDate">확인 중</span> · API 미사용 · GitHub Pages 정적 배포</p>
   </footer>
 
-  <script src="app.js?v=20260613-historical-purpose"></script>
+  <script src="app.js?v=20260613-tenbagger"></script>
 </body>
 </html>

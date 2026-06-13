@@ -550,6 +550,175 @@ textarea:focus {
   font-weight: 900;
 }
 
+.quiz-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.quiz-card {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.quiz-card legend {
+  padding: 0;
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.quiz-options button {
+  min-height: 94px;
+  padding: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--text);
+  text-align: left;
+}
+
+.quiz-options button.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.quiz-options strong,
+.quiz-options span {
+  display: block;
+  word-break: keep-all;
+}
+
+.quiz-options strong {
+  font-size: 1rem;
+}
+
+.quiz-options span {
+  margin-top: 6px;
+  color: inherit;
+  opacity: 0.78;
+  font-size: 0.9rem;
+}
+
+.result-summary {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.result-summary > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.result-summary p {
+  margin: 0;
+  color: var(--muted);
+  word-break: keep-all;
+}
+
+.answer-tags,
+.match-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.answer-tags {
+  margin-top: 12px;
+}
+
+.answer-tags span,
+.match-tags span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.tenbagger-groups {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.tenbagger-group h3 {
+  margin: 0 0 10px;
+}
+
+.tenbagger-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tenbagger-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.tenbagger-card h4 {
+  margin: 4px 0 0;
+  font-size: 1.22rem;
+  word-break: keep-all;
+}
+
+.tenbagger-card .card-top p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.tenbagger-thesis {
+  margin: 14px 0 12px;
+  color: var(--text);
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.tenbagger-card h5 {
+  margin: 14px 0 8px;
+  font-size: 0.98rem;
+}
+
+.tenbagger-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.tenbagger-card li {
+  margin-top: 7px;
+  word-break: keep-all;
+}
+
+.risk-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  word-break: keep-all;
+}
+
 .assumption-box {
   margin-top: 18px;
   padding: 16px 18px;
@@ -691,7 +860,9 @@ textarea:focus {
   .industry-buttons,
   .industry-layout,
   .assumption-grid,
-  .macro-grid {
+  .macro-grid,
+  .quiz-options,
+  .tenbagger-list {
     grid-template-columns: 1fr;
   }
 
