@@ -1,0 +1,96 @@
+{
+  "asOf": "2026-06-13",
+  "disclaimer": "지표는 수업용 기준값입니다. 실제 서비스 운영 전 기준일과 원출처를 다시 확인해야 합니다.",
+  "indicators": [
+    {
+      "id": "bok-base-rate",
+      "label": "한국 기준금리",
+      "value": 2.5,
+      "unit": "%",
+      "asOf": "2026-05-28",
+      "sourceName": "Bank of Korea",
+      "sourceUrl": "https://www.bok.or.kr/eng/main/main.do",
+      "interpretation": "원화 자산, 예금 매력, 배당형 자산과 비교할 때 출발점이 되는 금리입니다.",
+      "investorQuestions": [
+        "예금 금리와 배당 수익률을 비교하면 위험을 감수할 이유가 충분한가?",
+        "금리가 높은 구간에서 성장주 밸류에이션은 부담을 받을 수 있는가?",
+        "원화 약세와 금리 정책이 해외 ETF 투자 비용에 어떤 영향을 주는가?"
+      ]
+    },
+    {
+      "id": "fed-target-upper",
+      "label": "미국 기준금리 상단",
+      "value": 3.75,
+      "unit": "%",
+      "asOf": "2026-06-12",
+      "sourceName": "FRED DFEDTARU",
+      "sourceUrl": "https://fred.stlouisfed.org/series/DFEDTARU",
+      "interpretation": "미국 성장주, 달러, 채권 수익률을 함께 볼 때 핵심 기준입니다.",
+      "investorQuestions": [
+        "금리가 높게 유지되면 QQQ 같은 성장형 ETF의 기대수익률 가정은 적절한가?",
+        "현금성 자산 대비 주식 위험 프리미엄이 충분한가?",
+        "환율과 미국 금리 차이가 해외투자 타이밍 판단에 영향을 주는가?"
+      ]
+    },
+    {
+      "id": "us-cpi",
+      "label": "미국 CPI 전년 대비",
+      "value": 4.2,
+      "unit": "%",
+      "asOf": "2026-05",
+      "sourceName": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "interpretation": "물가가 높으면 금리 인하 기대가 약해지고 성장주 할인율 부담이 커질 수 있습니다.",
+      "investorQuestions": [
+        "물가가 높으면 금리 인하 기대가 늦춰질 수 있는가?",
+        "인플레이션이 배당주와 현금흐름형 상품의 상대 매력에 어떤 영향을 주는가?",
+        "기업의 비용 상승이 이익률을 훼손할 가능성은 없는가?"
+      ]
+    },
+    {
+      "id": "usd-krw",
+      "label": "원/달러 환율",
+      "value": 1519.8,
+      "unit": "KRW/USD",
+      "asOf": "2026-06-12",
+      "sourceName": "Ministry of Economy and Finance",
+      "sourceUrl": "https://english.moef.go.kr/",
+      "interpretation": "해외 ETF 투자자는 환율에 따라 원화 기준 수익률과 손실이 달라집니다.",
+      "investorQuestions": [
+        "달러가 강할 때 신규 매수 부담은 커지는가?",
+        "이미 보유한 해외 ETF는 환율 상승으로 원화 평가액이 부풀어 보이는가?",
+        "환율이 내려갈 경우 원화 기준 수익률은 얼마나 줄어들 수 있는가?"
+      ]
+    },
+    {
+      "id": "us-10y",
+      "label": "미국 10년물 금리",
+      "value": 4.55,
+      "unit": "%",
+      "asOf": "2026-06-10",
+      "sourceName": "FRED DGS10",
+      "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
+      "interpretation": "장기금리는 미래 이익의 현재가치를 계산할 때 중요한 할인율 역할을 합니다.",
+      "investorQuestions": [
+        "10년물 금리가 높으면 성장주의 미래 이익 가치가 낮아지는가?",
+        "채권 수익률과 배당 ETF 수익률을 비교하면 보상이 충분한가?",
+        "금리 하락 기대가 이미 주가에 반영되어 있지는 않은가?"
+      ]
+    },
+    {
+      "id": "semiconductor",
+      "label": "PHLX 반도체 지수",
+      "value": 13171.44,
+      "unit": "Index",
+      "asOf": "2026-06-11",
+      "sourceName": "FRED NASDAQSOX",
+      "sourceUrl": "https://fred.stlouisfed.org/series/NASDAQSOX",
+      "interpretation": "AI 인프라와 반도체 사이클을 볼 때 성장형 ETF의 분위기를 보여주는 참고 지표입니다.",
+      "investorQuestions": [
+        "반도체 지수가 이미 크게 오른 뒤라면 기대가 가격에 반영되었는가?",
+        "AI 수요가 매출과 이익으로 실제 전환되고 있는가?",
+        "반도체 사이클 둔화 시 QQQ와 한국 주식은 함께 흔들릴 수 있는가?"
+      ]
+    }
+  ]
+}
