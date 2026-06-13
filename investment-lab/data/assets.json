@@ -1,7 +1,9 @@
 {
   "asOf": "2026-06-13",
   "currency": "KRW",
-  "disclaimer": "교육용 가정값입니다. 실제 투자 전 공식 운용사 자료와 최신 공시를 확인해야 합니다.",
+  "performancePeriod": "2016-01-04 to 2025-12-31",
+  "performanceMethod": "Price return CAGR uses close price for portfolio value. Total return CAGR uses adjusted close as a reinvested-distribution reference. Average distribution yield uses annual cash distributions divided by average daily close for each year, then averaged.",
+  "disclaimer": "과거 데이터 기반 학습값입니다. 과거 수익률과 분배율은 미래 결과를 보장하지 않습니다.",
   "assets": [
     {
       "ticker": "QQQ",
@@ -9,15 +11,22 @@
       "category": "Growth",
       "role": "성장형 대표 ETF",
       "summary": "Nasdaq-100 지수를 추종하는 성장주 중심 ETF입니다. 배당보다 장기 가격 상승 가능성을 비교할 때 사용합니다.",
-      "assumedAnnualReturnPct": 10,
-      "assumedDividendYieldPct": 0.6,
+      "assumedAnnualReturnPct": 18.84,
+      "historicalTotalReturnCagrPct": 19.71,
+      "assumedDividendYieldPct": 0.73,
+      "performanceStart": "2016-01-04",
+      "performanceEnd": "2025-12-31",
+      "performanceYears": 9.99,
       "expenseRatioPct": 0.18,
       "volatility": "High",
       "bestFor": "긴 기간을 두고 성장주 변동성을 감내할 수 있는 투자자",
+      "decisionReason": "돈을 크게 불리는 성장 실험",
+      "fitWhen": "10년 이상 묶어둘 수 있고 중간 하락에도 팔지 않을 자신이 있을 때 비교합니다.",
+      "classLesson": "QQQ가 크게 보이면 '왜 기술주가 지난 10년을 이끌었는가'와 '앞으로도 같은 일이 반복될까'를 질문하게 됩니다.",
       "watchOut": "기술주 쏠림, 금리 상승기 밸류에이션 부담, 큰 낙폭 가능성",
       "sourceName": "Invesco QQQ official fund page",
       "sourceUrl": "https://www.invesco.com/qqq-etf/en/home.html",
-      "sourceNote": "Official page referenced for fund identity and expense information. Simulation return and yield are editable assumptions."
+      "sourceNote": "Fund identity from official page. Historical price return, total return, and distribution yield calculated from Yahoo Finance chart data for 2016-01-04 to 2025-12-31."
     },
     {
       "ticker": "SCHD",
@@ -25,15 +34,22 @@
       "category": "Dividend Growth",
       "role": "배당성장형 대표 ETF",
       "summary": "미국 배당주 중심 ETF입니다. 성장과 배당의 균형, 장기 현금흐름 개선 가능성을 비교할 때 사용합니다.",
-      "assumedAnnualReturnPct": 7,
-      "assumedDividendYieldPct": 3,
+      "assumedAnnualReturnPct": 8.01,
+      "historicalTotalReturnCagrPct": 11.67,
+      "assumedDividendYieldPct": 3.34,
+      "performanceStart": "2016-01-04",
+      "performanceEnd": "2025-12-31",
+      "performanceYears": 9.99,
       "expenseRatioPct": 0.06,
       "volatility": "Medium",
       "bestFor": "성장성과 배당을 함께 보되 과도한 변동성은 줄이고 싶은 투자자",
+      "decisionReason": "가격 성장과 배당 성장을 같이 보는 실험",
+      "fitWhen": "QQQ만큼 큰 변동은 부담스럽지만 예금보다 긴 호흡의 자산 성장을 원할 때 비교합니다.",
+      "classLesson": "SCHD는 최고 수익률 경쟁보다 '배당이 늘어나는 좋은 기업을 오래 보유한다'는 관점을 연습하게 합니다.",
       "watchOut": "배당주 스타일 부진, 업종 편중, 배당 성장 둔화 가능성",
       "sourceName": "Schwab Asset Management SCHD official page",
       "sourceUrl": "https://www.schwabassetmanagement.com/products/schd",
-      "sourceNote": "Official page referenced for fund identity and expense information. Simulation return and yield are editable assumptions."
+      "sourceNote": "Fund identity from official page. Historical price return, total return, and distribution yield calculated from Yahoo Finance chart data for 2016-01-04 to 2025-12-31."
     },
     {
       "ticker": "JEPI",
@@ -41,15 +57,22 @@
       "category": "Income",
       "role": "고분배 현금흐름형 대표 ETF",
       "summary": "주식과 옵션 프리미엄 전략을 활용해 분배 수익을 추구하는 ETF입니다. 월 현금흐름 목표를 비교할 때 사용합니다.",
-      "assumedAnnualReturnPct": 3,
-      "assumedDividendYieldPct": 7,
+      "assumedAnnualReturnPct": 2.46,
+      "historicalTotalReturnCagrPct": 11.68,
+      "assumedDividendYieldPct": 8.05,
+      "performanceStart": "2020-05-21",
+      "performanceEnd": "2025-12-31",
+      "performanceYears": 5.61,
       "expenseRatioPct": 0.35,
       "volatility": "Medium",
       "bestFor": "자산 성장보다 정기 현금흐름을 더 중시하는 투자자",
+      "decisionReason": "자산 증식보다 월 현금흐름을 보는 실험",
+      "fitWhen": "평가액을 크게 키우는 것보다 매달 들어오는 분배금의 체감이 더 중요할 때 비교합니다.",
+      "classLesson": "JEPI는 '높은 분배금이 정말 좋은가, 가격 상승을 얼마나 포기하는가'를 토론하게 합니다.",
       "watchOut": "상승장 참여 제한, 분배금 변동, 옵션 전략 이해 필요",
       "sourceName": "J.P. Morgan Asset Management JEPI official page",
       "sourceUrl": "https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equity-premium-income-etf-etf-shares-46641q332",
-      "sourceNote": "Official page referenced for fund identity and expense information. Simulation return and yield are editable assumptions."
+      "sourceNote": "JEPI launched after 2016, so historical price return, total return, and distribution yield are calculated from 2020-05-21 to 2025-12-31 and are not a full 10-year record."
     }
   ],
   "presets": [

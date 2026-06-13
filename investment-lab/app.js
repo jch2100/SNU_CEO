@@ -115,8 +115,22 @@ function renderCompare() {
   }));
 
   $("#growthExplanation").textContent = scenario.reinvest
-    ? `${won.format(scenario.amount)}을 ${scenario.years}년 동안 두고, 매년의 가정 수익률과 분배금을 다시 투자한다고 단순 계산했습니다. 그래서 원금보다 커질 수 있습니다. 실제로 이렇게 된다는 뜻은 아닙니다.`
-    : `${won.format(scenario.amount)}을 ${scenario.years}년 동안 두되, 분배금은 생활비처럼 따로 받는다고 계산했습니다. 평가금액과 받은 분배금은 따로 봐야 합니다.`;
+    ? `${won.format(scenario.amount)}을 ${scenario.years}년 동안 두고, 2016-2025 가격 연평균 수익률과 평균 분배율이 반복된다고 단순 계산했습니다. 실제 미래도 이렇게 된다는 뜻은 아닙니다.`
+    : `${won.format(scenario.amount)}을 ${scenario.years}년 동안 두되, 분배금은 생활비처럼 따로 받는다고 계산했습니다. 평가액과 받은 분배금은 분리해서 봐야 합니다.`;
+
+  $("#decisionFrame").innerHTML = `
+    <strong>이 비교의 핵심</strong>
+    <p>QQQ가 숫자로 앞선다고 모든 목적에 맞는 것은 아닙니다. 아래 세 상품은 수익률 순위가 아니라 서로 다른 질문을 만드는 예시입니다.</p>
+    <div class="decision-grid">
+      ${state.assets.map((asset) => `
+        <article>
+          <span>${asset.ticker}</span>
+          <strong>${asset.decisionReason}</strong>
+          <p>${asset.fitWhen}</p>
+        </article>
+      `).join("")}
+    </div>
+  `;
 
   $("#compareResults").innerHTML = results.map(({ asset, result }) => `
     <article class="compare-card">
@@ -129,7 +143,7 @@ function renderCompare() {
       </div>
       <dl class="big-stats">
         <div>
-          <dt>${scenario.years}년 뒤 평가액 가정</dt>
+          <dt>${scenario.years}년 뒤 단순계산 평가액</dt>
           <dd>${won.format(result.projectedValue)}</dd>
         </div>
         <div>
@@ -137,7 +151,7 @@ function renderCompare() {
           <dd>${decimal.format(result.totalMultiple)}배</dd>
         </div>
         <div>
-          <dt>가정 수익률 / 분배율</dt>
+          <dt>가격 연평균 / 평균 분배율</dt>
           <dd>${asset.assumedAnnualReturnPct}% / ${asset.assumedDividendYieldPct}%</dd>
         </div>
         <div>
@@ -146,6 +160,8 @@ function renderCompare() {
         </div>
       </dl>
       <p class="plain-note">${getPlainAssetExplanation(asset, scenario)}</p>
+      <p class="lesson-note">${asset.classLesson}</p>
+      <p class="data-note">${getPerformanceNote(asset)}</p>
     </article>
   `).join("");
 
@@ -154,12 +170,19 @@ function renderCompare() {
 
 function getPlainAssetExplanation(asset, scenario) {
   if (asset.ticker === "QQQ") {
-    return "성장주 중심이라 평가금액이 크게 움직일 수 있습니다. 배당보다 가격 상승 가정의 영향이 큽니다.";
+    return "성장주 중심이라 평가액이 크게 움직일 수 있습니다. 배당보다 가격 상승의 영향이 큽니다.";
   }
   if (asset.ticker === "SCHD") {
     return "배당과 가격 성장을 함께 보는 구조입니다. 분배금을 다시 투자하면 복리 효과가 커집니다.";
   }
-  return "분배금 가정은 높지만, 가격 상승 가정은 낮게 둔 현금흐름형 구조입니다. 상승장에서는 덜 따라갈 수 있습니다.";
+  return "분배율은 높았지만, 가격 상승은 별도로 봐야 하는 현금흐름형 구조입니다. 상승장에서는 덜 따라갈 수 있습니다.";
+}
+
+function getPerformanceNote(asset) {
+  if (asset.ticker === "JEPI") {
+    return `데이터 기간: ${asset.performanceStart}~${asset.performanceEnd}. 가격수익률 ${asset.assumedAnnualReturnPct}%, 분배금 재투자 총수익률 ${asset.historicalTotalReturnCagrPct}%. JEPI는 10년 전체 비교가 아닙니다.`;
+  }
+  return `데이터 기간: ${asset.performanceStart}~${asset.performanceEnd}. 가격수익률 ${asset.assumedAnnualReturnPct}%, 분배금 재투자 총수익률 ${asset.historicalTotalReturnCagrPct}%.`;
 }
 
 function renderAssumptions() {
@@ -167,14 +190,14 @@ function renderAssumptions() {
     <div class="assumption-card">
       <h3>${asset.ticker}</h3>
       <label>
-        <span>연 수익률 가정</span>
+        <span>가격 연평균 수익률</span>
         <div class="percent-input">
           <input type="number" min="-30" max="40" step="0.5" value="${asset.assumedAnnualReturnPct}" data-assumption="${asset.ticker}:return">
           <em>%</em>
         </div>
       </label>
       <label>
-        <span>연 분배율 가정</span>
+        <span>평균 분배율</span>
         <div class="percent-input">
           <input type="number" min="0" max="25" step="0.5" value="${asset.assumedDividendYieldPct}" data-assumption="${asset.ticker}:yield">
           <em>%</em>
@@ -259,19 +282,23 @@ function renderIndustry() {
 
       <dl class="big-stats">
         <div>
-          <dt>10년 연평균 학습 가정</dt>
+          <dt>2016-2025 가격 연평균</dt>
           <dd>${industry.assumedAnnualReturnPct}%</dd>
         </div>
         <div>
-          <dt>분배율 가정</dt>
+          <dt>분배금 재투자 총수익률</dt>
+          <dd>${industry.historicalTotalReturnCagrPct}%</dd>
+        </div>
+        <div>
+          <dt>평균 분배율</dt>
           <dd>${industry.assumedDistributionYieldPct}%</dd>
         </div>
         <div>
-          <dt>1억 10년 평가액 가정</dt>
+          <dt>1억 10년 단순계산</dt>
           <dd>${won.format(tenYear.value)}</dd>
         </div>
         <div>
-          <dt>10년 받은 분배금 가정</dt>
+          <dt>10년 받은 분배금 계산</dt>
           <dd>${won.format(tenYear.received)}</dd>
         </div>
       </dl>
@@ -311,7 +338,7 @@ function renderMacro() {
 
 function makeComparePrompt(scenario, results) {
   const rows = results.map(({ asset, result }) =>
-    `- ${asset.ticker}: ${scenario.years}년 뒤 평가액 가정 ${won.format(result.projectedValue)}, 원금 대비 ${decimal.format(result.totalMultiple)}배, 그동안 받은 분배금 ${won.format(result.receivedCash)}, 가정 수익률 ${asset.assumedAnnualReturnPct}%, 가정 분배율 ${asset.assumedDividendYieldPct}%`
+    `- ${asset.ticker}: ${asset.decisionReason}, ${scenario.years}년 뒤 단순계산 평가액 ${won.format(result.projectedValue)}, 원금 대비 ${decimal.format(result.totalMultiple)}배, 그동안 받은 분배금 ${won.format(result.receivedCash)}, 가격 연평균 수익률 ${asset.assumedAnnualReturnPct}%, 분배금 재투자 총수익률 ${asset.historicalTotalReturnCagrPct}%, 평균 분배율 ${asset.assumedDividendYieldPct}%`
   ).join("\n");
 
   return `아래 ETF 비교를 투자 추천이 아니라 학습용 판단표로 정리해줘.
@@ -319,14 +346,14 @@ function makeComparePrompt(scenario, results) {
 [조건]
 - 처음 넣는 돈: ${won.format(scenario.amount)}
 - 기간: ${scenario.years}년
-- 분배금 처리: ${scenario.reinvest ? "다시 투자한다고 가정" : "생활비처럼 따로 받는다고 가정"}
+- 분배금 처리: ${scenario.reinvest ? "다시 투자한다고 단순계산" : "생활비처럼 따로 받는다고 단순계산"}
 
 [비교 결과]
 ${rows}
 
 다음 4가지를 쉬운 말로 정리해줘.
-1. 평가액 가정이 달라지는 이유
-2. QQQ, SCHD, JEPI의 차이
+1. 단순계산 평가액이 달라지는 이유
+2. QQQ, SCHD, JEPI를 서로 다른 목적에서 비교해야 하는 이유
 3. 이 계산에서 빠진 위험
 4. 실제 투자 전에 확인할 공식 자료`;
 }
@@ -339,10 +366,11 @@ function makeIndustryPrompt(industry, tenYear) {
 - 대표 ETF: ${industry.ticker} (${industry.name})
 - 전략: ${industry.strategy}
 - 왜 많이 보는지: ${industry.whyPopular}
-- 10년 연평균 학습 가정: ${industry.assumedAnnualReturnPct}%
-- 분배율 학습 가정: ${industry.assumedDistributionYieldPct}%
-- 1억 원 10년 평가액 가정: ${won.format(tenYear.value)}
-- 10년 받은 분배금 가정: ${won.format(tenYear.received)}
+- 2016-2025 가격 연평균 수익률: ${industry.assumedAnnualReturnPct}%
+- 2016-2025 분배금 재투자 총수익률: ${industry.historicalTotalReturnCagrPct}%
+- 2016-2025 평균 분배율: ${industry.assumedDistributionYieldPct}%
+- 1억 원 10년 단순계산 평가액: ${won.format(tenYear.value)}
+- 10년 받은 분배금 단순계산: ${won.format(tenYear.received)}
 - 대표 구성종목 예시: ${industry.holdingsExamples.join(", ")}
 
 다음 형식으로 쉽게 정리해줘.

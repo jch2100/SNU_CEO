@@ -14,6 +14,16 @@ Reasons:
 - More stable for classroom demos.
 - Easier to explain data dates and assumptions.
 
+## Historical Performance Method
+
+Historical return and distribution inputs were calculated from Yahoo Finance chart data for the period `2016-01-04` to `2025-12-31`.
+
+- Price return input: annualized CAGR from close price. This drives the separate portfolio value calculation.
+- Total return reference: annualized CAGR from adjusted close. This is shown as a reinvested-distribution reference and should not be added again to cash distributions.
+- Distribution yield input: annual cash distributions divided by average daily close for each calendar year, then averaged.
+- JEPI exception: JEPI did not exist in 2016, so JEPI uses `2020-05-21` to `2025-12-31`.
+- These values are learning inputs, not forecasts.
+
 ## Data Fields Required
 
 Every fund and macro data point must include:
