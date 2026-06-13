@@ -25,36 +25,28 @@ Purpose:
 - Clarify that the service is educational.
 - Set the frame: condition comparison, not recommendation.
 
-### 2. Scenario Simulator
+### 2. Ten-Year Comparison Tab
 
 Inputs:
 
-- Initial capital
-- Monthly contribution
+- Initial capital with comma-formatted input
 - Investment years
-- Target annual income
-- Dividend reinvestment
-- Risk tolerance
-- Preset buttons
+- Distribution reinvestment mode
+- Quick amount buttons
 
 Outputs:
 
 - Projected value by asset
 - Estimated annual distribution
 - Total distribution received if not reinvested
-- Fit label
+- Plain explanation of why the value changes
 
-### 3. ETF Compare
+### 3. Distribution Income Tab
 
-Show:
+Purpose:
 
-- Role
-- Editable return assumption
-- Editable distribution assumption
-- Expense ratio
-- Best-fit user type
-- Watch-out risks
-- Official source
+- Replace the unclear "target annual cash flow" concept.
+- Show simple annual and monthly distribution estimates from current capital.
 
 ### 4. Macro Dashboard
 
@@ -65,7 +57,7 @@ Show:
 - Interpretation
 - Investor questions
 
-### 5. Result / Copy Prompt
+### 5. Copy Prompt
 
 Generate a prompt the learner can copy into ChatGPT:
 
@@ -79,7 +71,9 @@ Generate a prompt the learner can copy into ChatGPT:
 - White minimal background.
 - No decorative finance hype.
 - No buy/sell language.
-- Mobile-first layout.
+- Mobile-first layout with top tabs.
+- Avoid exposing all three tools in one long vertical scroll.
+- Use comma-formatted money inputs such as `100,000,000`.
 - Result must end with questions, not a conclusion.
 
 ## Acceptance Criteria

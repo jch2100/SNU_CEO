@@ -1,34 +1,45 @@
 const state = {
   assets: [],
-  presets: [],
   macro: [],
-  scenario: {
-    initialCapital: 100000000,
-    monthlyContribution: 0,
-    horizonYears: 10,
-    targetAnnualIncome: 4000000,
-    dividendReinvest: true,
-    riskTolerance: "medium"
-  },
-  activePreset: null
+  dataDate: "",
+  activeTab: "compare"
 };
 
-const formatWon = new Intl.NumberFormat("ko-KR", {
+const won = new Intl.NumberFormat("ko-KR", {
   style: "currency",
   currency: "KRW",
   maximumFractionDigits: 0
 });
 
-const formatNumber = new Intl.NumberFormat("ko-KR", {
+const plainNumber = new Intl.NumberFormat("ko-KR", {
+  maximumFractionDigits: 0
+});
+
+const decimal = new Intl.NumberFormat("ko-KR", {
   maximumFractionDigits: 2
 });
 
 const $ = (selector) => document.querySelector(selector);
 
-const readNumber = (id, fallback = 0) => {
-  const value = Number($(id).value);
-  return Number.isFinite(value) && value >= 0 ? value : fallback;
-};
+function parseMoney(value) {
+  const number = Number(String(value).replace(/[^\d]/g, ""));
+  return Number.isFinite(number) ? number : 0;
+}
+
+function formatMoneyInput(input) {
+  const value = parseMoney(input.value);
+  input.value = value ? plainNumber.format(value) : "";
+}
+
+function bindMoneyInput(input) {
+  input.addEventListener("input", () => {
+    const startAtEnd = input.selectionStart === input.value.length;
+    formatMoneyInput(input);
+    if (startAtEnd) input.setSelectionRange(input.value.length, input.value.length);
+    renderActiveTool();
+  });
+  input.addEventListener("blur", () => formatMoneyInput(input));
+}
 
 async function loadData() {
   const [assetResponse, macroResponse] = await Promise.all([
@@ -42,193 +53,174 @@ async function loadData() {
 
   const assetData = await assetResponse.json();
   const macroData = await macroResponse.json();
-
   state.assets = assetData.assets;
-  state.presets = assetData.presets;
   state.macro = macroData.indicators;
-  $("#dataDate").textContent = `${assetData.asOf} / ${macroData.asOf}`;
+  state.dataDate = `${assetData.asOf} / ${macroData.asOf}`;
+  $("#dataDate").textContent = state.dataDate;
 }
 
-function syncScenarioFromForm() {
-  state.scenario = {
-    initialCapital: readNumber("#initialCapital"),
-    monthlyContribution: readNumber("#monthlyContribution"),
-    horizonYears: Math.max(1, Math.min(40, readNumber("#horizonYears", 10))),
-    targetAnnualIncome: readNumber("#targetAnnualIncome"),
-    dividendReinvest: $("#dividendReinvest").checked,
-    riskTolerance: $("#riskTolerance").value
+function compareScenario() {
+  return {
+    amount: parseMoney($("#compareAmount").value),
+    years: Number($("#compareYears").value),
+    reinvest: $("#reinvestMode").value === "yes"
   };
 }
 
-function applyPreset(preset) {
-  state.activePreset = preset.id;
-  $("#initialCapital").value = preset.initialCapital;
-  $("#monthlyContribution").value = preset.monthlyContribution;
-  $("#horizonYears").value = preset.horizonYears;
-  $("#targetAnnualIncome").value = preset.targetAnnualIncome;
-  $("#dividendReinvest").checked = preset.dividendReinvest;
-  $("#riskTolerance").value = preset.riskTolerance;
-  syncScenarioFromForm();
-  render();
+function incomeScenario() {
+  return {
+    amount: parseMoney($("#incomeAmount").value),
+    showMonthly: $("#incomeView").value === "monthly"
+  };
 }
 
-function calculateAsset(asset) {
-  const scenario = state.scenario;
-  const months = scenario.horizonYears * 12;
-  const monthlyGrowth = Math.pow(1 + asset.assumedAnnualReturnPct / 100, 1 / 12) - 1;
-  const monthlyYield = asset.assumedDividendYieldPct / 100 / 12;
-  let value = scenario.initialCapital;
-  let cashIncome = 0;
+function calculateGrowth(asset, scenario) {
+  let value = scenario.amount;
+  let receivedCash = 0;
+  const years = scenario.years;
+  const annualReturn = asset.assumedAnnualReturnPct / 100;
+  const annualYield = asset.assumedDividendYieldPct / 100;
 
-  for (let month = 0; month < months; month += 1) {
-    value += scenario.monthlyContribution;
-    const distribution = value * monthlyYield;
-    if (scenario.dividendReinvest) {
+  for (let year = 0; year < years; year += 1) {
+    const distribution = value * annualYield;
+    if (scenario.reinvest) {
       value += distribution;
     } else {
-      cashIncome += distribution;
+      receivedCash += distribution;
     }
-    value *= 1 + monthlyGrowth;
+    value *= 1 + annualReturn;
   }
 
-  const annualIncome = value * (asset.assumedDividendYieldPct / 100);
   return {
     ticker: asset.ticker,
     projectedValue: value,
-    annualIncome,
-    cashIncome,
-    fitScore: scoreAsset(asset, value, annualIncome),
-    fitNote: getFitNote(asset, annualIncome)
+    receivedCash,
+    annualIncomeAtEnd: value * annualYield,
+    totalMultiple: scenario.amount > 0 ? value / scenario.amount : 0
   };
 }
 
-function scoreAsset(asset, projectedValue, annualIncome) {
-  const scenario = state.scenario;
-  let score = 0;
-
-  if (scenario.targetAnnualIncome > 0) {
-    const incomeRatio = Math.min(annualIncome / scenario.targetAnnualIncome, 1.4);
-    score += incomeRatio * 42;
-  } else {
-    score += asset.category === "Growth" ? 34 : 18;
-  }
-
-  const growthRatio = projectedValue / Math.max(scenario.initialCapital + scenario.monthlyContribution * scenario.horizonYears * 12, 1);
-  score += Math.min(growthRatio, 2.5) * 18;
-
-  if (scenario.riskTolerance === "high" && asset.volatility === "High") score += 24;
-  if (scenario.riskTolerance === "medium" && asset.volatility === "Medium") score += 24;
-  if (scenario.riskTolerance === "low" && asset.volatility !== "High") score += 18;
-  if (scenario.riskTolerance === "low" && asset.volatility === "High") score -= 18;
-
-  if (!scenario.dividendReinvest && asset.category === "Income") score += 18;
-  if (scenario.dividendReinvest && asset.category !== "Income") score += 10;
-
-  return Math.round(score);
-}
-
-function getFitNote(asset, annualIncome) {
-  const target = state.scenario.targetAnnualIncome;
-  const incomeText = target > 0
-    ? `목표 연 현금흐름의 약 ${Math.round((annualIncome / target) * 100)}% 수준입니다.`
-    : "현금흐름 목표가 없으므로 성장성과 변동성 감내도를 더 크게 봅니다.";
-
-  if (asset.category === "Growth") {
-    return `성장 목적에 가까운 구조입니다. ${incomeText}`;
-  }
-  if (asset.category === "Dividend Growth") {
-    return `성장과 배당의 균형을 보는 구조입니다. ${incomeText}`;
-  }
-  return `정기 현금흐름 목적에 가까운 구조입니다. ${incomeText}`;
-}
-
-function renderPresets() {
-  $("#presetList").innerHTML = state.presets.map((preset) => `
-    <button class="preset-button ${state.activePreset === preset.id ? "active" : ""}" type="button" data-preset="${preset.id}">
-      ${preset.label}
-    </button>
-  `).join("");
-
-  document.querySelectorAll("[data-preset]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const preset = state.presets.find((item) => item.id === button.dataset.preset);
-      if (preset) applyPreset(preset);
-    });
+function renderTabs() {
+  document.querySelectorAll(".tab-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.tab === state.activeTab);
+  });
+  document.querySelectorAll(".tool-panel").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === `${state.activeTab}Tab`);
   });
 }
 
-function renderResults(results) {
-  const best = [...results].sort((a, b) => b.fitScore - a.fitScore)[0];
-  const bestAsset = state.assets.find((asset) => asset.ticker === best.ticker);
+function renderCompare() {
+  const scenario = compareScenario();
+  const results = state.assets.map((asset) => ({
+    asset,
+    result: calculateGrowth(asset, scenario)
+  }));
 
-  $("#summary").innerHTML = `
-    <div class="metric">
-      <span>조건상 가장 가까운 구조</span>
-      <strong>${best.ticker}</strong>
-    </div>
-    <div class="metric">
-      <span>예상 평가금액</span>
-      <strong>${formatWon.format(best.projectedValue)}</strong>
-    </div>
-    <div class="metric">
-      <span>예상 연 분배금</span>
-      <strong>${formatWon.format(best.annualIncome)}</strong>
-    </div>
-  `;
+  $("#growthExplanation").textContent = scenario.reinvest
+    ? `${won.format(scenario.amount)}을 ${scenario.years}년 동안 두고, 매년의 가정 수익률과 분배금을 다시 투자한다고 단순 계산했습니다. 그래서 원금보다 커질 수 있습니다. 실제로 이렇게 된다는 뜻은 아닙니다.`
+    : `${won.format(scenario.amount)}을 ${scenario.years}년 동안 두되, 분배금은 생활비처럼 따로 받는다고 계산했습니다. 평가금액과 받은 분배금은 따로 봐야 합니다.`;
 
-  $("#resultCards").innerHTML = results.map((result) => {
-    const asset = state.assets.find((item) => item.ticker === result.ticker);
-    const isBest = result.ticker === best.ticker;
-    return `
-      <article class="result-card ${isBest ? "best" : ""}">
-        <div class="card-label">${asset.role}</div>
-        <div class="card-title">
+  $("#compareResults").innerHTML = results.map(({ asset, result }) => `
+    <article class="compare-card">
+      <div class="card-top">
+        <div>
+          <span class="card-kicker">${asset.role}</span>
           <h3>${asset.ticker}</h3>
-          <span class="badge ${isBest ? "best" : ""}">${isBest ? "조건상 가까움" : `점수 ${result.fitScore}`}</span>
         </div>
-        <dl class="stat-list">
-          <div class="stat-row"><dt>예상 평가금액</dt><dd>${formatWon.format(result.projectedValue)}</dd></div>
-          <div class="stat-row"><dt>예상 연 분배금</dt><dd>${formatWon.format(result.annualIncome)}</dd></div>
-          <div class="stat-row"><dt>분배금 별도 수령</dt><dd>${formatWon.format(result.cashIncome)}</dd></div>
+        <span class="plain-badge">${asset.category}</span>
+      </div>
+      <dl class="big-stats">
+        <div>
+          <dt>${scenario.years}년 뒤 평가액 가정</dt>
+          <dd>${won.format(result.projectedValue)}</dd>
+        </div>
+        <div>
+          <dt>원금 대비</dt>
+          <dd>${decimal.format(result.totalMultiple)}배</dd>
+        </div>
+        <div>
+          <dt>가정 수익률 / 분배율</dt>
+          <dd>${asset.assumedAnnualReturnPct}% / ${asset.assumedDividendYieldPct}%</dd>
+        </div>
+        <div>
+          <dt>그동안 받은 분배금</dt>
+          <dd>${won.format(result.receivedCash)}</dd>
+        </div>
+      </dl>
+      <p class="plain-note">${getPlainAssetExplanation(asset, scenario)}</p>
+    </article>
+  `).join("");
+
+  $("#comparePrompt").value = makeComparePrompt(scenario, results);
+}
+
+function renderIncome() {
+  const scenario = incomeScenario();
+  $("#incomeResults").innerHTML = state.assets.map((asset) => {
+    const annualIncome = scenario.amount * (asset.assumedDividendYieldPct / 100);
+    const monthlyIncome = annualIncome / 12;
+    return `
+      <article class="compare-card">
+        <div class="card-top">
+          <div>
+            <span class="card-kicker">${asset.role}</span>
+            <h3>${asset.ticker}</h3>
+          </div>
+          <span class="plain-badge">분배율 ${asset.assumedDividendYieldPct}% 가정</span>
+        </div>
+        <dl class="big-stats">
+          <div>
+            <dt>1년 분배금 가정</dt>
+            <dd>${won.format(annualIncome)}</dd>
+          </div>
+          ${scenario.showMonthly ? `
+          <div>
+            <dt>월평균으로 나누면</dt>
+            <dd>${won.format(monthlyIncome)}</dd>
+          </div>` : ""}
+          <div>
+            <dt>계산식</dt>
+            <dd>${won.format(scenario.amount)} x ${asset.assumedDividendYieldPct}%</dd>
+          </div>
         </dl>
-        <p class="fit-note">${result.fitNote}</p>
+        <p class="plain-note">실제 분배금은 매월/분기마다 바뀔 수 있고, 세금과 환율은 빠져 있습니다.</p>
       </article>
     `;
   }).join("");
 
-  renderPrompt(best, bestAsset, results);
+  $("#incomePrompt").value = makeIncomePrompt(scenario);
 }
 
-function renderAssetControls() {
-  $("#assetControls").innerHTML = state.assets.map((asset) => `
-    <article class="asset-card">
-      <div class="card-label">${asset.category}</div>
-      <h3>${asset.ticker} · ${asset.role}</h3>
-      <p>${asset.summary}</p>
-      <div class="assumption-grid">
-        <label>
-          <span>가정 수익률(연)</span>
-          <div class="field-with-unit">
-            <input type="number" min="-30" max="40" step="0.1" value="${asset.assumedAnnualReturnPct}" data-assumption="${asset.ticker}:return">
-            <em>%</em>
-          </div>
-        </label>
-        <label>
-          <span>가정 분배율(연)</span>
-          <div class="field-with-unit">
-            <input type="number" min="0" max="25" step="0.1" value="${asset.assumedDividendYieldPct}" data-assumption="${asset.ticker}:yield">
-            <em>%</em>
-          </div>
-        </label>
-      </div>
-      <dl class="stat-list">
-        <div class="stat-row"><dt>비용률</dt><dd>${asset.expenseRatioPct}%</dd></div>
-        <div class="stat-row"><dt>변동성</dt><dd>${asset.volatility}</dd></div>
-      </dl>
-      <p><strong>맞는 사용자:</strong> ${asset.bestFor}</p>
-      <p><strong>확인할 위험:</strong> ${asset.watchOut}</p>
-      <a class="source-link" href="${asset.sourceUrl}" target="_blank" rel="noopener">공식 출처 보기</a>
-    </article>
+function getPlainAssetExplanation(asset, scenario) {
+  if (asset.ticker === "QQQ") {
+    return "성장주 중심이라 평가금액이 크게 움직일 수 있습니다. 배당보다 가격 상승 가정의 영향이 큽니다.";
+  }
+  if (asset.ticker === "SCHD") {
+    return "배당과 가격 성장을 함께 보는 구조입니다. 분배금을 다시 투자하면 복리 효과가 커집니다.";
+  }
+  return "분배금 가정은 높지만, 가격 상승 가정은 낮게 둔 현금흐름형 구조입니다. 상승장에서는 덜 따라갈 수 있습니다.";
+}
+
+function renderAssumptions() {
+  $("#assumptionControls").innerHTML = state.assets.map((asset) => `
+    <div class="assumption-card">
+      <h3>${asset.ticker}</h3>
+      <label>
+        <span>연 수익률 가정</span>
+        <div class="percent-input">
+          <input type="number" min="-30" max="40" step="0.5" value="${asset.assumedAnnualReturnPct}" data-assumption="${asset.ticker}:return">
+          <em>%</em>
+        </div>
+      </label>
+      <label>
+        <span>연 분배율 가정</span>
+        <div class="percent-input">
+          <input type="number" min="0" max="25" step="0.5" value="${asset.assumedDividendYieldPct}" data-assumption="${asset.ticker}:yield">
+          <em>%</em>
+        </div>
+      </label>
+      <a href="${asset.sourceUrl}" target="_blank" rel="noopener">공식 자료 보기</a>
+    </div>
   `).join("");
 
   document.querySelectorAll("[data-assumption]").forEach((input) => {
@@ -239,7 +231,8 @@ function renderAssetControls() {
       if (!asset || !Number.isFinite(value)) return;
       if (field === "return") asset.assumedAnnualReturnPct = value;
       if (field === "yield") asset.assumedDividendYieldPct = value;
-      renderResults(getResults());
+      renderCompare();
+      renderIncome();
     });
   });
 }
@@ -247,96 +240,123 @@ function renderAssetControls() {
 function renderMacro() {
   $("#macroGrid").innerHTML = state.macro.map((indicator) => `
     <article class="macro-card">
-      <div class="card-label">${indicator.asOf}</div>
+      <span class="card-kicker">${indicator.asOf}</span>
       <h3>${indicator.label}</h3>
       <div class="macro-value">
-        <strong>${formatNumber.format(indicator.value)}</strong>
+        <strong>${decimal.format(indicator.value)}</strong>
         <span>${indicator.unit}</span>
       </div>
       <p>${indicator.interpretation}</p>
-      <ol class="question-list">
+      <ol>
         ${indicator.investorQuestions.map((question) => `<li>${question}</li>`).join("")}
       </ol>
-      <a class="source-link" href="${indicator.sourceUrl}" target="_blank" rel="noopener">${indicator.sourceName}</a>
+      <a href="${indicator.sourceUrl}" target="_blank" rel="noopener">${indicator.sourceName}</a>
     </article>
   `).join("");
 }
 
-function renderPrompt(best, bestAsset, results) {
-  const scenario = state.scenario;
-  const ranked = [...results].sort((a, b) => b.fitScore - a.fitScore);
-  const comparison = ranked.map((result) => {
-    const asset = state.assets.find((item) => item.ticker === result.ticker);
-    return `- ${asset.ticker}: 예상 평가금액 ${formatWon.format(result.projectedValue)}, 예상 연 분배금 ${formatWon.format(result.annualIncome)}, 역할 ${asset.role}`;
+function makeComparePrompt(scenario, results) {
+  const rows = results.map(({ asset, result }) =>
+    `- ${asset.ticker}: ${scenario.years}년 뒤 평가액 가정 ${won.format(result.projectedValue)}, 원금 대비 ${decimal.format(result.totalMultiple)}배, 그동안 받은 분배금 ${won.format(result.receivedCash)}, 가정 수익률 ${asset.assumedAnnualReturnPct}%, 가정 분배율 ${asset.assumedDividendYieldPct}%`
+  ).join("\n");
+
+  return `아래 ETF 비교를 투자 추천이 아니라 학습용 판단표로 정리해줘.
+
+[조건]
+- 처음 넣는 돈: ${won.format(scenario.amount)}
+- 기간: ${scenario.years}년
+- 분배금 처리: ${scenario.reinvest ? "다시 투자한다고 가정" : "생활비처럼 따로 받는다고 가정"}
+
+[비교 결과]
+${rows}
+
+다음 4가지를 쉬운 말로 정리해줘.
+1. 평가액 가정이 달라지는 이유
+2. QQQ, SCHD, JEPI의 차이
+3. 이 계산에서 빠진 위험
+4. 실제 투자 전에 확인할 공식 자료`;
+}
+
+function makeIncomePrompt(scenario) {
+  const rows = state.assets.map((asset) => {
+    const annualIncome = scenario.amount * (asset.assumedDividendYieldPct / 100);
+    return `- ${asset.ticker}: ${won.format(scenario.amount)} x ${asset.assumedDividendYieldPct}% = 연 ${won.format(annualIncome)} 가정`;
   }).join("\n");
 
-  $("#copyPrompt").value = `아래 투자 시나리오를 투자 추천이 아니라 학습용 판단표로 정리해줘.
+  return `아래 분배금 계산을 투자 추천이 아니라 현금흐름 학습용으로 설명해줘.
 
-[내 조건]
-- 초기 투자금: ${formatWon.format(scenario.initialCapital)}
-- 월 추가납입: ${formatWon.format(scenario.monthlyContribution)}
-- 투자 기간: ${scenario.horizonYears}년
-- 목표 연 현금흐름: ${formatWon.format(scenario.targetAnnualIncome)}
-- 분배금 재투자: ${scenario.dividendReinvest ? "예" : "아니오"}
-- 위험 감내도: ${scenario.riskTolerance}
+[투자금]
+- ${won.format(scenario.amount)}
 
-[시뮬레이션 비교]
-${comparison}
+[단순 분배금 가정]
+${rows}
 
-[조건상 가장 가까운 구조]
-- ${bestAsset.ticker}: ${bestAsset.role}
-- 단, 이것은 추천이 아니라 가정값 기준의 구조 비교입니다.
-
-다음 형식으로 정리해줘.
-1. 내 조건에서 가장 중요한 판단 기준 3개
-2. ${bestAsset.ticker} 구조가 맞을 수 있는 이유
-3. 반대로 틀릴 수 있는 위험
-4. QQQ, SCHD, JEPI 각각에 대해 추가로 확인할 공식 자료
-5. 최종 결론은 매수/매도/보유가 아니라 보류/관심/추가검토 중 하나로만 표시`;
+세금, 환율, 실제 분배금 변동, 가격 하락 가능성이 빠져 있다는 점을 포함해서 초보자도 이해할 수 있게 설명해줘.`;
 }
 
-function getResults() {
-  return state.assets.map(calculateAsset).sort((a, b) => b.fitScore - a.fitScore);
+function copyText(textareaSelector, statusSelector) {
+  const text = $(textareaSelector).value;
+  navigator.clipboard.writeText(text).then(() => {
+    $(statusSelector).textContent = "복사했습니다.";
+    window.setTimeout(() => {
+      $(statusSelector).textContent = "";
+    }, 1600);
+  }).catch(() => {
+    $(textareaSelector).select();
+    document.execCommand("copy");
+    window.getSelection()?.removeAllRanges();
+    $(textareaSelector).blur();
+    $(statusSelector).textContent = "복사했습니다.";
+  });
 }
 
-function render() {
-  renderPresets();
-  renderAssetControls();
+function renderActiveTool() {
+  if (state.activeTab === "compare") renderCompare();
+  if (state.activeTab === "income") renderIncome();
+}
+
+function renderAll() {
+  renderTabs();
+  renderAssumptions();
+  renderCompare();
+  renderIncome();
   renderMacro();
-  renderResults(getResults());
 }
 
 function bindEvents() {
-  $("#scenarioForm").addEventListener("input", () => {
-    state.activePreset = null;
-    syncScenarioFromForm();
-    renderPresets();
-    renderResults(getResults());
+  document.querySelectorAll(".tab-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeTab = button.dataset.tab;
+      renderTabs();
+    });
   });
 
-  $("#copyButton").addEventListener("click", async () => {
-    const prompt = $("#copyPrompt").value;
-    try {
-      await navigator.clipboard.writeText(prompt);
-      $("#copyStatus").textContent = "복사했습니다.";
-    } catch {
-      $("#copyPrompt").select();
-      document.execCommand("copy");
-      window.getSelection()?.removeAllRanges();
-      $("#copyPrompt").blur();
-      $("#copyStatus").textContent = "복사했습니다.";
-    }
-    window.setTimeout(() => {
-      $("#copyStatus").textContent = "";
-    }, 1800);
+  bindMoneyInput($("#compareAmount"));
+  bindMoneyInput($("#incomeAmount"));
+
+  $("#compareYears").addEventListener("change", renderCompare);
+  $("#reinvestMode").addEventListener("change", renderCompare);
+  $("#incomeView").addEventListener("change", renderIncome);
+
+  document.querySelectorAll("[data-amount]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const amount = plainNumber.format(Number(button.dataset.amount));
+      $("#compareAmount").value = amount;
+      $("#incomeAmount").value = amount;
+      renderCompare();
+      renderIncome();
+    });
   });
+
+  $("#copyCompare").addEventListener("click", () => copyText("#comparePrompt", "#compareCopyStatus"));
+  $("#copyIncome").addEventListener("click", () => copyText("#incomePrompt", "#incomeCopyStatus"));
 }
 
 async function init() {
   try {
     await loadData();
     bindEvents();
-    render();
+    renderAll();
   } catch (error) {
     document.body.innerHTML = `
       <main class="error-state">

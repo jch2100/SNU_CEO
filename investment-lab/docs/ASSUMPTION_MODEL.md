@@ -20,19 +20,19 @@ The user can edit:
 
 | Asset | Annual Return | Distribution Yield | Purpose |
 |---|---:|---:|---|
-| QQQ | 8.0% | 0.6% | Growth |
-| SCHD | 6.0% | 3.5% | Dividend growth |
-| JEPI | 3.0% | 8.0% | Income |
+| QQQ | 7.0% | 0.6% | Growth |
+| SCHD | 4.0% | 3.0% | Dividend growth |
+| JEPI | 1.0% | 7.0% | Income |
 
 These values are intentionally round educational assumptions. They are not official expected returns.
 
 ## Calculation Model
 
-- Monthly growth rate = `(1 + annualReturn)^(1/12) - 1`
-- Monthly distribution = current value * `(annualDistributionYield / 12)`
-- If reinvestment is on, monthly distribution is added to portfolio value.
-- If reinvestment is off, monthly distribution is accumulated as separate cash income.
-- Monthly contribution is added at the beginning of each month.
+- v2 UX model uses a simpler annual loop for explainability.
+- Annual distribution = current value * `annualDistributionYield`.
+- If reinvestment is on, annual distribution is added to the portfolio before annual price growth.
+- If reinvestment is off, annual distribution is accumulated as separate cash income.
+- Annual price growth = portfolio value * `annualReturn`.
 
 ## Exclusions
 
