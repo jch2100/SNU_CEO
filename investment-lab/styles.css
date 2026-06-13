@@ -300,6 +300,45 @@ textarea:focus {
   color: var(--accent);
 }
 
+.industry-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.industry-buttons button {
+  min-height: 58px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--text);
+  text-align: left;
+}
+
+.industry-buttons button.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.industry-buttons span,
+.industry-buttons small {
+  display: block;
+}
+
+.industry-buttons span {
+  font-weight: 900;
+}
+
+.industry-buttons small {
+  margin-top: 2px;
+  color: inherit;
+  opacity: 0.72;
+  font-weight: 800;
+}
+
 .comparison-list {
   display: grid;
   gap: 14px;
@@ -309,6 +348,7 @@ textarea:focus {
 .compare-card,
 .macro-card,
 .assumption-card,
+.industry-detail,
 .copy-box {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -384,6 +424,75 @@ textarea:focus {
   margin: 14px 0 0;
   color: var(--muted);
   word-break: keep-all;
+}
+
+.industry-detail {
+  padding: 22px;
+}
+
+.industry-question {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.industry-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.industry-layout section,
+.holdings-box {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.industry-layout h4,
+.holdings-box h4 {
+  margin: 0 0 8px;
+}
+
+.industry-layout p,
+.holdings-box p {
+  margin: 0;
+  color: var(--muted);
+  word-break: keep-all;
+}
+
+.holdings-box {
+  margin-top: 16px;
+}
+
+.holding-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.holding-list span {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 800;
+}
+
+.source-link {
+  display: inline-flex;
+  margin-top: 14px;
+  font-weight: 900;
 }
 
 .assumption-box {
@@ -523,6 +632,8 @@ textarea:focus {
   .simple-form,
   .simple-form.two,
   .big-stats,
+  .industry-buttons,
+  .industry-layout,
   .assumption-grid,
   .macro-grid {
     grid-template-columns: 1fr;
