@@ -1,0 +1,97 @@
+{
+  "asOf": "2026-06-13",
+  "currency": "KRW",
+  "disclaimer": "교육용 가정값입니다. 실제 투자 전 공식 운용사 자료와 최신 공시를 확인해야 합니다.",
+  "assets": [
+    {
+      "ticker": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "category": "Growth",
+      "role": "성장형 대표 ETF",
+      "summary": "Nasdaq-100 지수를 추종하는 성장주 중심 ETF입니다. 배당보다 장기 가격 상승 가능성을 비교할 때 사용합니다.",
+      "assumedAnnualReturnPct": 8,
+      "assumedDividendYieldPct": 0.6,
+      "expenseRatioPct": 0.18,
+      "volatility": "High",
+      "bestFor": "긴 기간을 두고 성장주 변동성을 감내할 수 있는 투자자",
+      "watchOut": "기술주 쏠림, 금리 상승기 밸류에이션 부담, 큰 낙폭 가능성",
+      "sourceName": "Invesco QQQ official fund page",
+      "sourceUrl": "https://www.invesco.com/qqq-etf/en/home.html",
+      "sourceNote": "Official page referenced for fund identity and expense information. Simulation return and yield are editable assumptions."
+    },
+    {
+      "ticker": "SCHD",
+      "name": "Schwab U.S. Dividend Equity ETF",
+      "category": "Dividend Growth",
+      "role": "배당성장형 대표 ETF",
+      "summary": "미국 배당주 중심 ETF입니다. 성장과 배당의 균형, 장기 현금흐름 개선 가능성을 비교할 때 사용합니다.",
+      "assumedAnnualReturnPct": 6,
+      "assumedDividendYieldPct": 3.5,
+      "expenseRatioPct": 0.06,
+      "volatility": "Medium",
+      "bestFor": "성장성과 배당을 함께 보되 과도한 변동성은 줄이고 싶은 투자자",
+      "watchOut": "배당주 스타일 부진, 업종 편중, 배당 성장 둔화 가능성",
+      "sourceName": "Schwab Asset Management SCHD official page",
+      "sourceUrl": "https://www.schwabassetmanagement.com/products/schd",
+      "sourceNote": "Official page referenced for fund identity and expense information. Simulation return and yield are editable assumptions."
+    },
+    {
+      "ticker": "JEPI",
+      "name": "JPMorgan Equity Premium Income ETF",
+      "category": "Income",
+      "role": "고분배 현금흐름형 대표 ETF",
+      "summary": "주식과 옵션 프리미엄 전략을 활용해 분배 수익을 추구하는 ETF입니다. 월 현금흐름 목표를 비교할 때 사용합니다.",
+      "assumedAnnualReturnPct": 3,
+      "assumedDividendYieldPct": 8,
+      "expenseRatioPct": 0.35,
+      "volatility": "Medium",
+      "bestFor": "자산 성장보다 정기 현금흐름을 더 중시하는 투자자",
+      "watchOut": "상승장 참여 제한, 분배금 변동, 옵션 전략 이해 필요",
+      "sourceName": "J.P. Morgan Asset Management JEPI official page",
+      "sourceUrl": "https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equity-premium-income-etf-etf-shares-46641q332",
+      "sourceNote": "Official page referenced for fund identity and expense information. Simulation return and yield are editable assumptions."
+    }
+  ],
+  "presets": [
+    {
+      "id": "growth-5y",
+      "label": "5천만 원 / 5년 / 성장 탐색",
+      "initialCapital": 50000000,
+      "monthlyContribution": 0,
+      "horizonYears": 5,
+      "targetAnnualIncome": 0,
+      "dividendReinvest": true,
+      "riskTolerance": "high"
+    },
+    {
+      "id": "qqq-10y",
+      "label": "1억 원 / 10년 / 성장형",
+      "initialCapital": 100000000,
+      "monthlyContribution": 0,
+      "horizonYears": 10,
+      "targetAnnualIncome": 0,
+      "dividendReinvest": true,
+      "riskTolerance": "high"
+    },
+    {
+      "id": "schd-10y",
+      "label": "1억 원 / 10년 / 배당성장형",
+      "initialCapital": 100000000,
+      "monthlyContribution": 0,
+      "horizonYears": 10,
+      "targetAnnualIncome": 4000000,
+      "dividendReinvest": true,
+      "riskTolerance": "medium"
+    },
+    {
+      "id": "jepi-10y",
+      "label": "1억 원 / 10년 / 현금흐름형",
+      "initialCapital": 100000000,
+      "monthlyContribution": 0,
+      "horizonYears": 10,
+      "targetAnnualIncome": 10000000,
+      "dividendReinvest": false,
+      "riskTolerance": "medium"
+    }
+  ]
+}
