@@ -58,6 +58,7 @@ Purpose:
 - Explain why the candidates were selected, what evidence supports the idea, and what could go wrong.
 - Keep a broad enough candidate pool so different theme choices produce visibly different results.
 - Weight the selected industry/theme higher than generic quality or risk tags.
+- Treat company size as a real constraint: the "small but explosive" option must not surface mega-cap leaders such as Samsung Electronics, NVIDIA, or Broadcom.
 - Keep the framing educational and speculative, not advisory.
 
 ### 5. Copy Prompt

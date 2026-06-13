@@ -148,6 +148,40 @@
     },
     {
       "market": "korea",
+      "ticker": "042700.KS",
+      "name": "한미반도체",
+      "shortName": "Hanmi Semiconductor",
+      "theme": "HBM 장비·반도체 후공정",
+      "tags": ["ai-infra", "semiconductor", "data-center", "challenger", "scaling", "technology-option", "optionality", "high-volatility", "growth-risk"],
+      "thesis": "HBM 투자 확대가 반도체 후공정 장비 수요로 이어진다는 가설에 맞는 옵션형 후보입니다.",
+      "evidence": [
+        "AI 메모리 증설이 장비 발주로 이어지는지 확인해야 합니다.",
+        "삼성전자·SK하이닉스보다 작은 회사라 변동성과 폭발력이 함께 큽니다.",
+        "장비주는 고객 투자 사이클에 민감하므로 수주 흐름을 봐야 합니다."
+      ],
+      "risks": "고객사 투자 지연, 장비 경쟁, 수주 변동성, 기대감 선반영",
+      "sourceName": "Hanmi Semiconductor official site",
+      "sourceUrl": "https://www.hanmisemi.com/"
+    },
+    {
+      "market": "korea",
+      "ticker": "095340.KQ",
+      "name": "ISC",
+      "shortName": "ISC",
+      "theme": "반도체 테스트 소켓",
+      "tags": ["ai-infra", "semiconductor", "data-center", "challenger", "technology-option", "optionality", "high-volatility", "growth-risk"],
+      "thesis": "AI 반도체와 고성능 칩 테스트 수요가 테스트 소켓 기업의 성장으로 이어진다는 가설에 맞는 소형 후보입니다.",
+      "evidence": [
+        "테스트 소켓은 칩 고도화와 고객 개발 사이클에 영향을 받습니다.",
+        "대형 칩 제조사가 아니라 반도체 밸류체인의 작은 병목을 보는 후보입니다.",
+        "실적 변동이 클 수 있어 수주와 고객 다변화를 확인해야 합니다."
+      ],
+      "risks": "고객 집중, 제품 단가 압박, 반도체 사이클, 소형주 변동성",
+      "sourceName": "ISC official site",
+      "sourceUrl": "https://isc21.kr/"
+    },
+    {
+      "market": "korea",
       "ticker": "012450.KS",
       "name": "한화에어로스페이스",
       "shortName": "Hanwha Aerospace",
@@ -233,6 +267,40 @@
     },
     {
       "market": "korea",
+      "ticker": "211270.KQ",
+      "name": "AP위성",
+      "shortName": "AP Satellite",
+      "theme": "위성통신·우주 부품",
+      "tags": ["space", "defense", "technology-option", "optionality", "high-volatility", "challenger", "growth-risk"],
+      "thesis": "저궤도 위성통신과 우주 부품 수요가 작은 위성 기업의 성장으로 이어진다는 가설에 맞는 소형 후보입니다.",
+      "evidence": [
+        "위성통신 단말과 우주 부품 수요가 실제 매출로 연결되는지 확인해야 합니다.",
+        "대형 방산주가 아니라 작은 우주 밸류체인 기업을 보는 후보입니다.",
+        "프로젝트 수주와 정부 우주 예산에 따라 실적 변동이 클 수 있습니다."
+      ],
+      "risks": "수주 공백, 정부 과제 의존, 기술 검증, 소형주 변동성",
+      "sourceName": "AP Satellite official site",
+      "sourceUrl": "https://www.apsi.co.kr/en/index.php"
+    },
+    {
+      "market": "korea",
+      "ticker": "451760.KQ",
+      "name": "컨텍",
+      "shortName": "CONTEC",
+      "theme": "우주 지상국·위성 데이터",
+      "tags": ["space", "defense", "platform", "technology-option", "optionality", "high-volatility", "challenger", "growth-risk"],
+      "thesis": "위성이 늘어날수록 지상국, 위성 데이터 수신·처리 수요가 커진다는 가설에 맞는 소형 우주 후보입니다.",
+      "evidence": [
+        "발사체나 위성 제작이 아니라 우주 데이터 인프라를 보는 후보입니다.",
+        "글로벌 지상국 네트워크와 위성 영상 데이터 사업화가 핵심 관찰 지표입니다.",
+        "시장 자체가 초기 단계라 성공과 실패의 폭이 모두 큽니다."
+      ],
+      "risks": "우주 데이터 시장 성장 지연, 자금 조달, 고객 확보, 높은 변동성",
+      "sourceName": "CONTEC official site",
+      "sourceUrl": "https://www.contec.kr/"
+    },
+    {
+      "market": "korea",
       "ticker": "035420.KS",
       "name": "NAVER",
       "shortName": "NAVER",
@@ -264,6 +332,40 @@
       "risks": "기업 IT 지출 둔화, AI 기능 차별화 실패, 경쟁 심화, 밸류에이션 부담",
       "sourceName": "Douzone investor relations",
       "sourceUrl": "https://en.douzone.com/invest/return.jsp"
+    },
+    {
+      "market": "korea",
+      "ticker": "304100.KQ",
+      "name": "솔트룩스",
+      "shortName": "Saltlux",
+      "theme": "생성형 AI·지식 플랫폼",
+      "tags": ["ai-software", "enterprise-ai", "platform", "challenger", "technology-option", "optionality", "high-volatility", "growth-risk"],
+      "thesis": "기업과 공공기관의 생성형 AI·지식검색 수요가 전문 AI 소프트웨어 기업으로 이어진다는 가설에 맞는 소형 후보입니다.",
+      "evidence": [
+        "AI 검색, 지식그래프, 기업용 생성형 AI 적용 사례를 확인해야 합니다.",
+        "대형 플랫폼보다 작은 회사라 실적 변동과 주가 변동이 모두 큽니다.",
+        "AI 소프트웨어에서 진짜 작은 후보를 토론하기 위한 선택지입니다."
+      ],
+      "risks": "적자 가능성, 수주 변동성, 대형 플랫폼 경쟁, AI 기대감 선반영",
+      "sourceName": "Saltlux official site",
+      "sourceUrl": "https://www.saltlux.com/eng/"
+    },
+    {
+      "market": "korea",
+      "ticker": "047560.KQ",
+      "name": "이스트소프트",
+      "shortName": "ESTsoft",
+      "theme": "AI 휴먼·생성형 AI 서비스",
+      "tags": ["ai-software", "enterprise-ai", "platform", "challenger", "technology-option", "optionality", "high-volatility", "growth-risk"],
+      "thesis": "AI 휴먼, 생산성 소프트웨어, 보안·포털 서비스가 생성형 AI와 결합된다는 가설에 맞는 소형 후보입니다.",
+      "evidence": [
+        "AI 휴먼과 기업용 AI 서비스가 실제 매출로 이어지는지 확인해야 합니다.",
+        "국내 AI 소프트웨어 소형주로 변동성이 큰 학습 후보입니다.",
+        "스토리보다 반복 매출과 수익성 전환이 중요합니다."
+      ],
+      "risks": "AI 사업 매출 검증, 경쟁 심화, 수익성 변동, 높은 주가 변동성",
+      "sourceName": "ESTsoft investment information",
+      "sourceUrl": "https://estsoft.ai/en/investment-2"
     },
     {
       "market": "korea",
@@ -383,6 +485,40 @@
       "risks": "대형주 프리미엄, 고객 집중, AI 투자 둔화, 인수 통합 리스크",
       "sourceName": "Broadcom investor relations",
       "sourceUrl": "https://investors.broadcom.com/"
+    },
+    {
+      "market": "global",
+      "ticker": "ALAB",
+      "name": "Astera Labs",
+      "shortName": "Astera Labs",
+      "theme": "AI 데이터센터 연결 칩",
+      "tags": ["ai-infra", "semiconductor", "data-center", "challenger", "technology-option", "optionality", "high-volatility", "growth-risk"],
+      "thesis": "AI 클러스터가 커질수록 고속 연결 칩과 데이터센터 패브릭 수요가 커진다는 가설에 맞는 옵션형 후보입니다.",
+      "evidence": [
+        "AI 서버 병목이 GPU뿐 아니라 연결·네트워킹에서도 생긴다는 관점입니다.",
+        "상장 기간이 짧고 성장 기대가 커서 변동성이 매우 클 수 있습니다.",
+        "작은 AI 인프라 후보를 찾는 선택지에 더 잘 맞습니다."
+      ],
+      "risks": "고객 집중, 짧은 상장 이력, 높은 밸류에이션, AI 투자 둔화",
+      "sourceName": "Astera Labs investor relations",
+      "sourceUrl": "https://asteralabs.gcs-web.com/"
+    },
+    {
+      "market": "global",
+      "ticker": "CRDO",
+      "name": "Credo Technology",
+      "shortName": "Credo",
+      "theme": "AI 데이터센터 인터커넥트",
+      "tags": ["ai-infra", "semiconductor", "data-center", "challenger", "scaling", "technology-option", "optionality", "high-volatility", "growth-risk"],
+      "thesis": "AI 데이터센터의 고속 연결 수요가 전력 효율적인 인터커넥트 솔루션으로 이어진다는 가설에 맞는 소형 후보입니다.",
+      "evidence": [
+        "AI 클러스터가 커질수록 칩 사이 연결과 광·구리 인터커넥트 수요가 늘 수 있습니다.",
+        "대형 반도체보다 작은 회사라 성공과 실패의 폭이 모두 큽니다.",
+        "매출 성장률과 고객 집중도를 함께 확인해야 합니다."
+      ],
+      "risks": "고객 집중, 경쟁 심화, 제품 전환 속도, 큰 주가 변동",
+      "sourceName": "Credo official site",
+      "sourceUrl": "https://www.credosemi.com/"
     },
     {
       "market": "global",

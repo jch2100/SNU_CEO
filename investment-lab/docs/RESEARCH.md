@@ -87,9 +87,9 @@ Purpose:
 
 Candidate logic:
 
-- AI infrastructure: SK hynix, Samsung Electronics, NVIDIA, AMD, Broadcom.
-- AI software/platform: NAVER, Douzone Bizon, Palantir, ServiceNow, Snowflake.
-- Defense/space: Hanwha Aerospace, LIG Nex1, Hanwha Systems, Hyundai Rotem, KAI, Northrop Grumman, AeroVironment, Kratos, Rocket Lab, AST SpaceMobile.
+- AI infrastructure: SK hynix, Samsung Electronics, Hanmi Semiconductor, ISC, NVIDIA, AMD, Broadcom, Astera Labs, Credo.
+- AI software/platform: NAVER, Douzone Bizon, Saltlux, ESTsoft, Palantir, ServiceNow, Snowflake.
+- Defense/space: Hanwha Aerospace, LIG Nex1, Hanwha Systems, Hyundai Rotem, KAI, AP Satellite, CONTEC, Northrop Grumman, AeroVironment, Kratos, Rocket Lab, AST SpaceMobile.
 - Robotics/automation: Doosan Robotics, Rainbow Robotics, Intuitive Surgical, Symbotic.
 - Bio/platform: Samsung Biologics, Alteogen, Recursion.
 
@@ -100,7 +100,7 @@ The quiz asks four objective questions:
 - Evidence type the learner trusts.
 - Drawdown tolerance.
 
-The result is a score-based match against qualitative tags. The first question, long-term theme, now carries the heaviest weight so off-theme companies do not appear merely because they share generic quality or stage tags. It deliberately avoids price targets, expected returns, or buy/sell language.
+The result is a score-based match against qualitative tags. The first question, long-term theme, now carries the heaviest weight so off-theme companies do not appear merely because they share generic quality or stage tags. Company size is also treated as a real constraint: if the learner chooses small/high-volatility, mega-cap leaders should be pushed out by smaller optionality names. It deliberately avoids price targets, expected returns, or buy/sell language.
 
 Primary source candidates:
 
