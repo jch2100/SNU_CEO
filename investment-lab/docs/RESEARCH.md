@@ -87,11 +87,11 @@ Purpose:
 
 Candidate logic:
 
-- AI infrastructure: SK hynix, NVIDIA, Broadcom.
-- AI software/platform: Palantir.
-- Defense/space: Hanwha Aerospace, Rocket Lab.
-- Robotics/automation: Doosan Robotics.
-- Bio CDMO: Samsung Biologics.
+- AI infrastructure: SK hynix, Samsung Electronics, NVIDIA, AMD, Broadcom.
+- AI software/platform: NAVER, Douzone Bizon, Palantir, ServiceNow, Snowflake.
+- Defense/space: Hanwha Aerospace, LIG Nex1, Hanwha Systems, Hyundai Rotem, KAI, Northrop Grumman, AeroVironment, Kratos, Rocket Lab, AST SpaceMobile.
+- Robotics/automation: Doosan Robotics, Rainbow Robotics, Intuitive Surgical, Symbotic.
+- Bio/platform: Samsung Biologics, Alteogen, Recursion.
 
 The quiz asks four objective questions:
 
@@ -100,7 +100,7 @@ The quiz asks four objective questions:
 - Evidence type the learner trusts.
 - Drawdown tolerance.
 
-The result is a score-based match against qualitative tags. It deliberately avoids price targets, expected returns, or buy/sell language.
+The result is a score-based match against qualitative tags. The first question, long-term theme, now carries the heaviest weight so off-theme companies do not appear merely because they share generic quality or stage tags. It deliberately avoids price targets, expected returns, or buy/sell language.
 
 Primary source candidates:
 
