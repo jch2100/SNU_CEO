@@ -7,6 +7,8 @@ const state = {
   activeIndustryId: "technology"
 };
 
+const dataVersion = "20260613-historical-purpose";
+
 const won = new Intl.NumberFormat("ko-KR", {
   style: "currency",
   currency: "KRW",
@@ -45,9 +47,9 @@ function bindMoneyInput(input) {
 
 async function loadData() {
   const [assetResponse, macroResponse, industryResponse] = await Promise.all([
-    fetch("data/assets.json"),
-    fetch("data/macro.json"),
-    fetch("data/industry-etfs.json")
+    fetch(`data/assets.json?v=${dataVersion}`),
+    fetch(`data/macro.json?v=${dataVersion}`),
+    fetch(`data/industry-etfs.json?v=${dataVersion}`)
   ]);
 
   if (!assetResponse.ok || !macroResponse.ok || !industryResponse.ok) {
