@@ -75,6 +75,8 @@ Generate a prompt the learner can copy into ChatGPT:
 - Mobile-first layout with top tabs.
 - Avoid exposing all three tools in one long vertical scroll.
 - Use comma-formatted money inputs such as `100,000,000`.
+- Use 2016-2025 historical performance inputs where available; show JEPI as a post-inception exception.
+- Explain QQQ, SCHD, and JEPI as different learner purposes, not a single return ranking.
 - Result must end with questions, not a conclusion.
 
 ## Acceptance Criteria

@@ -17,6 +17,17 @@ Confirmed product stance:
 
 ## ETF Research
 
+### Historical Calculation Note
+
+The service now uses historical learning inputs instead of arbitrary assumptions.
+
+- Main period: 2016-01-04 to 2025-12-31.
+- Price return: calculated from close price and used for separate portfolio value.
+- Total return reference: calculated from adjusted close and shown as a reinvested-distribution reference.
+- Average distribution yield: annual cash distributions divided by average daily close for each year, then averaged.
+- JEPI exception: JEPI launched after 2016, so it uses 2020-05-21 to 2025-12-31.
+- These figures explain what happened in the past. They do not imply expected future returns.
+
 ### QQQ
 
 - Official source: Invesco QQQ official fund page.

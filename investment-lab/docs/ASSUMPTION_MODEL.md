@@ -5,26 +5,36 @@ Updated: 2026-06-13
 
 ## Simulation Principle
 
-The simulation is not a forecast. It is a structured comparison of assumptions.
+The simulation is not a forecast. It is a structured comparison using historical learning inputs.
 
 The user can edit:
 
 - Initial capital
 - Monthly contribution
 - Investment years
-- Assumed annual return
-- Assumed annual distribution yield
+- Historical annualized price return
+- Historical average distribution yield
 - Dividend/distribution reinvestment
 
-## Default Assumptions
+## Historical Inputs
 
-| Asset | Annual Return | Distribution Yield | Purpose |
-|---|---:|---:|---|
-| QQQ | 10.0% | 0.6% | Growth |
-| SCHD | 7.0% | 3.0% | Dividend growth |
-| JEPI | 3.0% | 7.0% | Income |
+| Asset | Price CAGR | Total Return CAGR | Distribution Yield | Purpose |
+|---|---:|---:|---:|---|
+| QQQ | 18.84% | 19.71% | 0.73% | Growth |
+| SCHD | 8.01% | 11.67% | 3.34% | Dividend growth |
+| JEPI | 2.46% | 11.68% | 8.05% | Income |
 
-These values are intentionally round educational assumptions. They are not official expected returns.
+These values are historical learning inputs calculated from 2016-01-04 to 2025-12-31. JEPI is an exception because it launched after 2016, so its values use 2020-05-21 to 2025-12-31.
+
+The main comparison uses price CAGR for portfolio value and average distribution yield for cash-flow math. Total return CAGR is shown as a reference for learners who ask how reinvested distributions affected the historical record.
+
+## Teaching Frame
+
+The comparison is not designed to crown the highest-return asset. It is designed to separate three learner questions:
+
+- QQQ: What happens when the goal is long-term growth and the learner can tolerate drawdowns?
+- SCHD: What changes when the learner wants dividend growth and a less aggressive equity style?
+- JEPI: What trade-off appears when the learner prioritizes monthly cash flow over price appreciation?
 
 ## Calculation Model
 

@@ -128,7 +128,8 @@ main {
 }
 
 .notice,
-.explain-box {
+.explain-box,
+.decision-frame {
   margin-top: 22px;
   padding: 16px 18px;
   border: 1px solid var(--line);
@@ -137,15 +138,54 @@ main {
 }
 
 .notice strong,
-.explain-box strong {
+.explain-box strong,
+.decision-frame > strong {
   display: block;
   margin-bottom: 6px;
 }
 
 .notice p,
-.explain-box p {
+.explain-box p,
+.decision-frame > p {
   margin: 0;
   color: var(--muted);
+  word-break: keep-all;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.decision-grid article {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.decision-grid span {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.decision-grid strong {
+  display: block;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.decision-grid p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
   word-break: keep-all;
 }
 
@@ -426,6 +466,21 @@ textarea:focus {
   word-break: keep-all;
 }
 
+.lesson-note {
+  margin: 8px 0 0;
+  color: var(--accent);
+  font-weight: 850;
+  word-break: keep-all;
+}
+
+.data-note {
+  margin: 8px 0 0;
+  color: #475467;
+  font-size: 0.88rem;
+  font-weight: 750;
+  word-break: keep-all;
+}
+
 .industry-detail {
   padding: 22px;
 }
@@ -632,6 +687,7 @@ textarea:focus {
   .simple-form,
   .simple-form.two,
   .big-stats,
+  .decision-grid,
   .industry-buttons,
   .industry-layout,
   .assumption-grid,
