@@ -20,9 +20,9 @@ The user can edit:
 
 | Asset | Annual Return | Distribution Yield | Purpose |
 |---|---:|---:|---|
-| QQQ | 7.0% | 0.6% | Growth |
-| SCHD | 4.0% | 3.0% | Dividend growth |
-| JEPI | 1.0% | 7.0% | Income |
+| QQQ | 10.0% | 0.6% | Growth |
+| SCHD | 7.0% | 3.0% | Dividend growth |
+| JEPI | 3.0% | 7.0% | Income |
 
 These values are intentionally round educational assumptions. They are not official expected returns.
 

@@ -34,7 +34,7 @@
 
     <nav class="tool-tabs" aria-label="투자 도구 선택">
       <button class="tab-button active" type="button" data-tab="compare">1. 10년 비교</button>
-      <button class="tab-button" type="button" data-tab="income">2. 분배금 보기</button>
+      <button class="tab-button" type="button" data-tab="industry">2. 산업 ETF</button>
       <button class="tab-button" type="button" data-tab="market">3. 시장 지표</button>
     </nav>
 
@@ -99,44 +99,23 @@
       </div>
     </section>
 
-    <section id="incomeTab" class="tool-panel" aria-labelledby="income-title">
+    <section id="industryTab" class="tool-panel" aria-labelledby="industry-title">
       <div class="panel-head">
         <div>
           <p class="eyebrow">Tool 2</p>
-          <h2 id="income-title">올해 1년 기준, 분배금은 얼마쯤일까?</h2>
-          <p>어려운 금융 용어 대신 “이 돈을 넣으면 1년에 얼마 정도 받는다고 가정할 수 있나”만 봅니다.</p>
+          <h2 id="industry-title">관심 산업을 누르면 대표 ETF를 보여줍니다.</h2>
+          <p>10개 산업 중 하나를 고르면 대표 ETF, 전략, 왜 많이 쓰이는지, 10년 학습 가정, 대표 구성종목 예시를 확인할 수 있습니다.</p>
         </div>
       </div>
 
-      <div class="simple-form two">
-        <label>
-          <span>투자금</span>
-          <div class="money-input">
-            <input id="incomeAmount" type="text" inputmode="numeric" autocomplete="off" value="100,000,000">
-            <em>원</em>
-          </div>
-        </label>
-        <label>
-          <span>월평균도 같이 보기</span>
-          <select id="incomeView">
-            <option value="monthly" selected>연간 + 월평균</option>
-            <option value="annual">연간만 보기</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="explain-box">
-        <strong>이 계산은 무엇인가요?</strong>
-        <p>투자금에 각 ETF의 가정 분배율을 곱한 단순 계산입니다. 주가 변동, 세금, 환율, 실제 분배금 변동은 빠져 있습니다.</p>
-      </div>
-
-      <div id="incomeResults" class="comparison-list" aria-live="polite"></div>
+      <div id="industryButtons" class="industry-buttons" aria-label="산업 선택"></div>
+      <div id="industryDetail" aria-live="polite"></div>
 
       <div class="copy-box">
         <h3>ChatGPT에 이어서 물어볼 질문</h3>
-        <textarea id="incomePrompt" readonly></textarea>
-        <button id="copyIncome" class="primary-button" type="button">질문 복사</button>
-        <span id="incomeCopyStatus" class="copy-status"></span>
+        <textarea id="industryPrompt" readonly></textarea>
+        <button id="copyIndustry" class="primary-button" type="button">질문 복사</button>
+        <span id="industryCopyStatus" class="copy-status"></span>
       </div>
     </section>
 

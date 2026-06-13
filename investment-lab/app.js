@@ -1,8 +1,10 @@
 const state = {
   assets: [],
+  industries: [],
   macro: [],
   dataDate: "",
-  activeTab: "compare"
+  activeTab: "compare",
+  activeIndustryId: "technology"
 };
 
 const won = new Intl.NumberFormat("ko-KR", {
@@ -42,20 +44,23 @@ function bindMoneyInput(input) {
 }
 
 async function loadData() {
-  const [assetResponse, macroResponse] = await Promise.all([
+  const [assetResponse, macroResponse, industryResponse] = await Promise.all([
     fetch("data/assets.json"),
-    fetch("data/macro.json")
+    fetch("data/macro.json"),
+    fetch("data/industry-etfs.json")
   ]);
 
-  if (!assetResponse.ok || !macroResponse.ok) {
+  if (!assetResponse.ok || !macroResponse.ok || !industryResponse.ok) {
     throw new Error("데이터 파일을 불러오지 못했습니다.");
   }
 
   const assetData = await assetResponse.json();
   const macroData = await macroResponse.json();
+  const industryData = await industryResponse.json();
   state.assets = assetData.assets;
+  state.industries = industryData.industries;
   state.macro = macroData.indicators;
-  state.dataDate = `${assetData.asOf} / ${macroData.asOf}`;
+  state.dataDate = `${assetData.asOf} / ${macroData.asOf} / ${industryData.asOf}`;
   $("#dataDate").textContent = state.dataDate;
 }
 
@@ -64,13 +69,6 @@ function compareScenario() {
     amount: parseMoney($("#compareAmount").value),
     years: Number($("#compareYears").value),
     reinvest: $("#reinvestMode").value === "yes"
-  };
-}
-
-function incomeScenario() {
-  return {
-    amount: parseMoney($("#incomeAmount").value),
-    showMonthly: $("#incomeView").value === "monthly"
   };
 }
 
@@ -154,43 +152,6 @@ function renderCompare() {
   $("#comparePrompt").value = makeComparePrompt(scenario, results);
 }
 
-function renderIncome() {
-  const scenario = incomeScenario();
-  $("#incomeResults").innerHTML = state.assets.map((asset) => {
-    const annualIncome = scenario.amount * (asset.assumedDividendYieldPct / 100);
-    const monthlyIncome = annualIncome / 12;
-    return `
-      <article class="compare-card">
-        <div class="card-top">
-          <div>
-            <span class="card-kicker">${asset.role}</span>
-            <h3>${asset.ticker}</h3>
-          </div>
-          <span class="plain-badge">분배율 ${asset.assumedDividendYieldPct}% 가정</span>
-        </div>
-        <dl class="big-stats">
-          <div>
-            <dt>1년 분배금 가정</dt>
-            <dd>${won.format(annualIncome)}</dd>
-          </div>
-          ${scenario.showMonthly ? `
-          <div>
-            <dt>월평균으로 나누면</dt>
-            <dd>${won.format(monthlyIncome)}</dd>
-          </div>` : ""}
-          <div>
-            <dt>계산식</dt>
-            <dd>${won.format(scenario.amount)} x ${asset.assumedDividendYieldPct}%</dd>
-          </div>
-        </dl>
-        <p class="plain-note">실제 분배금은 매월/분기마다 바뀔 수 있고, 세금과 환율은 빠져 있습니다.</p>
-      </article>
-    `;
-  }).join("");
-
-  $("#incomePrompt").value = makeIncomePrompt(scenario);
-}
-
 function getPlainAssetExplanation(asset, scenario) {
   if (asset.ticker === "QQQ") {
     return "성장주 중심이라 평가금액이 크게 움직일 수 있습니다. 배당보다 가격 상승 가정의 영향이 큽니다.";
@@ -232,9 +193,102 @@ function renderAssumptions() {
       if (field === "return") asset.assumedAnnualReturnPct = value;
       if (field === "yield") asset.assumedDividendYieldPct = value;
       renderCompare();
-      renderIncome();
     });
   });
+}
+
+function renderIndustryButtons() {
+  $("#industryButtons").innerHTML = state.industries.map((industry) => `
+    <button class="${industry.id === state.activeIndustryId ? "active" : ""}" type="button" data-industry="${industry.id}">
+      <span>${industry.label}</span>
+      <small>${industry.ticker}</small>
+    </button>
+  `).join("");
+
+  document.querySelectorAll("[data-industry]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeIndustryId = button.dataset.industry;
+      renderIndustry();
+    });
+  });
+}
+
+function calculateTenYearAssumption(industry) {
+  const initial = 100000000;
+  let value = initial;
+  let received = 0;
+  for (let year = 0; year < 10; year += 1) {
+    received += value * (industry.assumedDistributionYieldPct / 100);
+    value *= 1 + industry.assumedAnnualReturnPct / 100;
+  }
+  return { value, received, multiple: value / initial };
+}
+
+function renderIndustry() {
+  renderIndustryButtons();
+  const industry = state.industries.find((item) => item.id === state.activeIndustryId) || state.industries[0];
+  if (!industry) return;
+  const tenYear = calculateTenYearAssumption(industry);
+
+  $("#industryDetail").innerHTML = `
+    <article class="industry-detail">
+      <div class="card-top">
+        <div>
+          <span class="card-kicker">${industry.label} 대표 ETF</span>
+          <h3>${industry.ticker} · ${industry.name}</h3>
+        </div>
+        <span class="plain-badge">${industry.manager}</span>
+      </div>
+
+      <p class="industry-question">${industry.question}</p>
+
+      <div class="industry-layout">
+        <section>
+          <h4>어떤 전략인가요?</h4>
+          <p>${industry.strategy}</p>
+        </section>
+        <section>
+          <h4>왜 많이 보나요?</h4>
+          <p>${industry.whyPopular}</p>
+        </section>
+        <section>
+          <h4>주의할 점</h4>
+          <p>${industry.risk}</p>
+        </section>
+      </div>
+
+      <dl class="big-stats">
+        <div>
+          <dt>10년 연평균 학습 가정</dt>
+          <dd>${industry.assumedAnnualReturnPct}%</dd>
+        </div>
+        <div>
+          <dt>분배율 가정</dt>
+          <dd>${industry.assumedDistributionYieldPct}%</dd>
+        </div>
+        <div>
+          <dt>1억 10년 평가액 가정</dt>
+          <dd>${won.format(tenYear.value)}</dd>
+        </div>
+        <div>
+          <dt>10년 받은 분배금 가정</dt>
+          <dd>${won.format(tenYear.received)}</dd>
+        </div>
+      </dl>
+
+      <div class="holdings-box">
+        <h4>대표 구성종목 예시</h4>
+        <div class="holding-list">
+          ${industry.holdingsExamples.map((name) => `<span>${name}</span>`).join("")}
+        </div>
+        <p>구성종목과 비중은 수시로 바뀝니다. 위 목록은 산업을 이해하기 위한 예시입니다.</p>
+      </div>
+
+      <a class="source-link" href="${industry.sourceUrl}" target="_blank" rel="noopener">${industry.sourceName}</a>
+    </article>
+  `;
+
+  $("#industryPrompt").value = makeIndustryPrompt(industry, tenYear);
 }
 
 function renderMacro() {
@@ -277,21 +331,26 @@ ${rows}
 4. 실제 투자 전에 확인할 공식 자료`;
 }
 
-function makeIncomePrompt(scenario) {
-  const rows = state.assets.map((asset) => {
-    const annualIncome = scenario.amount * (asset.assumedDividendYieldPct / 100);
-    return `- ${asset.ticker}: ${won.format(scenario.amount)} x ${asset.assumedDividendYieldPct}% = 연 ${won.format(annualIncome)} 가정`;
-  }).join("\n");
+function makeIndustryPrompt(industry, tenYear) {
+  return `아래 산업 ETF를 투자 추천이 아니라 산업 공부용으로 설명해줘.
 
-  return `아래 분배금 계산을 투자 추천이 아니라 현금흐름 학습용으로 설명해줘.
+[선택 산업]
+- 산업: ${industry.label}
+- 대표 ETF: ${industry.ticker} (${industry.name})
+- 전략: ${industry.strategy}
+- 왜 많이 보는지: ${industry.whyPopular}
+- 10년 연평균 학습 가정: ${industry.assumedAnnualReturnPct}%
+- 분배율 학습 가정: ${industry.assumedDistributionYieldPct}%
+- 1억 원 10년 평가액 가정: ${won.format(tenYear.value)}
+- 10년 받은 분배금 가정: ${won.format(tenYear.received)}
+- 대표 구성종목 예시: ${industry.holdingsExamples.join(", ")}
 
-[투자금]
-- ${won.format(scenario.amount)}
-
-[단순 분배금 가정]
-${rows}
-
-세금, 환율, 실제 분배금 변동, 가격 하락 가능성이 빠져 있다는 점을 포함해서 초보자도 이해할 수 있게 설명해줘.`;
+다음 형식으로 쉽게 정리해줘.
+1. 이 산업 ETF가 무엇에 투자하는지
+2. 이 산업이 좋아질 때 필요한 조건
+3. 반대로 조심해야 할 위험
+4. 대표 구성종목을 볼 때 확인할 질문
+5. 이 ETF를 지금 사라는 결론 없이, 공부할 체크리스트만 작성`;
 }
 
 function copyText(textareaSelector, statusSelector) {
@@ -312,14 +371,14 @@ function copyText(textareaSelector, statusSelector) {
 
 function renderActiveTool() {
   if (state.activeTab === "compare") renderCompare();
-  if (state.activeTab === "income") renderIncome();
+  if (state.activeTab === "industry") renderIndustry();
 }
 
 function renderAll() {
   renderTabs();
   renderAssumptions();
   renderCompare();
-  renderIncome();
+  renderIndustry();
   renderMacro();
 }
 
@@ -332,24 +391,20 @@ function bindEvents() {
   });
 
   bindMoneyInput($("#compareAmount"));
-  bindMoneyInput($("#incomeAmount"));
 
   $("#compareYears").addEventListener("change", renderCompare);
   $("#reinvestMode").addEventListener("change", renderCompare);
-  $("#incomeView").addEventListener("change", renderIncome);
 
   document.querySelectorAll("[data-amount]").forEach((button) => {
     button.addEventListener("click", () => {
       const amount = plainNumber.format(Number(button.dataset.amount));
       $("#compareAmount").value = amount;
-      $("#incomeAmount").value = amount;
       renderCompare();
-      renderIncome();
     });
   });
 
   $("#copyCompare").addEventListener("click", () => copyText("#comparePrompt", "#compareCopyStatus"));
-  $("#copyIncome").addEventListener("click", () => copyText("#incomePrompt", "#incomeCopyStatus"));
+  $("#copyIndustry").addEventListener("click", () => copyText("#industryPrompt", "#industryCopyStatus"));
 }
 
 async function init() {

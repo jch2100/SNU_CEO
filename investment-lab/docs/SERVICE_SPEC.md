@@ -41,12 +41,13 @@ Outputs:
 - Total distribution received if not reinvested
 - Plain explanation of why the value changes
 
-### 3. Distribution Income Tab
+### 3. Industry ETF Tab
 
 Purpose:
 
-- Replace the unclear "target annual cash flow" concept.
-- Show simple annual and monthly distribution estimates from current capital.
+- Replace the duplicated distribution tab.
+- Let learners select one of 10 industries.
+- Show representative ETF, strategy, popularity reason, 10-year learning assumptions, and example top holdings.
 
 ### 4. Macro Dashboard
 
