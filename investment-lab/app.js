@@ -8,7 +8,7 @@ const state = {
   activeIndustryId: "technology"
 };
 
-const dataVersion = "20260613-tenbagger";
+const dataVersion = "20260613-tenbagger-wide";
 
 const won = new Intl.NumberFormat("ko-KR", {
   style: "currency",
@@ -326,15 +326,24 @@ function renderIndustry() {
 
 function selectedTenbaggerOptions() {
   return state.tenbagger.questions.map((question) => (
-    question.options.find((option) => option.id === state.tenbaggerAnswers[question.id]) || question.options[0]
+    {
+      questionId: question.id,
+      ...(question.options.find((option) => option.id === state.tenbaggerAnswers[question.id]) || question.options[0])
+    }
   ));
 }
 
 function scoreTenbaggerCandidate(candidate, selectedOptions) {
-  const selectedTags = selectedOptions.flatMap((option) => option.tags);
-  const matchedTags = candidate.tags.filter((tag) => selectedTags.includes(tag));
-  const uniqueMatches = [...new Set(matchedTags)];
-  const score = uniqueMatches.length * 10 + (candidate.tags.includes("quality") ? 2 : 0);
+  const themeOption = selectedOptions.find((option) => option.questionId === "theme");
+  const themeTags = themeOption ? themeOption.tags : [];
+  const supportTags = selectedOptions
+    .filter((option) => option.questionId !== "theme")
+    .flatMap((option) => option.tags);
+  const themeMatches = candidate.tags.filter((tag) => themeTags.includes(tag));
+  const supportMatches = candidate.tags.filter((tag) => supportTags.includes(tag));
+  const uniqueMatches = [...new Set([...themeMatches, ...supportMatches])];
+  const themeBonus = themeMatches.length > 0 ? 20 : -35;
+  const score = themeMatches.length * 40 + supportMatches.length * 10 + themeBonus;
   return { ...candidate, matchedTags: uniqueMatches, score };
 }
 

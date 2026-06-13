@@ -60,13 +60,32 @@ The tenbagger tab is a game-like teaching tool. It uses qualitative candidate da
 | Candidate | Source | URL | Update Method |
 |---|---|---|---|
 | SK hynix | SK hynix Newsroom | https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/ | Manual before class |
+| Samsung Electronics | Samsung Electronics IR | https://www.samsung.com/global/ir/ | Manual before class |
 | Hanwha Aerospace | Hanwha Aerospace IR | https://m.hanwhaaerospace.com/eng/ir/earning-release.do | Manual before class |
+| LIG Nex1 | LIG Nex1 official site | https://www.lignex1.com/ | Manual before class |
+| Hanwha Systems | Hanwha Systems financial information | https://www.hanwhasystems.com/en/investment/financial-info.do | Manual before class |
+| Hyundai Rotem | Hyundai Rotem official site | https://www.hyundai-rotem.co.kr/ | Manual before class |
+| KAI | KAI annual report | https://www.koreaaero.com/EN/IR/AnnualReport.aspx | Manual before class |
+| NAVER | NAVER earnings | https://www.navercorp.com/en/investment/earnings | Manual before class |
+| Douzone Bizon | Douzone investor relations | https://en.douzone.com/invest/return.jsp | Manual before class |
 | Doosan Robotics | Doosan Robotics IR | https://www.doosanrobotics.com/en/investment/ir/irdata/ | Manual before class |
+| Rainbow Robotics | Rainbow Robotics official site | https://www.rainbow-robotics.com/ | Manual before class |
 | Samsung Biologics | Samsung Biologics Newsroom | https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results | Manual before class |
+| Alteogen | Alteogen IR information | https://www.alteogen.com/en/sub/ir/information.php | Manual before class |
 | NVIDIA | NVIDIA 2025 Annual Report | https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf | Manual before class |
+| AMD | AMD Investor Relations | https://ir.amd.com/ | Manual before class |
 | Broadcom | Broadcom Investor Relations | https://investors.broadcom.com/ | Manual before class |
 | Palantir | Palantir Investor Relations | https://investors.palantir.com/ | Manual before class |
+| ServiceNow | ServiceNow Investor Relations | https://investor.servicenow.com/overview/default.aspx | Manual before class |
+| Snowflake | Snowflake FY2025 results | https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2025/ | Manual before class |
+| Northrop Grumman | Northrop Grumman annual reports | https://www.northropgrumman.com/who-we-are/annual-reports | Manual before class |
+| AeroVironment | AeroVironment Investor Relations | https://investor.avinc.com/ | Manual before class |
+| Kratos | Kratos Investor Relations | https://ir.kratosdefense.com/ | Manual before class |
 | Rocket Lab | Rocket Lab Investor Relations | https://investors.rocketlabcorp.com/ | Manual before class |
+| AST SpaceMobile | AST SpaceMobile Investor Relations | https://investors.ast-science.com/ | Manual before class |
+| Symbotic | Symbotic official site | https://www.symbotic.com/ | Manual before class |
+| Intuitive Surgical | Intuitive Surgical Investor Relations | https://isrg.intuitive.com/ | Manual before class |
+| Recursion | Recursion official site | https://www.recursion.com/ | Manual before class |
 
 ## v2 Automation Candidate
 
