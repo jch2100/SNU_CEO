@@ -8,7 +8,7 @@ const state = {
   activeIndustryId: "technology"
 };
 
-const dataVersion = "20260613-tenbagger-size";
+const dataVersion = "20260614-tenbagger-buckets";
 
 const tenbaggerThemeCoreTags = {
   "ai-infra": ["ai-infra", "semiconductor", "data-center"],
@@ -360,7 +360,16 @@ function scoreTenbaggerCandidate(candidate, selectedOptions) {
 
 function tenbaggerResults() {
   const selectedOptions = selectedTenbaggerOptions();
-  const scored = state.tenbagger.candidates
+  const themeOption = selectedOptions.find((option) => option.questionId === "theme");
+  const sizeOption = selectedOptions.find((option) => option.questionId === "size");
+  const bucketKey = `${themeOption?.id || ""}:${sizeOption?.id || ""}`;
+  const bucketTickers = state.tenbagger.scenarioBuckets?.[bucketKey] || [];
+  const candidatePool = bucketTickers.length
+    ? bucketTickers
+      .map((ticker) => state.tenbagger.candidates.find((candidate) => candidate.ticker === ticker))
+      .filter(Boolean)
+    : state.tenbagger.candidates;
+  const scored = candidatePool
     .map((candidate) => scoreTenbaggerCandidate(candidate, selectedOptions))
     .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name, "ko"));
 

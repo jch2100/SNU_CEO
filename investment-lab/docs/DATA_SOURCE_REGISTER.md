@@ -63,6 +63,8 @@ The tenbagger tab is a game-like teaching tool. It uses qualitative candidate da
 | Samsung Electronics | Samsung Electronics IR | https://www.samsung.com/global/ir/ | Manual before class |
 | Hanmi Semiconductor | Hanmi Semiconductor official site | https://www.hanmisemi.com/ | Manual before class |
 | ISC | ISC official site | https://isc21.kr/ | Manual before class |
+| DB HiTek | DB HiTek official site | https://www.dbhitek.com/ | Manual before class |
+| Leeno Industrial | Leeno official site | https://leeno.com/ | Manual before class |
 | Hanwha Aerospace | Hanwha Aerospace IR | https://m.hanwhaaerospace.com/eng/ir/earning-release.do | Manual before class |
 | LIG Nex1 | LIG Nex1 official site | https://www.lignex1.com/ | Manual before class |
 | Hanwha Systems | Hanwha Systems financial information | https://www.hanwhasystems.com/en/investment/financial-info.do | Manual before class |
@@ -71,7 +73,9 @@ The tenbagger tab is a game-like teaching tool. It uses qualitative candidate da
 | AP Satellite | AP Satellite official site | https://www.apsi.co.kr/en/index.php | Manual before class |
 | CONTEC | CONTEC official site | https://www.contec.kr/ | Manual before class |
 | NAVER | NAVER earnings | https://www.navercorp.com/en/investment/earnings | Manual before class |
+| Kakao | Kakao IR | https://www.kakaocorp.com/ir/main | Manual before class |
 | Douzone Bizon | Douzone investor relations | https://en.douzone.com/invest/return.jsp | Manual before class |
+| Polaris Office | Polaris Office official site | https://www.polarisofficecorp.com/ | Manual before class |
 | Saltlux | Saltlux official site | https://www.saltlux.com/eng/ | Manual before class |
 | ESTsoft | ESTsoft investment information | https://estsoft.ai/en/investment-2 | Manual before class |
 | Doosan Robotics | Doosan Robotics IR | https://www.doosanrobotics.com/en/investment/ir/irdata/ | Manual before class |
@@ -80,20 +84,30 @@ The tenbagger tab is a game-like teaching tool. It uses qualitative candidate da
 | Alteogen | Alteogen IR information | https://www.alteogen.com/en/sub/ir/information.php | Manual before class |
 | NVIDIA | NVIDIA 2025 Annual Report | https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf | Manual before class |
 | AMD | AMD Investor Relations | https://ir.amd.com/ | Manual before class |
+| Marvell | Marvell Investor Relations | https://investor.marvell.com/ | Manual before class |
 | Broadcom | Broadcom Investor Relations | https://investors.broadcom.com/ | Manual before class |
 | Astera Labs | Astera Labs Investor Relations | https://asteralabs.gcs-web.com/ | Manual before class |
 | Credo Technology | Credo official site | https://www.credosemi.com/ | Manual before class |
 | Palantir | Palantir Investor Relations | https://investors.palantir.com/ | Manual before class |
 | ServiceNow | ServiceNow Investor Relations | https://investor.servicenow.com/overview/default.aspx | Manual before class |
+| Salesforce | Salesforce official news | https://www.salesforce.com/news/ | Manual before class |
 | Snowflake | Snowflake FY2025 results | https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2025/ | Manual before class |
+| C3.ai | C3.ai Investor Relations | https://ir.c3.ai/ | Manual before class |
+| SoundHound AI | SoundHound Investor Relations | https://investors.soundhound.com/ | Manual before class |
 | Northrop Grumman | Northrop Grumman annual reports | https://www.northropgrumman.com/who-we-are/annual-reports | Manual before class |
+| Lockheed Martin | Lockheed Martin Investor Relations | https://investors.lockheedmartin.com/ | Manual before class |
 | AeroVironment | AeroVironment Investor Relations | https://investor.avinc.com/ | Manual before class |
 | Kratos | Kratos Investor Relations | https://ir.kratosdefense.com/ | Manual before class |
 | Rocket Lab | Rocket Lab Investor Relations | https://investors.rocketlabcorp.com/ | Manual before class |
 | AST SpaceMobile | AST SpaceMobile Investor Relations | https://investors.ast-science.com/ | Manual before class |
 | Symbotic | Symbotic official site | https://www.symbotic.com/ | Manual before class |
 | Intuitive Surgical | Intuitive Surgical Investor Relations | https://isrg.intuitive.com/ | Manual before class |
+| Celltrion | Celltrion official site | https://www.celltrion.com/en-us | Manual before class |
+| Stryker | Stryker official site | https://www.stryker.com/us/en/about.html | Manual before class |
 | Recursion | Recursion official site | https://www.recursion.com/ | Manual before class |
+| CUREXO | CUREXO official site | https://www.curexo.com/en/ | Manual before class |
+| PROCEPT BioRobotics | PROCEPT BioRobotics Investor Relations | https://ir.procept-biorobotics.com/ | Manual before class |
+| Butterfly Network | Butterfly Network Investor Relations | https://investors.butterflynetwork.com/ | Manual before class |
 
 ## v2 Automation Candidate
 
