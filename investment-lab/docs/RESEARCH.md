@@ -87,11 +87,11 @@ Purpose:
 
 Candidate logic:
 
-- AI infrastructure: SK hynix, Samsung Electronics, Hanmi Semiconductor, ISC, NVIDIA, AMD, Broadcom, Astera Labs, Credo.
-- AI software/platform: NAVER, Douzone Bizon, Saltlux, ESTsoft, Palantir, ServiceNow, Snowflake.
-- Defense/space: Hanwha Aerospace, LIG Nex1, Hanwha Systems, Hyundai Rotem, KAI, AP Satellite, CONTEC, Northrop Grumman, AeroVironment, Kratos, Rocket Lab, AST SpaceMobile.
+- AI infrastructure: SK hynix, Samsung Electronics, Hanmi Semiconductor, ISC, DB HiTek, Leeno, NVIDIA, AMD, Broadcom, Marvell, Astera Labs, Credo.
+- AI software/platform: NAVER, Kakao, Douzone Bizon, Polaris Office, Saltlux, ESTsoft, Palantir, ServiceNow, Salesforce, Snowflake, C3.ai, SoundHound AI.
+- Defense/space: Hanwha Aerospace, LIG Nex1, Hanwha Systems, Hyundai Rotem, KAI, AP Satellite, CONTEC, Northrop Grumman, Lockheed Martin, AeroVironment, Kratos, Rocket Lab, AST SpaceMobile.
 - Robotics/automation: Doosan Robotics, Rainbow Robotics, Intuitive Surgical, Symbotic.
-- Bio/platform: Samsung Biologics, Alteogen, Recursion.
+- Bio/platform: Samsung Biologics, Celltrion, Alteogen, CUREXO, Stryker, PROCEPT BioRobotics, Butterfly Network, Recursion.
 
 The quiz asks four objective questions:
 
@@ -100,7 +100,7 @@ The quiz asks four objective questions:
 - Evidence type the learner trusts.
 - Drawdown tolerance.
 
-The result is a score-based match against qualitative tags. The first question, long-term theme, now carries the heaviest weight so off-theme companies do not appear merely because they share generic quality or stage tags. Company size is also treated as a real constraint: if the learner chooses small/high-volatility, mega-cap leaders should be pushed out by smaller optionality names. It deliberately avoids price targets, expected returns, or buy/sell language.
+The result now uses 12 explicit scenario buckets: 4 themes x 3 company-size choices. Each bucket has exactly two Korean and two global candidates, and candidate tickers are not reused across buckets. The remaining questions still affect the prompt and displayed score, but the theme-size situation controls the candidate universe. It deliberately avoids price targets, expected returns, or buy/sell language.
 
 Primary source candidates:
 
