@@ -8,7 +8,7 @@ const state = {
   activeIndustryId: "technology"
 };
 
-const dataVersion = "20260614-tenbagger-buckets";
+const dataVersion = "20260615-tenbagger-research-prompt";
 
 const tenbaggerThemeCoreTags = {
   "ai-infra": ["ai-infra", "semiconductor", "data-center"],
@@ -506,7 +506,7 @@ function makeTenbaggerPrompt(result) {
   )).join("\n");
   const answers = result.selectedOptions.map((option) => option.label).join(", ");
 
-  return `아래 결과를 투자 추천이 아니라 텐배거 후보를 공부하는 수업용 토론 자료로 정리해줘.
+  return `아래 결과를 매수 추천이 아니라, 이 후보를 더 조사할지 제외할지 판단하기 위한 리서치 브리프와 인사이트로 정리해줘.
 
 [학습자 선택]
 ${answers}
@@ -515,11 +515,11 @@ ${answers}
 ${rows}
 
 다음 형식으로 정리해줘.
-1. 왜 이 네 종목이 나왔는지
-2. 각 종목이 10배가 되려면 필요한 조건
-3. 반대로 실패할 수 있는 이유
-4. 실제 투자 전에 반드시 확인할 숫자와 공식 자료
-5. 매수/매도 결론 없이 토론 질문 3개`;
+1. 각 후보의 핵심 투자 가설
+2. 이 가설을 확인할 객관적 지표와 원출처
+3. 10배 성장이 가능하려면 필요한 조건
+4. 후보에서 제외해야 할 경고 신호
+5. 지금 바로 이어서 조사할 질문 5개`;
 }
 
 function copyText(textareaSelector, statusSelector) {
