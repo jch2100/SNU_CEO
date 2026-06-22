@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>사진 1장 + 프롬프트로 바꾸는 멋진 이미지</title>
+<style>
+:root{--ink:#172234;--muted:#637084;--navy:#123250;--line:#dbe4ed;--paper:#fff;--bg:#f2f5f8;--blue:#2f75bc;--yellow:#fff7dd}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Malgun Gothic",Arial,sans-serif;line-height:1.62}main{width:min(1180px,calc(100% - 34px));margin:34px auto 70px}.cover{padding:44px 40px;border-radius:20px;background:linear-gradient(125deg,#102a45,#245e92);color:#fff}.cover small{font-weight:800;letter-spacing:.11em;color:#c9e2fb}.cover h1{font-size:clamp(29px,4vw,44px);line-height:1.2;letter-spacing:-.05em;margin:10px 0 14px}.cover p{font-size:17px;color:#e5f0fb;margin:0;max-width:760px}.section{margin-top:20px;padding:32px;background:var(--paper);border:1px solid var(--line);border-radius:17px;box-shadow:0 8px 28px rgba(18,40,64,.06)}h2{font-size:23px;letter-spacing:-.04em;margin:0 0 14px}h3{font-size:18px;letter-spacing:-.025em;margin:0 0 8px}.muted{color:var(--muted)}.notice{padding:14px 16px;background:var(--yellow);border-left:4px solid #bc8c2a;border-radius:0 10px 10px 0}.steps,.grid2,.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.steps{grid-template-columns:repeat(3,1fr)}.step,.check{padding:15px;border:1px solid var(--line);background:#f8fafc;border-radius:12px}.step b,.check b{display:block;font-size:12px;color:var(--blue);margin-bottom:4px}.photo{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;margin:0}.photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#e9edf2}.cap{padding:13px 15px}.cap small{display:block;font-weight:700;color:var(--muted)}.tag{display:inline-block;background:#eaf2fb;color:#2664a1;padding:4px 9px;border-radius:99px;font-size:12px;font-weight:800;margin-bottom:8px}.prompt-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.copy{font-size:12px;color:var(--muted);white-space:nowrap}.prompt-box{position:relative}.prompt-box pre{white-space:pre-wrap;word-break:break-word;margin:15px 0 0;padding:19px;background:#0e1e2e;color:#eaf2fb;border-radius:12px;border:1px solid #29435d;font:12.5px/1.6 Consolas,"Cascadia Code",monospace}.copy-button{position:absolute;top:27px;right:12px;border:1px solid #6d94bc;border-radius:7px;padding:5px 10px;background:#173a5e;color:#fff;font:700 12px/1 Pretendard,"Malgun Gothic",Arial,sans-serif;cursor:pointer}.copy-button:hover{background:#245f96}.checks{grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.poster-note{border:1px solid #bcd4ed;background:#f2f8ff;border-radius:12px;padding:16px;margin:14px 0}.footer{text-align:center;color:var(--muted);font-size:12px;margin:18px 0}@media(max-width:720px){main{width:min(100% - 22px,1180px);margin-top:12px}.cover,.section{padding:24px 19px}.steps,.grid2,.checks{grid-template-columns:1fr}.prompt-head{flex-direction:column}.copy{white-space:normal}}@media print{body{background:#fff}main{width:100%;margin:0}.section{box-shadow:none;break-inside:avoid}.cover{border-radius:0}.copy-button{display:none}}
+</style></head>
+<body><main>
+<header class="cover"><small>CEO COURSE · MOBILE IMAGE PRACTICE</small><h1>사진 1장 + 프롬프트로<br>바꾸는 멋진 이미지</h1><p>ChatGPT의 <b>이미지 만들기</b>에서 본인 사진을 올리고, 아래 고정 영문 프롬프트를 그대로 붙여 넣습니다. 인물의 동일성은 지키고, 복장·포즈·장면만 목적에 맞게 새롭게 만듭니다.</p></header>
+<section class="section"><h2>사용 원칙</h2><div class="notice"><b>프롬프트는 수정하지 않습니다.</b> 원본 사진이 인물의 연령대·성별 표현·얼굴·헤어를 알려주며, 프롬프트는 이를 유지한 채 복장·포즈·거리·공간을 바꾸게 합니다.</div><div class="steps" style="margin-top:16px"><div class="step"><b>1. PHOTO</b>ChatGPT에서 <strong>이미지 만들기</strong>를 열고 본인 사진 1장을 첨부합니다.</div><div class="step"><b>2. PROMPT</b>아래에서 원하는 프롬프트 하나를 <strong>수정 없이</strong> 통째로 붙여 넣습니다.</div><div class="step"><b>3. CHECK</b>얼굴·헤어·연령대는 본인과 같은지, 손·발·복장이 자연스러운지 확인합니다.</div></div></section>
+<section class="section"><h2>검증용 가상 인물</h2><p class="muted">실제 인물이 아닌, 같은 고정 프롬프트의 남녀 적용 결과를 보기 위한 AI 생성 예시입니다.</p><div class="grid2"><figure class="photo"><img src="male_source.png" alt="가상 50대 남성 원본"><figcaption class="cap"><small>원본 A</small><b>가상 한국인 50대 남성</b></figcaption></figure><figure class="photo"><img src="female_source.png" alt="가상 50대 여성 원본"><figcaption class="cap"><small>원본 B</small><b>가상 한국인 50대 여성</b></figcaption></figure></div></section>
+<section class="section"><div class="prompt-head"><div><span class="tag">STUDIO 01</span><h2>암체어에 앉은 리더십 포트레이트</h2></div><span class="copy">아래 영문 전체 복사</span></div><p class="muted">강연자 소개, 인터뷰, 프리미엄 기업 브로슈어에 어울립니다.</p><pre>Transform the uploaded person into a warm, confident executive lounge portrait.
+
+Keep unchanged: the same person's identity, facial structure, perceived adult age, gender presentation, skin tone, hairstyle, and natural body proportions. Do not make the person younger or older and do not alter gender presentation.
+
+Change: create a believable relaxed seated pose in a refined armchair. Replace casual clothing with an elegant, contemporary smart-business outfit naturally appropriate to the person’s presentation and proportions, with realistic fabric and fit.
+
+Scene: a premium quiet studio lounge with a warm neutral backdrop, one understated plant or architectural texture, no visible brand. Composition: a three-quarter body portrait from a comfortable eye-level camera position; the armchair, hands, and upper legs should be visible. Lighting: soft window-like key light from camera left, gentle fill, warm neutral 3800K.
+
+Finish: preserve real skin texture, pores, fine lines, and identity; correct color casts and temporary blemishes only; natural eyes and understated expression.
+
+Avoid: plastic skin, face reshaping, gender changes, exaggerated posing, extra fingers, text, logo, watermark.</pre><div class="grid2" style="margin-top:16px"><figure class="photo"><img src="male_prompt_1_armchair.png" alt="암체어 포트레이트 남성 예시"><figcaption class="cap"><small>남성 적용 결과</small><b>암체어 · 3/4 바디 · 네이비 수트</b></figcaption></figure><figure class="photo"><img src="female_prompt_1_armchair.png" alt="암체어 포트레이트 여성 예시"><figcaption class="cap"><small>여성 적용 결과</small><b>암체어 · 3/4 바디 · 네이비 수트</b></figcaption></figure></div></section>
+<section class="section"><div class="prompt-head"><div><span class="tag">STUDIO 02</span><h2>전신 스튜디오 리더십 프로필</h2></div><span class="copy">아래 영문 전체 복사</span></div><p class="muted">회사 소개, 무대 스크린, 포스터형 프로필에 어울립니다.</p><pre>Transform the uploaded person into a full-length, contemporary studio leadership portrait.
+
+Keep unchanged: the same person's identity, facial structure, perceived adult age, gender presentation, skin tone, hairstyle, and natural body proportions. Do not make the person younger or older and do not alter gender presentation.
+
+Change: create a believable standing pose with relaxed arms and confident posture. Replace casual clothing with a well-tailored modern business outfit naturally appropriate to the person’s presentation and proportions, in deep navy, charcoal, ivory, or white. The clothing must look realistic, properly fitted, and complete from shoulders to shoes.
+
+Scene: seamless light-gray or muted blue-gray studio background with generous negative space. Composition: full body visible head-to-toe, vertical 4:5, 50mm lens, camera at chest height. Lighting: broad softbox key light from camera left, gentle fill from right, subtle shadow on floor.
+
+Finish: preserve real skin texture, pores, fine lines, and identity; correct color casts and temporary blemishes only.
+
+Avoid: plastic skin, face reshaping, gender changes, cropped feet, distorted hands, text, logo, watermark.</pre><div class="grid2" style="margin-top:16px"><figure class="photo"><img src="male_prompt_2_full_body.png" alt="전신 스튜디오 남성 예시"><figcaption class="cap"><small>남성 적용 결과</small><b>전신 · 스튜디오 · 네이비 수트</b></figcaption></figure><figure class="photo"><img src="female_prompt_2_full_body.png" alt="전신 스튜디오 여성 예시"><figcaption class="cap"><small>여성 적용 결과</small><b>전신 · 스튜디오 · 네이비 수트</b></figcaption></figure></div></section>
+<section class="section"><div class="prompt-head"><div><span class="tag">STUDIO 03</span><h2>창가 자연광의 편안한 프로필</h2></div><span class="copy">아래 영문 전체 복사</span></div><p class="muted">친근한 리더 소개, 개인 브랜딩, 프로필 페이지에 적합합니다.</p><pre>Transform the uploaded person into an approachable professional portrait with soft natural window light.
+
+Keep unchanged: the same person's identity, facial structure, perceived adult age, gender presentation, skin tone, hairstyle, and natural body proportions. Do not make the person younger or older and do not alter gender presentation.
+
+Change: create a believable relaxed standing or seated pose, chosen naturally for the person. Replace casual clothing with elevated smart-casual clothing naturally appropriate to the person’s presentation and proportions, using a warm-neutral knit, a soft tailored layer, or a clean collared top with realistic fabric.
+
+Scene: a bright, warm-neutral studio near a large window with a softly blurred background. Composition: an environmental portrait showing the person from knee-up or three-quarter body, vertical 4:5. Lighting: diffused window light from camera left, gentle fill from right, golden-neutral 3800K, soft hair separation.
+
+Finish: preserve real skin texture, pores, fine lines, and identity; correct color casts and temporary blemishes only; natural eyes and relaxed expression.
+
+Avoid: plastic skin, face reshaping, gender changes, costume styling, text, logo, watermark.</pre><div class="grid2" style="margin-top:16px"><figure class="photo"><img src="male_prompt_3_window.png" alt="창가 자연광 남성 예시"><figcaption class="cap"><small>남성 적용 결과</small><b>창가 · 자연광 · 스마트 캐주얼</b></figcaption></figure><figure class="photo"><img src="female_prompt_3_window.png" alt="창가 자연광 여성 예시"><figcaption class="cap"><small>여성 적용 결과</small><b>창가 · 자연광 · 스마트 캐주얼</b></figcaption></figure></div></section>
+<section class="section"><div class="prompt-head"><div><span class="tag">STUDIO 04</span><h2>흑백 파인아트 에디토리얼</h2></div><span class="copy">아래 영문 전체 복사</span></div><p class="muted">강한 인상을 주는 강연자 소개, 전시형 프로필, 표지 이미지에 적합합니다.</p><pre>Transform the uploaded person into a timeless black-and-white fine-art studio portrait with a confident editorial mood.
+
+Keep unchanged: the same person's identity, facial structure, perceived adult age, gender presentation, hairstyle, and natural body proportions. Do not make the person younger or older and do not alter gender presentation.
+
+Change: create a believable standing or seated studio pose with a subtle three-quarter turn. Replace casual clothing with precisely tailored black or charcoal attire naturally appropriate to the person’s presentation and proportions. Keep the styling dignified, modern, and realistic.
+
+Scene: a minimalist studio wall with subtle texture. Composition: show a mid-length or three-quarter body portrait with comfortable negative space, vertical 4:5. Lighting: dramatic but flattering side light from camera left, controlled deep shadows, a soft wall shadow, and a monochrome editorial finish.
+
+Finish: retain realistic skin texture, pores, fine lines, and identity; refine temporary blemishes only; sharp natural eyes.
+
+Avoid: plastic skin, face reshaping, gender changes, costume styling, text, logo, watermark.</pre><div class="grid2" style="margin-top:16px"><figure class="photo"><img src="male_prompt_4_mono.png" alt="흑백 에디토리얼 남성 예시"><figcaption class="cap"><small>남성 적용 결과</small><b>흑백 · 스튜디오 · 에디토리얼</b></figcaption></figure><figure class="photo"><img src="female_prompt_4_mono.png" alt="흑백 에디토리얼 여성 예시"><figcaption class="cap"><small>여성 적용 결과</small><b>흑백 · 스튜디오 · 에디토리얼</b></figcaption></figure></div></section>
+<section class="section"><h2>재미를 더하는 인물 포스터 2종</h2><p class="muted">캐러셀이 아닌 <b>포스터</b>로 부릅니다. 아래 프롬프트는 ChatGPT의 대화 맥락과 저장된 메모리를 활용해, 인물과 어울리는 긍정적 CEO 메시지를 한글로 직접 구성합니다.</p><div class="poster-note"><b>문구 입력 없이 실행</b> · 인물 사진을 올린 뒤 고정 프롬프트만 붙여 넣습니다. ChatGPT가 알 수 있는 맥락이 부족하면, 회사·개인 정보를 꾸며내지 않고 보편적으로 긍정적인 CEO 리더십 문구를 사용합니다.</div></section>
+<section class="section"><div class="prompt-head"><div><span class="tag">POSTER 01</span><h2>칠판 분필 인물 포스터</h2></div><span class="copy">아래 영문 전체 복사</span></div><pre>Transform the uploaded person into a vertical 4:5 chalkboard poster portrait.
+
+Keep unchanged: the same person's identity, facial structure, perceived adult age, gender presentation, skin tone, hairstyle, and natural body proportions. Do not make the person younger or older and do not alter gender presentation.
+
+Change: create a believable pose and clothing appropriate to the person's executive or leadership context. Integrate the person naturally into a dark charcoal classroom chalkboard scene. Use a hand-drawn white chalk visual system: a large chalk title, three to five short notes, arrows, circles, stars, check marks, and small accent chalk colors in yellow, sky blue, and pink. Keep the layout spacious, readable, realistic, and analog rather than digital.
+
+Create all visible text in readable Korean. Write one concise, positive CEO-style title and three to five positive short leadership messages based on the user's conversation context and remembered work preferences, when reliably available. Never invent personal, company, or performance facts. If context is insufficient, use neutral positive messages about learning, teamwork, customer value, and steady improvement. Do not use English, placeholder text, or unreadable fake lettering.
+
+Avoid: plastic skin, face reshaping, gender changes, dense clutter, logo, watermark.</pre><figure class="photo" style="margin-top:16px"><img src="male_poster_1_chalkboard.png" alt="칠판 분필 인물 포스터 예시"><figcaption class="cap"><small>적용 예시</small><b>인물 동일성 유지 · 분필 레이아웃과 복장·포즈 변화</b></figcaption></figure></section>
+<section class="section"><div class="prompt-head"><div><span class="tag">POSTER 02</span><h2>포스트잇 아이디어 월 인물 포스터</h2></div><span class="copy">아래 영문 전체 복사</span></div><pre>Transform the uploaded person into a vertical 4:5 post-it idea-wall poster portrait.
+
+Keep unchanged: the same person's identity, facial structure, perceived adult age, gender presentation, skin tone, hairstyle, and natural body proportions. Do not make the person younger or older and do not alter gender presentation.
+
+Change: create a believable pose and clothing appropriate to the person's executive or leadership context. Place the person naturally beside or in front of a bright, organized idea wall. Use grouped post-it notes in soft yellow, pink, mint, sky blue, and lavender, with realistic tape or pin details. Add simple hand-drawn arrows, circles, stars, and speech-bubble marks. The result should feel like an inviting, structured brainstorming poster, not a cluttered memo board.
+
+Create all visible text in readable Korean. Write one concise, positive CEO-style title and three to five positive short leadership messages based on the user's conversation context and remembered work preferences, when reliably available. Never invent personal, company, or performance facts. If context is insufficient, use neutral positive messages about learning, teamwork, customer value, and steady improvement. Do not use English, placeholder text, or unreadable fake lettering.
+
+Avoid: plastic skin, face reshaping, gender changes, dense clutter, logo, watermark.</pre><figure class="photo" style="margin-top:16px"><img src="female_poster_2_postit.png" alt="포스트잇 아이디어 월 인물 포스터 예시"><figcaption class="cap"><small>적용 예시</small><b>인물 동일성 유지 · 포스트잇 월과 복장·포즈 변화</b></figcaption></figure></section>
+<p class="footer">예시 인물과 결과물은 AI 생성 가상 이미지입니다. 생성 결과는 업로드 사진에 따라 달라질 수 있으므로 최종 사용 전 얼굴 동일성, 손·발, 복장, 텍스트 정확성을 확인하세요.</p>
+</main><script>
+document.querySelectorAll('.section pre').forEach((pre) => {
+  const box = document.createElement('div');
+  box.className = 'prompt-box';
+  pre.parentNode.insertBefore(box, pre);
+  box.appendChild(pre);
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'copy-button';
+  button.textContent = '복사';
+  button.addEventListener('click', async () => {
+    const text = pre.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (error) {
+      const range = document.createRange();
+      range.selectNodeContents(pre);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand('copy');
+      selection.removeAllRanges();
+    }
+    button.textContent = '복사됨';
+    setTimeout(() => { button.textContent = '복사'; }, 1600);
+  });
+  box.appendChild(button);
+});
+</script></body></html>
