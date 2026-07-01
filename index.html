@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="경영자를 위한 AI 마스터과정 — ChatGPT로 매주 하나의 결과물을 만들고 8주 후 실행 가능한 산출물을 가져가는 실전 과정">
+  <meta name="description" content="경영자를 위한 AI 마스터과정 — ChatGPT로 매회 하나의 결과물을 만들고 8회 후 실행 가능한 산출물을 가져가는 실전 과정">
   <title>경영자를 위한 AI 마스터과정</title>
   <style>
     /* ═══════════════ RESET ═══════════════ */
@@ -655,6 +655,101 @@
       opacity: 0.88;
     }
 
+    .tool-launch {
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .tool-launch-header {
+      margin-bottom: 18px;
+    }
+
+    .tool-launch-kicker {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--link-blue-dark);
+      margin-bottom: 8px;
+    }
+
+    .tool-launch-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.24;
+      color: var(--white);
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: space-between;
+      min-height: 190px;
+      padding: 24px;
+      border-radius: 8px;
+      background: #1c1c1e;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .tool-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.48);
+      margin-bottom: 8px;
+    }
+
+    .tool-title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.24;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .tool-desc {
+      font-size: 0.9375rem;
+      line-height: 1.62;
+      color: var(--text-sub-dark);
+      letter-spacing: -0.224px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .tool-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      min-height: 40px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--white);
+      font-size: 0.9375rem;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .tool-cta:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.34);
+    }
+
     /* ═══════════════ OUTCOMES (light) ═══════════════ */
     .outcomes-grid {
       display: grid;
@@ -1173,6 +1268,10 @@
         gap: 12px;
       }
 
+      .tool-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .outcomes-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
@@ -1225,13 +1324,13 @@
   <!-- ═══════════ 1. HERO (black) ═══════════ -->
   <section id="hero" class="hero bg-black">
     <div class="hero-inner">
-      <span class="hero-badge">2026년 6월 1일 월요일 개강</span>
+      <span class="hero-badge">2026년 7월 9일 목요일 2기 개강</span>
       <h1 class="hero-title">
         AI를 듣는 시간에서,<br>
         <span class="accent">실제 쓰는 시간으로.</span>
       </h1>
       <p class="hero-sub">
-        8주 동안 매주 하나의 결과물을 만들고,<br>
+        주 1회, 8회 동안 매회 하나의 결과물을 만들고,<br>
         나만의 실행 방식으로 가져가는 <strong>경영자를 위한 AI 마스터과정</strong>
       </p>
       <div class="hero-cta-row">
@@ -1239,10 +1338,10 @@
         <a href="#contact" class="btn-apple-pill">전화 문의 보기</a>
       </div>
       <div class="hero-meta">
-        <span>2026년 6월 1일 월요일 개강</span>
-        <span>2026년 7월 20일 월요일 종료</span>
+        <span>2026년 7월 9일 목요일 2기 개강</span>
+        <span>2026년 9월 3일 목요일 종료</span>
         <span>서울대학교 호암교수회관</span>
-        <span>주 1회 · 총 8주</span>
+        <span>주 1회, 8회 과정 (8.20 휴강)</span>
       </div>
     </div>
     <div class="scroll-hint">
@@ -1323,9 +1422,9 @@
   <section id="curriculum" class="section bg-light">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title section-title--dark">8주 동안 무엇이 남을까요?</h2>
+        <h2 class="section-title section-title--dark">8회 과정에서 무엇이 남을까요?</h2>
         <p class="section-subtitle section-subtitle--dark">
-          <strong>자서전</strong>, 투자 판단, 멘토 GPT, 발표자료, 미래 시나리오까지 매주 하나씩 완성됩니다
+          이미지 실습, 투자 판단, <strong>자서전</strong>, 멘토 GPT, 발표자료, 미래 시나리오까지 매회 하나씩 완성됩니다
         </p>
       </div>
 
@@ -1333,9 +1432,9 @@
       <div class="part-block fade-in">
         <div class="part-header">
           <span class="part-label">PART 1 · 1~3주</span>
-          <h3 class="part-title">AI와 친해지고, 나의 판단을 구조화합니다</h3>
+          <h3 class="part-title">휴대폰으로 따라 하며, AI 사용 감각을 익힙니다</h3>
           <p class="part-desc">
-            ChatGPT의 실제 사용법을 익히고, <strong>자서전</strong>의 재료가 되는 인생 질문과 투자 판단을 구체적인 문서로 정리합니다.
+            ChatGPT의 기본 사용법부터 이미지 만들기, 투자 자료 정리까지 한 단계씩 따라 하며 나만의 첫 산출물을 만듭니다.
           </p>
         </div>
         <div class="weeks">
@@ -1345,7 +1444,7 @@
           </div>
           <div class="week-row">
             <span class="week-num">W2</span>
-            <span class="week-topic">AI <strong>자서전</strong> 인터뷰 설계 + 인생 질문지도 — 인터뷰 질문지와 생애사 타임라인</span>
+            <span class="week-topic">사진 1장으로 따라 하는 이미지 생성 실습 — 프로필 이미지와 활용 프롬프트</span>
           </div>
           <div class="week-row">
             <span class="week-num">W3</span>
@@ -1358,15 +1457,15 @@
       <div class="part-block fade-in">
         <div class="part-header">
           <span class="part-label">PART 2 · 4~6주</span>
-          <h3 class="part-title">표현하고, 멘토를 만들고, 전달합니다</h3>
+          <h3 class="part-title">나의 이야기와 판단을 구조화하고, 전달할 자료로 바꿉니다</h3>
           <p class="part-desc">
-            생성형 AI 표현을 넓히고, 나의 의사결정을 돕는 <strong>멘토 GPT</strong>와 <strong>발표자료</strong> 초안을 만듭니다.
+            자서전 인터뷰, 멘토 GPT, 발표자료 초안을 만들며 AI를 나의 생각과 경험을 정리하는 도구로 확장합니다.
           </p>
         </div>
         <div class="weeks">
           <div class="week-row">
             <span class="week-num">W4</span>
-            <span class="week-topic">생성형 AI 표현 확장 실습 — 프로필 이미지, 기업 사가, 휴가 계획 등</span>
+            <span class="week-topic">AI <strong>자서전</strong> 인터뷰 설계 + 인생 질문지도 — 인터뷰 질문지와 생애사 타임라인</span>
           </div>
           <div class="week-row">
             <span class="week-num">W5</span>
@@ -1408,7 +1507,7 @@
       <div class="section-header fade-in">
         <h2 class="section-title section-title--light">배움은 결과물로 남습니다</h2>
         <p class="section-subtitle section-subtitle--light">
-          AI 멘토, <strong>AI 자서전</strong>, 발표자료, 뉴스 브리프까지 강의에서 직접 활용합니다
+          이미지 실습, 투자 실험실, AI 멘토, <strong>AI 자서전</strong>까지 강의에서 직접 활용합니다
         </p>
       </div>
 
@@ -1431,7 +1530,7 @@
 
       <div class="tab-panel fade-in" id="tab-autobio">
         <h3 class="tab-title">AI 자서전</h3>
-        <p class="tab-sub">2주차부터 누적되는 핵심 산출물 · 인터뷰 질문지와 생애사 타임라인에서 출발합니다</p>
+        <p class="tab-sub">4주차부터 누적되는 핵심 산출물 · 인터뷰 질문지와 생애사 타임라인에서 출발합니다</p>
         <div class="tab-image">
           <img class="image-top" src="autobiography/cover.jpg" alt="AI 자서전 예시 표지" loading="lazy"
             onerror="this.parentElement.innerHTML='예시 이미지 준비 중'">
@@ -1460,6 +1559,35 @@
         </div>
         <a href="news-brief-section.html" class="tab-cta" target="_blank" rel="noopener">전체 화면 보기 →</a>
       </div>
+
+      <div class="tool-launch fade-in" id="tools">
+        <div class="tool-launch-header">
+          <div class="tool-launch-kicker">Class Tools</div>
+          <h3 class="tool-launch-title">수업 중 바로 여는 실습 도구</h3>
+        </div>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <div>
+              <div class="tool-label">Week 2</div>
+              <h4 class="tool-title">이미지 실습</h4>
+              <p class="tool-desc">
+                사진 1장과 고정 프롬프트로 프로필 이미지와 포스터를 직접 만들어 봅니다.
+              </p>
+            </div>
+            <a href="image/index.html" class="tool-cta">이미지 실습 열기 →</a>
+          </article>
+          <article class="tool-card">
+            <div>
+              <div class="tool-label">Week 3</div>
+              <h4 class="tool-title">투자 시나리오 실험실</h4>
+              <p class="tool-desc">
+                투자 추천이 아니라, ETF 비교와 산업 질문을 학습용 판단표로 정리합니다.
+              </p>
+            </div>
+            <a href="investment-lab/index.html" class="tool-cta">투자 실험실 열기 →</a>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1467,7 +1595,7 @@
   <section id="outcomes" class="section bg-light">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title section-title--dark">8주 후, 나만의 방식이 남습니다</h2>
+        <h2 class="section-title section-title--dark">8회 후, 나만의 방식이 남습니다</h2>
         <p class="section-subtitle section-subtitle--dark">결과물은 다음 실행으로 이어지고, AI는 일상의 의사결정 도구가 됩니다</p>
       </div>
 
@@ -1499,7 +1627,7 @@
         <p>
           AI를 설명만 듣는 과정이 아닙니다.<br>
           나의 판단과 전략을 실제 산출물로 만들고,<br>
-          <strong>결과물을 다음 실행으로 이어가는 8주 과정</strong>입니다.
+          <strong>결과물을 다음 실행으로 이어가는 8회 과정</strong>입니다.
         </p>
       </div>
     </div>
@@ -1573,7 +1701,7 @@
       <div class="footer-title">경영자를 위한 AI 마스터과정</div>
       <div class="footer-meta">
         김민철 국장 · 02-880-1155 · ceo2219@naver.com<br>
-        2026년 6월 1일 월요일 개강 · 2026년 7월 20일 월요일 종료 · 서울대학교 호암교수회관
+        2026년 7월 9일 목요일 2기 개강 · 2026년 9월 3일 목요일 종료 · 주 1회, 8회 과정 (8.20 휴강) · 서울대학교 호암교수회관
       </div>
       <div class="footer-copy">© 2026 경영자를 위한 AI 마스터과정. All rights reserved.</div>
     </div>
