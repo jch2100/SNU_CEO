@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">생각을 설득력 있게 정리하는 슬라이드</title>
+  <desc id="desc">딥 네이비와 아이보리로 구성한 슬라이드 예시</desc>
+  <rect width="1600" height="900" fill="#f4eddf"/>
+  <rect width="42" height="900" fill="#b58a45"/>
+  <text x="120" y="145" fill="#b58a45" font-family="Arial, sans-serif" font-size="26" letter-spacing="6">AI MASTER COURSE · WEEK 06</text>
+  <text x="120" y="300" fill="#0b1d32" font-family="Georgia, serif" font-size="86">생각을 구조화하면</text>
+  <text x="120" y="405" fill="#0b1d32" font-family="Georgia, serif" font-size="86">전달이 달라집니다.</text>
+  <line x1="120" y1="515" x2="1460" y2="515" stroke="#0b1d32" stroke-opacity=".2"/>
+  <text x="120" y="600" fill="#455260" font-family="Arial, sans-serif" font-size="34">경험 → 핵심 메시지 → 시각적 흐름 → 다음 행동</text>
+  <text x="120" y="790" fill="#0b1d32" font-family="Arial, sans-serif" font-size="24">경영자를 위한 AI 마스터과정</text>
+  <text x="1460" y="790" fill="#b58a45" font-family="Georgia, serif" font-size="48" text-anchor="end">06</text>
+</svg>

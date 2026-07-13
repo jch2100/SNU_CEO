@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1d32">
+  <title>AI 자서전 플립북</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+  <style>
+    :root { --navy:#0b1d32; --navy2:#071421; --ivory:#f4eddf; --brass:#d6bb82; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ivory); background:var(--navy2); font-family:"Noto Sans KR","Malgun Gothic",sans-serif; overflow-x:hidden; }
+    header { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:0 24px; border-bottom:1px solid rgba(255,255,255,.15); }
+    header a { color:inherit; text-decoration:none; }
+    header strong { font-family:"Noto Serif KR",Batang,serif; font-size:20px; }
+    main { min-height:calc(100vh - 68px); display:grid; place-items:center; padding:30px 20px 88px; }
+    #book { margin:auto; }
+    .page { background:#fffdf8; overflow:hidden; }
+    .page img { width:100%; height:100%; object-fit:contain; background:#fffdf8; }
+    .status { text-align:center; color:rgba(255,255,255,.62); }
+    .controls { position:fixed; left:50%; bottom:18px; transform:translateX(-50%); display:flex; align-items:center; gap:10px; padding:8px; background:rgba(7,20,33,.88); border:1px solid rgba(255,255,255,.2); }
+    button { min-width:44px; min-height:38px; color:white; background:transparent; border:1px solid rgba(255,255,255,.24); cursor:pointer; }
+    #pageCount { min-width:80px; text-align:center; font-size:13px; }
+    .error { max-width:620px; padding:30px; border:1px solid rgba(255,255,255,.2); text-align:center; }
+    .error a { color:var(--brass); }
+    @media(max-width:640px){ header span{display:none} main{padding-inline:8px} }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">← 1기 수료 기념관</a>
+    <strong id="bookTitle">AI 자서전</strong>
+    <span id="bookCreator"></span>
+  </header>
+  <main>
+    <div id="book" aria-label="자서전 플립북"></div>
+    <p class="status" id="status">책을 불러오고 있습니다.</p>
+  </main>
+  <div class="controls" aria-label="페이지 이동">
+    <button type="button" id="prev" aria-label="이전 페이지">←</button>
+    <span id="pageCount">- / -</span>
+    <button type="button" id="next" aria-label="다음 페이지">→</button>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    let pageFlip;
+
+    async function init() {
+      try {
+        if (!id) throw new Error("작품 ID가 없습니다.");
+        const response = await fetch("../data/artworks.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("작품 목록을 불러오지 못했습니다.");
+        const data = await response.json();
+        const item = data.artworks.find(entry => entry.id === id && entry.category === "story");
+        if (!item) throw new Error("등록된 자서전을 찾지 못했습니다.");
+        if (!Array.isArray(item.pages) || !item.pages.length) {
+          if (item.viewer) location.replace(new URL(item.viewer, new URL("../", location.href)));
+          else throw new Error("플립북 페이지가 아직 준비되지 않았습니다.");
+          return;
+        }
+
+        document.title = `${item.title} · AI 자서전`;
+        document.getElementById("bookTitle").textContent = item.title;
+        document.getElementById("bookCreator").textContent = item.creator;
+        const book = document.getElementById("book");
+        item.pages.forEach((src, index) => {
+          const page = document.createElement("div");
+          page.className = "page";
+          const img = document.createElement("img");
+          img.src = new URL(src, location.href).href;
+          img.alt = `${item.title} ${index + 1}쪽`;
+          img.loading = index < 3 ? "eager" : "lazy";
+          page.appendChild(img);
+          book.appendChild(page);
+        });
+
+        pageFlip = new St.PageFlip(book, {
+          width: 620,
+          height: 877,
+          size: "stretch",
+          minWidth: 300,
+          maxWidth: 620,
+          minHeight: 424,
+          maxHeight: 877,
+          showCover: true,
+          usePortrait: true,
+          mobileScrollSupport: true,
+          maxShadowOpacity: .32
+        });
+        pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+        const update = () => document.getElementById("pageCount").textContent = `${pageFlip.getCurrentPageIndex() + 1} / ${item.pages.length}`;
+        pageFlip.on("flip", update);
+        document.getElementById("status").hidden = true;
+        update();
+      } catch (error) {
+        document.getElementById("status").className = "error";
+        document.getElementById("status").innerHTML = `${error.message}<br><a href="../index.html">기념관으로 돌아가기</a>`;
+      }
+    }
+    document.getElementById("prev").addEventListener("click", () => pageFlip?.flipPrev());
+    document.getElementById("next").addEventListener("click", () => pageFlip?.flipNext());
+    window.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") pageFlip?.flipPrev();
+      if (event.key === "ArrowRight") pageFlip?.flipNext();
+    });
+    init();
+  </script>
+</body>
+</html>
