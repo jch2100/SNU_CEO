@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-13",
+  "groupPhoto": "assets/hero/group-photo.webp",
+  "notice": "공개 동의를 확인한 작품만 이 파일에 등록합니다. 동의 여부 자체는 공개 저장소에 기록하지 않습니다.",
+  "artworks": [
+    {
+      "id": "example-autobiography",
+      "category": "story",
+      "title": "찬찬히 하나씩",
+      "creator": "정찬훈 · 과정 예시",
+      "description": "인생의 장면을 질문으로 꺼내고 한 권의 이야기로 엮은 AI 자서전 예시입니다.",
+      "thumbnail": "../autobiography/cover.jpg",
+      "viewer": "../autobiography/index.html",
+      "featured": true,
+      "featuredOrder": 1,
+      "example": true
+    },
+    {
+      "id": "example-image-portrait",
+      "category": "image",
+      "title": "나를 다시 그리는 프롬프트",
+      "creator": "과정 예시",
+      "description": "한 장의 사진과 구체적인 언어로 새로운 장면을 만든 이미지 실습 예시입니다.",
+      "thumbnail": "../image/female_poster_2_postit.png",
+      "media": "../image/female_poster_2_postit.png",
+      "featured": true,
+      "featuredOrder": 2,
+      "example": true
+    },
+    {
+      "id": "example-image-leadership",
+      "category": "image",
+      "title": "리더의 장면",
+      "creator": "과정 예시",
+      "description": "인물의 분위기와 업무 맥락을 이미지 프롬프트로 표현한 실습 예시입니다.",
+      "thumbnail": "../image/male_poster_1_chalkboard.png",
+      "media": "../image/male_poster_1_chalkboard.png",
+      "featured": true,
+      "featuredOrder": 3,
+      "example": true
+    },
+    {
+      "id": "example-slides",
+      "category": "slides",
+      "title": "생각을 설득력 있게 정리하는 슬라이드",
+      "creator": "과정 예시",
+      "description": "복잡한 정보를 발표 흐름과 시각 구조로 바꾼 슬라이드 실습 예시입니다.",
+      "thumbnail": "assets/examples/slides-example.svg",
+      "viewer": "../instruction-slide-section.html",
+      "featured": true,
+      "featuredOrder": 4,
+      "example": true
+    }
+  ]
+}
