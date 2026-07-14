@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260714-2">
-  <script type="module" src="app.js?v=20260714-2"></script>
+  <link rel="stylesheet" href="styles.css?v=20260714-3">
+  <script type="module" src="app.js?v=20260714-3"></script>
 </head>
 <body>
   <a class="skip-link" href="#exhibitions">작품 전시로 바로가기</a>
@@ -114,7 +114,25 @@
           <h3 id="musicTitle">우리의 노래</h3>
           <p>가사와 멜로디에 각자의 기억과 응원을 담은 Suno 음악</p>
         </div>
-        <div class="art-grid art-grid--music" data-gallery="music"></div>
+        <div class="music-experience" id="musicExperience" hidden>
+          <div class="music-player-panel">
+            <div class="music-player-copy">
+              <span class="music-player-kicker" id="musicPlaylistMeta">CEO 1ST · PLAYLIST</span>
+              <h4 id="musicNowTitle">곡을 선택해 주세요</h4>
+              <p id="musicNowCreator">1기가 Suno로 완성한 음악 작품입니다.</p>
+              <div class="music-player-links">
+                <a id="musicCurrentLink" href="#" target="_blank" rel="noopener">현재 곡을 Suno에서 듣기</a>
+                <a id="musicPlaylistLink" href="#" target="_blank" rel="noopener">전체 플레이리스트 열기</a>
+              </div>
+            </div>
+            <div class="suno-player-shell">
+              <iframe id="sunoPlayer" title="선택한 Suno 음악 플레이어" width="100%" height="140" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              <p>Suno 플레이어가 보이지 않으면 위의 원본 링크로 감상해 주세요.</p>
+            </div>
+          </div>
+          <div class="music-track-list" data-gallery="music" aria-label="1기 Suno 음악 목록"></div>
+        </div>
+        <div class="art-grid art-grid--music-fallback" id="musicFallback" data-music-fallback></div>
       </section>
 
       <section class="gallery-section" id="image" data-category="image" aria-labelledby="imageTitle">

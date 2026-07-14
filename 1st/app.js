@@ -8,6 +8,7 @@ const CATEGORY_LABELS = {
 const state = {
   artworks: [],
   groupPhoto: "",
+  musicPlaylist: null,
   ceremonySlides: [],
   ceremonyIndex: 0,
   ceremonyTimer: null,
@@ -43,10 +44,6 @@ function artworkLink(item, label, className = "") {
   return `<a class="${className}" href="${escapeHtml(href)}" target="_blank" rel="noopener">${label}</a>`;
 }
 
-function badge(item) {
-  return item.example ? '<span class="art-badge">과정 예시</span>' : "";
-}
-
 function imageList(item) {
   if (Array.isArray(item.images) && item.images.length) {
     return item.images.map(image => typeof image === "string" ? { src: image } : image).filter(image => image?.src);
@@ -70,7 +67,6 @@ function renderStory(item) {
   return `<article class="art-card book-card">
     <a class="art-thumb" href="${escapeHtml(safeUrl(item.viewer || item.pdf))}" target="_blank" rel="noopener">
       <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)} 자서전 표지" loading="lazy">
-      ${badge(item)}
     </a>
     <div class="art-meta">
       <h4>${escapeHtml(item.title)}</h4>
@@ -82,6 +78,16 @@ function renderStory(item) {
 }
 
 function renderMusic(item) {
+  if (item.embedUrl) {
+    const order = String(item.playlistOrder || 0).padStart(2, "0");
+    const label = item.playlistExtra ? "추가 트랙" : "PLAYLIST";
+    return `<button class="music-track" type="button" data-music-track="${escapeHtml(item.id)}" aria-pressed="false">
+      <span class="music-track-index">${escapeHtml(order)}</span>
+      <span class="music-track-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.creator)}</small></span>
+      <span class="music-track-label${item.playlistExtra ? " is-extra" : ""}">${label}</span>
+      <span class="music-track-action" aria-hidden="true">재생 →</span>
+    </button>`;
+  }
   const audio = item.media ? `<audio controls preload="none" src="${escapeHtml(item.media)}">오디오를 재생할 수 없습니다.</audio>` : "";
   const suno = item.originalUrl ? `<a href="${escapeHtml(safeUrl(item.originalUrl))}" target="_blank" rel="noopener">Suno 원곡</a>` : "";
   return `<article class="music-card">
@@ -100,7 +106,6 @@ function renderImage(item) {
   return `<article class="art-card image-card">
     <button class="art-thumb" type="button" data-lightbox="${escapeHtml(item.id)}">
       <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
-      ${badge(item)}
       <span class="art-flags"><span>${escapeHtml(imageThemeLabel(item))}</span><span>${escapeHtml(imagePresentationLabel(item))}</span></span>
     </button>
     <div class="art-meta">
@@ -117,7 +122,6 @@ function renderSlides(item) {
     return `<article class="art-card slide-card is-collection">
       <button class="art-thumb" type="button" data-lightbox="${escapeHtml(item.id)}">
         <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
-        ${badge(item)}
         <span class="art-flags"><span>${escapeHtml(imageThemeLabel(item))}</span><span>${escapeHtml(imagePresentationLabel(item))}</span></span>
       </button>
       <div class="art-meta">
@@ -131,7 +135,6 @@ function renderSlides(item) {
   return `<article class="art-card slide-card">
     <a class="art-thumb" href="${escapeHtml(safeUrl(item.viewer || item.pdf))}" target="_blank" rel="noopener">
       <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)} 발표자료 미리보기" loading="lazy">
-      ${badge(item)}
     </a>
     <div class="art-meta">
       <h4>${escapeHtml(item.title)}</h4>
@@ -150,15 +153,67 @@ function renderGalleries() {
   const renderers = { story: renderStory, music: renderMusic, image: renderImage, slides: renderSlides };
   Object.keys(CATEGORY_LABELS).forEach(category => {
     const target = qs(`[data-gallery="${category}"]`);
-    const items = state.artworks.filter(item => item.category === category);
+    const items = state.artworks
+      .filter(item => item.category === category)
+      .sort((a, b) => category === "music" ? (a.playlistOrder || 999) - (b.playlistOrder || 999) : 0);
     target.innerHTML = items.length ? items.map(renderers[category]).join("") : emptyState(category);
   });
   enforceSingleAudio();
   bindLightboxes();
+  setupMusicPlaylist();
+}
+
+function selectMusicTrack(item, { focus = false } = {}) {
+  const frame = qs("#sunoPlayer");
+  const embedUrl = safeUrl(item.embedUrl);
+  if (!frame || !embedUrl) return;
+  frame.src = embedUrl;
+  frame.title = `${item.title} · ${item.creator} Suno 플레이어`;
+  qs("#musicNowTitle").textContent = item.title;
+  qs("#musicNowCreator").textContent = item.playlistExtra ? `${item.creator} · 플레이리스트 외 추가 작품` : item.creator;
+  const currentLink = qs("#musicCurrentLink");
+  currentLink.href = safeUrl(item.originalUrl);
+  qsa("[data-music-track]").forEach(button => {
+    const active = button.dataset.musicTrack === item.id;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  if (focus) qs("#musicExperience").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setupMusicPlaylist() {
+  const tracks = state.artworks
+    .filter(item => item.category === "music" && item.embedUrl)
+    .sort((a, b) => (a.playlistOrder || 999) - (b.playlistOrder || 999));
+  const experience = qs("#musicExperience");
+  const fallback = qs("#musicFallback");
+  if (!experience || !tracks.length) {
+    if (experience) experience.hidden = true;
+    if (fallback) fallback.hidden = false;
+    return;
+  }
+  experience.hidden = false;
+  if (fallback) fallback.hidden = true;
+  const playlist = state.musicPlaylist || {};
+  const playlistLink = qs("#musicPlaylistLink");
+  playlistLink.href = safeUrl(playlist.url);
+  const count = Number(playlist.trackCount) || tracks.filter(item => !item.playlistExtra).length;
+  const extra = Number(playlist.extraTrackCount) || tracks.filter(item => item.playlistExtra).length;
+  qs("#musicPlaylistMeta").textContent = `CEO 1ST · ${count} TRACKS${extra ? ` + ${extra} EXTRA` : ""}`;
+  qsa("[data-music-track]").forEach(button => button.addEventListener("click", () => {
+    const item = tracks.find(track => track.id === button.dataset.musicTrack);
+    if (item) selectMusicTrack(item, { focus: window.innerWidth < 720 });
+  }));
+  selectMusicTrack(tracks[0]);
 }
 
 function renderFeatured() {
-  const items = state.artworks.filter(item => item.featured).sort((a, b) => (a.featuredOrder || 99) - (b.featuredOrder || 99));
+  let items = state.artworks.filter(item => item.featured).sort((a, b) => (a.featuredOrder || 99) - (b.featuredOrder || 99));
+  if (!items.length) {
+    items = ["music", "image", "slides"]
+      .map(category => state.artworks.find(item => item.category === category))
+      .filter(Boolean);
+  }
   const rail = qs("#featuredRail");
   if (!items.length) {
     rail.innerHTML = `<div class="empty-gallery"><div><strong>1기 작품을 기다리고 있습니다.</strong><span>공개 동의를 받은 대표작이 이곳에 펼쳐집니다.</span></div></div>`;
@@ -378,6 +433,7 @@ async function loadArtworks() {
     const data = await response.json();
     state.artworks = Array.isArray(data.artworks) ? data.artworks.filter(item => CATEGORY_LABELS[item.category]) : [];
     state.groupPhoto = typeof data.groupPhoto === "string" ? data.groupPhoto : "";
+    state.musicPlaylist = data.musicPlaylist && typeof data.musicPlaylist === "object" ? data.musicPlaylist : null;
   } catch (error) {
     console.error("작품 목록을 불러오지 못했습니다.", error);
     state.artworks = [];
