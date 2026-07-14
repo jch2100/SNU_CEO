@@ -11,6 +11,8 @@ const state = {
   ceremonySlides: [],
   ceremonyIndex: 0,
   ceremonyTimer: null,
+  lightboxItem: null,
+  lightboxIndex: 0,
   pretext: null,
   prepared: new Map()
 };
@@ -43,6 +45,25 @@ function artworkLink(item, label, className = "") {
 
 function badge(item) {
   return item.example ? '<span class="art-badge">과정 예시</span>' : "";
+}
+
+function imageList(item) {
+  if (Array.isArray(item.images) && item.images.length) {
+    return item.images.map(image => typeof image === "string" ? { src: image } : image).filter(image => image?.src);
+  }
+  const source = item.media || item.thumbnail;
+  return source ? [{ src: source }] : [];
+}
+
+function imagePresentationLabel(item) {
+  const count = imageList(item).length;
+  if (item.presentation === "composite") return "합본 1장";
+  if (item.presentation === "mixed") return `${count}장 · 가로·세로 혼합`;
+  return `${count}장`;
+}
+
+function imageThemeLabel(item) {
+  return item.imageTheme === "future" ? "5–10년 뒤의 나" : item.imageTheme === "ai-meets" ? "AI를 만나고" : "이미지 작품";
 }
 
 function renderStory(item) {
@@ -80,17 +101,33 @@ function renderImage(item) {
     <button class="art-thumb" type="button" data-lightbox="${escapeHtml(item.id)}">
       <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
       ${badge(item)}
+      <span class="art-flags"><span>${escapeHtml(imageThemeLabel(item))}</span><span>${escapeHtml(imagePresentationLabel(item))}</span></span>
     </button>
     <div class="art-meta">
       <h4>${escapeHtml(item.title)}</h4>
       <span class="creator">${escapeHtml(item.creator)}</span>
       <p>${escapeHtml(item.description)}</p>
-      <div class="art-links"><button type="button" data-lightbox="${escapeHtml(item.id)}">크게 보기</button></div>
+      <div class="art-links"><button type="button" data-lightbox="${escapeHtml(item.id)}">작품 보기</button></div>
     </div>
   </article>`;
 }
 
 function renderSlides(item) {
+  if (Array.isArray(item.images) && item.images.length) {
+    return `<article class="art-card slide-card is-collection">
+      <button class="art-thumb" type="button" data-lightbox="${escapeHtml(item.id)}">
+        <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
+        ${badge(item)}
+        <span class="art-flags"><span>${escapeHtml(imageThemeLabel(item))}</span><span>${escapeHtml(imagePresentationLabel(item))}</span></span>
+      </button>
+      <div class="art-meta">
+        <h4>${escapeHtml(item.title)}</h4>
+        <span class="creator">${escapeHtml(item.creator)}</span>
+        <p>${escapeHtml(item.description)}</p>
+        <div class="art-links"><button type="button" data-lightbox="${escapeHtml(item.id)}">작품 보기</button></div>
+      </div>
+    </article>`;
+  }
   return `<article class="art-card slide-card">
     <a class="art-thumb" href="${escapeHtml(safeUrl(item.viewer || item.pdf))}" target="_blank" rel="noopener">
       <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)} 발표자료 미리보기" loading="lazy">
@@ -143,18 +180,54 @@ function bindLightboxes() {
   qsa("[data-lightbox]").forEach(button => button.addEventListener("click", () => {
     const item = state.artworks.find(entry => entry.id === button.dataset.lightbox);
     if (!item) return;
-    qs("#lightboxImage").src = item.media || item.thumbnail;
-    qs("#lightboxImage").alt = item.title;
-    qs("#lightboxTitle").textContent = item.title;
-    qs("#lightboxCreator").textContent = item.creator;
+    state.lightboxItem = item;
+    state.lightboxIndex = 0;
+    renderLightbox();
     qs("#lightbox").showModal();
   }));
+}
+
+function renderLightbox() {
+  const item = state.lightboxItem;
+  if (!item) return;
+  const images = imageList(item);
+  const image = images[state.lightboxIndex] || images[0];
+  if (!image) return;
+  const dialog = qs("#lightbox");
+  dialog.classList.remove("is-zoomed");
+  qs("#lightboxImage").src = image.src;
+  qs("#lightboxImage").alt = `${item.creator} ${item.title} ${state.lightboxIndex + 1}번째 이미지`;
+  qs("#lightboxTitle").textContent = item.title;
+  qs("#lightboxCreator").textContent = item.creator;
+  qs("#lightboxCount").textContent = images.length > 1 ? `${state.lightboxIndex + 1} / ${images.length}` : imagePresentationLabel(item);
+  [qs("#lightboxPrev"), qs("#lightboxNext")].forEach(button => { button.hidden = images.length < 2; });
+}
+
+function moveLightbox(direction) {
+  const images = imageList(state.lightboxItem || {});
+  if (images.length < 2) return;
+  state.lightboxIndex = (state.lightboxIndex + direction + images.length) % images.length;
+  renderLightbox();
 }
 
 function setupLightbox() {
   const dialog = qs("#lightbox");
   qs("[data-close-dialog]").addEventListener("click", () => dialog.close());
   dialog.addEventListener("click", event => { if (event.target === dialog) dialog.close(); });
+  qs("#lightboxPrev").addEventListener("click", () => moveLightbox(-1));
+  qs("#lightboxNext").addEventListener("click", () => moveLightbox(1));
+  qs("#lightboxZoom").addEventListener("click", () => dialog.classList.toggle("is-zoomed"));
+  let touchStartX = 0;
+  qs(".lightbox-viewport").addEventListener("touchstart", event => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+  qs(".lightbox-viewport").addEventListener("touchend", event => {
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 45) moveLightbox(distance > 0 ? -1 : 1);
+  }, { passive: true });
+  window.addEventListener("keydown", event => {
+    if (!dialog.open) return;
+    if (event.key === "ArrowRight") moveLightbox(1);
+    if (event.key === "ArrowLeft") moveLightbox(-1);
+  });
 }
 
 function setupGalleryObserver() {

@@ -11,7 +11,7 @@ for (const relative of required) {
 }
 
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
-for (const marker of ["og:title", "og:image", "ceremonyButton", "data-gallery=\"story\"", "data-gallery=\"music\"", "data-gallery=\"image\"", "data-gallery=\"slides\""]) {
+for (const marker of ["og:title", "og:image", "ceremonyButton", "data-gallery=\"story\"", "data-gallery=\"music\"", "data-gallery=\"image\"", "data-gallery=\"slides\"", "lightboxPrev", "lightboxNext"]) {
   if (!html.includes(marker)) errors.push(`index.html 필수 마커 없음: ${marker}`);
 }
 
@@ -22,6 +22,9 @@ if (!Array.isArray(data.artworks)) errors.push("artworks가 배열이 아님");
 const ids = new Set();
 const categories = new Set(["story", "music", "image", "slides"]);
 const privateKeys = new Set(["consent", "phone", "email", "contact", "공개동의"]);
+let imageAssetCount = 0;
+let aiImageCollections = 0;
+let futureSlideCollections = 0;
 
 function validateLocalAsset(value, base = root) {
   if (!value || /^https?:\/\//.test(value)) return;
@@ -44,14 +47,36 @@ for (const [index, item] of (data.artworks || []).entries()) {
   validateLocalAsset(item.thumbnail);
   validateLocalAsset(item.media);
   validateLocalAsset(item.pdf);
+  if (Array.isArray(item.images)) {
+    if (!item.images.length) errors.push(`${prefix}.images가 비어 있음`);
+    item.images.forEach((image, imageIndex) => {
+      const source = typeof image === "string" ? image : image?.src;
+      if (!source) errors.push(`${prefix}.images[${imageIndex}].src 없음`);
+      else {
+        validateLocalAsset(source);
+        imageAssetCount += 1;
+      }
+    });
+    if (item.category === "image" && item.imageTheme === "ai-meets") aiImageCollections += 1;
+    if (item.category === "slides" && item.imageTheme === "future") futureSlideCollections += 1;
+  }
   if (item.viewer && !item.viewer.includes("book.html?id=")) validateLocalAsset(item.viewer);
   if (Array.isArray(item.pages)) item.pages.forEach(page => validateLocalAsset(page, path.join(root, "viewer")));
+}
+
+if (data.artworks.some(item => item.imageTheme === "future" && item.category !== "slides")) {
+  errors.push("5–10년 뒤의 나 작품이 slides가 아닌 전시관에 있음");
+}
+if (data.artworks.some(item => item.imageTheme === "ai-meets" && item.category !== "image")) {
+  errors.push("AI를 만나고 작품이 image가 아닌 전시관에 있음");
 }
 
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
 if (!app.includes('preload="none"')) errors.push("오디오 preload=none 처리 없음");
 if (!app.includes("other.pause()")) errors.push("다중 오디오 동시 재생 방지 없음");
 if (!app.includes("navigator.share")) errors.push("모바일 공유 기능 없음");
+if (!app.includes("moveLightbox")) errors.push("연속 이미지 넘기기 기능 없음");
+if (!app.includes("object-fit: contain") && !fs.readFileSync(path.join(root, "styles.css"), "utf8").includes("object-fit: contain")) errors.push("비율 보존 표시 없음");
 
 if (errors.length) {
   console.error(`VALIDATION_FAILED (${errors.length})`);
@@ -59,4 +84,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`VALIDATION_OK: ${data.artworks.length} artworks, ${ids.size} unique ids`);
+console.log(`VALIDATION_OK: ${data.artworks.length} artworks, ${ids.size} unique ids, ${imageAssetCount} collection images, ${aiImageCollections} AI image collections, ${futureSlideCollections} future slide collections`);

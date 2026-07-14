@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260713-2">
-  <script type="module" src="app.js?v=20260713-2"></script>
+  <link rel="stylesheet" href="styles.css?v=20260714-2">
+  <script type="module" src="app.js?v=20260714-2"></script>
 </head>
 <body>
   <a class="skip-link" href="#exhibitions">작품 전시로 바로가기</a>
@@ -121,7 +121,7 @@
         <div class="gallery-title">
           <span>03 / IMAGE</span>
           <h3 id="imageTitle">우리의 이미지</h3>
-          <p>말로 그린 상상을 이미지와 카드뉴스로 완성한 기록</p>
+          <p>AI를 만나고 새롭게 발견한 자신과 가능성을 이미지로 완성한 기록</p>
         </div>
         <div class="art-grid art-grid--images" data-gallery="image"></div>
       </section>
@@ -130,7 +130,7 @@
         <div class="gallery-title">
           <span>04 / SLIDES</span>
           <h3 id="slidesTitle">우리의 생각</h3>
-          <p>경험과 아이디어를 한눈에 전달하도록 구조화한 발표자료</p>
+          <p>5–10년 뒤의 나를 장면과 이야기의 흐름으로 펼쳐 낸 발표자료</p>
         </div>
         <div class="art-grid art-grid--slides" data-gallery="slides"></div>
       </section>
@@ -173,11 +173,23 @@
 
   <dialog class="lightbox" id="lightbox" aria-labelledby="lightboxTitle">
     <button class="dialog-close" type="button" data-close-dialog aria-label="닫기">×</button>
-    <figure>
-      <img id="lightboxImage" alt="">
+    <figure class="lightbox-figure">
+      <div class="lightbox-viewport">
+        <button class="lightbox-image-button" type="button" id="lightboxZoom" aria-label="이미지 확대 또는 축소">
+          <img id="lightboxImage" alt="">
+        </button>
+      </div>
+      <button class="lightbox-nav lightbox-nav--prev" type="button" id="lightboxPrev" aria-label="이전 이미지">←</button>
+      <button class="lightbox-nav lightbox-nav--next" type="button" id="lightboxNext" aria-label="다음 이미지">→</button>
       <figcaption>
-        <strong id="lightboxTitle"></strong>
-        <span id="lightboxCreator"></span>
+        <span class="lightbox-caption-copy">
+          <strong id="lightboxTitle"></strong>
+          <span id="lightboxCreator"></span>
+        </span>
+        <span class="lightbox-caption-status">
+          <span id="lightboxCount" aria-live="polite"></span>
+          <small>이미지를 눌러 확대</small>
+        </span>
       </figcaption>
     </figure>
   </dialog>
