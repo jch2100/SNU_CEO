@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "updatedAt": "2026-07-13",
+  "version": 2,
+  "updatedAt": "2026-07-14",
   "groupPhoto": "assets/hero/group-photo.webp",
   "notice": "공개 동의를 확인한 작품만 이 파일에 등록합니다. 동의 여부 자체는 공개 저장소에 기록하지 않습니다.",
   "artworks": [
@@ -17,30 +17,6 @@
       "example": true
     },
     {
-      "id": "example-image-portrait",
-      "category": "image",
-      "title": "나를 다시 그리는 프롬프트",
-      "creator": "과정 예시",
-      "description": "한 장의 사진과 구체적인 언어로 새로운 장면을 만든 이미지 실습 예시입니다.",
-      "thumbnail": "../image/female_poster_2_postit.png",
-      "media": "../image/female_poster_2_postit.png",
-      "featured": true,
-      "featuredOrder": 2,
-      "example": true
-    },
-    {
-      "id": "example-image-leadership",
-      "category": "image",
-      "title": "리더의 장면",
-      "creator": "과정 예시",
-      "description": "인물의 분위기와 업무 맥락을 이미지 프롬프트로 표현한 실습 예시입니다.",
-      "thumbnail": "../image/male_poster_1_chalkboard.png",
-      "media": "../image/male_poster_1_chalkboard.png",
-      "featured": true,
-      "featuredOrder": 3,
-      "example": true
-    },
-    {
       "id": "example-slides",
       "category": "slides",
       "title": "생각을 설득력 있게 정리하는 슬라이드",
@@ -51,6 +27,971 @@
       "featured": true,
       "featuredOrder": 4,
       "example": true
+    },
+    {
+      "id": "future-kim-eun-young",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "김은영",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/kim-eun-young/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-eun-young/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-kim-taek-yong",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "김택용",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/kim-taek-yong/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/kim-taek-yong/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-baek-in-gi",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "백인기",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/baek-in-gi/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/baek-in-gi/01.webp",
+          "width": 935,
+          "height": 1683
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "future-seo-jeong-ok",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "서정옥",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/seo-jeong-ok/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/seo-jeong-ok/01.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "future-yoo-geun-ho",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "유근호",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/yoo-geun-ho/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-geun-ho/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-yoo-jae-cheol",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "유재철",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/yoo-jae-cheol/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/yoo-jae-cheol/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-lee-dong-hee",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "이동희",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/lee-dong-hee/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/01.webp",
+          "width": 1491,
+          "height": 1055
+        },
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/02.webp",
+          "width": 1491,
+          "height": 1055
+        },
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/03.webp",
+          "width": 1491,
+          "height": 1055
+        },
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/04.webp",
+          "width": 1491,
+          "height": 1055
+        },
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/05.webp",
+          "width": 1491,
+          "height": 1055
+        },
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/06.webp",
+          "width": 1491,
+          "height": 1055
+        },
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/07.webp",
+          "width": 1491,
+          "height": 1055
+        },
+        {
+          "src": "assets/artworks/images/future/lee-dong-hee/08.webp",
+          "width": 1491,
+          "height": 1055
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-lee-mi-jin",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "이미진",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/lee-mi-jin/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-jin/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-lee-mi-hye",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "이미혜",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/lee-mi-hye/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/lee-mi-hye/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-cho-young-sook",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "조영숙",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/cho-young-sook/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-young-sook/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-cho-jin-ho",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "조진호",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/cho-jin-ho/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/cho-jin-ho/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-han-mi-young",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "한미영",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/han-mi-young/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/han-mi-young/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/han-mi-young/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/han-mi-young/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/han-mi-young/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/han-mi-young/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/han-mi-young/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/han-mi-young/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/han-mi-young/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-park-yeon-joo",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "박연주",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/park-yeon-joo/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/future/park-yeon-joo/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-han-ji-eun",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "한지은",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/han-ji-eun/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/01.webp",
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/02.webp",
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/03.webp",
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/04.webp",
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/05.webp",
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/06.webp",
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/07.webp",
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "src": "assets/artworks/images/future/han-ji-eun/08.webp",
+          "width": 1086,
+          "height": 1448
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "future-hyun-jin-oh",
+      "category": "slides",
+      "imageTheme": "future",
+      "title": "5–10년 뒤의 나",
+      "creator": "현진오",
+      "description": "AI로 구체화한 미래의 선택과 준비를 순서대로 만나보세요.",
+      "thumbnail": "assets/artworks/images/future/hyun-jin-oh/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/future/hyun-jin-oh/01.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-kim-taek-yong",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "김택용",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/kim-taek-yong/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/kim-taek-yong/01.webp",
+          "width": 1172,
+          "height": 1980
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-park-yeon-joo",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "박연주",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/park-yeon-joo/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/park-yeon-joo/01.webp",
+          "width": 1800,
+          "height": 1009
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/park-yeon-joo/02.webp",
+          "width": 1800,
+          "height": 992
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/park-yeon-joo/03.webp",
+          "width": 1800,
+          "height": 1001
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/park-yeon-joo/04.webp",
+          "width": 1800,
+          "height": 1011
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-baek-in-gi",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "백인기",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/baek-in-gi/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/baek-in-gi/01.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-lee-deok-won",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "이덕원",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/lee-deok-won/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/lee-deok-won/01.webp",
+          "width": 1382,
+          "height": 922
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-lee-dong-hee",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "이동희",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/lee-dong-hee/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/01.webp",
+          "width": 941,
+          "height": 1672
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/02.webp",
+          "width": 941,
+          "height": 1672
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/03.webp",
+          "width": 941,
+          "height": 1672
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/04.webp",
+          "width": 941,
+          "height": 1672
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/05.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/06.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/07.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-dong-hee/08.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "mixed",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-lee-mi-hye",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "이미혜",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/lee-mi-hye/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/lee-mi-hye/01.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-jang-in-sook",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "장인숙",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/jang-in-sook/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/jang-in-sook/01.webp",
+          "width": 1181,
+          "height": 1331
+        }
+      ],
+      "presentation": "composite",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-jeong-eul-seop",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "정을섭",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/jeong-eul-seop/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/jeong-eul-seop/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/jeong-eul-seop/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/jeong-eul-seop/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/jeong-eul-seop/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-cho-jin-ho",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "조진호",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/cho-jin-ho/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/cho-jin-ho/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/cho-jin-ho/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/cho-jin-ho/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/cho-jin-ho/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-han-ji-eun",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "한지은",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/han-ji-eun/thumb.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/han-ji-eun/01.webp",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/han-ji-eun/02.webp",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/han-ji-eun/03.webp",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/han-ji-eun/04.webp",
+          "width": 1254,
+          "height": 1254
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
     }
   ]
 }
