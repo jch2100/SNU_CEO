@@ -4,7 +4,18 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
-const required = ["index.html", "styles.css", "app.js", "data/artworks.json", "viewer/book.html", "assets/share/og-1st.png", "assets/share/qr-1st.svg"];
+const required = [
+  "index.html",
+  "styles.css",
+  "app.js",
+  "data/artworks.json",
+  "viewer/book.html",
+  "assets/share/og-1st.png",
+  "assets/share/qr-1st.svg",
+  "../autobiography/viewer.html",
+  "../autobiography/vendor/page-flip.browser.js",
+  "../autobiography/vendor/page-flip.LICENSE.txt"
+];
 
 for (const relative of required) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`필수 파일 없음: ${relative}`);
@@ -70,6 +81,22 @@ for (const [index, item] of (data.artworks || []).entries()) {
     if (item.playlistExtra) sunoExtraTracks += 1;
   }
   if (item.viewer && !item.viewer.includes("book.html?id=")) validateLocalAsset(item.viewer);
+  if (item.category === "story" && item.viewer?.includes("../autobiography/viewer.html?id=")) {
+    const bookId = new URL(item.viewer, "https://ceo-ai.org/1st/").searchParams.get("id");
+    const bookPath = path.resolve(root, `../autobiography/books/${bookId}.json`);
+    if (!fs.existsSync(bookPath)) {
+      errors.push(`${prefix} 자서전 데이터 없음: ${bookId}`);
+    } else {
+      const book = JSON.parse(fs.readFileSync(bookPath, "utf8"));
+      if (book.id !== bookId || book.title !== item.title || book.author !== item.creator) {
+        errors.push(`${prefix} 자서전 메타데이터 불일치: ${bookId}`);
+      }
+      if (!book.backQuote || !Array.isArray(book.sections) || !book.sections.length) {
+        errors.push(`${prefix} 자서전 본문 구조 오류: ${bookId}`);
+      }
+      validateLocalAsset(book.cover, path.resolve(root, "..", "autobiography"));
+    }
+  }
   if (Array.isArray(item.pages)) item.pages.forEach(page => validateLocalAsset(page, path.join(root, "viewer")));
 }
 
