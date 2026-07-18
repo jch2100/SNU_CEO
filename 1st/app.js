@@ -219,7 +219,7 @@ function renderFeatured() {
     rail.innerHTML = `<div class="empty-gallery"><div><strong>1기 작품을 기다리고 있습니다.</strong><span>공개 동의를 받은 대표작이 이곳에 펼쳐집니다.</span></div></div>`;
     return;
   }
-  rail.innerHTML = items.map(item => `<a class="featured-card" href="#${escapeHtml(item.category)}">
+  rail.innerHTML = items.map(item => `<a class="featured-card featured-card--${escapeHtml(item.category)}" href="#${escapeHtml(item.category)}">
     <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
     <span class="featured-meta"><small>${escapeHtml(CATEGORY_LABELS[item.category])}</small><strong>${escapeHtml(item.title)}</strong></span>
   </a>`).join("");

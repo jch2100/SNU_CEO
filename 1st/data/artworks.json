@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "updatedAt": "2026-07-18",
   "groupPhoto": "assets/hero/group-photo.webp",
   "notice": "공개 동의를 확인한 작품만 이 파일에 등록합니다. 동의 여부 자체는 공개 저장소에 기록하지 않습니다.",
@@ -12,6 +12,36 @@
       "description": "가족의 대들보로 살아온 한 여자가 자신의 삶과 책임, 홀로서기를 돌아본 자서전입니다.",
       "thumbnail": "../autobiography/assets/books/cho-young-sook/cover.jpg",
       "viewer": "../autobiography/viewer.html?id=cho-young-sook",
+      "featured": false
+    },
+    {
+      "id": "story-baek-in-gi",
+      "category": "story",
+      "title": "백만불의 약속",
+      "creator": "백인기",
+      "description": "보험으로 가정을 지키고 사람과 함께 성장한 백인기의 이야기입니다.",
+      "thumbnail": "../autobiography/assets/books/baek-in-gi/cover.jpg",
+      "viewer": "../autobiography/viewer.html?id=baek-in-gi",
+      "featured": false
+    },
+    {
+      "id": "story-park-yeon-joo",
+      "category": "story",
+      "title": "이음을 살아가는 사람",
+      "creator": "박연주",
+      "description": "사람과 지혜, 배움과 실천을 연결해온 삶의 기록입니다.",
+      "thumbnail": "../autobiography/assets/books/park-yeon-joo/cover.jpg",
+      "viewer": "../autobiography/viewer.html?id=park-yeon-joo",
+      "featured": false
+    },
+    {
+      "id": "story-lee-dong-hee",
+      "category": "story",
+      "title": "여성의 삶을 진료합니다",
+      "creator": "이동희",
+      "description": "몸과 마음, 관계와 삶을 함께 돌본 산부인과 의사의 기록입니다.",
+      "thumbnail": "../autobiography/assets/books/lee-dong-hee/cover-edited.png",
+      "viewer": "../autobiography/viewer.html?id=lee-dong-hee",
       "featured": false
     },
     {
