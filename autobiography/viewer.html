@@ -163,11 +163,31 @@
     #measureStage .page { box-shadow: none; }
 
     @media (max-width: 640px) {
-      header { grid-template-columns: 1fr auto; min-height: 60px; padding: 0 14px; }
-      header strong { font-size: 15px; }
+      #scene.active {
+        height: 100vh;
+        height: 100dvh;
+        min-height: 0;
+        display: grid;
+        grid-template-rows: 60px minmax(0, 1fr);
+        overflow: hidden;
+      }
+      header { grid-template-columns: auto minmax(0, 1fr); min-height: 60px; gap: 10px; padding: 0 14px; }
+      header a { min-width: max-content; font-size: 13px; white-space: nowrap; }
+      header strong { overflow: hidden; font-size: 13px; white-space: nowrap; text-overflow: ellipsis; }
       #bookAuthor { display: none; }
-      main { min-height: calc(100vh - 60px); padding-inline: 6px; }
-      .controls { bottom: 10px; }
+      main {
+        min-height: 0;
+        height: auto;
+        padding: 12px 9px 82px;
+        overflow: hidden;
+      }
+      .page-inner {
+        width: 620px;
+        height: 877px;
+        transform: scale(var(--page-content-scale, 1));
+        transform-origin: top left;
+      }
+      .controls { bottom: max(10px, env(safe-area-inset-bottom)); }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
@@ -347,6 +367,18 @@
       document.getElementById("pageCount").textContent = `${pageFlip.getCurrentPageIndex() + 1} / ${pageFlip.getPageCount()}`;
     }
 
+    function syncPageContentScale() {
+      if (!window.matchMedia("(max-width: 640px)").matches) {
+        bookRoot.style.removeProperty("--page-content-scale");
+        return;
+      }
+      requestAnimationFrame(() => {
+        const bounds = bookRoot.getBoundingClientRect();
+        const scale = Math.min(bounds.width / 620, bounds.height / 877);
+        bookRoot.style.setProperty("--page-content-scale", String(scale));
+      });
+    }
+
     function initPageFlip() {
       pageFlip = new St.PageFlip(bookRoot, {
         width: 620,
@@ -365,8 +397,12 @@
       });
       pageFlip.loadFromHTML(document.querySelectorAll("#book > .page"));
       pageFlip.on("flip", updateCounter);
-      pageFlip.on("changeOrientation", updateCounter);
+      pageFlip.on("changeOrientation", () => {
+        updateCounter();
+        syncPageContentScale();
+      });
       updateCounter();
+      syncPageContentScale();
       document.getElementById("status").hidden = true;
     }
 
@@ -403,6 +439,8 @@
       if (event.key === "ArrowLeft") pageFlip?.flipPrev();
       if (event.key === "ArrowRight") pageFlip?.flipNext();
     });
+    window.addEventListener("resize", syncPageContentScale);
+    window.visualViewport?.addEventListener("resize", syncPageContentScale);
     init();
   </script>
 </body>
