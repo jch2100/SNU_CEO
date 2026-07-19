@@ -82,8 +82,12 @@
     }
     #openBook:hover { background: rgba(255, 255, 255, .15); border-color: var(--brass); }
 
-    #scene { display: none; min-height: 100vh; }
-    #scene.active { display: block; }
+    #scene { display: none; height: 100vh; height: 100dvh; min-height: 0; }
+    #scene.active {
+      display: grid;
+      grid-template-rows: 68px minmax(0, 1fr);
+      overflow: hidden;
+    }
     header {
       min-height: 68px;
       display: grid;
@@ -98,7 +102,7 @@
     header a { min-height: 44px; display: inline-flex; align-items: center; justify-self: start; color: inherit; text-decoration: none; font-size: 14px; }
     header strong { font-family: "Noto Serif KR", Batang, serif; font-size: 18px; text-align: center; }
     #bookAuthor { justify-self: end; color: rgba(255, 255, 255, .67); font-size: 14px; }
-    main { min-height: calc(100vh - 68px); display: grid; place-items: center; padding: 26px 12px 92px; }
+    main { min-height: 0; height: auto; display: grid; place-items: center; padding: 26px 12px 92px; overflow: hidden; }
     #book { margin: auto; }
 
     .page {
@@ -109,7 +113,15 @@
       background: var(--paper);
       box-shadow: inset 0 0 30px rgba(95, 78, 53, .06);
     }
-    .page-inner { position: relative; width: 100%; height: 100%; padding: 64px 58px 70px; overflow: hidden; }
+    .page-inner {
+      position: relative;
+      width: 620px;
+      height: 877px;
+      padding: 64px 58px 70px;
+      overflow: hidden;
+      transform: scale(var(--page-content-scale, 1));
+      transform-origin: top left;
+    }
     .page-cover { background: #eee9df; }
     .page-cover .page-inner { padding: 0; }
     .page-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -180,12 +192,6 @@
         height: auto;
         padding: 12px 9px 82px;
         overflow: hidden;
-      }
-      .page-inner {
-        width: 620px;
-        height: 877px;
-        transform: scale(var(--page-content-scale, 1));
-        transform-origin: top left;
       }
       .toc-title { margin-bottom: 36px; font-size: 40px; }
       .toc-list li { grid-template-columns: 42px 1fr; gap: 18px; padding: 18px 0; }
@@ -265,6 +271,7 @@
       const image = document.createElement("img");
       image.src = bookData.cover;
       image.alt = `${bookData.title} 표지`;
+      image.style.objectFit = bookData.coverFit || "cover";
       inner.appendChild(image);
       return page;
     }
@@ -283,7 +290,7 @@
 
     function makeTocPages() {
       const mobile = window.matchMedia("(max-width: 640px)").matches;
-      const itemsPerPage = mobile ? 6 : bookData.sections.length;
+      const itemsPerPage = mobile ? 6 : 12;
       const pages = [];
 
       for (let start = 0; start < bookData.sections.length; start += itemsPerPage) {
@@ -387,26 +394,30 @@
     }
 
     function syncPageContentScale() {
-      if (!window.matchMedia("(max-width: 640px)").matches) {
-        bookRoot.style.removeProperty("--page-content-scale");
-        return;
-      }
       requestAnimationFrame(() => {
         const bounds = bookRoot.getBoundingClientRect();
-        const scale = Math.min(bounds.width / 620, bounds.height / 877);
+        const pagesAcross = pageFlip?.getOrientation() === "landscape" ? 2 : 1;
+        const scale = Math.min(bounds.width / pagesAcross / 620, bounds.height / 877, 1);
         bookRoot.style.setProperty("--page-content-scale", String(scale));
       });
     }
 
     function initPageFlip() {
+      const main = document.querySelector("main");
+      const mainStyle = getComputedStyle(main);
+      const availableHeight = main.clientHeight
+        - parseFloat(mainStyle.paddingTop)
+        - parseFloat(mainStyle.paddingBottom);
+      const maxHeight = Math.max(424, Math.min(877, Math.floor(availableHeight)));
+      const maxWidth = Math.max(300, Math.min(620, Math.floor(maxHeight * 620 / 877)));
       pageFlip = new St.PageFlip(bookRoot, {
         width: 620,
         height: 877,
         size: "stretch",
         minWidth: 300,
-        maxWidth: 620,
+        maxWidth,
         minHeight: 424,
-        maxHeight: 877,
+        maxHeight,
         showCover: true,
         usePortrait: true,
         mobileScrollSupport: true,
@@ -434,6 +445,7 @@
         document.title = `${bookData.title} — ${bookData.author}`;
         document.getElementById("introCover").src = bookData.cover;
         document.getElementById("introCover").alt = `${bookData.title} 표지`;
+        document.getElementById("introCover").style.objectFit = bookData.coverFit || "cover";
         document.getElementById("introTitle").textContent = bookData.title;
         document.getElementById("introAuthor").textContent = `${bookData.author} 자서전`;
         document.getElementById("bookTitle").textContent = bookData.title;

@@ -1,6 +1,6 @@
 {
-  "version": 6,
-  "updatedAt": "2026-07-18",
+  "version": 10,
+  "updatedAt": "2026-07-20",
   "groupPhoto": "assets/hero/group-photo.webp",
   "notice": "공개 동의를 확인한 작품만 이 파일에 등록합니다. 동의 여부 자체는 공개 저장소에 기록하지 않습니다.",
   "artworks": [
@@ -42,6 +42,46 @@
       "description": "몸과 마음, 관계와 삶을 함께 돌본 산부인과 의사의 기록입니다.",
       "thumbnail": "../autobiography/assets/books/lee-dong-hee/cover-edited.png",
       "viewer": "../autobiography/viewer.html?id=lee-dong-hee",
+      "featured": false
+    },
+    {
+      "id": "story-lee-mi-jin",
+      "category": "story",
+      "title": "날개만 없지 전사 같은 여자",
+      "creator": "이미진",
+      "description": "가족의 손을 놓지 않고 다시 일어선 삶과 배움의 기록입니다.",
+      "thumbnail": "../autobiography/assets/books/lee-mi-jin/cover-edited.png",
+      "viewer": "../autobiography/viewer.html?id=lee-mi-jin",
+      "featured": false
+    },
+    {
+      "id": "story-cho-seung-kwon",
+      "category": "story",
+      "title": "위더스 타운",
+      "creator": "조승권",
+      "description": "환자와 가족, 직원과 지역사회가 함께하는 치유와 나눔의 공간, 위더스 타운의 이야기입니다.",
+      "thumbnail": "../autobiography/assets/books/cho-seung-kwon/cover.png",
+      "viewer": "../autobiography/viewer.html?id=cho-seung-kwon",
+      "featured": false
+    },
+    {
+      "id": "story-lee-seung-gu",
+      "category": "story",
+      "title": "내 삶을 붙들어 준 사람들",
+      "creator": "이승구",
+      "description": "가난을 넘어 은혜까지, 이승구의 삶과 감사의 기록입니다.",
+      "thumbnail": "../autobiography/assets/books/lee-seung-gu/cover.jpg",
+      "viewer": "../autobiography/viewer.html?id=lee-seung-gu",
+      "featured": false
+    },
+    {
+      "id": "story-yoo-jae-cheol",
+      "category": "story",
+      "title": "현장을 넘어, 삶을 경영하다",
+      "creator": "유재철",
+      "description": "선택과 책임으로 길을 만든 한 건설인의 기록입니다.",
+      "thumbnail": "../autobiography/assets/books/yoo-jae-cheol/cover.jpg",
+      "viewer": "../autobiography/viewer.html?id=yoo-jae-cheol",
       "featured": false
     },
     {
