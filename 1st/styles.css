@@ -229,16 +229,21 @@ img { display: block; max-width: 100%; }
 .gallery-title p { margin: 0; color: var(--muted); }
 .gallery-section--dark .gallery-title p { color: rgba(255,255,255,.58); }
 .art-grid { max-width: var(--max); margin: 0 auto; display: grid; gap: 24px; }
-.art-grid--books { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.art-grid--books { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; }
 .art-grid--music-fallback { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .art-grid--images { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .art-grid--slides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .art-card { min-width: 0; }
-.art-thumb { position: relative; overflow: hidden; background: #ddd6ca; border: 1px solid var(--line); }
+.art-thumb { position: relative; display: block; width: 100%; overflow: hidden; background: #ddd6ca; border: 1px solid var(--line); }
 .art-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
 .art-card:hover .art-thumb img { transform: scale(1.02); }
-.book-card .art-thumb { aspect-ratio: 2 / 3; background: #efe8dc; box-shadow: 12px 14px 0 rgba(11,29,50,.08); }
+.book-card { display: flex; flex-direction: column; min-height: 0; }
+.book-card .art-thumb { flex: 0 0 auto; aspect-ratio: 2 / 3; background: #efe8dc; box-shadow: 12px 14px 0 rgba(11,29,50,.08); }
 .book-card .art-thumb img { object-fit: contain; }
+.book-card .art-meta { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+.book-card .art-meta h4 { min-height: 2.7em; }
+.book-card .art-meta p { min-height: 3.3em; }
+.book-card .art-links { margin-top: auto; padding-top: 14px; }
 .image-card .art-thumb { width: 100%; aspect-ratio: 16 / 10; padding: 0; }
 .image-card .art-thumb img { object-fit: contain; background: #f2ebdf; }
 .slide-card .art-thumb { aspect-ratio: 16 / 9; }
@@ -406,6 +411,8 @@ dialog::backdrop { background: rgba(7,20,33,.92); backdrop-filter: blur(8px); }
   .gallery-tabs a { padding: 13px 5px; font-size: 12px; }
   .art-grid--books, .art-grid--images { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
   .art-meta h4 { font-size: 18px; }
+  .book-card .art-meta h4 { min-height: 4.05em; }
+  .book-card .art-meta p { min-height: 0; }
   .art-meta p { display: none; }
   .music-card { grid-template-columns: 1fr; }
   .music-player-panel { padding-top: 24px; }
