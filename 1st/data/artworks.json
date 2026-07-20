@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "updatedAt": "2026-07-20",
   "groupPhoto": "assets/hero/group-photo.webp",
   "notice": "공개 동의를 확인한 작품만 이 파일에 등록합니다. 동의 여부 자체는 공개 저장소에 기록하지 않습니다.",
@@ -67,10 +67,10 @@
     {
       "id": "story-yoo-jae-cheol",
       "category": "story",
-      "title": "현장을 넘어, 삶을 경영하다",
+      "title": "마이 라이프 오퍼레이션 매뉴얼",
       "creator": "유재철",
       "description": "선택과 책임으로 길을 만든 한 건설인의 기록입니다.",
-      "thumbnail": "../autobiography/assets/books/yoo-jae-cheol/cover.jpg",
+      "thumbnail": "../autobiography/assets/books/yoo-jae-cheol/cover-v2.png",
       "viewer": "../autobiography/viewer.html?id=yoo-jae-cheol",
       "featured": false
     },
