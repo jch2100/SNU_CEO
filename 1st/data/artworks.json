@@ -1,19 +1,9 @@
 {
-  "version": 10,
+  "version": 11,
   "updatedAt": "2026-07-20",
   "groupPhoto": "assets/hero/group-photo.webp",
   "notice": "공개 동의를 확인한 작품만 이 파일에 등록합니다. 동의 여부 자체는 공개 저장소에 기록하지 않습니다.",
   "artworks": [
-    {
-      "id": "story-cho-young-sook",
-      "category": "story",
-      "title": "나는 모든 것을 하지 않아도 된다",
-      "creator": "조영숙",
-      "description": "가족의 대들보로 살아온 한 여자가 자신의 삶과 책임, 홀로서기를 돌아본 자서전입니다.",
-      "thumbnail": "../autobiography/assets/books/cho-young-sook/cover.jpg",
-      "viewer": "../autobiography/viewer.html?id=cho-young-sook",
-      "featured": false
-    },
     {
       "id": "story-baek-in-gi",
       "category": "story",
