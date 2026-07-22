@@ -363,7 +363,7 @@ dialog::backdrop { background: rgba(7,20,33,.92); backdrop-filter: blur(8px); }
 @media (max-width: 1024px) {
   .hero { grid-template-columns: 1fr .75fr; }
   .hero-visual { min-height: 480px; }
-  .art-grid--books { grid-template-columns: repeat(3, 1fr); }
+  .art-grid--books { grid-template-columns: repeat(2, 1fr); }
   .art-grid--images { grid-template-columns: repeat(2, 1fr); }
   .closing { grid-template-columns: .15fr 1fr; }
   .closing-photo { grid-column: 2; min-height: 420px; }

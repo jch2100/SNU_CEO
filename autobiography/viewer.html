@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071421">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
   <title>AI 자서전 플립북</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -245,6 +247,7 @@
   <script>
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
+    const accessKey = new URLSearchParams(location.hash.slice(1)).get("key");
     const bookRoot = document.getElementById("book");
     const measureStage = document.getElementById("measureStage");
     let pageFlip;
@@ -402,6 +405,31 @@
       });
     }
 
+    function base64UrlToBytes(value) {
+      if (!value || !/^[A-Za-z0-9_-]+$/.test(value)) throw new Error("invalid key");
+      const padded = value.replace(/-/g, "+").replace(/_/g, "/") + "=".repeat((4 - value.length % 4) % 4);
+      const binary = atob(padded);
+      return Uint8Array.from(binary, character => character.charCodeAt(0));
+    }
+
+    async function loadProtectedBook() {
+      if (!id || !/^[a-z0-9-]+$/.test(id)) throw new Error("invalid id");
+      const keyBytes = base64UrlToBytes(accessKey);
+      if (keyBytes.byteLength !== 32) throw new Error("invalid key");
+      const response = await fetch(`protected/${encodeURIComponent(id)}.json`, { cache: "no-store" });
+      if (!response.ok) throw new Error("missing payload");
+      const payload = await response.json();
+      if (payload?.version !== 1 || payload?.alg !== "A256GCM") throw new Error("invalid payload");
+      const iv = base64UrlToBytes(payload.iv);
+      const ciphertext = base64UrlToBytes(payload.ciphertext);
+      if (iv.byteLength !== 12 || !ciphertext.byteLength) throw new Error("invalid payload");
+      const key = await crypto.subtle.importKey("raw", keyBytes, { name: "AES-GCM" }, false, ["decrypt"]);
+      const plaintext = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+      const book = JSON.parse(new TextDecoder().decode(plaintext));
+      if (book?.id !== id || !book.title || !book.author || !Array.isArray(book.sections) || !book.sections.length) throw new Error("invalid book");
+      return book;
+    }
+
     function initPageFlip() {
       const main = document.querySelector("main");
       const mainStyle = getComputedStyle(main);
@@ -438,10 +466,7 @@
 
     async function init() {
       try {
-        if (!id || !/^[a-z0-9-]+$/.test(id)) throw new Error("올바른 작품 ID가 없습니다.");
-        const response = await fetch(`books/${id}.json`, { cache: "no-store" });
-        if (!response.ok) throw new Error("자서전 데이터를 불러오지 못했습니다.");
-        bookData = await response.json();
+        bookData = await loadProtectedBook();
         document.title = `${bookData.title} — ${bookData.author}`;
         document.getElementById("introCover").src = bookData.cover;
         document.getElementById("introCover").alt = `${bookData.title} 표지`;
@@ -453,8 +478,9 @@
         await buildBook();
         document.getElementById("openBook").disabled = false;
       } catch (error) {
-        document.getElementById("introTitle").textContent = "책을 열 수 없습니다";
-        document.getElementById("introAuthor").textContent = error.message;
+        document.title = "접속 링크 오류";
+        document.getElementById("introTitle").textContent = "접속 링크가 올바르지 않습니다";
+        document.getElementById("introAuthor").textContent = "전달받은 개별 링크를 다시 확인해 주세요.";
         document.getElementById("openBook").hidden = true;
       }
     }
