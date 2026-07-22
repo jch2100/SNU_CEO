@@ -64,15 +64,9 @@ function imageThemeLabel(item) {
 }
 
 function renderStory(item) {
-  return `<article class="art-card book-card">
-    <a class="art-thumb" href="${escapeHtml(safeUrl(item.viewer || item.pdf))}" target="_blank" rel="noopener">
-      <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)} 자서전 표지" loading="lazy">
-    </a>
-    <div class="art-meta">
-      <h4>${escapeHtml(item.title)}</h4>
-      <span class="creator">${escapeHtml(item.creator)}</span>
-      <p>${escapeHtml(item.description)}</p>
-      <div class="art-links">${artworkLink(item, "플립북 보기")}</div>
+  return `<article class="art-card book-card book-card--cover-only" aria-label="자서전 표지">
+    <div class="art-thumb">
+      <img src="${escapeHtml(item.thumbnail)}" alt="자서전 표지" loading="lazy">
     </div>
   </article>`;
 }

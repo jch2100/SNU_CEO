@@ -81,20 +81,20 @@ for (const [index, item] of (data.artworks || []).entries()) {
     if (item.playlistExtra) sunoExtraTracks += 1;
   }
   if (item.viewer && !item.viewer.includes("book.html?id=")) validateLocalAsset(item.viewer);
-  if (item.category === "story" && item.viewer?.includes("../autobiography/viewer.html?id=")) {
-    const bookId = new URL(item.viewer, "https://ceo-ai.org/1st/").searchParams.get("id");
-    const bookPath = path.resolve(root, `../autobiography/books/${bookId}.json`);
-    if (!fs.existsSync(bookPath)) {
-      errors.push(`${prefix} 자서전 데이터 없음: ${bookId}`);
+  if (item.category === "story") {
+    const bookId = item.id.replace(/^story-/, "");
+    if (item.viewer || item.pdf) errors.push(`${prefix} 비공개 자서전에 공개 링크가 남아 있음`);
+    const protectedPath = path.resolve(root, `../autobiography/protected/${bookId}.json`);
+    if (!fs.existsSync(protectedPath)) {
+      errors.push(`${prefix} 암호화 자서전 데이터 없음: ${bookId}`);
     } else {
-      const book = JSON.parse(fs.readFileSync(bookPath, "utf8"));
-      if (book.id !== bookId || book.title !== item.title || book.author !== item.creator) {
-        errors.push(`${prefix} 자서전 메타데이터 불일치: ${bookId}`);
+      const payload = JSON.parse(fs.readFileSync(protectedPath, "utf8"));
+      if (payload.version !== 1 || payload.alg !== "A256GCM" || !payload.iv || !payload.ciphertext) {
+        errors.push(`${prefix} 암호화 자서전 형식 오류: ${bookId}`);
       }
-      if (!book.backQuote || !Array.isArray(book.sections) || !book.sections.length) {
-        errors.push(`${prefix} 자서전 본문 구조 오류: ${bookId}`);
+      if (Object.keys(payload).some(key => ["title", "author", "sections", "subtitle", "cover"].includes(key))) {
+        errors.push(`${prefix} 암호화 자서전에 평문 필드가 있음: ${bookId}`);
       }
-      validateLocalAsset(book.cover, path.resolve(root, "..", "autobiography"));
     }
   }
   if (Array.isArray(item.pages)) item.pages.forEach(page => validateLocalAsset(page, path.join(root, "viewer")));
@@ -105,6 +105,13 @@ if (data.artworks.some(item => item.imageTheme === "future" && item.category !==
 }
 if (data.artworks.some(item => item.imageTheme === "ai-meets" && item.category !== "image")) {
   errors.push("AI를 만나고 작품이 image가 아닌 전시관에 있음");
+}
+const stories = data.artworks.filter(item => item.category === "story");
+if (stories.length !== 8) errors.push(`비공개 자서전 표지는 8개여야 함: 현재 ${stories.length}개`);
+if (stories.some(item => item.viewer || item.pdf)) errors.push("비공개 자서전의 공개 링크가 남아 있음");
+const legacyBookDir = path.resolve(root, "../autobiography/books");
+if (fs.existsSync(legacyBookDir) && fs.readdirSync(legacyBookDir).some(name => name.endsWith(".json"))) {
+  errors.push("공개 평문 자서전 JSON이 남아 있음");
 }
 if (data.musicPlaylist) {
   if (data.musicPlaylist.trackCount !== 15) errors.push("Suno 플레이리스트 수록곡은 15곡이어야 함");
