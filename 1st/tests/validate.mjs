@@ -14,7 +14,9 @@ const required = [
   "assets/share/qr-1st.svg",
   "../autobiography/viewer.html",
   "../autobiography/vendor/page-flip.browser.js",
-  "../autobiography/vendor/page-flip.LICENSE.txt"
+  "../autobiography/vendor/page-flip.LICENSE.txt",
+  "../sg/index.html",
+  "tests/sg-short-link-qa.mjs"
 ];
 
 for (const relative of required) {
