@@ -101,4 +101,40 @@
 <script>
 (function(){"use strict";var panels=[].slice.call(document.querySelectorAll(".day")),pills=[].slice.call(document.querySelectorAll(".pill")),progress=document.getElementById("progress"),current=0,key="deep-research-workbook-v1",state={read:[],tasks:{}};try{state=Object.assign(state,JSON.parse(localStorage.getItem(key)||"{}"));}catch(e){}function save(){try{localStorage.setItem(key,JSON.stringify(state));}catch(e){}}function center(p){var t=p.offsetLeft-(p.parentNode.clientWidth-p.offsetWidth)/2;p.parentNode.scrollTo({left:Math.max(0,Math.min(t,p.parentNode.scrollWidth-p.parentNode.clientWidth)),behavior:"smooth"});}function show(i,silent){if(i<0||i>=panels.length)return;current=i;panels.forEach(function(x,n){x.hidden=n!==i});pills.forEach(function(x,n){x.classList.toggle("is-active",n===i);x.setAttribute("aria-selected",n===i?"true":"false")});center(pills[i]);if(!silent){history.replaceState(null,"","#"+panels[i].id);window.scrollTo(0,0)}state.read=state.read||[];if(state.read.indexOf(panels[i].id)<0){state.read.push(panels[i].id);save()}pills.forEach(function(x,n){x.classList.toggle("is-read",state.read.indexOf(panels[n].id)>=0)});update();}function update(){var d=document.documentElement,r=d.scrollHeight-window.innerHeight;progress.style.width=(r>0?window.scrollY/r:0)*100+"%"}pills.forEach(function(p,i){p.addEventListener("click",function(){show(i)})});document.querySelectorAll("[data-next]").forEach(function(b){b.addEventListener("click",function(){show(Number(b.dataset.next))})});document.querySelectorAll("[data-prev]").forEach(function(b){b.addEventListener("click",function(){show(Number(b.dataset.prev))})});document.querySelectorAll(".copy-btn").forEach(function(b){b.addEventListener("click",function(){var text=b.closest(".prompt").querySelector(".prompt-body").textContent.trim();var ok=false;try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text);ok=true}else{var ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();ok=document.execCommand("copy");ta.remove()}}catch(e){}if(ok){b.textContent="복사됨";b.classList.add("is-done");setTimeout(function(){b.textContent="복사";b.classList.remove("is-done")},1500)}})});document.querySelectorAll(".task input").forEach(function(box,i){var panel=box.closest(".day"),id=panel.id;state.tasks[id]=state.tasks[id]||[];box.checked=state.tasks[id].indexOf(i)>=0;box.closest(".task").classList.toggle("is-done",box.checked);box.addEventListener("change",function(){var list=state.tasks[id]||[],at=list.indexOf(i);if(box.checked&&at<0)list.push(i);if(!box.checked&&at>=0)list.splice(at,1);state.tasks[id]=list;box.closest(".task").classList.toggle("is-done",box.checked);save()})});document.querySelectorAll(".toc a").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var el=document.querySelector(a.getAttribute("href")),panel=el&&el.closest(".day");if(panel&&panels.indexOf(panel)!==current)show(panels.indexOf(panel),true);if(el)el.scrollIntoView({behavior:"smooth"});history.replaceState(null,"",a.getAttribute("href"))})});document.getElementById("fontBtn").addEventListener("click",function(){var v=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--fs"))||1;document.documentElement.style.setProperty("--fs",v>=1.24?.92:v>=1.1?1.24:v>=.99?1.1:1);});document.getElementById("topBtn").addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});window.addEventListener("scroll",update,{passive:true});window.addEventListener("keydown",function(e){if(e.target.matches("input,textarea"))return;if(e.key==="ArrowRight")show(current+1);if(e.key==="ArrowLeft")show(current-1)});function fromHash(){var h=decodeURIComponent(location.hash.replace(/^#/,"")),i=panels.findIndex(function(x){return x.id===h||x.contains(document.getElementById(h))});return i<0?0:i}show(fromHash(),true);})();
 </script>
+<script>
+(function(){
+  var tab=document.querySelector('#tab-day-3');
+  var panel=document.querySelector('#day-3');
+  if(!tab||!panel)return;
+  tab.textContent='3. 이미지 5장';
+  tab.querySelector('.pill-text')?.replaceWith(document.createTextNode('3. 이미지 5장'));
+  panel.dataset.tab='3. 이미지 5장';
+  panel.innerHTML=`<article class="prose"><section class="hero"><p class="eyebrow">STEP 3 · IMAGE SET <span class="readtime">상황 → 프롬프트</span></p><h1 class="hero-title">요약 결과를<br>이미지 5장으로 만듭니다</h1></section><nav class="toc"><p class="toc-label">이 장의 목차</p><ol><li><a href="#day-3-s1">이 프롬프트를 쓰는 상황</a></li><li><a href="#day-3-s2">복사해서 사용할 프롬프트</a></li><li><a href="#day-3-s3">5장 이미지 구성</a></li></ol></nav><h2 id="day-3-s1">이 프롬프트를 쓰는 상황</h2><p>요약 결과를 발표자료에 넣을 이미지 5장으로 표현하고 싶습니다. 한 장의 대표 이미지가 아니라, 핵심 흐름과 시나리오를 나누어 각 슬라이드를 보조하는 이미지 세트를 만듭니다.</p><h2 id="day-3-s2">복사해서 사용할 프롬프트</h2><div class="prompt"><div class="prompt-head"><span>발표 슬라이드용 이미지 5장 생성</span><button class="copy-btn">복사</button></div><pre class="prompt-body">아래 요약 결과를 바탕으로 16:9 가로형 발표 슬라이드에 사용할 이미지 5장을 만들어줘.
+
+주제: [산업·직업]의 5~10년 미래 변화
+발표의 핵심 결론: [요약 결과의 한 문장 결론]
+대상: [경영자·직원·가족·고객 등]
+전체 스타일: [현실적인 사진·편집 일러스트·미니멀한 3D]
+주요 색상: [ ]
+
+다음 5개의 이미지가 하나의 발표자료처럼 보이도록 색감, 조명, 질감, 시각 언어를 통일해줘.
+1. 현재 상황: 지금의 일·고객·산업을 보여주는 이미지
+2. 변화의 큰 흐름: 현재에서 미래로 이동하는 변화 이미지
+3. Best 시나리오: 기회를 활용해 성장하는 이미지
+4. Base / Worst 비교: 적응하는 흐름과 준비가 늦어 위험이 커지는 흐름을 함께 보여주는 이미지
+5. 다음 90일 행동: 사람이 작게 실행하고 변화를 확인하는 이미지
+
+모든 이미지는 16:9 가로형으로 만들고, 각 이미지마다 발표자가 제목과 설명을 넣을 수 있는 여백을 남겨줘. 이미지 안에는 글자, 숫자, 로고, 워터마크, 가짜 표지판을 넣지 마. 특정 기업이나 인물을 근거 없이 묘사하지 마. 과도한 공포나 과장된 미래 표현은 피하고, 현실적이고 전문적인 분위기로 만들어줘.
+
+각 이미지에 대해 다음도 함께 알려줘.
+- 연결되는 슬라이드 번호
+- 이미지가 전달하는 핵심 메시지
+- 제목을 넣기 좋은 여백의 위치
+- 잘리지 않게 사용할 권장 크롭 방향</pre></div><h2 id="day-3-s3">5장 이미지 구성</h2><div class="table-wrap"><table><thead><tr><th>이미지</th><th>연결 슬라이드</th><th>역할</th></tr></thead><tbody><tr><td>1. 현재 상황</td><td>2</td><td>내 일과 산업의 출발점을 보여줍니다.</td></tr><tr><td>2. 변화의 흐름</td><td>3</td><td>고객·기술·시장 변화의 방향을 보여줍니다.</td></tr><tr><td>3. Best 시나리오</td><td>4</td><td>기회를 활용한 긍정적 흐름을 보여줍니다.</td></tr><tr><td>4. Base / Worst</td><td>5~6</td><td>적응과 준비 부족의 차이를 비교하게 합니다.</td></tr><tr><td>5. 다음 90일</td><td>8</td><td>거창한 전략보다 작은 실행을 강조합니다.</td></tr></tbody></table></div><div class="callout"><strong>이미지 기준</strong><br>5장은 서로 다른 이미지이지만 하나의 발표자료처럼 보여야 합니다. 이미지가 글을 대신하지 않도록 슬라이드마다 핵심 메시지와 여백을 먼저 정합니다.</div><div class="step-nav"><button data-prev="2">← 2. 결과 요약</button><button data-next="4">4. Work + Presentations →</button></div></article>`;
+  panel.querySelectorAll('.copy-btn').forEach(function(b){b.addEventListener('click',function(){var text=b.closest('.prompt').querySelector('.prompt-body').textContent.trim(),ok=false;try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text);ok=true}else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();ok=document.execCommand('copy');ta.remove()}}catch(e){}if(ok){b.textContent='복사됨';setTimeout(function(){b.textContent='복사'},1500)}})});
+  panel.querySelectorAll('.toc a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var el=document.querySelector(a.getAttribute('href'));if(el)el.scrollIntoView({behavior:'smooth'});history.replaceState(null,'',a.getAttribute('href'))})});
+  panel.querySelector('[data-prev]').addEventListener('click',function(){document.querySelector('#tab-day-2').click()});
+  panel.querySelector('[data-next]').addEventListener('click',function(){document.querySelector('#tab-day-4').click()});
+})();
+</script>
 </body></html>
