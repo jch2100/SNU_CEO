@@ -12,6 +12,7 @@ Status: PASS — stage 2 shell and cover-only autobiography verification
 - No `1기`, `FIRST`, `1ST`, `/1st/`, or first-cohort date markers remain under `2nd/`.
 - Four gallery containers render; the music gallery displays the connected 11-song playlist and the other three galleries remain intentional empty states.
 - The first approved autobiography cover is registered in the story gallery as a cover-only card. The card has no anchor, viewer URL, PDF, page data, body text, or private link.
+- Live URL verified: `https://ceo-ai.org/2nd/` returns 200, loads the story cover asset, and keeps the cover card at 0 anchors and 0 buttons.
 - Playlist URL is connected exactly as provided: `https://suno.com/playlist/2c94f7c1-f077-4151-869c-6b0f3d19ed5d`; the visible player and track list contain 11 songs.
 - The first-page hero renders a borderless 4×5 board: 17 normalized 2:3 poster assets plus one continuous three-cell word strip labeled `AI`, `CEO`, and `MASTER`.
 - All 17 normalized hero assets are verified at 1000×1500px; tile gap and padding are both 0px.
@@ -33,7 +34,8 @@ The desktop share button is present and wired to the existing native-share-or-cl
 
 - Opening a real lightbox item, because the non-music artwork data is intentionally empty.
 - Private autobiography flipbook content is verified separately from its bearer link; it is not part of the public 2nd-cohort data.
-- Public GitHub Pages deployment and `https://ceo-ai.org/2nd/` live verification.
+- Live private link verified: the viewer and encrypted payload return 200; the intro title is `여기까지 걸어온 길`, the book opens, and desktop overflow remains 0.
+- Mobile live verification after deployment; local mobile verification remains complete.
 
 ## Next content gate
 
