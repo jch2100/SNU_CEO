@@ -30,12 +30,12 @@ Status: PASS — stage 2 shell and cover-only autobiography verification
 
 The desktop share button is present and wired to the existing native-share-or-clipboard fallback handler. This browser exposed the native-share path, so clipboard fallback was not forced as a separate test.
 
-## Not yet tested
+## Remaining check
 
 - Opening a real lightbox item, because the non-music artwork data is intentionally empty.
 - Private autobiography flipbook content is verified separately from its bearer link; it is not part of the public 2nd-cohort data.
 - Live private link verified: the viewer and encrypted payload return 200; the intro title is `여기까지 걸어온 길`, the book opens, and desktop overflow remains 0.
-- Mobile live verification after deployment; local mobile verification remains complete.
+- Mobile live verification after deployment: PASS at 390×844; cover card has 0 anchors and 0 buttons, and the private viewer has no horizontal or main overflow.
 
 ## Next content gate
 
