@@ -228,7 +228,7 @@
 
   <section id="scene" aria-label="자서전 플립북">
     <header>
-      <a href="../1st/index.html">← 1기 수료 기념관</a>
+      <a id="backLink" href="../1st/index.html">← 1기 수료 기념관</a>
       <strong id="bookTitle">AI 자서전</strong>
       <span id="bookAuthor"></span>
     </header>
@@ -248,6 +248,7 @@
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
     const accessKey = new URLSearchParams(location.hash.slice(1)).get("key");
+    const cohort = params.get("cohort");
     const bookRoot = document.getElementById("book");
     const measureStage = document.getElementById("measureStage");
     let pageFlip;
@@ -466,6 +467,11 @@
 
     async function init() {
       try {
+        if (cohort === "2") {
+          const backLink = document.getElementById("backLink");
+          backLink.href = "../2nd/index.html";
+          backLink.textContent = "← 2기 기록관";
+        }
         bookData = await loadProtectedBook();
         document.title = `${bookData.title} — ${bookData.author}`;
         document.getElementById("introCover").src = bookData.cover;

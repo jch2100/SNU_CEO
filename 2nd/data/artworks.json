@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-30",
+  "groupPhoto": "",
+  "heroTiles": [
+    "assets/hero/tiles-normalized/tile-01.jpg",
+    "assets/hero/tiles-normalized/tile-02.jpg",
+    "assets/hero/tiles-normalized/tile-03.jpg",
+    "assets/hero/tiles-normalized/tile-04.jpg",
+    "assets/hero/tiles-normalized/tile-05.jpg",
+    "assets/hero/tiles-normalized/tile-06.jpg",
+    "assets/hero/tiles-normalized/tile-07.jpg",
+    "assets/hero/tiles-normalized/tile-08.jpg",
+    "assets/hero/tiles-normalized/tile-09.jpg",
+    "assets/hero/tiles-normalized/tile-10.jpg",
+    "assets/hero/tiles-normalized/tile-11.jpg",
+    "assets/hero/tiles-normalized/tile-12.jpg",
+    "assets/hero/tiles-normalized/tile-13.jpg",
+    "assets/hero/tiles-normalized/tile-14.jpg",
+    "assets/hero/tiles-normalized/tile-15.jpg",
+    "assets/hero/tiles-normalized/tile-16.jpg",
+    "assets/hero/tiles-normalized/tile-17.jpg"
+  ],
+  "notice": "공개 동의를 확인한 작품만 이 파일에 등록합니다. 동의 여부 자체는 공개 저장소에 기록하지 않습니다.",
+  "musicPlaylist": {
+    "title": "CEO 2nd",
+    "description": "2기가 Suno로 만든 11곡 플레이리스트입니다.",
+    "url": "https://suno.com/playlist/2c94f7c1-f077-4151-869c-6b0f3d19ed5d",
+    "trackCount": 11,
+    "extraTrackCount": 0
+  },
+  "artworks": [
+    {
+      "id": "story-001",
+      "category": "story",
+      "title": "여기까지 걸어온 길",
+      "creator": "김태용",
+      "thumbnail": "assets/autobiography-kim-tae-yong-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "music-001",
+      "category": "music",
+      "title": "7월 7일의 행운",
+      "creator": "shkangdrm",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/c2a057a7-bb1f-49e8-a9cd-efb28ff3068d",
+      "originalUrl": "https://suno.com/song/c2a057a7-bb1f-49e8-a9cd-efb28ff3068d",
+      "playlistOrder": 1,
+      "featured": false
+    },
+    {
+      "id": "music-002",
+      "category": "music",
+      "title": "운동장 먼지",
+      "creator": "n01092785988",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/e2a706ab-9873-45da-93cd-5cd8f2d65572",
+      "originalUrl": "https://suno.com/song/e2a706ab-9873-45da-93cd-5cd8f2d65572",
+      "playlistOrder": 2,
+      "featured": false
+    },
+    {
+      "id": "music-003",
+      "category": "music",
+      "title": "하바나 발끝",
+      "creator": "혜리 신",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/86b84642-470f-4f7c-83b3-e97d06d732a8",
+      "originalUrl": "https://suno.com/song/86b84642-470f-4f7c-83b3-e97d06d732a8",
+      "playlistOrder": 3,
+      "featured": false
+    },
+    {
+      "id": "music-004",
+      "category": "music",
+      "title": "Summer Exodus",
+      "creator": "sms4611589",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/cbb2ecdc-ae5a-48a7-8ef3-bf0725642e91",
+      "originalUrl": "https://suno.com/song/cbb2ecdc-ae5a-48a7-8ef3-bf0725642e91",
+      "playlistOrder": 4,
+      "featured": false
+    },
+    {
+      "id": "music-005",
+      "category": "music",
+      "title": "산길 내 마음",
+      "creator": "dmpg9092",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/991601df-0503-49a9-a2f4-0f588ec493d4",
+      "originalUrl": "https://suno.com/song/991601df-0503-49a9-a2f4-0f588ec493d4",
+      "playlistOrder": 5,
+      "featured": false
+    },
+    {
+      "id": "music-006",
+      "category": "music",
+      "title": "두 사람의 집",
+      "creator": "8",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/c2aefca1-acd7-4b42-8ca1-fd307d1cd106",
+      "originalUrl": "https://suno.com/song/c2aefca1-acd7-4b42-8ca1-fd307d1cd106",
+      "playlistOrder": 6,
+      "featured": false
+    },
+    {
+      "id": "music-007",
+      "category": "music",
+      "title": "노을꽃",
+      "creator": "hch883636",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/fc876943-b836-4c41-8d92-c33613a24c26",
+      "originalUrl": "https://suno.com/song/fc876943-b836-4c41-8d92-c33613a24c26",
+      "playlistOrder": 7,
+      "featured": false
+    },
+    {
+      "id": "music-008",
+      "category": "music",
+      "title": "흔들린 바람",
+      "creator": "의곤 육",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/710ea4b6-ae03-4009-a4e6-de5a50e557e9",
+      "originalUrl": "https://suno.com/song/710ea4b6-ae03-4009-a4e6-de5a50e557e9",
+      "playlistOrder": 8,
+      "featured": false
+    },
+    {
+      "id": "music-009",
+      "category": "music",
+      "title": "노랑 구름",
+      "creator": "rolux7",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/ebed3840-8b74-4522-a195-8653d55f4921",
+      "originalUrl": "https://suno.com/song/ebed3840-8b74-4522-a195-8653d55f4921",
+      "playlistOrder": 9,
+      "featured": false
+    },
+    {
+      "id": "music-010",
+      "category": "music",
+      "title": "해무 탈출",
+      "creator": "jullia4022",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/7bc25fdc-5993-4b52-aa20-238c46c0e3db",
+      "originalUrl": "https://suno.com/song/7bc25fdc-5993-4b52-aa20-238c46c0e3db",
+      "playlistOrder": 10,
+      "featured": false
+    },
+    {
+      "id": "music-011",
+      "category": "music",
+      "title": "새로운 세상",
+      "creator": "hojaelee0218",
+      "description": "2기 Suno 플레이리스트 수록곡입니다.",
+      "embedUrl": "https://suno.com/embed/1a11e5da-845b-4468-81e0-a571b15c5729",
+      "originalUrl": "https://suno.com/song/1a11e5da-845b-4468-81e0-a571b15c5729",
+      "playlistOrder": 11,
+      "featured": false
+    }
+  ]
+}
