@@ -136,9 +136,9 @@
 
     .toc-title { margin: 0 0 32px; font-family: "Noto Serif KR", Batang, serif; font-size: 30px; }
     .toc-list { list-style: none; margin: 0; padding: 0; }
-    .toc-list li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid #e8e0d2; }
-    .toc-index { color: var(--sky); font-size: 12px; letter-spacing: .08em; }
-    .toc-text { font-family: "Noto Serif KR", Batang, serif; font-size: 15px; line-height: 1.45; word-break: keep-all; }
+    .toc-list li { display: block; padding: 10px 0; border-bottom: 1px solid #e8e0d2; }
+    .toc-text { display: block; font-family: "Noto Serif KR", Batang, serif; font-size: 15px; line-height: 1.45; word-break: keep-all; }
+    .toc-list li.part .toc-text { font-weight: 700; color: #544936; }
 
     .section-kicker { margin: 0 0 12px; color: var(--sky); font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
     .section-title { margin: 0 0 28px; padding-bottom: 20px; border-bottom: 1px solid #d8c9ad; font-family: "Noto Serif KR", Batang, serif; font-size: 27px; line-height: 1.45; font-weight: 600; word-break: keep-all; }
@@ -196,8 +196,7 @@
         overflow: hidden;
       }
       .toc-title { margin-bottom: 36px; font-size: 40px; }
-      .toc-list li { grid-template-columns: 42px 1fr; gap: 18px; padding: 18px 0; }
-      .toc-index { font-size: 18px; }
+      .toc-list li { padding: 18px 0; }
       .toc-text { font-size: 24px; line-height: 1.5; }
       .section-kicker { margin-bottom: 16px; font-size: 18px; }
       .section-title { margin-bottom: 34px; padding-bottom: 24px; font-size: 34px; line-height: 1.4; }
@@ -245,7 +244,9 @@
   <div id="measureStage" aria-hidden="true"></div>
 
   <script>
-    const params = new URLSearchParams(location.search);
+    // Some mail/chat clients escape ampersands in copied links as `\\&`.
+    // Normalize that harmless transport artifact before reading query params.
+    const params = new URLSearchParams(location.search.replace(/\\&/g, "&"));
     const id = params.get("id");
     const accessKey = new URLSearchParams(location.hash.slice(1)).get("key");
     const cohort = params.get("cohort");
@@ -260,6 +261,10 @@
       if (className) node.className = className;
       if (text !== undefined) node.textContent = text;
       return node;
+    }
+
+    function isPartTitle(title) {
+      return /^제\d+부\s/.test(title.trim());
     }
 
     function makePage(extraClass = "") {
@@ -301,13 +306,9 @@
         const { page, inner } = makePage();
         inner.appendChild(element("h2", "toc-title", start === 0 ? "차례" : "차례 · 계속"));
         const list = element("ol", "toc-list");
-        bookData.sections.slice(start, start + itemsPerPage).forEach((section, offset) => {
-          const index = start + offset;
-          const item = element("li");
-          item.append(
-            element("span", "toc-index", String(index + 1).padStart(2, "0")),
-            element("span", "toc-text", section.title)
-          );
+        bookData.sections.slice(start, start + itemsPerPage).forEach(section => {
+          const item = element("li", isPartTitle(section.title) ? "part" : "");
+          item.append(element("span", "toc-text", section.title));
           list.appendChild(item);
         });
         inner.appendChild(list);
@@ -322,10 +323,11 @@
       if (continuation) {
         body.appendChild(element("p", "section-continuation", section.title));
       } else {
-        body.append(
-          element("p", "section-kicker", "LIFE STORY"),
-          element("h2", "section-title", section.title)
-        );
+          const title = element("h2", `section-title${isPartTitle(section.title) ? " part" : ""}`, section.title);
+          body.append(
+            element("p", "section-kicker", "LIFE STORY"),
+            title
+          );
       }
       inner.append(body, element("span", "page-num", String(contentPageNumber++)));
       return { page, inner, body, paragraphCount: 0 };

@@ -39,6 +39,14 @@
       "visibility": "cover-only"
     },
     {
+      "id": "story-002",
+      "category": "story",
+      "title": "내가 걸어온 길",
+      "creator": "고기창",
+      "thumbnail": "assets/autobiography-go-gi-chang-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
       "id": "music-001",
       "category": "music",
       "title": "7월 7일의 행운",
