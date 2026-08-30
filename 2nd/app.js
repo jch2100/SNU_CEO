@@ -313,7 +313,7 @@ function setupGalleryObserver() {
 function setupShare() {
   qs("#shareButton").addEventListener("click", async () => {
     const shareData = {
-      title: "2기의 8주, 배움이 작품이 되어 가고 있습니다",
+      title: "우리의 8주, 배움이 작품이 되었습니다",
       text: "경영자를 위한 AI 마스터과정 2기 기록관",
       url: "https://ceo-ai.org/2nd/"
     };
@@ -346,7 +346,7 @@ function buildCeremonySlides() {
 }
 
 function ceremonyMarkup(slide) {
-  if (slide.type === "intro") return `<p class="ceremony-kicker">경영자를 위한 AI 마스터과정</p><h2>2기의 8주,<br>배움이 작품이 되어 가고 있습니다.</h2><p>2026.07.09 — 09.03</p>`;
+  if (slide.type === "intro") return `<p class="ceremony-kicker">경영자를 위한 AI 마스터과정</p><h2>우리의 8주,<br>배움이 작품이 되었습니다.</h2><p>2026.07.09 — 09.03</p>`;
   if (slide.type === "outro") return `<p class="ceremony-kicker">KEEP GOING</p><h2>2기 여러분의<br>다음 장면을 응원합니다.</h2><p>강사 정찬훈 드림</p>`;
   const item = slide.item;
   return `<p class="ceremony-kicker">${escapeHtml(CATEGORY_LABELS[item.category])}</p>
