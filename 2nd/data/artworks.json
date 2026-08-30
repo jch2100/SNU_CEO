@@ -47,6 +47,14 @@
       "visibility": "cover-only"
     },
     {
+      "id": "story-003",
+      "category": "story",
+      "title": "내가 있어야 할 곳",
+      "creator": "신혜리",
+      "thumbnail": "assets/autobiography-shin-hye-ri-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
       "id": "music-001",
       "category": "music",
       "title": "7월 7일의 행운",
