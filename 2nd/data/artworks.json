@@ -55,6 +55,14 @@
       "visibility": "cover-only"
     },
     {
+      "id": "story-004",
+      "category": "story",
+      "title": "민재민은 왜 카메라를 드는가",
+      "creator": "이태수 · 민재민",
+      "thumbnail": "assets/autobiography-lee-tae-soo-min-jae-min-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
       "id": "music-001",
       "category": "music",
       "title": "7월 7일의 행운",
