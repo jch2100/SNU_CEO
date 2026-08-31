@@ -9,6 +9,7 @@ const required = [
   "styles.css",
   "app.js",
   "data/artworks.json",
+  "data/image-gallery.json",
   "viewer/book.html",
   "assets/share/favicon.svg",
   "assets/share/og-2nd.svg",
@@ -69,8 +70,22 @@ for (const [index, item] of music.entries()) {
   if (!/^https:\/\/suno\.com\/song\/[0-9a-f-]+$/i.test(item.originalUrl || "")) errors.push(`music[${index}].originalUrl 형식 오류`);
 }
 
+const imageData = JSON.parse(fs.readFileSync(path.join(root, "data/image-gallery.json"), "utf8"));
+const images = Array.isArray(imageData.artworks) ? imageData.artworks : [];
+if (images.length !== 23) errors.push(`2기 이미지 작품 수 오류: ${images.length}`);
+if (images.filter(item => item.imageTheme === "studio").length !== 10) errors.push("스튜디오 사진 수 오류");
+if (images.filter(item => item.imageTheme === "ai-meets").length !== 13) errors.push("AI를 만나고 묶음 수 오류");
+for (const [index, item] of images.entries()) {
+  if (item.category !== "image" || !item.id || !item.title || !item.creator || !item.thumbnail || !Array.isArray(item.images) || !item.images.length) {
+    errors.push(`image[${index}] 필수 필드 오류`);
+  }
+  for (const image of item.images || []) {
+    if (!image.src || !fs.existsSync(path.resolve(root, image.src))) errors.push(`image[${index}] 파일 없음: ${image.src}`);
+  }
+}
+
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
-for (const marker of ["navigator.share", "moveLightbox", "setupCeremony", "data/artworks.json"]) {
+for (const marker of ["navigator.share", "moveLightbox", "setupCeremony", "data/artworks.json", "data/image-gallery.json"]) {
   if (!app.includes(marker)) errors.push(`app.js 필수 기능 없음: ${marker}`);
 }
 

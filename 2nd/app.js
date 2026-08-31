@@ -61,6 +61,7 @@ function imagePresentationLabel(item) {
 }
 
 function imageThemeLabel(item) {
+  if (item.imageTheme === "studio") return "스튜디오 초상";
   return item.imageTheme === "future" ? "5–10년 뒤의 나" : item.imageTheme === "ai-meets" ? "AI를 만나고" : "이미지 작품";
 }
 
@@ -314,13 +315,13 @@ function setupShare() {
   qs("#shareButton").addEventListener("click", async () => {
     const shareData = {
       title: "우리의 8주, 배움이 작품이 되었습니다",
-      text: "경영자를 위한 AI 마스터과정 2기 기록관",
+      text: "서울대학교 경영자를 위한 AI 마스터과정 2기입니다.\n8주 동안 만든 자서전·노래·이미지·생각을 한곳에서 만나보세요.",
       url: "https://ceo-ai.org/2nd/"
     };
     try {
       if (navigator.share) await navigator.share(shareData);
       else {
-        await navigator.clipboard.writeText(shareData.url);
+        await navigator.clipboard.writeText(`${shareData.title}\n${shareData.text}\n${shareData.url}`);
         showToast("기념관 주소를 복사했습니다.");
       }
     } catch (error) {
@@ -443,10 +444,16 @@ async function setupPretext() {
 
 async function loadArtworks() {
   try {
-    const response = await fetch("data/artworks.json", { cache: "no-store" });
+    const [response, imageResponse] = await Promise.all([
+      fetch("data/artworks.json", { cache: "no-store" }),
+      fetch("data/image-gallery.json", { cache: "no-store" })
+    ]);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
-    state.artworks = Array.isArray(data.artworks) ? data.artworks.filter(item => CATEGORY_LABELS[item.category]) : [];
+    const imageData = imageResponse.ok ? await imageResponse.json() : {};
+    const baseArtworks = Array.isArray(data.artworks) ? data.artworks : [];
+    const imageArtworks = Array.isArray(imageData.artworks) ? imageData.artworks : [];
+    state.artworks = [...baseArtworks, ...imageArtworks].filter(item => CATEGORY_LABELS[item.category]);
     state.groupPhoto = typeof data.groupPhoto === "string" ? data.groupPhoto : "";
     state.heroTiles = Array.isArray(data.heroTiles) ? data.heroTiles.filter(tile => typeof tile === "string") : [];
     state.musicPlaylist = data.musicPlaylist && typeof data.musicPlaylist === "object" ? data.musicPlaylist : null;

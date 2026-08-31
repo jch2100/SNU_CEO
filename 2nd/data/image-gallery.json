@@ -1,0 +1,586 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-31",
+  "source": "09_2기_수료작품_수집/스튜디오 사진 + AI를 만나고",
+  "artworks": [
+    {
+      "id": "studio-2nd-01",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "강석환",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/kang-seok-hwan/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/kang-seok-hwan/01.webp",
+          "width": 1086,
+          "height": 1448
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-02",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "김춘계",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/kim-chun-gye/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/kim-chun-gye/01.webp",
+          "width": 1126,
+          "height": 1397
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-03",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "나원호",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/na-won-ho/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/na-won-ho/01.webp",
+          "width": 1122,
+          "height": 1402
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-04",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "박영길",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/park-young-gil/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/park-young-gil/01.webp",
+          "width": 1121,
+          "height": 1403
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-05",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "손양석 1",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/son-yang-seok/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/son-yang-seok/01.webp",
+          "width": 1181,
+          "height": 1331
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-06",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "손양석 2",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/son-yang-seok-2/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/son-yang-seok-2/01.webp",
+          "width": 1122,
+          "height": 1402
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-07",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "신혜리",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/shin-hye-ri/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/shin-hye-ri/01.webp",
+          "width": 1254,
+          "height": 1254
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-08",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "유상열",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/yoo-sang-yeol/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/yoo-sang-yeol/01.webp",
+          "width": 972,
+          "height": 1618
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-09",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "이호재",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/lee-ho-jae/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/lee-ho-jae/01.webp",
+          "width": 1536,
+          "height": 1024
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "studio-2nd-10",
+      "category": "image",
+      "imageTheme": "studio",
+      "title": "스튜디오 사진",
+      "creator": "황하",
+      "description": "2기에서 함께 배운 사람들의 스튜디오 초상입니다.",
+      "thumbnail": "assets/artworks/images/studio/hwang-ha/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/studio/hwang-ha/01.webp",
+          "width": 1122,
+          "height": 1402
+        }
+      ],
+      "presentation": "single",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-01",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "강미희",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/kang-mi-hee/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/kang-mi-hee/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kang-mi-hee/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kang-mi-hee/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kang-mi-hee/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-02",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "강중경",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/kang-jung-kyung/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/kang-jung-kyung/01.webp",
+          "width": 1505,
+          "height": 847
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kang-jung-kyung/02.webp",
+          "width": 1505,
+          "height": 847
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kang-jung-kyung/03.webp",
+          "width": 1505,
+          "height": 847
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kang-jung-kyung/04.webp",
+          "width": 1505,
+          "height": 847
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-03",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "고기창",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/go-gi-chang/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/go-gi-chang/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/go-gi-chang/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/go-gi-chang/03.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-04",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "김유신",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/kim-yu-shin/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/kim-yu-shin/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kim-yu-shin/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kim-yu-shin/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kim-yu-shin/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-05",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "김춘계",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/kim-chun-gye/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/kim-chun-gye/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kim-chun-gye/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/kim-chun-gye/03.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-06",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "나원호",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/na-won-ho/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/na-won-ho/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/na-won-ho/02.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-07",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "문권식",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/moon-kwon-sik/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/moon-kwon-sik/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/moon-kwon-sik/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/moon-kwon-sik/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/moon-kwon-sik/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-08",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "민재민",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/min-jae-min/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/min-jae-min/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/min-jae-min/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/min-jae-min/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/min-jae-min/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-09",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "신명식",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/shin-myung-sik/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/shin-myung-sik/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/shin-myung-sik/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/shin-myung-sik/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/shin-myung-sik/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-10",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "신혜리",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/shin-hye-ri/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/shin-hye-ri/01.webp",
+          "width": 1003,
+          "height": 1568
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/shin-hye-ri/02.webp",
+          "width": 1122,
+          "height": 1402
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/shin-hye-ri/03.webp",
+          "width": 1122,
+          "height": 1402
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/shin-hye-ri/04.webp",
+          "width": 1122,
+          "height": 1402
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-11",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "이호재",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/lee-ho-jae/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/lee-ho-jae/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/lee-ho-jae/02.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-12",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "전병현",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/jeon-byung-hyun/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/jeon-byung-hyun/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/jeon-byung-hyun/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/jeon-byung-hyun/03.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/jeon-byung-hyun/04.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    },
+    {
+      "id": "ai-meets-2nd-13",
+      "category": "image",
+      "imageTheme": "ai-meets",
+      "title": "AI를 만나고",
+      "creator": "황하",
+      "description": "AI를 만나며 발견한 변화와 새로운 가능성을 담았습니다.",
+      "thumbnail": "assets/artworks/images/ai-meets/hwang-ha/01.webp",
+      "images": [
+        {
+          "src": "assets/artworks/images/ai-meets/hwang-ha/01.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/hwang-ha/02.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/hwang-ha/04.webp",
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "src": "assets/artworks/images/ai-meets/hwang-ha/05.webp",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "presentation": "sequence",
+      "featured": false
+    }
+  ]
+}

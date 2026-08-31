@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">경영자를 위한 AI 마스터과정 2기 기록관</title>
-  <desc id="desc">2기의 8주, 배움이 작품이 되어 가고 있습니다.</desc>
+  <desc id="desc">우리의 8주, 배움이 작품이 되었습니다.</desc>
   <rect width="1200" height="630" fill="#0b1d32"/>
   <circle cx="1020" cy="120" r="230" fill="#c9a86a" opacity=".18"/>
   <text x="100" y="120" fill="#c9a86a" font-family="Arial, sans-serif" font-size="28" letter-spacing="8">SECOND COHORT RECORD</text>
-  <text x="100" y="270" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="700">2기의 8주,</text>
-  <text x="100" y="365" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="700">배움이 작품이 되어 가고 있습니다.</text>
+  <text x="100" y="270" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="700">우리의 8주,</text>
+  <text x="100" y="365" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="700">배움이 작품이 되었습니다.</text>
   <text x="100" y="500" fill="#c9a86a" font-family="Arial, sans-serif" font-size="26">ceo-ai.org/2nd/</text>
 </svg>
