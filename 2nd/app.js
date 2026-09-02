@@ -10,6 +10,7 @@ const state = {
   groupPhoto: "",
   heroTiles: [],
   musicPlaylist: null,
+  musicSources: {},
   ceremonySlides: [],
   ceremonyIndex: 0,
   ceremonyTimer: null,
@@ -160,13 +161,22 @@ function renderGalleries() {
 }
 
 function selectMusicTrack(item, { focus = false } = {}) {
-  const frame = qs("#sunoPlayer");
-  const embedUrl = safeUrl(item.embedUrl);
-  if (!frame || !embedUrl) return;
-  frame.src = embedUrl;
-  frame.title = `${item.title} · ${item.creator} Suno 플레이어`;
+  const player = qs("#sunoPlayer");
+  const source = qs("#sunoPlayerSource");
+  const audioUrl = safeUrl(state.musicSources[item.id] || item.media);
+  if (!player || !audioUrl) return;
+  if (player.dataset.currentSrc !== audioUrl) {
+    player.pause();
+    if (source) source.src = audioUrl;
+    else player.src = audioUrl;
+    player.dataset.currentSrc = audioUrl;
+    player.load();
+  }
+  player.setAttribute("aria-label", `${item.title} · ${item.creator} Suno 음악 플레이어`);
   qs("#musicNowTitle").textContent = item.title;
   qs("#musicNowCreator").textContent = item.playlistExtra ? `${item.creator} · 플레이리스트 외 추가 작품` : item.creator;
+  const status = qs("#musicPlayerStatus");
+  if (status) status.textContent = "브라우저 오디오 플레이어로 바로 재생합니다. 원곡 링크에서도 감상할 수 있습니다.";
   const currentLink = qs("#musicCurrentLink");
   currentLink.href = safeUrl(item.originalUrl);
   qsa("[data-music-track]").forEach(button => {
@@ -190,6 +200,14 @@ function setupMusicPlaylist() {
   }
   experience.hidden = false;
   if (fallback) fallback.hidden = true;
+  const player = qs("#sunoPlayer");
+  if (player && !player.dataset.errorBound) {
+    player.addEventListener("error", () => {
+      const status = qs("#musicPlayerStatus");
+      if (status) status.textContent = "이 브라우저에서 바로 재생되지 않으면 ‘현재 곡을 Suno에서 듣기’를 이용해 주세요.";
+    });
+    player.dataset.errorBound = "true";
+  }
   const playlist = state.musicPlaylist || {};
   const playlistLink = qs("#musicPlaylistLink");
   playlistLink.href = safeUrl(playlist.url);
@@ -444,22 +462,30 @@ async function setupPretext() {
 
 async function loadArtworks() {
   try {
-    const [response, imageResponse] = await Promise.all([
+    const [response, imageResponse, musicResponse] = await Promise.all([
       fetch("data/artworks.json", { cache: "no-store" }),
-      fetch("data/image-gallery.json", { cache: "no-store" })
+      fetch("data/image-gallery.json", { cache: "no-store" }),
+      fetch("data/music-player.json", { cache: "no-store" })
     ]);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     const imageData = imageResponse.ok ? await imageResponse.json() : {};
+    const musicData = musicResponse.ok ? await musicResponse.json() : {};
     const baseArtworks = Array.isArray(data.artworks) ? data.artworks : [];
     const imageArtworks = Array.isArray(imageData.artworks) ? imageData.artworks : [];
     state.artworks = [...baseArtworks, ...imageArtworks].filter(item => CATEGORY_LABELS[item.category]);
     state.groupPhoto = typeof data.groupPhoto === "string" ? data.groupPhoto : "";
     state.heroTiles = Array.isArray(data.heroTiles) ? data.heroTiles.filter(tile => typeof tile === "string") : [];
     state.musicPlaylist = data.musicPlaylist && typeof data.musicPlaylist === "object" ? data.musicPlaylist : null;
+    state.musicSources = Object.fromEntries(
+      (Array.isArray(musicData.sources) ? musicData.sources : [])
+        .filter(item => item && item.id && item.audioUrl)
+        .map(item => [item.id, item.audioUrl])
+    );
   } catch (error) {
     console.error("작품 목록을 불러오지 못했습니다.", error);
     state.artworks = [];
+    state.musicSources = {};
     showToast("작품 목록을 불러오지 못했습니다.");
   }
 }
@@ -486,7 +512,6 @@ async function init() {
   renderHeroTiles();
   detectGroupPhoto();
   renderGalleries();
-  renderFeatured();
   buildCeremonySlides();
   setupPretext();
 }

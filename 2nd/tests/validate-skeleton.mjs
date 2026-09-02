@@ -10,6 +10,7 @@ const required = [
   "app.js",
   "data/artworks.json",
   "data/image-gallery.json",
+  "data/music-player.json",
   "viewer/book.html",
   "assets/share/favicon.svg",
   "assets/share/og-2nd.svg",
@@ -36,6 +37,7 @@ for (const marker of [
 ]) {
   if (!html.includes(marker)) errors.push(`index.html 필수 마커 없음: ${marker}`);
 }
+if (html.includes('class="intro"')) errors.push("삭제 요청한 intro 장이 남아 있음");
 
 const data = JSON.parse(fs.readFileSync(path.join(root, "data/artworks.json"), "utf8"));
 if (!Array.isArray(data.artworks)) errors.push("artworks가 배열이 아님");
@@ -70,6 +72,13 @@ for (const [index, item] of music.entries()) {
   if (!/^https:\/\/suno\.com\/song\/[0-9a-f-]+$/i.test(item.originalUrl || "")) errors.push(`music[${index}].originalUrl 형식 오류`);
 }
 
+const musicPlayerData = JSON.parse(fs.readFileSync(path.join(root, "data/music-player.json"), "utf8"));
+const musicSources = Array.isArray(musicPlayerData.sources) ? musicPlayerData.sources : [];
+if (musicSources.length !== 11) errors.push(`수노 오디오 소스 수 오류: ${musicSources.length}`);
+for (const [index, item] of musicSources.entries()) {
+  if (!item.id || !/^https:\/\//i.test(item.audioUrl || "")) errors.push(`music-source[${index}] 오디오 주소 오류`);
+}
+
 const imageData = JSON.parse(fs.readFileSync(path.join(root, "data/image-gallery.json"), "utf8"));
 const images = Array.isArray(imageData.artworks) ? imageData.artworks : [];
 if (images.length !== 23) errors.push(`2기 이미지 작품 수 오류: ${images.length}`);
@@ -85,7 +94,7 @@ for (const [index, item] of images.entries()) {
 }
 
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
-for (const marker of ["navigator.share", "moveLightbox", "setupCeremony", "data/artworks.json", "data/image-gallery.json"]) {
+for (const marker of ["navigator.share", "moveLightbox", "setupCeremony", "data/artworks.json", "data/image-gallery.json", "data/music-player.json", "musicSources"]) {
   if (!app.includes(marker)) errors.push(`app.js 필수 기능 없음: ${marker}`);
 }
 
@@ -95,4 +104,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("SKELETON_VALIDATION_OK: required files, 17 normalized poster assets + 3-cell word strip, 11-song playlist, 4 galleries, share, lightbox, ceremony");
+console.log("SKELETON_VALIDATION_OK: required files, intro removed, native audio player, 11-song playlist, 4 galleries, share, lightbox, ceremony");
