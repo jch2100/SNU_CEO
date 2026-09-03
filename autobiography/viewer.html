@@ -198,16 +198,17 @@
         padding: 12px 9px 82px;
         overflow: hidden;
       }
-      .toc-title { margin-bottom: 36px; font-size: 40px; }
-      .toc-list li { padding: 18px 0; }
-      .toc-text { font-size: 24px; line-height: 1.5; }
-      .section-kicker { margin-bottom: 16px; font-size: 18px; }
-      .section-title { margin-bottom: 34px; padding-bottom: 24px; font-size: 34px; line-height: 1.4; }
-      .section-continuation { margin: -8px 0 28px; font-size: 20px; line-height: 1.45; }
-      .body-copy p { margin-bottom: 20px; font-size: 30px; line-height: 1.65; }
-      .body-copy p.lead::first-letter { margin: 10px 11px 0 0; font-size: 62px; }
-      .body-copy.compact p { margin-bottom: 16px; font-size: 26px; line-height: 1.55; }
-      .page-num { font-size: 18px; }
+      .page-inner { padding: 42px 42px 54px; }
+      .toc-title { margin-bottom: 28px; font-size: 32px; }
+      .toc-list li { padding: 12px 0; }
+      .toc-text { font-size: 20px; line-height: 1.45; }
+      .section-kicker { margin-bottom: 12px; font-size: 15px; }
+      .section-title { margin-bottom: 28px; padding-bottom: 20px; font-size: 30px; line-height: 1.4; }
+      .section-continuation { margin: -6px 0 22px; font-size: 17px; line-height: 1.45; }
+      .body-copy p { margin-bottom: 14px; font-size: 26px; line-height: 1.65; }
+      .body-copy p.lead::first-letter { margin: 8px 9px 0 0; font-size: 54px; }
+      .body-copy.compact p { margin-bottom: 12px; font-size: 23px; line-height: 1.55; }
+      .page-num { font-size: 15px; }
       .controls { bottom: max(10px, env(safe-area-inset-bottom)); }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -302,7 +303,7 @@
 
     function makeTocPages() {
       const mobile = window.matchMedia("(max-width: 640px)").matches;
-      const itemsPerPage = mobile ? 6 : 12;
+      const itemsPerPage = mobile ? 8 : 12;
       const pages = [];
 
       for (let start = 0; start < bookData.sections.length; start += itemsPerPage) {
