@@ -87,6 +87,14 @@
       "visibility": "cover-only"
     },
     {
+      "id": "story-008",
+      "category": "story",
+      "title": "사람을 믿고, 길을 만들다",
+      "creator": "황하",
+      "thumbnail": "assets/autobiography-hwang-ha-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
       "id": "music-001",
       "category": "music",
       "title": "7월 7일의 행운",
