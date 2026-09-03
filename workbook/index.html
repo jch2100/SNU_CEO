@@ -100,7 +100,7 @@ body {
   transition: width 0.1s linear;
 }
 
-/* ── 상단 알약 탭 ───────────────────────────────────────── */
+/* ── 상단 목차·회차 이동 ───────────────────────────────── */
 
 .topbar {
   position: sticky;
@@ -125,70 +125,89 @@ body {
   color: var(--ink-faint);
 }
 
-.tabs-wrap { position: relative; }
-
-/* 탭이 화면보다 길 때만 오른쪽 끝을 흐리게 해 "더 있다"를 알린다. */
-.tabs-wrap::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 34px;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  background: linear-gradient(to right, transparent, var(--bg));
-}
-.tabs-wrap.is-scrollable::after { opacity: 1; }
-
-.tabs {
-  display: flex;
-  gap: 10px;
-  padding: 6px 16px 10px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.tabs::-webkit-scrollbar { display: none; }
-
-.pill {
+.jump-nav {
   position: relative;
-  flex: 0 0 auto;
-  appearance: none;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4px 16px 10px;
+}
+
+.jump-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
   border: 1px solid var(--line);
   background: var(--surface);
   color: var(--ink);
   font: inherit;
-  font-size: 0.94rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  padding: 9px 20px;
-  border-radius: 999px;
+  padding: 11px 16px;
+  border-radius: 16px;
   cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(26, 24, 20, 0.04);
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
-.pill:hover { border-color: var(--ink-faint); }
-.pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.pill.is-active {
-  background: var(--card);
-  border-color: var(--card);
-  color: var(--card-ink);
-}
+.jump-trigger:hover, .jump-trigger.is-open { border-color: var(--ink-faint); box-shadow: 0 6px 18px rgba(26, 24, 20, 0.08); }
+.jump-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.jump-trigger-label { flex: 0 0 auto; color: var(--ink-faint); font-size: 0.82rem; font-weight: 800; }
+.jump-current { flex: 1 1 auto; min-width: 0; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jump-chevron { flex: 0 0 auto; color: var(--ink-faint); font-size: 1.35rem; line-height: 1; transform: translateY(-2px); transition: transform 0.15s ease; }
+.jump-trigger.is-open .jump-chevron { transform: rotate(180deg) translateY(2px); }
 
-/* 다 읽은 Day 표시 */
-.pill.is-read::after {
-  content: "";
+.jump-menu {
   position: absolute;
-  top: 6px;
-  right: 9px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+  top: calc(100% - 2px);
+  left: 16px;
+  right: 16px;
+  z-index: 25;
+  max-width: 688px;
+  max-height: min(70vh, 560px);
+  margin: 0 auto;
+  padding: 10px;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 18px 42px rgba(26, 24, 20, 0.16);
 }
-.pill.is-read.is-active::after { background: var(--accent); }
+.jump-menu[hidden] { display: none; }
+.jump-menu-title { margin: 4px 8px 8px; color: var(--ink-faint); font-size: 0.8rem; font-weight: 800; }
+.jump-item {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 10px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.jump-item:hover, .jump-item:focus-visible { background: var(--bg); }
+.jump-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.jump-item.is-active { background: var(--card); color: var(--card-ink); }
+.jump-index { color: var(--ink-faint); font-size: 0.85rem; font-weight: 800; text-align: center; }
+.jump-item.is-active .jump-index { color: var(--accent); }
+.jump-item-copy { min-width: 0; }
+.jump-item-copy strong, .jump-item-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.jump-item-copy strong { font-size: 0.94rem; }
+.jump-item-copy small { margin-top: 1px; color: var(--ink-faint); font-size: 0.78rem; line-height: 1.35; }
+.jump-item.is-active .jump-item-copy small { color: var(--card-soft); }
+.jump-status { min-height: 18px; color: var(--accent); font-weight: 900; text-align: center; }
+.jump-item.is-read .jump-status::after { content: "✓"; }
+.jump-item.is-active.is-read .jump-status { color: var(--accent); }
+
+/* 구형 클래스가 남아도 인쇄·캐시된 파일에서 보이지 않게 한다. */
+.tabs, .pill { display: none; }
+.pill-text { display: none; }
+.pill.is-read::after { display: none; }
 
 /* ── 레이아웃 ───────────────────────────────────────────── */
 
@@ -854,74 +873,104 @@ code {
 
 <header class="topbar">
   <p class="site-title">졸업생용 AI 업무 프롬프트 워크북</p>
-  <div class="tabs-wrap">
-    <nav class="tabs" role="tablist" aria-label="목차">
-      <button class="pill is-active" type="button" role="tab"
-              id="tab-day-0" data-target="day-0"
-              aria-controls="day-0" aria-selected="true">
+  <div class="jump-nav">
+    <button class="jump-trigger" type="button" aria-haspopup="menu" aria-expanded="false">
+      <span class="jump-trigger-label">목차 · 회차 이동</span>
+      <span class="jump-current">시작하기</span>
+      <span class="jump-chevron" aria-hidden="true">⌄</span>
+    </button>
+    <div class="jump-menu" role="menu" hidden>
+      <p class="jump-menu-title">어느 회차를 볼까요?</p>
+      <button class="jump-item is-active" type="button" role="menuitem"
+              data-target="day-0" data-tab="시작하기" aria-current="page">
+        <span class="jump-index">1</span>
         <span class="pill-text">시작하기</span>
+        <span class="jump-item-copy"><strong>시작하기</strong><small>교재를 펼치고, 한 회차씩 다시 해봅니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-1" data-target="day-1"
-              aria-controls="day-1" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-1" data-tab="1회차 · AI와 친해지기" aria-current="false">
+        <span class="jump-index">2</span>
         <span class="pill-text">1회차 · AI와 친해지기</span>
+        <span class="jump-item-copy"><strong>1회차 · AI와 친해지기</strong><small>AI에게 내 일을 설명하고, 첫 결과를 확인합니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-2" data-target="day-2"
-              aria-controls="day-2" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-2" data-tab="2회차 · 하나의 결과물" aria-current="false">
+        <span class="jump-index">3</span>
         <span class="pill-text">2회차 · 하나의 결과물</span>
+        <span class="jump-item-copy"><strong>2회차 · 하나의 결과물</strong><small>노래·이미지·여행계획 중 하나를 끝까지 만들어봅니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-3" data-target="day-3"
-              aria-controls="day-3" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-3" data-tab="3회차 · 투자 판단 메모" aria-current="false">
+        <span class="jump-index">4</span>
         <span class="pill-text">3회차 · 투자 판단 메모</span>
+        <span class="jump-item-copy"><strong>3회차 · 투자 판단 메모</strong><small>추천 대신, 자료를 읽는 판단 과정을 따라 합니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-4" data-target="day-4"
-              aria-controls="day-4" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-4" data-tab="4회차 · 프로젝트와 내 경험" aria-current="false">
+        <span class="jump-index">5</span>
         <span class="pill-text">4회차 · 프로젝트와 내 경험</span>
+        <span class="jump-item-copy"><strong>4회차 · 프로젝트와 내 경험</strong><small>프로젝트 안에서 내 경험을 한 장면씩 정리합니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-5" data-target="day-5"
-              aria-controls="day-5" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-5" data-tab="5회차 · 나만의 멘토" aria-current="false">
+        <span class="jump-index">6</span>
         <span class="pill-text">5회차 · 나만의 멘토</span>
+        <span class="jump-item-copy"><strong>5회차 · 나만의 멘토</strong><small>역할을 정하고, 근거 있는 멘토에게 질문합니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-6" data-target="day-6"
-              aria-controls="day-6" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-6" data-tab="6회차 · 변화 슬라이드" aria-current="false">
+        <span class="jump-index">7</span>
         <span class="pill-text">6회차 · 변화 슬라이드</span>
+        <span class="jump-item-copy"><strong>6회차 · 변화 슬라이드</strong><small>자료를 읽고, 경영자가 이해할 4장으로 줄입니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-7" data-target="day-7"
-              aria-controls="day-7" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-7" data-tab="7회차 · 미래 시나리오" aria-current="false">
+        <span class="jump-index">8</span>
         <span class="pill-text">7회차 · 미래 시나리오</span>
+        <span class="jump-item-copy"><strong>7회차 · 미래 시나리오</strong><small>미래를 맞히지 말고, 준비할 행동을 만듭니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-8" data-target="day-8"
-              aria-controls="day-8" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-8" data-tab="8회차 · 개인 브랜딩 페이지" aria-current="false">
+        <span class="jump-index">9</span>
         <span class="pill-text">8회차 · 개인 브랜딩 페이지</span>
+        <span class="jump-item-copy"><strong>8회차 · 개인 브랜딩 페이지</strong><small>나를 설명하는 첫 화면을 실제로 완성합니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-9" data-target="day-9"
-              aria-controls="day-9" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-9" data-tab="졸업 후 · 30일 적용" aria-current="false">
+        <span class="jump-index">10</span>
         <span class="pill-text">졸업 후 · 30일 적용</span>
+        <span class="jump-item-copy"><strong>졸업 후 · 30일 적용</strong><small>수료 후 30일, 한 가지 업무에 다시 적용합니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-10" data-target="day-10"
-              aria-controls="day-10" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-10" data-tab="프롬프트 은행" aria-current="false">
+        <span class="jump-index">11</span>
         <span class="pill-text">프롬프트 은행</span>
+        <span class="jump-item-copy"><strong>프롬프트 은행</strong><small>회차를 따라 한 뒤, 필요한 프롬프트를 다시 찾습니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-      <button class="pill" type="button" role="tab"
-              id="tab-day-11" data-target="day-11"
-              aria-controls="day-11" aria-selected="false">
+      <button class="jump-item" type="button" role="menuitem"
+              data-target="day-11" data-tab="복습 프로젝트 만들기" aria-current="false">
+        <span class="jump-index">12</span>
         <span class="pill-text">복습 프로젝트 만들기</span>
+        <span class="jump-item-copy"><strong>복습 프로젝트 만들기</strong><small>강의 교재를 넣고, 한 단계씩 안내받습니다</small></span>
+        <span class="jump-status" aria-hidden="true"></span>
       </button>
-    </nav>
+    </div>
   </div>
 </header>
 
 <main id="main">
-  <section class="day" id="day-0" role="tabpanel" aria-labelledby="tab-day-0"
+  <section class="day" id="day-0"
            data-tab="시작하기" data-minutes="1">
     <article class="prose">
 <section class="hero"><p class="eyebrow">START · 다시 따라하기<span class="readtime">약 1분</span></p><h1 class="hero-title">교재를 펼치고, 한 회차씩 다시 해봅니다</h1>
@@ -966,7 +1015,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-1" role="tabpanel" aria-labelledby="tab-day-1"
+  <section class="day" id="day-1"
            data-tab="1회차 · AI와 친해지기" data-minutes="1" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 1회차<span class="readtime">약 1분</span></p><h1 class="hero-title">AI에게 내 일을 설명하고, 첫 결과를 확인합니다</h1>
@@ -1010,7 +1059,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-2" role="tabpanel" aria-labelledby="tab-day-2"
+  <section class="day" id="day-2"
            data-tab="2회차 · 하나의 결과물" data-minutes="1" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 2회차<span class="readtime">약 1분</span></p><h1 class="hero-title">노래·이미지·여행계획 중 하나를 끝까지 만들어봅니다</h1>
@@ -1073,7 +1122,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-3" role="tabpanel" aria-labelledby="tab-day-3"
+  <section class="day" id="day-3"
            data-tab="3회차 · 투자 판단 메모" data-minutes="2" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 3회차<span class="readtime">약 2분</span></p><h1 class="hero-title">추천 대신, 자료를 읽는 판단 과정을 따라 합니다</h1>
@@ -1123,7 +1172,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-4" role="tabpanel" aria-labelledby="tab-day-4"
+  <section class="day" id="day-4"
            data-tab="4회차 · 프로젝트와 내 경험" data-minutes="4" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 4회차<span class="readtime">약 4분</span></p><h1 class="hero-title">프로젝트 안에서 내 경험을 한 장면씩 정리합니다</h1>
@@ -1237,7 +1286,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-5" role="tabpanel" aria-labelledby="tab-day-5"
+  <section class="day" id="day-5"
            data-tab="5회차 · 나만의 멘토" data-minutes="4" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 5회차<span class="readtime">약 4분</span></p><h1 class="hero-title">역할을 정하고, 근거 있는 멘토에게 질문합니다</h1>
@@ -1317,7 +1366,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-6" role="tabpanel" aria-labelledby="tab-day-6"
+  <section class="day" id="day-6"
            data-tab="6회차 · 변화 슬라이드" data-minutes="1" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 6회차<span class="readtime">약 1분</span></p><h1 class="hero-title">자료를 읽고, 경영자가 이해할 4장으로 줄입니다</h1>
@@ -1361,7 +1410,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-7" role="tabpanel" aria-labelledby="tab-day-7"
+  <section class="day" id="day-7"
            data-tab="7회차 · 미래 시나리오" data-minutes="1" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 7회차<span class="readtime">약 1분</span></p><h1 class="hero-title">미래를 맞히지 말고, 준비할 행동을 만듭니다</h1>
@@ -1401,7 +1450,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-8" role="tabpanel" aria-labelledby="tab-day-8"
+  <section class="day" id="day-8"
            data-tab="8회차 · 개인 브랜딩 페이지" data-minutes="1" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">FOLLOW ALONG · 2기 8회차<span class="readtime">약 1분</span></p><h1 class="hero-title">나를 설명하는 첫 화면을 실제로 완성합니다</h1>
@@ -1448,7 +1497,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-9" role="tabpanel" aria-labelledby="tab-day-9"
+  <section class="day" id="day-9"
            data-tab="졸업 후 · 30일 적용" data-minutes="1" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">AFTER CLASS · 다시 쓰는 습관<span class="readtime">약 1분</span></p><h1 class="hero-title">수료 후 30일, 한 가지 업무에 다시 적용합니다</h1>
@@ -1485,7 +1534,7 @@ code {
 
     </article>
   </section>
-  <section class="day" id="day-10" role="tabpanel" aria-labelledby="tab-day-10"
+  <section class="day" id="day-10"
            data-tab="프롬프트 은행" data-minutes="10" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">APPENDIX · PROMPT LIBRARY · 50개<span class="readtime">약 10분</span></p><h1 class="hero-title">회차를 따라 한 뒤, 필요한 프롬프트를 다시 찾습니다</h1>
@@ -1691,7 +1740,7 @@ PER·PBR·일회성 이익·정책 기대·테마 과열·실적 둔화 가능�
 
     </article>
   </section>
-  <section class="day" id="day-11" role="tabpanel" aria-labelledby="tab-day-11"
+  <section class="day" id="day-11"
            data-tab="복습 프로젝트 만들기" data-minutes="3" hidden>
     <article class="prose">
 <section class="hero"><p class="eyebrow">PROJECT · 교재를 다시 따라 하기<span class="readtime">약 3분</span></p><h1 class="hero-title">강의 교재를 넣고, 한 단계씩 안내받습니다</h1>
@@ -1826,14 +1875,15 @@ window.__WB_KEY__ = "\uc878\uc5c5\uc0dd\uc6a9 AI \uc5c5\ubb34 \ud504\ub86c\ud504
 (function () {
   "use strict";
 
-  var pills = [].slice.call(document.querySelectorAll(".pill"));
+  var pills = [].slice.call(document.querySelectorAll(".jump-item"));
   var panels = [].slice.call(document.querySelectorAll(".day"));
   var ids = panels.map(function (p) { return p.id; });
   var progressBar = document.querySelector(".progress > i");
   var toastEl = document.querySelector(".toast");
   var pagerBtns = [].slice.call(document.querySelectorAll(".pager-btn"));
-  var tabsWrap = document.querySelector(".tabs-wrap");
-  var tabsEl = document.querySelector(".tabs");
+  var jumpTrigger = document.querySelector(".jump-trigger");
+  var jumpMenu = document.querySelector(".jump-menu");
+  var jumpCurrent = document.querySelector(".jump-current");
   var current = -1;
 
   /* ── 저장소 (진도·체크·설정) ───────────────────────────── */
@@ -1877,13 +1927,20 @@ window.__WB_KEY__ = "\uc878\uc5c5\uc0dd\uc6a9 AI \uc5c5\ubb34 \ud504\ub86c\ud504
 
   /* ── 탭 전환 ───────────────────────────────────────────── */
 
-  function centerPill(pill) {
-    var strip = pill.parentNode;
-    var target = pill.offsetLeft - (strip.clientWidth - pill.offsetWidth) / 2;
-    var max = strip.scrollWidth - strip.clientWidth;
-    var left = Math.max(0, Math.min(target, max));
-    if (strip.scrollTo) strip.scrollTo({ left: left, behavior: "smooth" });
-    else strip.scrollLeft = left;
+  function closeJumpMenu() {
+    if (!jumpMenu || !jumpTrigger) return;
+    jumpMenu.hidden = true;
+    jumpTrigger.classList.remove("is-open");
+    jumpTrigger.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleJumpMenu() {
+    if (!jumpMenu || !jumpTrigger) return;
+    var open = jumpMenu.hidden;
+    jumpMenu.hidden = !open;
+    jumpTrigger.classList.toggle("is-open", open);
+    jumpTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open && pills[0]) pills[0].focus();
   }
 
   function show(index, opts) {
@@ -1896,8 +1953,9 @@ window.__WB_KEY__ = "\uc878\uc5c5\uc0dd\uc6a9 AI \uc5c5\ubb34 \ud504\ub86c\ud504
     pills.forEach(function (pill, i) {
       var on = i === index;
       pill.classList.toggle("is-active", on);
-      pill.setAttribute("aria-selected", on ? "true" : "false");
+      pill.setAttribute("aria-current", on ? "page" : "false");
     });
+    if (jumpCurrent) jumpCurrent.textContent = panels[index].dataset.tab;
 
     pagerBtns.forEach(function (btn) {
       var isPrev = btn.getAttribute("data-dir") === "prev";
@@ -1908,7 +1966,7 @@ window.__WB_KEY__ = "\uc878\uc5c5\uc0dd\uc6a9 AI \uc5c5\ubb34 \ud504\ub86c\ud504
         : (isPrev ? "← 이전" : "다음 →");
     });
 
-    if (pills[index]) centerPill(pills[index]);
+    closeJumpMenu();
 
     if (!opts.keepScroll) {
       // 부드러운 스크롤이 켜져 있어도 탭 전환 시에는 즉시 위로 올린다.
@@ -1932,6 +1990,14 @@ window.__WB_KEY__ = "\uc878\uc5c5\uc0dd\uc6a9 AI \uc5c5\ubb34 \ud504\ub86c\ud504
 
   pills.forEach(function (pill, i) {
     pill.addEventListener("click", function () { show(i); });
+  });
+
+  if (jumpTrigger) jumpTrigger.addEventListener("click", toggleJumpMenu);
+  document.addEventListener("click", function (event) {
+    if (jumpMenu && !jumpMenu.hidden && !event.target.closest(".jump-nav")) closeJumpMenu();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeJumpMenu();
   });
 
   pagerBtns.forEach(function (btn) {
@@ -1993,19 +2059,7 @@ window.__WB_KEY__ = "\uc878\uc5c5\uc0dd\uc6a9 AI \uc5c5\ubb34 \ud504\ub86c\ud504
     });
   }, { passive: true });
 
-  window.addEventListener("resize", function () {
-    updateProgress();
-    paintTabHint();
-  });
-
-  /* ── 탭이 더 있다는 힌트 ───────────────────────────────── */
-
-  function paintTabHint() {
-    if (!tabsWrap || !tabsEl) return;
-    var more = tabsEl.scrollWidth - tabsEl.clientWidth - tabsEl.scrollLeft > 8;
-    tabsWrap.classList.toggle("is-scrollable", more);
-  }
-  if (tabsEl) tabsEl.addEventListener("scroll", paintTabHint, { passive: true });
+  window.addEventListener("resize", updateProgress);
 
   /* ── 체크리스트 저장 ───────────────────────────────────── */
 
@@ -2403,7 +2457,6 @@ window.__WB_KEY__ = "\uc878\uc5c5\uc0dd\uc6a9 AI \uc5c5\ubb34 \ud504\ub86c\ud504
   applyFont();
   applyTheme();
   paintRead();
-  paintTabHint();
 
   var fromHash = indexFromHash();
   if (fromHash !== -1) {
