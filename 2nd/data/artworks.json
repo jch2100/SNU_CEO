@@ -63,6 +63,30 @@
       "visibility": "cover-only"
     },
     {
+      "id": "story-005",
+      "category": "story",
+      "title": "수술실의 긴 밤",
+      "creator": "육의곤",
+      "thumbnail": "assets/autobiography-yook-ui-gon-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-006",
+      "category": "story",
+      "title": "멋진 회사를 남기고 싶었다",
+      "creator": "손양석",
+      "thumbnail": "assets/autobiography-son-yang-seok-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-007",
+      "category": "story",
+      "title": "화려하지 않아도 부끄럽지 않은 삶",
+      "creator": "박영길",
+      "thumbnail": "assets/autobiography-park-young-gil-cover.jpg",
+      "visibility": "cover-only"
+    },
+    {
       "id": "music-001",
       "category": "music",
       "title": "7월 7일의 행운",
