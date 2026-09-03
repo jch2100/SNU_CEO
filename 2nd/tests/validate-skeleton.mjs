@@ -11,6 +11,7 @@ const required = [
   "data/artworks.json",
   "data/image-gallery.json",
   "data/music-player.json",
+  "assets/hero/group-photo-lego-34.png",
   "viewer/book.html",
   "assets/share/favicon.svg",
   "assets/share/og-2nd.svg",
@@ -30,7 +31,6 @@ for (const marker of [
   "data-gallery=\"story\"",
   "data-gallery=\"music\"",
   "data-gallery=\"image\"",
-  "data-gallery=\"slides\"",
   "sunoPlayer",
   "lightboxPrev",
   "lightboxNext"
@@ -38,6 +38,8 @@ for (const marker of [
   if (!html.includes(marker)) errors.push(`index.html 필수 마커 없음: ${marker}`);
 }
 if (html.includes('class="intro"')) errors.push("삭제 요청한 intro 장이 남아 있음");
+if (html.includes('id="slides"') || html.includes('data-category="slides"') || html.includes('href="#slides"')) errors.push("삭제 요청한 Slides 전시관이 남아 있음");
+if (!html.includes("group-photo-lego-34.png")) errors.push("레고 단체사진 연결 없음");
 
 const data = JSON.parse(fs.readFileSync(path.join(root, "data/artworks.json"), "utf8"));
 if (!Array.isArray(data.artworks)) errors.push("artworks가 배열이 아님");
@@ -104,4 +106,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("SKELETON_VALIDATION_OK: required files, intro removed, native audio player, 11-song playlist, 4 galleries, share, lightbox, ceremony");
+console.log("SKELETON_VALIDATION_OK: required files, intro removed, Slides gallery removed, native audio player, 11-song playlist, 3 galleries, share, lightbox, ceremony");

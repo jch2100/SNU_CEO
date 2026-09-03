@@ -1,8 +1,7 @@
 const CATEGORY_LABELS = {
   story: "우리의 이야기",
   music: "우리의 노래",
-  image: "우리의 이미지",
-  slides: "우리의 생각"
+  image: "우리의 이미지"
 };
 
 const state = {
@@ -114,40 +113,12 @@ function renderImage(item) {
   </article>`;
 }
 
-function renderSlides(item) {
-  if (Array.isArray(item.images) && item.images.length) {
-    return `<article class="art-card slide-card is-collection">
-      <button class="art-thumb" type="button" data-lightbox="${escapeHtml(item.id)}">
-        <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
-        <span class="art-flags"><span>${escapeHtml(imageThemeLabel(item))}</span><span>${escapeHtml(imagePresentationLabel(item))}</span></span>
-      </button>
-      <div class="art-meta">
-        <h4>${escapeHtml(item.title)}</h4>
-        <span class="creator">${escapeHtml(item.creator)}</span>
-        <p>${escapeHtml(item.description)}</p>
-        <div class="art-links"><button type="button" data-lightbox="${escapeHtml(item.id)}">작품 보기</button></div>
-      </div>
-    </article>`;
-  }
-  return `<article class="art-card slide-card">
-    <a class="art-thumb" href="${escapeHtml(safeUrl(item.viewer || item.pdf))}" target="_blank" rel="noopener">
-      <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)} 발표자료 미리보기" loading="lazy">
-    </a>
-    <div class="art-meta">
-      <h4>${escapeHtml(item.title)}</h4>
-      <span class="creator">${escapeHtml(item.creator)}</span>
-      <p>${escapeHtml(item.description)}</p>
-      <div class="art-links">${artworkLink(item, item.pdf ? "전체 PDF 보기" : "발표자료 보기")}</div>
-    </div>
-  </article>`;
-}
-
 function emptyState(category) {
   return `<div class="empty-gallery"><div><strong>작품을 준비하고 있습니다.</strong><span>${CATEGORY_LABELS[category]} 전시는 공개 동의 확인 후 차례로 열립니다.</span></div></div>`;
 }
 
 function renderGalleries() {
-  const renderers = { story: renderStory, music: renderMusic, image: renderImage, slides: renderSlides };
+  const renderers = { story: renderStory, music: renderMusic, image: renderImage };
   Object.keys(CATEGORY_LABELS).forEach(category => {
     const target = qs(`[data-gallery="${category}"]`);
     const items = state.artworks
@@ -219,24 +190,6 @@ function setupMusicPlaylist() {
     if (item) selectMusicTrack(item, { focus: window.innerWidth < 720 });
   }));
   selectMusicTrack(tracks[0]);
-}
-
-function renderFeatured() {
-  let items = state.artworks.filter(item => item.featured).sort((a, b) => (a.featuredOrder || 99) - (b.featuredOrder || 99));
-  if (!items.length) {
-    items = ["music", "image", "slides"]
-      .map(category => state.artworks.find(item => item.category === category))
-      .filter(item => item && item.thumbnail)
-  }
-  const rail = qs("#featuredRail");
-  if (!items.length) {
-    rail.innerHTML = `<div class="empty-gallery"><div><strong>2기 작품을 기다리고 있습니다.</strong><span>공개 동의를 받은 대표작이 이곳에 차례로 펼쳐집니다.</span></div></div>`;
-    return;
-  }
-  rail.innerHTML = items.map(item => `<a class="featured-card featured-card--${escapeHtml(item.category)}" href="#${escapeHtml(item.category)}">
-    <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
-    <span class="featured-meta"><small>${escapeHtml(CATEGORY_LABELS[item.category])}</small><strong>${escapeHtml(item.title)}</strong></span>
-  </a>`).join("");
 }
 
 function renderHeroTiles() {
