@@ -8,6 +8,9 @@ const state = {
   artworks: [],
   groupPhoto: "",
   heroTiles: [],
+  heroIndex: 0,
+  heroTimer: null,
+  heroAutoplay: true,
   musicPlaylist: null,
   musicSources: {},
   ceremonySlides: [],
@@ -192,24 +195,54 @@ function setupMusicPlaylist() {
   selectMusicTrack(tracks[0]);
 }
 
-function renderHeroTiles() {
-  const grid = qs("#heroTileGrid");
-  const fallback = qs("#heroPhoto .photo-fallback");
+function renderHeroSlideshow() {
+  const slideshow = qs("#heroSlideshow");
+  const image = qs("#heroSlideImage");
+  const count = qs("#heroSlideCount");
+  const prev = qs("#heroSlidePrev");
+  const next = qs("#heroSlideNext");
+  const toggle = qs("#heroSlideToggle");
   const tiles = Array.isArray(state.heroTiles) ? state.heroTiles.filter(Boolean) : [];
-  if (!grid || !tiles.length) {
-    if (fallback) fallback.hidden = false;
+  if (!slideshow || !image || !tiles.length) {
+    if (slideshow) slideshow.hidden = true;
     return;
   }
-  grid.innerHTML = [
-    ...tiles.map((src, index) => `
-      <img class="hero-tile hero-tile--poster" src="${escapeHtml(src)}" alt="2기 자기소개 포스터 ${index + 1}" loading="${index < 8 ? "eager" : "lazy"}">
-    `),
-    `<div class="hero-tile hero-tile--word-strip" role="img" aria-label="AI, CEO, MASTER">
-      <strong>AI</strong><strong>CEO</strong><strong>MASTER</strong>
-    </div>`
-  ].join("");
-  grid.hidden = false;
-  if (fallback) fallback.hidden = true;
+  const setSlide = (index) => {
+    state.heroIndex = (index + tiles.length) % tiles.length;
+    const src = safeUrl(tiles[state.heroIndex]);
+    if (!src) return;
+    image.classList.remove("is-changing");
+    void image.offsetWidth;
+    image.src = src;
+    image.alt = "2기 자기소개 포스터 " + (state.heroIndex + 1);
+    count.textContent = (state.heroIndex + 1) + " / " + tiles.length;
+    slideshow.setAttribute("aria-label", "2기 자기소개 포스터 " + (state.heroIndex + 1) + " / " + tiles.length);
+    image.classList.add("is-changing");
+  };
+  const restartTimer = () => {
+    window.clearInterval(state.heroTimer);
+    state.heroTimer = state.heroAutoplay
+      ? window.setInterval(() => setSlide(state.heroIndex + 1), 6000)
+      : null;
+  };
+  const move = (direction) => {
+    setSlide(state.heroIndex + direction);
+    restartTimer();
+  };
+  prev.addEventListener("click", () => move(-1));
+  next.addEventListener("click", () => move(1));
+  toggle.addEventListener("click", () => {
+    state.heroAutoplay = !state.heroAutoplay;
+    toggle.setAttribute("aria-pressed", String(state.heroAutoplay));
+    toggle.textContent = state.heroAutoplay ? "자동 넘김 켜짐" : "자동 넘김 꺼짐";
+    restartTimer();
+  });
+  slideshow.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft") move(-1);
+    if (event.key === "ArrowRight") move(1);
+  });
+  setSlide(state.heroIndex);
+  restartTimer();
 }
 
 function enforceSingleAudio() {
@@ -462,7 +495,7 @@ async function init() {
   setupShare();
   setupCeremony();
   await loadArtworks();
-  renderHeroTiles();
+  renderHeroSlideshow();
   detectGroupPhoto();
   renderGalleries();
   buildCeremonySlides();

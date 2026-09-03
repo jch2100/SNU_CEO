@@ -25,8 +25,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260903-1">
-  <script type="module" src="app.js?v=20260903-1"></script>
+  <link rel="stylesheet" href="styles.css?v=20260903-3">
+  <script type="module" src="app.js?v=20260903-3"></script>
 </head>
 <body>
   <a class="skip-link" href="#exhibitions">작품 전시로 바로가기</a>
@@ -57,9 +57,17 @@
         </div>
       </div>
 
-      <div class="hero-visual" aria-label="2기 자기소개 포스터와 AI, CEO, MASTER 배너로 구성한 표지 이미지">
+      <div class="hero-visual" aria-label="2기 자기소개 포스터 슬라이드">
         <figure class="hero-photo" id="heroPhoto">
-          <img class="hero-cover" src="assets/hero/cover-2nd-20260830.png" alt="2기 자기소개 포스터 17장과 AI, CEO, MASTER 배너를 이어 붙인 표지">
+          <div class="hero-slideshow" id="heroSlideshow" tabindex="0" aria-label="2기 자기소개 포스터 17장 슬라이드">
+            <img id="heroSlideImage" class="hero-slide-image" src="assets/hero/tiles-normalized/tile-01.jpg" alt="2기 자기소개 포스터 1" decoding="async">
+            <button class="hero-slide-button hero-slide-button--prev" type="button" id="heroSlidePrev" aria-label="이전 자기소개 포스터">‹</button>
+            <button class="hero-slide-button hero-slide-button--next" type="button" id="heroSlideNext" aria-label="다음 자기소개 포스터">›</button>
+            <div class="hero-slide-footer">
+              <span id="heroSlideCount">1 / 17</span>
+              <button class="hero-slide-toggle" type="button" id="heroSlideToggle" aria-pressed="true">자동 넘김 켜짐</button>
+            </div>
+          </div>
         </figure>
       </div>
 

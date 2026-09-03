@@ -25,8 +25,11 @@ for (const relative of required) {
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 for (const marker of [
   "https://ceo-ai.org/2nd/",
-  "og-2nd.svg",
   "qr-2nd.png",
+  "heroSlideImage",
+  "heroSlidePrev",
+  "heroSlideNext",
+  "heroSlideToggle",
   "ceremonyButton",
   "data-gallery=\"story\"",
   "data-gallery=\"music\"",
@@ -96,7 +99,7 @@ for (const [index, item] of images.entries()) {
 }
 
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
-for (const marker of ["navigator.share", "moveLightbox", "setupCeremony", "data/artworks.json", "data/image-gallery.json", "data/music-player.json", "musicSources"]) {
+for (const marker of ["navigator.share", "moveLightbox", "setupCeremony", "renderHeroSlideshow", "data/artworks.json", "data/image-gallery.json", "data/music-player.json", "musicSources"]) {
   if (!app.includes(marker)) errors.push(`app.js 필수 기능 없음: ${marker}`);
 }
 
