@@ -20,6 +20,21 @@ For cover-only verification, run the 3rd-cohort test through the local HTTP serv
 node tests/verify-cover-only.mjs
 ```
 
+## Private autobiography share-link rule
+
+Every private autobiography link must use a static per-book share page:
+
+`/3rd/autobiography/share/<book-id>.html#key=<url-fragment-key>`
+
+The share page is the KakaoTalk preview surface. Its source HTML must contain:
+
+- `og:title`: `<author> — <title>`
+- `og:description`: the book subtitle or a short approved description
+- `og:image`: the public cover URL
+- matching Twitter card tags
+
+The page must not contain a decryption key or manuscript text. Its small redirect script preserves the fragment key and opens `../viewer.html`. Generate it from the protected book source with `tools/build_autobiography_share_page.mjs`; never hand-edit metadata for individual books.
+
 ## Privacy gate
 
 - Never copy raw learner submissions into this folder.
@@ -34,6 +49,7 @@ Run through a local HTTP server because the page loads JSON with `fetch()`:
 
 ```powershell
 node tests/validate-skeleton.mjs
+node tests/verify-share-preview.mjs
 node --check app.js
 ```
 
