@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">서울대학교 경영자를 위한 AI 마스터과정 3기 수료 기록관</title>
+  <desc id="desc">3기의 8주, 배움이 작품으로 남았습니다.</desc>
+  <rect width="1200" height="630" fill="#071421"/>
+  <path d="M0 0h430l-92 630H0z" fill="#d6bb82" opacity=".92"/>
+  <text x="72" y="120" fill="#071421" font-family="Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="6">AI MASTER</text>
+  <text x="72" y="330" fill="#fbf8f0" font-family="Georgia,serif" font-size="74">3기의 8주,</text>
+  <text x="72" y="420" fill="#d6bb82" font-family="Georgia,serif" font-size="74">배움이 작품으로</text>
+  <text x="72" y="510" fill="#fbf8f0" font-family="Georgia,serif" font-size="74">남았습니다.</text>
+  <text x="930" y="560" fill="#fbf8f0" font-family="Arial,sans-serif" font-size="22" letter-spacing="4">THIRD COHORT</text>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-14",
+  "groupPhoto": "",
+  "heroTiles": [],
+  "musicPlaylist": null,
+  "artworks": [
+    {
+      "id": "story-001",
+      "category": "story",
+      "title": "사람을 남기는 일",
+      "creator": "권주택",
+      "thumbnail": "assets/autobiography/kwon-joo-taek-cover.png",
+      "visibility": "cover-only"
+    }
+  ]
+}
