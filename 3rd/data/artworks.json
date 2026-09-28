@@ -1,9 +1,11 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-14",
+  "updatedAt": "2026-09-28",
   "groupPhoto": "",
-  "heroTiles": [],
-  "musicPlaylist": null,
+  "musicPlaylist": {
+    "url": "https://suno.com/playlist/08c2052c-155d-43b2-bf68-b45580dc7428",
+    "trackCount": 25
+  },
   "artworks": [
     {
       "id": "story-001",
@@ -12,6 +14,87 @@
       "creator": "권주택",
       "thumbnail": "assets/autobiography/kwon-joo-taek-cover.png",
       "visibility": "cover-only"
-    }
+    },
+    {
+      "id": "story-002",
+      "category": "story",
+      "title": "현장에서 답을 찾다",
+      "creator": "정찬선",
+      "thumbnail": "assets/autobiography/jeong-chan-sun-cover.png",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-003",
+      "category": "story",
+      "title": "끝나지 않은 이야기",
+      "creator": "한동필",
+      "thumbnail": "assets/autobiography/han-dong-pil-cover.png",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-004",
+      "category": "story",
+      "title": "주어진 여건에 굴하지 않고",
+      "creator": "김형상",
+      "thumbnail": "assets/autobiography/kim-hyeong-sang-cover.png",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-005",
+      "category": "story",
+      "title": "앞만 보고 달리며 만든 나의 꿈",
+      "creator": "이재수",
+      "thumbnail": "assets/autobiography/lee-jae-su-cover.png",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-006",
+      "category": "story",
+      "title": "어제보다 조금 나은 사람",
+      "creator": "문희정",
+      "thumbnail": "assets/autobiography/moon-hee-jung-cover.png",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-007",
+      "category": "story",
+      "title": "앞선 발자국 하나",
+      "creator": "성자은",
+      "thumbnail": "assets/autobiography/sung-ja-eun-cover.png",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-008",
+      "category": "story",
+      "title": "북아현동의 마당에서, 지금의 나까지",
+      "creator": "이병기",
+      "thumbnail": "assets/autobiography/lee-byung-ki-cover.png",
+      "visibility": "cover-only"
+    },
+    { "id": "music-001", "category": "music", "title": "츄억", "creator": "3기 수료작품", "playlistOrder": 1, "playlistOnly": true, "originalUrl": "https://suno.com/song/d0b439dc-bc8b-467f-a14d-33444851bac0" },
+    { "id": "music-002", "category": "music", "title": "봄날", "creator": "3기 수료작품", "playlistOrder": 2, "playlistOnly": true, "originalUrl": "https://suno.com/song/61eedeae-5144-48cd-adae-02447d7a1bd6" },
+    { "id": "music-003", "category": "music", "title": "결아 율아", "creator": "3기 수료작품", "playlistOrder": 3, "playlistOnly": true, "originalUrl": "https://suno.com/song/8c420e78-4296-44cc-aa2d-d47806218b01" },
+    { "id": "music-004", "category": "music", "title": "BLUE SUMMER", "creator": "3기 수료작품", "playlistOrder": 4, "playlistOnly": true, "originalUrl": "https://suno.com/song/8d001949-9de4-41a6-90bf-73b864ebb013" },
+    { "id": "music-005", "category": "music", "title": "우리라서 행복해", "creator": "3기 수료작품", "playlistOrder": 5, "playlistOnly": true, "originalUrl": "https://suno.com/song/98922854-21d4-4af8-9b2d-a1ef6812a6f7" },
+    { "id": "music-006", "category": "music", "title": "뉴 라이프", "creator": "3기 수료작품", "playlistOrder": 6, "playlistOnly": true, "originalUrl": "https://suno.com/song/a5669150-d5b6-4373-ac93-c0724bdf02d9" },
+    { "id": "music-007", "category": "music", "title": "우리라는 행복", "creator": "3기 수료작품", "playlistOrder": 7, "playlistOnly": true, "originalUrl": "https://suno.com/song/4b3abd24-3040-4524-bca7-ec9f24d39a06" },
+    { "id": "music-008", "category": "music", "title": "오늘부터 빛나는 나", "creator": "3기 수료작품", "playlistOrder": 8, "playlistOnly": true, "originalUrl": "https://suno.com/song/7284cc14-41a0-486f-9b8b-26a8f125f4b0" },
+    { "id": "music-009", "category": "music", "title": "친구야, 한잔하자", "creator": "3기 수료작품", "playlistOrder": 9, "playlistOnly": true, "originalUrl": "https://suno.com/song/76f63b98-6bc8-4ea4-a0b8-df8d64f339b1" },
+    { "id": "music-010", "category": "music", "title": "우리의 다음 계절", "creator": "3기 수료작품", "playlistOrder": 10, "playlistOnly": true, "originalUrl": "https://suno.com/song/6c0ca804-08fc-4698-a456-473b437db216" },
+    { "id": "music-011", "category": "music", "title": "범인 체포", "creator": "3기 수료작품", "playlistOrder": 11, "playlistOnly": true, "originalUrl": "https://suno.com/song/adbdd18b-d3d8-41b5-84e1-844c46c0a92a" },
+    { "id": "music-012", "category": "music", "title": "코스모스 바람결", "creator": "3기 수료작품", "playlistOrder": 12, "playlistOnly": true, "originalUrl": "https://suno.com/song/e72b633a-2306-4403-a7ff-425ce0543076" },
+    { "id": "music-013", "category": "music", "title": "너희 편이야", "creator": "3기 수료작품", "playlistOrder": 13, "playlistOnly": true, "originalUrl": "https://suno.com/song/9506fb1e-2ef4-4453-b0e3-943b98b48573" },
+    { "id": "music-014", "category": "music", "title": "서울 첫인상", "creator": "3기 수료작품", "playlistOrder": 14, "playlistOnly": true, "originalUrl": "https://suno.com/song/bbf4cc7b-a7ee-4366-93df-cef75881836f" },
+    { "id": "music-015", "category": "music", "title": "거의 연인 같아", "creator": "3기 수료작품", "playlistOrder": 15, "playlistOnly": true, "originalUrl": "https://suno.com/song/9fff69f1-396d-4306-9529-904e7c88b89e" },
+    { "id": "music-016", "category": "music", "title": "빈 의자 하나", "creator": "3기 수료작품", "playlistOrder": 16, "playlistOnly": true, "originalUrl": "https://suno.com/song/6cd063d5-946a-4bf6-b0c5-6ac767bf39a9" },
+    { "id": "music-017", "category": "music", "title": "동해 첫사람", "creator": "3기 수료작품", "playlistOrder": 17, "playlistOnly": true, "originalUrl": "https://suno.com/song/780076d6-7041-44aa-9d49-f5ee3f3620c3" },
+    { "id": "music-018", "category": "music", "title": "세살 손녀 춤", "creator": "3기 수료작품", "playlistOrder": 18, "playlistOnly": true, "originalUrl": "https://suno.com/song/502cd63f-18a5-4fac-aee0-dba2e8835796" },
+    { "id": "music-019", "category": "music", "title": "광화문 캔디", "creator": "3기 수료작품", "playlistOrder": 19, "playlistOnly": true, "originalUrl": "https://suno.com/song/b0fed4e8-3d7d-481f-96d8-6d6f262769bd" },
+    { "id": "music-020", "category": "music", "title": "와인잔과 갑판", "creator": "3기 수료작품", "playlistOrder": 20, "playlistOnly": true, "originalUrl": "https://suno.com/song/7a4d3ae6-b9fc-4635-ac4b-33e2bc8bbb83" },
+    { "id": "music-021", "category": "music", "title": "내 생일 밤", "creator": "3기 수료작품", "playlistOrder": 21, "playlistOnly": true, "originalUrl": "https://suno.com/song/de88ed7a-4ae7-40f0-a029-e335029d0e73" },
+    { "id": "music-022", "category": "music", "title": "구름 웃는 딸", "creator": "3기 수료작품", "playlistOrder": 22, "playlistOnly": true, "originalUrl": "https://suno.com/song/13c8a3a5-e0a0-4ca8-8a95-efa4f0afa978" },
+    { "id": "music-023", "category": "music", "title": "해변의 첫인사", "creator": "3기 수료작품", "playlistOrder": 23, "playlistOnly": true, "originalUrl": "https://suno.com/song/75138421-810e-4f5d-bcc0-914b8db33c9d" },
+    { "id": "music-024", "category": "music", "title": "여름날 벤치", "creator": "3기 수료작품", "playlistOrder": 24, "playlistOnly": true, "originalUrl": "https://suno.com/song/72f0deec-bfbb-42f2-a83c-8795f2d15e92" },
+    { "id": "music-025", "category": "music", "title": "돌로미티 발자국", "creator": "3기 수료작품", "playlistOrder": 25, "playlistOnly": true, "originalUrl": "https://suno.com/song/894533d6-52a0-4f22-b16d-91fbfb78b436" }
   ]
 }

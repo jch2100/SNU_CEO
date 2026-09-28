@@ -1,16 +1,13 @@
 const CATEGORY_LABELS = {
   story: "우리의 이야기",
   music: "우리의 노래",
-  image: "우리의 이미지"
+  image: "우리의 이미지",
+  slides: "우리의 생각"
 };
 
 const state = {
   artworks: [],
   groupPhoto: "",
-  heroTiles: [],
-  heroIndex: 0,
-  heroTimer: null,
-  heroAutoplay: true,
   musicPlaylist: null,
   musicSources: {},
   ceremonySlides: [],
@@ -87,6 +84,14 @@ function renderMusic(item) {
       <span class="music-track-action" aria-hidden="true">재생 →</span>
     </button>`;
   }
+  if (item.playlistOnly) {
+    const href = safeUrl(item.originalUrl);
+    return `<article class="music-link-card">
+      <span class="music-link-index">${escapeHtml(String(item.playlistOrder || 0).padStart(2, "0"))}</span>
+      <div><h4>${escapeHtml(item.title)}</h4><span class="creator">${escapeHtml(item.creator)}</span></div>
+      ${href ? `<a href="${escapeHtml(href)}" target="_blank" rel="noopener">Suno에서 듣기 ↗</a>` : ""}
+    </article>`;
+  }
   const audio = item.media ? `<audio controls preload="none" src="${escapeHtml(item.media)}">오디오를 재생할 수 없습니다.</audio>` : "";
   const suno = item.originalUrl ? `<a href="${escapeHtml(safeUrl(item.originalUrl))}" target="_blank" rel="noopener">Suno 원곡</a>` : "";
   return `<article class="music-card">
@@ -99,6 +104,24 @@ function renderMusic(item) {
       <div class="art-links">${suno}</div>
     </div>
   </article>`;
+}
+
+function renderSlides(item) {
+  if (Array.isArray(item.images) && item.images.length) {
+    return `<article class="art-card slide-card is-collection">
+      <button class="art-thumb" type="button" data-lightbox="${escapeHtml(item.id)}">
+        <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
+        <span class="art-flags"><span>${escapeHtml(imageThemeLabel(item))}</span><span>${escapeHtml(imagePresentationLabel(item))}</span></span>
+      </button>
+      <div class="art-meta">
+        <h4>${escapeHtml(item.title)}</h4>
+        <span class="creator">${escapeHtml(item.creator)}</span>
+        <p>${escapeHtml(item.description)}</p>
+        <div class="art-links"><button type="button" data-lightbox="${escapeHtml(item.id)}">작품 보기</button></div>
+      </div>
+    </article>`;
+  }
+  return "";
 }
 
 function renderImage(item) {
@@ -121,7 +144,7 @@ function emptyState(category) {
 }
 
 function renderGalleries() {
-  const renderers = { story: renderStory, music: renderMusic, image: renderImage };
+  const renderers = { story: renderStory, music: renderMusic, image: renderImage, slides: renderSlides };
   Object.keys(CATEGORY_LABELS).forEach(category => {
     const target = qs(`[data-gallery="${category}"]`);
     const items = state.artworks
@@ -193,56 +216,6 @@ function setupMusicPlaylist() {
     if (item) selectMusicTrack(item, { focus: window.innerWidth < 720 });
   }));
   selectMusicTrack(tracks[0]);
-}
-
-function renderHeroSlideshow() {
-  const slideshow = qs("#heroSlideshow");
-  const image = qs("#heroSlideImage");
-  const count = qs("#heroSlideCount");
-  const prev = qs("#heroSlidePrev");
-  const next = qs("#heroSlideNext");
-  const toggle = qs("#heroSlideToggle");
-  const tiles = Array.isArray(state.heroTiles) ? state.heroTiles.filter(Boolean) : [];
-  if (!slideshow || !image || !tiles.length) {
-    if (slideshow) slideshow.hidden = true;
-    return;
-  }
-  const setSlide = (index) => {
-    state.heroIndex = (index + tiles.length) % tiles.length;
-    const src = safeUrl(tiles[state.heroIndex]);
-    if (!src) return;
-    image.classList.remove("is-changing");
-    void image.offsetWidth;
-    image.src = src;
-    image.alt = "3기 대표 이미지 " + (state.heroIndex + 1);
-    count.textContent = (state.heroIndex + 1) + " / " + tiles.length;
-    slideshow.setAttribute("aria-label", "3기 대표 이미지 " + (state.heroIndex + 1) + " / " + tiles.length);
-    image.classList.add("is-changing");
-  };
-  const restartTimer = () => {
-    window.clearInterval(state.heroTimer);
-    state.heroTimer = state.heroAutoplay
-      ? window.setInterval(() => setSlide(state.heroIndex + 1), 6000)
-      : null;
-  };
-  const move = (direction) => {
-    setSlide(state.heroIndex + direction);
-    restartTimer();
-  };
-  prev.addEventListener("click", () => move(-1));
-  next.addEventListener("click", () => move(1));
-  toggle.addEventListener("click", () => {
-    state.heroAutoplay = !state.heroAutoplay;
-    toggle.setAttribute("aria-pressed", String(state.heroAutoplay));
-    toggle.textContent = state.heroAutoplay ? "자동 넘김 켜짐" : "자동 넘김 꺼짐";
-    restartTimer();
-  });
-  slideshow.addEventListener("keydown", event => {
-    if (event.key === "ArrowLeft") move(-1);
-    if (event.key === "ArrowRight") move(1);
-  });
-  setSlide(state.heroIndex);
-  restartTimer();
 }
 
 function enforceSingleAudio() {
@@ -448,20 +421,22 @@ async function setupPretext() {
 
 async function loadArtworks() {
   try {
-    const [response, imageResponse, musicResponse] = await Promise.all([
+    const [response, imageResponse, slidesResponse, musicResponse] = await Promise.all([
       fetch("data/artworks.json", { cache: "no-store" }),
       fetch("data/image-gallery.json", { cache: "no-store" }),
+      fetch("data/slides-gallery.json", { cache: "no-store" }),
       fetch("data/music-player.json", { cache: "no-store" })
     ]);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     const imageData = imageResponse.ok ? await imageResponse.json() : {};
+    const slidesData = slidesResponse.ok ? await slidesResponse.json() : {};
     const musicData = musicResponse.ok ? await musicResponse.json() : {};
     const baseArtworks = Array.isArray(data.artworks) ? data.artworks : [];
     const imageArtworks = Array.isArray(imageData.artworks) ? imageData.artworks : [];
-    state.artworks = [...baseArtworks, ...imageArtworks].filter(item => CATEGORY_LABELS[item.category]);
+    const slideArtworks = Array.isArray(slidesData.artworks) ? slidesData.artworks : [];
+    state.artworks = [...baseArtworks, ...imageArtworks, ...slideArtworks].filter(item => CATEGORY_LABELS[item.category]);
     state.groupPhoto = typeof data.groupPhoto === "string" ? data.groupPhoto : "";
-    state.heroTiles = Array.isArray(data.heroTiles) ? data.heroTiles.filter(tile => typeof tile === "string") : [];
     state.musicPlaylist = data.musicPlaylist && typeof data.musicPlaylist === "object" ? data.musicPlaylist : null;
     state.musicSources = Object.fromEntries(
       (Array.isArray(musicData.sources) ? musicData.sources : [])
@@ -503,7 +478,6 @@ async function init() {
   setupShare();
   setupCeremony();
   await loadArtworks();
-  renderHeroSlideshow();
   detectGroupPhoto();
   renderGalleries();
   buildCeremonySlides();

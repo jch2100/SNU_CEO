@@ -1,5 +1,168 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-14",
-  "artworks": []
+  "updatedAt": "2026-09-28",
+  "artworks": [
+    {
+      "id": "image-001",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "권주택",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-001.webp",
+      "images": [
+        "assets/artworks/images/image-001.webp",
+        "assets/artworks/images/image-002.webp",
+        "assets/artworks/images/image-003.webp",
+        "assets/artworks/images/image-004.webp",
+        "assets/artworks/images/image-005.webp",
+        "assets/artworks/images/image-006.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-002",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "기성숙",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-007.webp",
+      "images": [
+        "assets/artworks/images/image-007.webp",
+        "assets/artworks/images/image-008.webp",
+        "assets/artworks/images/image-009.webp",
+        "assets/artworks/images/image-010.webp",
+        "assets/artworks/images/image-011.webp",
+        "assets/artworks/images/image-012.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-003",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "김동영",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-013.webp",
+      "images": [
+        "assets/artworks/images/image-013.webp",
+        "assets/artworks/images/image-014.webp",
+        "assets/artworks/images/image-015.webp",
+        "assets/artworks/images/image-016.webp",
+        "assets/artworks/images/image-017.webp",
+        "assets/artworks/images/image-018.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-004",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "김형상",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-019.webp",
+      "images": [
+        "assets/artworks/images/image-019.webp",
+        "assets/artworks/images/image-020.webp",
+        "assets/artworks/images/image-021.webp",
+        "assets/artworks/images/image-022.webp",
+        "assets/artworks/images/image-023.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-005",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "성자은",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-024.webp",
+      "images": [
+        "assets/artworks/images/image-024.webp",
+        "assets/artworks/images/image-025.webp",
+        "assets/artworks/images/image-026.webp",
+        "assets/artworks/images/image-027.webp",
+        "assets/artworks/images/image-028.webp",
+        "assets/artworks/images/image-029.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-006",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "이관근",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-030.webp",
+      "images": [
+        "assets/artworks/images/image-030.webp",
+        "assets/artworks/images/image-031.webp",
+        "assets/artworks/images/image-032.webp",
+        "assets/artworks/images/image-033.webp",
+        "assets/artworks/images/image-034.webp",
+        "assets/artworks/images/image-035.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-007",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "이재수",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-036.webp",
+      "images": [
+        "assets/artworks/images/image-036.webp",
+        "assets/artworks/images/image-037.webp",
+        "assets/artworks/images/image-038.webp",
+        "assets/artworks/images/image-039.webp",
+        "assets/artworks/images/image-040.webp",
+        "assets/artworks/images/image-041.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-008",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "정찬선",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-042.webp",
+      "images": [
+        "assets/artworks/images/image-042.webp",
+        "assets/artworks/images/image-043.webp",
+        "assets/artworks/images/image-044.webp",
+        "assets/artworks/images/image-045.webp",
+        "assets/artworks/images/image-046.webp",
+        "assets/artworks/images/image-047.webp",
+        "assets/artworks/images/image-048.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    },
+    {
+      "id": "image-009",
+      "category": "image",
+      "title": "AI를 만나 해온 일과 앞으로 1년",
+      "creator": "한동필",
+      "description": "AI를 만나 해온 일과 앞으로 1년 동안 해 나갈 일을 이미지로 기록한 작품",
+      "thumbnail": "assets/artworks/images/image-049.webp",
+      "images": [
+        "assets/artworks/images/image-049.webp",
+        "assets/artworks/images/image-050.webp",
+        "assets/artworks/images/image-051.webp",
+        "assets/artworks/images/image-052.webp",
+        "assets/artworks/images/image-053.webp",
+        "assets/artworks/images/image-054.webp"
+      ],
+      "imageTheme": "ai-meets",
+      "presentation": "collection"
+    }
+  ]
 }

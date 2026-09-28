@@ -11,6 +11,7 @@ const required = [
   "README.md",
   "data/artworks.json",
   "data/image-gallery.json",
+  "data/slides-gallery.json",
   "data/music-player.json",
   "assets/share/favicon.svg",
   "assets/share/og-3rd.svg",
@@ -25,11 +26,11 @@ const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 for (const marker of [
   "https://ceo-ai.org/3rd/",
   "og-3rd.svg",
-  "THREE GALLERIES",
+  "FOUR GALLERIES",
   "data-gallery=\"story\"",
   "data-gallery=\"music\"",
   "data-gallery=\"image\"",
-  "qr-placeholder",
+  "data-gallery=\"slides\"",
   "ceremonyButton",
   "lightboxPrev",
   "heroPlaceholder"
@@ -45,7 +46,6 @@ const data = JSON.parse(fs.readFileSync(path.join(root, "data/artworks.json"), "
 const imageData = JSON.parse(fs.readFileSync(path.join(root, "data/image-gallery.json"), "utf8"));
 const musicData = JSON.parse(fs.readFileSync(path.join(root, "data/music-player.json"), "utf8"));
 if (!Array.isArray(data.artworks)) errors.push("artworks가 배열이 아님");
-if (!Array.isArray(data.heroTiles)) errors.push("heroTiles가 배열이 아님");
 if (!Array.isArray(imageData.artworks)) errors.push("image artworks가 배열이 아님");
 if (!Array.isArray(musicData.sources)) errors.push("music sources가 배열이 아님");
 const storyItems = data.artworks.filter(item => item.category === "story");
@@ -55,10 +55,10 @@ for (const item of storyItems) {
     if (item[field]) errors.push(`${item.id}: 공개 데이터에 개인 필드 ${field}가 있습니다.`);
   }
 }
-if (imageData.artworks.length || musicData.sources.length) errors.push("이미지·음악 공개 데이터는 승인 전 비어 있어야 함");
+if (!imageData.artworks.length || musicData.sources.length) errors.push("최종 이미지가 없거나 음악 파일을 직접 포함함");
 
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
-for (const marker of ["data/artworks.json", "data/image-gallery.json", "data/music-player.json", "renderHeroSlideshow", "setupCeremony", "navigator.share", "moveLightbox"]) {
+for (const marker of ["data/artworks.json", "data/image-gallery.json", "data/slides-gallery.json", "data/music-player.json", "renderSlides", "setupCeremony", "navigator.share", "moveLightbox"]) {
   if (!app.includes(marker)) errors.push(`app.js 필수 기능 없음: ${marker}`);
 }
 for (const forbidden of ["2nd/", "2기", "SECOND"]) {
@@ -71,4 +71,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("SKELETON_VALIDATION_OK: 3rd shell, cover-only story data, 3 galleries, ceremony, share, lightbox");
+console.log("SKELETON_VALIDATION_OK: 3rd shell, cover-only story data, 4 galleries, ceremony, share, lightbox");

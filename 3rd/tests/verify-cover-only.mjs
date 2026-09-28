@@ -8,7 +8,7 @@ const { chromium } = require("C:/Users/user/.cache/codex-runtimes/codex-primary-
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const data = JSON.parse(fs.readFileSync(path.join(root, "data", "artworks.json"), "utf8"));
 const stories = data.artworks.filter(item => item.category === "story");
-if (stories.length !== 1) throw new Error(`예상한 표지 전용 자서전 수: 1, 실제: ${stories.length}`);
+if (!stories.length) throw new Error("표지 전용 자서전이 없습니다.");
 for (const item of stories) {
   if (item.visibility !== "cover-only") throw new Error(`${item.id}: visibility가 cover-only가 아닙니다.`);
   for (const field of ["viewer", "pdf", "originalUrl", "media", "images", "description"]) {
@@ -30,7 +30,7 @@ try {
   if (result.cards !== stories.length || result.images.length !== stories.length || result.anchors || result.buttons) {
     throw new Error(`표지 전용 카드 검증 실패: ${JSON.stringify(result)}`);
   }
-  if (!result.images.includes(stories[0].thumbnail)) throw new Error("표지 경로가 DOM에 없습니다.");
+  for (const story of stories) if (!result.images.includes(story.thumbnail)) throw new Error(`${story.id}: 표지 경로가 DOM에 없습니다.`);
   console.log(JSON.stringify({ ok: true, stories: stories.length, ...result }, null, 2));
 } finally {
   await browser.close();

@@ -1,0 +1,201 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-28",
+  "artworks": [
+    {
+      "id": "slides-001",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "권주택",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-001.webp",
+      "images": [
+        "assets/artworks/slides/slides-001.webp",
+        "assets/artworks/slides/slides-002.webp",
+        "assets/artworks/slides/slides-003.webp",
+        "assets/artworks/slides/slides-004.webp",
+        "assets/artworks/slides/slides-005.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-002",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "김용태",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-006.webp",
+      "images": [
+        "assets/artworks/slides/slides-006.webp",
+        "assets/artworks/slides/slides-007.webp",
+        "assets/artworks/slides/slides-008.webp",
+        "assets/artworks/slides/slides-009.webp",
+        "assets/artworks/slides/slides-010.webp",
+        "assets/artworks/slides/slides-011.webp",
+        "assets/artworks/slides/slides-012.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-003",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "김형상",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-013.webp",
+      "images": [
+        "assets/artworks/slides/slides-013.webp",
+        "assets/artworks/slides/slides-014.webp",
+        "assets/artworks/slides/slides-015.webp",
+        "assets/artworks/slides/slides-016.webp",
+        "assets/artworks/slides/slides-017.webp",
+        "assets/artworks/slides/slides-018.webp",
+        "assets/artworks/slides/slides-019.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-004",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "성자은",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-020.webp",
+      "images": [
+        "assets/artworks/slides/slides-020.webp",
+        "assets/artworks/slides/slides-021.webp",
+        "assets/artworks/slides/slides-022.webp",
+        "assets/artworks/slides/slides-023.webp",
+        "assets/artworks/slides/slides-024.webp",
+        "assets/artworks/slides/slides-025.webp",
+        "assets/artworks/slides/slides-026.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-005",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "이관근",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-027.webp",
+      "images": [
+        "assets/artworks/slides/slides-027.webp",
+        "assets/artworks/slides/slides-028.webp",
+        "assets/artworks/slides/slides-029.webp",
+        "assets/artworks/slides/slides-030.webp",
+        "assets/artworks/slides/slides-031.webp",
+        "assets/artworks/slides/slides-032.webp",
+        "assets/artworks/slides/slides-033.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-006",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "이병기",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-034.webp",
+      "images": [
+        "assets/artworks/slides/slides-034.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-007",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "이중래",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-035.webp",
+      "images": [
+        "assets/artworks/slides/slides-035.webp",
+        "assets/artworks/slides/slides-036.webp",
+        "assets/artworks/slides/slides-037.webp",
+        "assets/artworks/slides/slides-038.webp",
+        "assets/artworks/slides/slides-039.webp",
+        "assets/artworks/slides/slides-040.webp",
+        "assets/artworks/slides/slides-041.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-008",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "정찬선",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-042.webp",
+      "images": [
+        "assets/artworks/slides/slides-042.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-009",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "조규훈",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-043.webp",
+      "images": [
+        "assets/artworks/slides/slides-043.webp",
+        "assets/artworks/slides/slides-044.webp",
+        "assets/artworks/slides/slides-045.webp",
+        "assets/artworks/slides/slides-046.webp",
+        "assets/artworks/slides/slides-047.webp",
+        "assets/artworks/slides/slides-048.webp",
+        "assets/artworks/slides/slides-049.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-010",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "최윤석",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-050.webp",
+      "images": [
+        "assets/artworks/slides/slides-050.webp",
+        "assets/artworks/slides/slides-051.webp",
+        "assets/artworks/slides/slides-052.webp",
+        "assets/artworks/slides/slides-053.webp",
+        "assets/artworks/slides/slides-054.webp",
+        "assets/artworks/slides/slides-055.webp",
+        "assets/artworks/slides/slides-056.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    },
+    {
+      "id": "slides-011",
+      "category": "slides",
+      "title": "내 인생 10년 계획",
+      "creator": "한동필",
+      "description": "앞으로의 삶과 일을 10년의 시간축으로 정리한 슬라이드 작품",
+      "thumbnail": "assets/artworks/slides/slides-057.webp",
+      "images": [
+        "assets/artworks/slides/slides-057.webp",
+        "assets/artworks/slides/slides-058.webp",
+        "assets/artworks/slides/slides-059.webp",
+        "assets/artworks/slides/slides-060.webp",
+        "assets/artworks/slides/slides-061.webp",
+        "assets/artworks/slides/slides-062.webp",
+        "assets/artworks/slides/slides-063.webp"
+      ],
+      "imageTheme": "future",
+      "presentation": "collection"
+    }
+  ]
+}
