@@ -33,7 +33,7 @@ for (const marker of [
   "data-gallery=\"slides\"",
   "ceremonyButton",
   "lightboxPrev",
-  "heroPlaceholder"
+  "assets/hero/lego-ai-classroom-v1.png"
 ]) {
   if (!html.includes(marker)) errors.push(`index.html 필수 마커 없음: ${marker}`);
 }
