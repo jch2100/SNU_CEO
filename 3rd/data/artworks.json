@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-28",
+  "updatedAt": "2026-09-29",
   "groupPhoto": "",
   "musicPlaylist": {
     "url": "https://suno.com/playlist/08c2052c-155d-43b2-bf68-b45580dc7428",
@@ -69,6 +69,14 @@
       "title": "북아현동의 마당에서, 지금의 나까지",
       "creator": "이병기",
       "thumbnail": "assets/autobiography/lee-byung-ki-cover-v2.png",
+      "visibility": "cover-only"
+    },
+    {
+      "id": "story-009",
+      "category": "story",
+      "title": "그 시간이 다 나였다",
+      "creator": "김준영",
+      "thumbnail": "assets/autobiography/kim-jun-young-cover.png",
       "visibility": "cover-only"
     },
     { "id": "music-001", "category": "music", "title": "츄억", "creator": "3기 수료작품", "playlistOrder": 1, "playlistOnly": true, "originalUrl": "https://suno.com/song/d0b439dc-bc8b-467f-a14d-33444851bac0" },
