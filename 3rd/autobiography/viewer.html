@@ -180,7 +180,7 @@
     #measureStage { position: fixed; z-index: -100; top: 0; left: -10000px; width: 620px; height: 877px; visibility: hidden; }
     #measureStage .page { box-shadow: none; }
 
-    @media (max-width: 640px) {
+    @media (max-width: 640px), (orientation: landscape) and (max-height: 500px) {
       #scene.active {
         height: 100vh;
         height: 100dvh;
@@ -196,10 +196,61 @@
       main {
         min-height: 0;
         height: auto;
-        padding: 12px 9px 82px;
-        overflow: hidden;
+        display: block;
+        padding: 12px 9px 96px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
       }
-      .page-inner { padding: 42px 42px 54px; }
+      #book.mobile-scroll-reader {
+        display: block;
+        width: min(100%, 620px) !important;
+        height: auto !important;
+        overflow: visible;
+        margin: 0 auto;
+      }
+      #book.mobile-scroll-reader > .page {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        margin: 0 auto 14px;
+        overflow: visible;
+        break-inside: avoid;
+      }
+      #book.mobile-scroll-reader .page-inner {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 30px 24px 24px;
+        overflow: visible;
+        transform: none !important;
+      }
+      #book.mobile-scroll-reader .page-cover .page-inner { padding: 0; }
+      #book.mobile-scroll-reader .page-cover img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 620 / 877;
+        object-fit: cover;
+      }
+      #book.mobile-scroll-reader .page-title .page-inner {
+        min-height: min(72vh, 620px);
+        padding: 38px 28px;
+      }
+      #book.mobile-scroll-reader .title-main { font-size: 32px; line-height: 1.4; }
+      #book.mobile-scroll-reader .title-sub { font-size: 17px; }
+      #book.mobile-scroll-reader .toc-title { margin-bottom: 20px; font-size: 26px; }
+      #book.mobile-scroll-reader .toc-list li { padding: 9px 0; }
+      #book.mobile-scroll-reader .toc-text { font-size: 17px; line-height: 1.5; }
+      #book.mobile-scroll-reader .section-kicker { font-size: 12px; }
+      #book.mobile-scroll-reader .section-title { margin-bottom: 20px; padding-bottom: 14px; font-size: 24px; line-height: 1.45; }
+      #book.mobile-scroll-reader .section-continuation { margin: -2px 0 18px; font-size: 14px; line-height: 1.5; }
+      #book.mobile-scroll-reader .body-copy p { margin-bottom: 12px; font-size: 18px; line-height: 1.8; }
+      #book.mobile-scroll-reader .body-copy.compact p { margin-bottom: 10px; font-size: 17px; line-height: 1.7; }
+      #book.mobile-scroll-reader .body-subheading { margin: 22px 0 12px; font-size: 20px; line-height: 1.5; }
+      #book.mobile-scroll-reader .body-image img { max-width: 100%; height: auto; max-height: 420px; }
+      #book.mobile-scroll-reader .page-num { position: static; display: block; margin-top: 24px; font-size: 13px; }
+      #book.mobile-scroll-reader .page-back .page-inner { min-height: 360px; }
+      #book.mobile-scroll-reader .back-quote { font-size: 23px; }
       .toc-title { margin-bottom: 28px; font-size: 32px; }
       .toc-list li { padding: 12px 0; }
       .toc-text { font-size: 20px; line-height: 1.45; }
@@ -212,6 +263,7 @@
       .body-subheading { margin: 28px 0 14px; font-size: 24px; line-height: 1.45; }
       .page-num { font-size: 15px; }
       .controls { bottom: max(10px, env(safe-area-inset-bottom)); }
+      #book.mobile-scroll-reader ~ #status { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
@@ -261,6 +313,12 @@
     let pageFlip;
     let bookData;
     let contentPageNumber = 1;
+    let mobileReaderPages = [];
+    let mobileReaderIndex = 0;
+
+    function usesMobileReader() {
+      return window.matchMedia("(max-width: 640px), (orientation: landscape) and (max-height: 500px)").matches;
+    }
 
     function element(tag, className, text) {
       const node = document.createElement(tag);
@@ -353,6 +411,39 @@
       return inner.scrollHeight > inner.clientHeight + 1;
     }
 
+    function splitAtSentences(text) {
+      if (typeof Intl.Segmenter === "function") {
+        return [...new Intl.Segmenter("ko", { granularity: "sentence" }).segment(text)]
+          .map(part => part.segment)
+          .filter(part => part.length);
+      }
+      return text.match(/[^.!?。！？]+[.!?。！？]*\s*|[.!?。！？]+\s*/gu) || [text];
+    }
+
+    function splitAtWords(text, limit = 100) {
+      const tokens = text.match(/\s+|[^\s]+/gu) || [text];
+      const chunks = [];
+      let current = "";
+      for (const token of tokens) {
+        const characters = Array.from(token);
+        if (characters.length > limit) {
+          if (current) chunks.push(current);
+          current = "";
+          for (let start = 0; start < characters.length; start += limit) {
+            chunks.push(characters.slice(start, start + limit).join(""));
+          }
+          continue;
+        }
+        if (current && Array.from(current + token).length > limit) {
+          chunks.push(current);
+          current = "";
+        }
+        current += token;
+      }
+      if (current) chunks.push(current);
+      return chunks;
+    }
+
     function paginateSection(section) {
       const pages = [];
       let current = newContentPage(section, false);
@@ -366,26 +457,62 @@
         imagesByAfter.get(position).push(image);
       });
 
+      function nextPage() {
+        measureStage.removeChild(current.page);
+        pages.push(current.page);
+        current = newContentPage(section, true);
+        measureStage.appendChild(current.page);
+      }
+
+      function appendParagraphPart(sourceNode, text, isFirstPart) {
+        const part = sourceNode.cloneNode(false);
+        part.textContent = text;
+        if (!isFirstPart) part.classList.remove("lead");
+        current.body.appendChild(part);
+        if (!overflows(current.inner)) {
+          current.blockCount += 1;
+          return;
+        }
+        current.body.removeChild(part);
+        if (current.blockCount > 0) nextPage();
+        current.body.classList.add("compact");
+        current.body.appendChild(part);
+        if (!overflows(current.inner)) {
+          current.blockCount += 1;
+          return;
+        }
+        current.body.removeChild(part);
+        const smallerParts = splitAtWords(text);
+        if (smallerParts.length <= 1) {
+          current.body.appendChild(part);
+          current.blockCount += 1;
+          return;
+        }
+        smallerParts.forEach((smallPart, index) => appendParagraphPart(sourceNode, smallPart, isFirstPart && index === 0));
+      }
+
       function appendBlock(node) {
         current.body.appendChild(node);
         if (!overflows(current.inner)) {
           current.blockCount += 1;
           return;
         }
-
         current.body.removeChild(node);
-        if (current.blockCount > 0) {
-          measureStage.removeChild(current.page);
-          pages.push(current.page);
-          current = newContentPage(section, true);
-          measureStage.appendChild(current.page);
-          current.body.appendChild(node);
-          current.blockCount = 1;
-        } else {
-          current.body.classList.add("compact");
-          current.body.appendChild(node);
-          current.blockCount = 1;
+        if (current.blockCount > 0) nextPage();
+        current.body.classList.add("compact");
+        current.body.appendChild(node);
+        if (!overflows(current.inner)) {
+          current.blockCount += 1;
+          return;
         }
+        current.body.removeChild(node);
+        if (node.tagName === "P" && !node.classList.contains("section-continuation")) {
+          const parts = splitAtSentences(node.textContent || "");
+          parts.forEach((part, index) => appendParagraphPart(node, part, index === 0));
+          return;
+        }
+        current.body.appendChild(node);
+        current.blockCount += 1;
       }
 
       let bodyTextCount = 0;
@@ -433,6 +560,7 @@
     }
 
     function syncPageContentScale() {
+      if (!pageFlip) return;
       requestAnimationFrame(() => {
         const bounds = bookRoot.getBoundingClientRect();
         const pagesAcross = pageFlip?.getOrientation() === "landscape" ? 2 : 1;
@@ -500,6 +628,46 @@
       document.getElementById("status").hidden = true;
     }
 
+    function updateMobileReaderCounter() {
+      if (!mobileReaderPages.length) return;
+      const main = document.querySelector("main");
+      const marker = main.getBoundingClientRect().top + 28;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+      mobileReaderPages.forEach((page, index) => {
+        const bounds = page.getBoundingClientRect();
+        if (bounds.top <= marker && bounds.bottom > marker) nearestIndex = index;
+        const distance = Math.abs(bounds.top - marker);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          if (bounds.top > marker || index === 0) nearestIndex = index;
+        }
+      });
+      mobileReaderIndex = nearestIndex;
+      document.getElementById("pageCount").textContent = `${mobileReaderIndex + 1} / ${mobileReaderPages.length}`;
+    }
+
+    function moveMobileReaderPage(step) {
+      if (!mobileReaderPages.length) return;
+      mobileReaderIndex = Math.max(0, Math.min(mobileReaderPages.length - 1, mobileReaderIndex + step));
+      const main = document.querySelector("main");
+      const page = mobileReaderPages[mobileReaderIndex];
+      main.scrollTo({
+        top: main.scrollTop + page.getBoundingClientRect().top - main.getBoundingClientRect().top - 12,
+        behavior: "smooth"
+      });
+      document.getElementById("pageCount").textContent = `${mobileReaderIndex + 1} / ${mobileReaderPages.length}`;
+    }
+
+    function initMobileReader() {
+      bookRoot.classList.add("mobile-scroll-reader");
+      mobileReaderPages = [...bookRoot.children].filter(node => node.classList.contains("page"));
+      const main = document.querySelector("main");
+      main.addEventListener("scroll", updateMobileReaderCounter, { passive: true });
+      updateMobileReaderCounter();
+      document.getElementById("status").hidden = true;
+    }
+
     async function init() {
       try {
         if (cohort === "2") {
@@ -534,13 +702,26 @@
     document.getElementById("openBook").addEventListener("click", () => {
       document.getElementById("intro").classList.add("hidden");
       document.getElementById("scene").classList.add("active");
-      initPageFlip();
+      if (usesMobileReader()) initMobileReader();
+      else initPageFlip();
     });
-    document.getElementById("prev").addEventListener("click", () => pageFlip?.flipPrev());
-    document.getElementById("next").addEventListener("click", () => pageFlip?.flipNext());
+    document.getElementById("prev").addEventListener("click", () => {
+      if (pageFlip) pageFlip.flipPrev();
+      else moveMobileReaderPage(-1);
+    });
+    document.getElementById("next").addEventListener("click", () => {
+      if (pageFlip) pageFlip.flipNext();
+      else moveMobileReaderPage(1);
+    });
     window.addEventListener("keydown", event => {
-      if (event.key === "ArrowLeft") pageFlip?.flipPrev();
-      if (event.key === "ArrowRight") pageFlip?.flipNext();
+      if (event.key === "ArrowLeft") {
+        if (pageFlip) pageFlip.flipPrev();
+        else moveMobileReaderPage(-1);
+      }
+      if (event.key === "ArrowRight") {
+        if (pageFlip) pageFlip.flipNext();
+        else moveMobileReaderPage(1);
+      }
     });
     window.addEventListener("resize", syncPageContentScale);
     window.visualViewport?.addEventListener("resize", syncPageContentScale);
