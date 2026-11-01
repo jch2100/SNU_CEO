@@ -1,0 +1,23 @@
+/* Shared supplemental print rules for the two result-first lessons. */
+@media print {
+  body { font-size: 11pt; }
+  .chapter { margin-bottom: 18px; padding-bottom: 14px; }
+  .chapter h2, .chapter h3, .section-kicker, .worksheet label {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .section-kicker { display: block; }
+  .chapter h2, .chapter h3 { break-inside: avoid; }
+  .chapter p, .chapter li { orphans: 3; widows: 3; }
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .prompt-box, .checklist, .worksheet textarea, figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .prompt-head { break-after: avoid; }
+  .prompt-box.prompt-long { break-inside: auto; page-break-inside: auto; }
+  body[data-page="week02.html"] .prompt-long pre { line-height: 1.65; }
+  body[data-page="week02.html"] #extend .cards { margin: 14px 0; }
+  body[data-page="week02.html"] #extend .card { padding: 14px; }
+  body[data-page="week02.html"] #extend .card h3 { margin: 0 0 8px; line-height: 1.35; }
+}
