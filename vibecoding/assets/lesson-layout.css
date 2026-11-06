@@ -1,4 +1,10 @@
 /* Shared supplemental print rules for the two result-first lessons. */
+@media print {
+  body[data-page="week03.html"] .case-preview { display: none !important; }
+  body[data-page="week03.html"] #result .table-wrap,
+  body[data-page="week03.html"] #inputs .table-wrap { break-inside: avoid; page-break-inside: avoid; }
+  body[data-page="week03.html"] #inputs details { break-inside: auto; page-break-inside: auto; }
+}
 body[data-page="week02.html"] #long-prompt { border: 1px solid #d8e0e8; border-radius: 12px; padding: 18px; margin: 22px 0; background: #f8fafc; }
 body[data-page="week02.html"] #long-prompt > summary { cursor: pointer; line-height: 1.6; }
 body[data-page="week02.html"] #long-prompt .prompt-box { margin-top: 18px; }
