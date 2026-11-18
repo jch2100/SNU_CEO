@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Codex와 Aside를 연결하고, 우리 회사 자료를 바탕으로 네이버 블로그 글과 카드를 만듭니다. 임시저장한 글을 다시 열어 본문과 카드가 맞게 들어갔는지 확인합니다."><title>4주차(2) 네이버 블로그 자동화 · CODEX로 만드는 문서·업무자동화 8주</title>
+
+<link rel="canonical" href="https://ceo-ai.org/vibecoding/week04-blog.html">
+<link rel="icon" type="image/svg+xml" href="https://ceo-ai.org/vibecoding/assets/identity/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://ceo-ai.org/vibecoding/assets/identity/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://ceo-ai.org/vibecoding/assets/identity/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="CODEX로 만드는 문서·업무자동화 8주"><meta property="og:title" content="4주차(2) 네이버 블로그 자동화 · CODEX로 만드는 문서·업무자동화 8주">
+<meta property="og:description" content="Codex와 Aside를 연결하고, 우리 회사 자료를 바탕으로 네이버 블로그 글과 카드를 만듭니다. 임시저장한 글을 다시 열어 본문과 카드가 맞게 들어갔는지 확인합니다.">
+<meta property="og:url" content="https://ceo-ai.org/vibecoding/week04-blog.html">
+<meta property="og:image" content="https://ceo-ai.org/vibecoding/assets/identity/course-share-20261026.png"><meta property="og:image:secure_url" content="https://ceo-ai.org/vibecoding/assets/identity/course-share-20261026.png">
+<meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="CODEX로 만드는 문서·업무자동화 8주 과정 안내">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="CODEX로 만드는 문서·업무자동화 8주"><meta name="twitter:description" content="리서치 대시보드부터 문서·업무 자동화, 실무 해커톤까지. 내 업무를 설명하고 직접 만들며 개선하는 8주 과정입니다."><meta name="twitter:image" content="https://ceo-ai.org/vibecoding/assets/identity/course-share-20261026.png">
+
+<style>:root{--ink:#172d35;--muted:#586970;--accent:#00796d;--line:#dce6e6;--soft:#f2f7f6;--cream:#faf8f3;--radius:16px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:#fff;color:var(--ink);font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:17px;line-height:1.8;word-break:keep-all}a{color:var(--accent);text-underline-offset:4px}button,input,textarea{font:inherit}button,a,input,textarea{touch-action:manipulation}button{cursor:pointer}:focus-visible{outline:3px solid #148dcb;outline-offset:5px}.skip{position:fixed;top:-100px;left:20px;background:#fff;z-index:20}.skip:focus{top:12px}.site-header{max-width:1200px;margin:auto;padding:25px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:15px;color:var(--ink);text-decoration:none;font-size:14px;font-weight:700}.brand-mark{font-family:Georgia,serif;font-size:24px;border-right:1px solid var(--line);padding-right:17px}.brand-mark span{color:var(--accent)}.brand small{display:block;font-size:10px;letter-spacing:1.5px;color:var(--muted);margin-top:3px}.site-header nav{display:flex;gap:26px;font-size:14px}.site-header nav a{text-decoration:none;color:var(--muted);padding:5px 0}.site-header nav a[aria-current]{color:var(--accent);font-weight:700;border-bottom:2px solid var(--accent)}main{max-width:1200px;margin:auto}.hero{padding:76px 24px 66px;display:grid;grid-template-columns:1.35fr 1fr;gap:74px;align-items:center}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:700;color:var(--accent);margin:0 0 17px}h1{font-size:clamp(36px,4.2vw,58px);line-height:1.25;letter-spacing:-2px;margin:0 0 25px;max-width:680px}.lead{color:var(--muted);font-size:19px;line-height:1.85;max-width:580px}.hero-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:27px 0}.hero-meta span+span{border-left:1px solid var(--line);padding-left:12px}.button{display:inline-flex;justify-content:space-between;align-items:center;gap:32px;padding:12px 22px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:14px;font-weight:700}.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.hero-aside{background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:34px;position:relative}.hero-aside:before{content:"";display:block;width:42px;height:3px;background:var(--accent);margin-bottom:30px}.hero-aside h2{font-size:27px;line-height:1.4;margin:0 0 14px;letter-spacing:-.8px}.hero-aside p:not(.eyebrow){color:var(--muted);font-size:14px}.mini-flow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:26px 0}.mini-flow span{background:white;border:1px solid var(--line);padding:10px 13px;border-radius:8px;font-size:13px}.mini-flow i{font-style:normal;color:var(--accent)}.aside-note{font-size:12px!important;border-top:1px solid var(--line);padding-top:18px;margin-bottom:0}.section-nav-wrap{position:sticky;top:0;background:rgba(255,255,255,.97);z-index:10;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.section-nav{display:flex;justify-content:space-between;padding:16px 24px;gap:16px}.section-nav a{font-size:14px;color:var(--muted);text-decoration:none;white-space:nowrap}.section-nav span{color:var(--accent);font-size:10px;margin-right:9px}.section-nav a.active{color:var(--accent);font-weight:700}.content-layout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:60px;padding:65px 24px 80px}.margin-note{align-self:start;position:sticky;top:100px;color:var(--muted);font-size:13px}.margin-note small{display:block;font-size:11px;line-height:1.8;margin-top:24px}.print-button{border:1px solid var(--line);background:white;color:var(--muted);border-radius:7px;padding:7px 12px;font-size:12px}.manuscript{min-width:0}.chapter{padding-bottom:58px;margin-bottom:54px;border-bottom:1px solid var(--line);scroll-margin-top:90px}.chapter:last-child{margin-bottom:0}.chapter h2{font-size:31px;line-height:1.45;letter-spacing:-1px;margin:8px 0 20px}.chapter h3{font-size:21px;line-height:1.6;letter-spacing:-.4px;margin:28px 0 14px}.chapter p{margin:14px 0}.section-kicker{color:var(--accent);font-size:12px;letter-spacing:1px;font-weight:700}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:25px 0}.card{border:1px solid var(--line);padding:24px;border-radius:var(--radius)}.card .number{color:var(--accent);font-family:Georgia,serif;font-size:29px}.card h3{margin:12px 0 9px;font-size:19px}.card p{font-size:14px;color:var(--muted);line-height:1.8}.card a{font-size:14px;font-weight:700}.schedule{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:28px 0}.schedule>div{padding:21px;background:var(--soft);border-right:1px solid var(--line)}.schedule>div:last-child{border:0}.schedule strong{display:block;font-size:25px;color:var(--accent)}.schedule p{font-size:13px;line-height:1.7}.callout{background:var(--cream);border-left:3px solid #b39757;padding:19px 24px;border-radius:0 10px 10px 0;font-size:14px;margin:25px 0}.callout.info{background:var(--soft);border-color:var(--accent)}.step{border-top:1px solid var(--line);padding:25px 0}.step-heading{display:flex;gap:15px;align-items:baseline}.step-heading span{font-size:12px;color:var(--accent);font-weight:700}.step h3{margin:0 0 16px}.step dl{display:grid;grid-template-columns:95px 1fr;gap:11px 18px;font-size:15px;margin:10px 0}.step dt{font-weight:700;color:var(--muted)}.step dd{margin:0}.prompt-box{border:1px solid #c6ded9;background:#f3f8f6;border-radius:12px;overflow:hidden;margin:18px 0}.prompt-head{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-bottom:1px solid #d8e8e3;font-size:12px;font-weight:700;color:var(--accent)}.copy-button,.note-copy{border:1px solid #c5d8d4;background:white;border-radius:6px;padding:5px 12px;font-size:12px;color:var(--accent)}pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:18px;font-family:inherit;font-size:15px;line-height:1.8}code{overflow-wrap:anywhere}details{border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin:14px 0;font-size:15px}summary{font-weight:700;cursor:pointer}.checklist{display:grid;gap:10px;background:var(--soft);padding:22px;border-radius:12px;margin:20px 0}.checklist label{display:flex;align-items:flex-start;gap:12px;font-size:15px;cursor:pointer}.checklist input{width:18px;height:18px;flex-shrink:0;margin-top:5px;accent-color:var(--accent)}.checklist label:has(input:checked){color:#52746d}.choice-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:23px 0 0}.choice-tabs button{border:1px solid var(--line);border-radius:8px;background:white;padding:8px 15px;font-size:14px;color:var(--muted)}.choice-tabs button[aria-selected=true]{background:var(--accent);color:white;border-color:var(--accent)}.choice-panel{background:var(--soft);border-radius:12px;padding:20px 24px;margin-top:12px;font-size:15px}.choice-panel[hidden]{display:none}.worksheet{margin:24px 0}.worksheet label{display:block;font-size:14px;font-weight:700;margin:18px 0 8px}.worksheet textarea{width:100%;min-height:80px;resize:vertical;border:1px solid var(--line);border-radius:9px;padding:13px;color:var(--ink);font-size:15px;line-height:1.7}.worksheet textarea:focus{border-color:var(--accent)}.note-tools{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:12px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px;margin:24px 0}th{text-align:left;background:var(--soft);padding:12px;border-bottom:1px solid var(--line)}td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:top}figure{margin:28px 0}figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:12px}figcaption{color:var(--muted);font-size:12px;margin-top:8px}.download-row{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.week-list{margin:25px 0}.week-row{display:flex;align-items:center;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}.week-row .week-num{font-family:Georgia,serif;color:var(--accent);font-size:28px;min-width:45px}.week-row>div{flex:1}.week-row h3{font-size:19px;margin:0}.week-row p{font-size:13px;color:var(--muted);margin:5px 0}.week-row a{font-size:14px;font-weight:700}.tag{font-size:11px;background:var(--soft);color:var(--muted);padding:4px 9px;border-radius:5px}.example-report{border:1px solid var(--line);border-radius:14px;padding:26px;margin:25px 0;background:#fff}.report-top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.metrics{display:flex;gap:35px;margin:20px 0}.metrics strong{display:block;font-size:28px;color:var(--accent)}.metrics small{font-size:12px;color:var(--muted)}footer{border-top:1px solid var(--line);max-width:1152px;margin:auto;padding:26px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}footer a{font-size:12px}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:9px;font-size:14px;padding:10px 20px;opacity:0;pointer-events:none;z-index:30}.toast.show{opacity:1}.empty-note{font-size:13px;color:var(--muted)}
+@media(max-width:850px){.site-header{align-items:flex-start;flex-direction:column;gap:15px}.site-header nav{gap:24px}.hero{grid-template-columns:1fr;gap:28px;padding-top:45px;padding-bottom:40px}.hero-aside{padding:25px}.content-layout{grid-template-columns:1fr;gap:20px;padding-top:35px}.margin-note{position:static;display:none}.cards{grid-template-columns:1fr}.section-nav{justify-content:flex-start;overflow-x:auto;padding:14px 20px}.schedule>div{padding:16px}.schedule strong{font-size:22px}.chapter h2{font-size:27px}.step dl{grid-template-columns:1fr;gap:3px}.step dd{margin-bottom:10px}.week-row{gap:14px}.week-row h3{font-size:17px}.week-row a{white-space:nowrap}footer{margin:0 24px;flex-wrap:wrap}.hero h1{letter-spacing:-1.3px}.metrics{gap:24px}}
+@media print{.site-header nav,.section-nav-wrap,.margin-note,.copy-button,.note-copy,.print-button,.toast,.choice-tabs,.skip{display:none!important}.site-header{padding:10px 0}.hero{padding:20px 0;gap:20px;grid-template-columns:1.3fr 1fr}h1{font-size:30px}.hero-aside{padding:15px}.content-layout{display:block;padding:20px 0}.chapter{margin-bottom:25px;padding-bottom:20px}.chapter h2{font-size:24px}.choice-panel[hidden]{display:block}details>*{display:block!important}details{break-inside:avoid}.step,.card{break-inside:avoid}body{font-size:12px;line-height:1.65}footer{margin:0}textarea{min-height:55px}.button{color:#172d35;background:#fff}figure img{max-height:650px;object-fit:contain}}
+.figure-compact img{display:block;width:auto;max-width:100%;max-height:360px;margin:0 auto;object-fit:contain}
+@page{size:A4;margin:15mm}
+
+/* Optional grouped course navigation; ordinary link lists remain supported. */
+.site-header nav{align-items:center;flex-wrap:wrap}.course-menu{position:relative;margin:0;border:0;padding:0}.course-menu summary{list-style:none;cursor:pointer;padding:5px 0;color:var(--muted);white-space:nowrap}.course-menu summary::-webkit-details-marker{display:none}.course-menu summary.current-group{color:var(--accent);font-weight:700;border-bottom:2px solid var(--accent)}.course-menu summary span{display:inline-block;margin-left:3px;transition:transform .15s}.course-menu[open] summary span{transform:rotate(180deg)}.course-weeks{position:absolute;right:0;top:calc(100% + 10px);z-index:60;width:310px;max-width:calc(100vw - 32px);padding:8px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px #172d351f}.site-header nav .course-weeks a,.nav-unavailable{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 12px;border-radius:7px;font-size:14px}.site-header nav .course-weeks a[aria-current]{border-bottom:0;background:var(--soft)}.site-header nav .course-weeks a:hover{background:var(--soft)}.course-weeks small{font-size:11px;color:var(--muted);font-weight:400;text-align:right}.nav-unavailable{color:#7b8588}.nav-unavailable small{color:#7b8588}.course-menu[open]{overflow:visible}
+@media(max-width:850px){.site-header nav{gap:16px;position:relative;width:100%}.course-menu{position:static}.course-weeks{right:0;top:calc(100% + 10px)}.site-header{position:relative;z-index:10}}
+@media(max-width:360px){.site-header nav{font-size:13px;gap:14px}.course-weeks{right:0;width:280px}}
+</style><link rel="stylesheet" href="assets/lesson-layout.css"><link rel="stylesheet" href="assets/week04-blog/lesson.css"></head>
+<body data-page="week04-blog.html"><a class="skip" href="#main">본문 바로가기</a>
+<header class="site-header"><a class="brand" href="index.html?v=20261118-1"><span>CODEX로 만드는 문서·업무자동화 8주<small>VIBE CODING · 8 WEEKS</small></span></a><nav aria-label="교재"><a href="index.html?v=20261118-1" >과정 안내</a><a href="prepare.html?v=20261118-1" >사전 준비</a><details class="course-menu"><summary class="current-group">교재 <span aria-hidden="true">▾</span></summary><div class="course-weeks"><a href="week01.html?v=20261118-1">1주차<small>생각과 첫 계획</small></a><a href="week02.html?v=20261118-1">2주차<small>리서치와 직원 공유</small></a><a href="week03.html?v=20261118-1">3주차<small>회사 양식과 스킬</small></a><a href="week04.html?v=20261118-1">4주차(1)<small>AI에 넣기 전 가림</small></a><a href="week04-blog.html?v=20261118-1" aria-current="page">4주차(2)<small>네이버 블로그 자동화</small></a><span class="nav-unavailable" aria-disabled="true">5주차<small>준비 중</small></span><span class="nav-unavailable" aria-disabled="true">6주차<small>준비 중</small></span><span class="nav-unavailable" aria-disabled="true">7주차<small>준비 중</small></span><span class="nav-unavailable" aria-disabled="true">8주차<small>준비 중</small></span></div></details><a href="tools.html?v=20261118-1" >참고 도구</a></nav></header>
+<main id="main"><section class="hero"><div><p class="eyebrow">2026.11.18</p><h1>4주차(2) 네이버 블로그 자동화</h1><p class="lead">Codex와 Aside를 연결하고, 우리 회사 자료를 바탕으로 네이버 블로그 글과 카드를 만듭니다. 임시저장한 글을 다시 열어 본문과 카드가 맞게 들어갔는지 확인합니다.</p><div class="hero-meta"><span>2026.10.28 — 12.16</span><span>실습 · 설치부터 임시저장본 확인까지</span></div><a class="button primary" href="#ready">실습 준비하기 <span aria-hidden="true">↗</span></a></div><aside class="hero-aside"><p class="eyebrow">실습 결과</p><h2>주제 한 줄로 글과 카드를 만듭니다</h2><p>기업자료로 고객과 문의 기준을 한 번 정해 두면, 다음 글부터는 주제만 입력해 원고·썸네일·본문 카드 3장을 만들 수 있습니다.</p><div class="mini-flow"><span>자료</span><i>→</i><span>만들기</span><i>→</i><span>확인</span></div><p class="aside-note">네이버 임시저장 목록에서 글을 다시 열어 확인하면 실습이 끝납니다.</p></aside></section>
+<div class="section-nav-wrap"><nav class="section-nav" aria-label="페이지 구간"><a href="#ready"><span>01</span>준비</a><a href="#aside-install"><span>02</span>설치</a><a href="#subscription"><span>03</span>구독 연결</a><a href="#codex-connect"><span>04</span>Codex 연결</a><a href="#intro-draft"><span>05</span>소개글</a><a href="#skill-install"><span>06</span>스킬 설치</a><a href="#brand-setup"><span>07</span>브랜드 기준</a><a href="#make-post"><span>08</span>원고·카드</a><a href="#save-draft"><span>09</span>임시저장</a><a href="#reopen-draft"><span>10</span>다시 열기</a></nav></div>
+<div class="content-layout"><aside class="margin-note"><span class="eyebrow">LEARNING GUIDE</span><p>기업자료는 공개 가능한 내용만 준비하세요.</p><button class="print-button" type="button">인쇄 / PDF</button><small>체크와 메모는 이 브라우저에만 보관됩니다. 중요한 메모는 복사해 별도로 저장하세요.</small></aside><article class="manuscript"><section class="chapter" id="ready">
+<h2>실습 준비</h2>
+<p><a href="week04.html">4주차(1) AI에 넣기 전 가림</a>에서 다룬 원칙을 적용해, 이번 실습에는 공개해도 되는 기업자료와 사진을 사용합니다. 짧은 기업 소개글로 먼저 연결을 확인한 뒤, 고객의 질문 하나를 글과 카드로 만들어 <strong>네이버에 임시저장하고 다시 열어 확인</strong>합니다. 교재의 실습은 여기서 끝납니다.</p>
+<p><strong>실습 준비</strong> · Codex 앱, 실습할 네이버 블로그 주소, 공개 가능한 회사 소개나 서비스 자료를 준비하세요. 5단계에서 쓸 <a href="assets/week04-blog/naver-blog-setup.zip" download="4주차_네이버블로그_세팅스킬.zip">네이버 블로그 세팅 스킬 ZIP</a>도 받을 수 있습니다.</p>
+<p><strong>프롬프트 복사 방법</strong> · 코드 블록의 문장을 복사해 Codex 채팅에 붙여넣습니다. <code>[회사 이름]</code>, <code>[하는 일 한 줄]</code>, <code>[내 네이버 블로그 주소]</code>, <code>[주제]</code> 같은 대괄호 부분은 <strong>괄호까지 지우고 실제 정보로 바꿉니다</strong>. 요구받은 로그인과 본인 인증은 해당 앱이나 웹페이지에서 직접 진행합니다. 비밀번호와 인증 코드는 채팅에 붙여넣지 않습니다.</p>
+</section>
+<section class="chapter" id="aside-install">
+<h2>1. Aside 설치</h2>
+<p><strong>목표</strong> · 내 컴퓨터에 Aside를 설치하고 앱을 엽니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li><a href="https://aside.com/download">Aside 다운로드</a>를 열고 내 컴퓨터에 맞는 설치 파일을 받습니다.</li>
+<li>Windows는 다운로드한 <code>.exe</code>를 열어 설치합니다. Mac은 <code>.dmg</code>를 열고 Aside를 <strong>응용 프로그램</strong>으로 옮겨 실행합니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong> · 이 단계는 설치 파일과 앱을 직접 열면 됩니다.</p>
+<p><strong>완료 확인</strong> · Aside 창에 시작 화면 또는 로그인 화면이 보입니다.</p>
+<p><strong>막혔을 때</strong> · 자동 다운로드가 시작되지 않으면 <strong>Download Aside manually</strong>를 누릅니다. 설치 파일이 열리지 않으면 운영체제와 기기에 맞는 파일인지 확인합니다. 회사 PC에서 설치가 차단되면 강사에게 현재 화면을 보여주세요.</p>
+<p><strong>실제 캡처</strong> · 다운로드가 시작되지 않으면 파란색 수동 다운로드 링크를 누릅니다.</p>
+<p><img src="assets/week04-blog/aside-download.png" alt="Aside 공식 다운로드 화면" /></p>
+</section>
+<section class="chapter" id="subscription">
+<h2>2. Google 로그인과 ChatGPT 구독 연결</h2>
+<p><strong>목표</strong> · Google 계정으로 Aside에 로그인하고, Aside의 모델 설정에 ChatGPT 구독 계정을 연결합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>Aside 앱에서 Google 로그인을 선택하고 직접 인증합니다.</li>
+<li>연결 안내가 나오면 ChatGPT 구독 계정을 연결합니다. 안내가 안 보이면 Aside 왼쪽 위 프로필 메뉴에서 <strong>Settings → Models → Providers → Connect → ChatGPT</strong>로 들어갑니다.</li>
+<li>구독을 사용하는 ChatGPT 계정으로 직접 로그인·인증합니다. <strong>ChatGPT / Subscription</strong>이 이미 표시된다면 연결 상태를 확인하고 다음 단계로 갑니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong> · 로그인과 연결은 화면에서 직접 진행합니다.</p>
+<p><strong>완료 확인</strong> · <strong>Settings → Models → Providers</strong>에 <code>ChatGPT / Subscription</code>이 보입니다. 이 표시는 Aside의 모델 제공자 연결을 뜻합니다. Codex가 Aside를 제어하는지는 3단계에서 확인합니다.</p>
+<p><strong>막혔을 때</strong> · 인증 화면이 보이지 않으면 Aside의 열린 탭을 확인하고, 연결한 ChatGPT 계정이 구독 계정인지 확인하세요. 구독 연결을 완료하지 못했다면 해당 상태를 구분해 두고 3단계의 브라우저 제어를 별도로 점검하세요.</p>
+<p><strong>실제 캡처</strong></p>
+<ul>
+<li>
+<p>프로필 메뉴의 <strong>Settings</strong>를 엽니다.</p>
+<p><img src="assets/week04-blog/aside-settings.png" alt="Aside 프로필 메뉴의 Settings" /></p>
+</li>
+<li>
+<p><strong>Models → Connect → ChatGPT</strong>를 선택합니다.</p>
+<p><img src="assets/week04-blog/chatgpt-connect.png" alt="Models의 ChatGPT 연결 메뉴" /></p>
+</li>
+<li>
+<p><strong>Providers</strong>에서 <code>ChatGPT / Subscription</code> 표시를 확인합니다.</p>
+<p><img src="assets/week04-blog/chatgpt-subscription.png" alt="ChatGPT Subscription 연결 확인" /></p>
+</li>
+</ul>
+</section>
+<section class="chapter" id="codex-connect">
+<h2>3. Codex에 Aside 연결하고 글쓰기 화면 열기</h2>
+<p><strong>목표</strong> · Codex가 Aside를 제어해 내 네이버 블로그의 글쓰기 화면을 실제로 여는지 확인합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>Aside 시작 화면 아래 <strong>Use Aside with Codex</strong>를 누릅니다. <code>Aside CLI and browser skill installed.</code>가 표시되면 설치가 완료된 것입니다. 기존에 설정했다면 아래 점검부터 시작합니다.</li>
+<li>컴퓨터에 <strong>네이버 블로그 자동화</strong> 폴더를 만듭니다. Codex에서 <strong>이 컴퓨터(This computer)</strong>를 선택하고 이 폴더를 프로젝트로 엽니다. Aside는 실행한 상태로 둡니다.</li>
+<li>아래 요청에서 주소를 바꾸고 Codex에 보냅니다. Aside에 네이버 로그인 화면이 나오면 직접 로그인하고 Codex에 <code>로그인했어</code>라고 답하세요.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>Codex와 Aside 연결 점검</span><button class="copy-button" type="button">복사</button></div><pre>지금 이 컴퓨터에서 Codex와 Aside가 제대로 연결됐는지 확인해줘.&#10;문제가 있으면 원인을 찾아 수정한 뒤 다시 확인해줘.&#10;&#10;1. 스킬 확인&#10;- 현재 사용자 계정의 aside-browser 스킬을 찾아 읽어줘.&#10;- 스킬 안내에 따라 Aside CLI 가이드도 읽어줘.&#10;&#10;2. CLI 확인&#10;- aside 명령의 인식 여부와 버전을 확인해줘.&#10;- Windows에서 명령을 찾지 못하면&#10;  %LOCALAPPDATA%\Aside\CLI 아래에서 aside.exe를 찾아 전체 경로로 실행해줘.&#10;- CLI가 없거나 업데이트가 필요하면 스킬 안내에 따라 처리해줘.&#10;&#10;3. 실행 중인 Aside 프로필 확인&#10;- CLI의 기본 프로필과 실제 연결된 브라우저 프로필을 확인해줘.&#10;- 기본 프로필이 연결되지 않았다면, 연결된 프로필을 지정해 다시 시도해줘.&#10;- 연결된 프로필이 여러 개여서 선택이 불분명하면 나에게 물어봐.&#10;- 연결된 프로필이 없다면 Aside 실행 등 내가 해야 할 동작을 알려줘.&#10;- 프로필을 변경했다면 변경 내용을 알려줘.&#10;&#10;4. 실제 브라우저 제어 확인&#10;- Aside 창에서 네이버 블로그를 실제로 열어줘.&#10;- 내 블로그 주소: [여기에 실제 네이버 블로그 주소 입력]&#10;- 주소를 입력하지 않았다면, 로그인된 본인 계정의 ‘내 블로그’를 통해 접근해줘.&#10;- 로그인은 내가 직접 할게. 로그인 화면이 나오면 멈추고 알려줘.&#10;- 내가 “로그인했어”라고 하면 이어서 내 블로그의 글쓰기 화면을 열어줘.&#10;- 글 작성, 임시저장, 발행은 하지 마.&#10;&#10;5. 결과 보고&#10;- 스킬 읽기, CLI 실행, Aside 브라우저 제어, 글쓰기 화면 열기를&#10;  각각 성공·실패·확인 대기로 구분해 알려줘.&#10;- 실제 열린 URL과 화면 상태를 근거로 판단해줘.&#10;- 로그인 화면만 열렸다면 ‘브라우저 제어 성공, 글쓰기 확인 대기’로 보고해줘.&#10;- 수정한 내용과 내가 다음에 해야 할 동작을 짧게 알려줘.&#10;&#10;ChatGPT 구독 연결과 Codex의 Aside 브라우저 제어 연결은 별도로 판단해줘.</pre></div>
+<p><strong>완료 확인</strong> · 실제 Aside 창에 내 블로그의 <strong>빈 제목·본문 입력란</strong>이 보입니다. 네이버 로그인 화면까지만 열렸다면 브라우저 제어는 확인됐고 글쓰기 화면 확인이 남아 있습니다.</p>
+<p><strong>막혔을 때</strong> · Aside가 열려 있어도 Codex가 쓰는 연결 도구(CLI)가 다른 프로필을 기본으로 선택하면 실패할 수 있습니다. 위 요청으로 <strong>실제로 연결된 프로필</strong>을 확인하고, 여러 개라면 내 실습 프로필을 골라 알려주세요. 변경 후 같은 요청으로 다시 확인합니다. 스킬을 찾지 못하면 Aside의 연결 설치 상태를 확인하고 같은 프로젝트에서 새 Codex 채팅을 열어 재시도하세요.</p>
+<p><strong>실제 캡처</strong></p>
+<ul>
+<li>
+<p>로그인 화면이 뜨면 Aside에서 직접 로그인합니다.</p>
+<p><img src="assets/week04-blog/naver-sign-in.png" alt="Aside 제어로 열린 네이버 로그인 화면" /></p>
+</li>
+<li>
+<p>로그인 후 제목과 본문이 비어 있는 편집기가 열리면 점검 완료입니다.</p>
+<p><img src="assets/week04-blog/naver-editor.png" alt="네이버 블로그의 빈 글쓰기 편집기" /></p>
+</li>
+</ul>
+</section>
+<section class="chapter" id="intro-draft">
+<h2>4. 짧은 기업 소개글을 임시저장하고 다시 열기</h2>
+<p><strong>목표</strong> · Codex가 작성한 소개글을 Aside가 편집기에 넣고, 임시저장한 글을 다시 열 수 있는지 확인합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>Aside에 내 블로그의 <strong>빈 글쓰기 화면</strong>이 열려 있는지 봅니다.</li>
+<li>회사 이름과 하는 일을 바꿔 같은 Codex 채팅에 보냅니다. 로그인이나 실행 승인 요청이 나오면 화면과 작업 내용을 확인하고 이어갑니다.</li>
+<li>임시저장 목록에서 제목을 찾고, 다시 열린 편집기에서 본문 마지막 문장까지 확인합니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>기업 소개글 작성과 임시저장</span><button class="copy-button" type="button">복사</button></div><pre>우리 회사는 [회사 이름]이고 [하는 일 한 줄]을 해.
+이 정보로 제목 한 줄과 짧은 기업 소개글을 써줘.
+이어서 aside-browser 스킬을 사용해 Aside에 열려 있는 내 네이버 블로그 글쓰기 화면에 제목과 본문을 입력하고 임시저장해줘.
+기존 작성 내용이 있으면 덮어쓰지 말고 알려줘.
+임시저장한 글을 목록에서 다시 열어 제목과 본문이 유지되는지 확인해줘.
+발행은 하지 마.</pre></div>
+<p><strong>완료 확인</strong> · 소개글이 <strong>임시저장 글</strong> 목록에 있고, 다시 열었을 때 제목과 본문 마지막 문장이 보입니다.</p>
+<p><strong>막혔을 때</strong> · 기존 글이 열려 있다면 그 글을 두고 빈 글쓰기 화면을 먼저 여세요. 재개방할 때 <code>현재 편집 중인 문서</code>라는 알림이 나오면 <strong>임시저장 완료를 확인한 뒤</strong> 편집기를 새로고침하고 목록에서 같은 제목을 다시 엽니다.</p>
+<p><strong>실제 캡처</strong></p>
+<ul>
+<li>
+<p><code>임시저장 글</code> 목록에서 방금 입력한 소개글 제목을 찾습니다.</p>
+<p><img src="assets/week04-blog/intro-draft-list.png" alt="소개글이 보이는 임시저장 목록" /></p>
+</li>
+<li>
+<p>재개방한 편집기에서 제목과 마지막 문장까지 확인합니다.</p>
+<p><img src="assets/week04-blog/intro-draft-reopened.png" alt="임시저장 후 다시 연 기업 소개글" /></p>
+</li>
+</ul>
+</section>
+<section class="chapter" id="skill-install">
+<h2>5. ZIP으로 세팅 스킬 설치</h2>
+<p><strong>목표</strong> · 회사 자료를 읽고 블로그 운영 기준을 만드는 스킬을 현재 프로젝트에 넣습니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li><a href="assets/week04-blog/naver-blog-setup.zip" download="4주차_네이버블로그_세팅스킬.zip">4주차 네이버 블로그 세팅 스킬 ZIP</a>을 저장합니다.</li>
+<li>Codex에서 <strong>네이버 블로그 자동화</strong> 프로젝트를 열었는지 확인하고 아래 요청을 보냅니다.</li>
+<li>설치가 끝나면 같은 프로젝트에서 <strong>새 채팅</strong>을 엽니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>프로젝트에 세팅 스킬 설치</span><button class="copy-button" type="button">복사</button></div><pre>내 다운로드 폴더에서 4주차_네이버블로그_세팅스킬.zip을 찾아줘.
+그 안의 naver-blog-setup 스킬 폴더를 통째로 풀어서, 지금 열린 네이버 블로그 자동화 프로젝트의 .agents/skills 폴더 안에 설치해줘.
+설치한 SKILL.md의 위치를 알려줘.</pre></div>
+<p><strong>완료 확인</strong> · Codex가 알려준 위치가 현재 프로젝트 안의 <code>.agents/skills/naver-blog-setup/SKILL.md</code>입니다.</p>
+<p><strong>막혔을 때</strong> · 다운로드 폴더에 ZIP이 없으면 파일을 저장한 위치를 알려주세요. 스킬이 안 보이면 <code>naver-blog-setup</code> 폴더가 겹쳐 들어가 있지 않은지 Codex에 확인을 요청하고 같은 프로젝트에서 새 채팅을 엽니다.</p>
+</section>
+<section class="chapter" id="brand-setup">
+<h2>6. 기업자료를 읽히고 브랜드 기준 저장</h2>
+<p><strong>목표</strong> · 누구에게 글을 쓰고, 글을 읽은 고객이 어떤 행동을 하게 할지 정합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>프로젝트에 <code>기업자료</code> 폴더를 만듭니다. 공개 가능한 회사 소개서, 주력 서비스 안내, 고객이 자주 하는 질문, 회사의 공식 문의·예약 주소를 넣습니다. 소개서가 없다면 회사명·하는 일·주력 서비스·주요 고객을 메모 한 장에 적어 넣으세요.</li>
+<li>같은 프로젝트의 <strong>새 채팅</strong>에서 첫 요청을 보냅니다. Codex가 읽은 파일과 제안한 고객, 고객에게 안내할 다음 행동(<strong>CTA</strong>)을 확인합니다. 예를 들어 견적 문의를 받으려면 실제 견적 문의 페이지를 기준으로 정합니다.</li>
+<li>제안이 맞으면 저장 요청을 보냅니다. 바꿀 부분이 있다면 먼저 고쳐 달라고 요청하세요.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>기업자료로 블로그 세팅</span><button class="copy-button" type="button">복사</button></div><pre>$naver-blog-setup 기업자료 폴더를 먼저 읽고 우리 네이버 블로그 자동화를 세팅해줘.</pre></div>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>검토한 브랜드 기준 저장</span><button class="copy-button" type="button">복사</button></div><pre>정리한 고객과 CTA가 맞아. 이 내용으로 브랜드 기준을 저장하고 세팅을 마쳐줘.</pre></div>
+<p><strong>완료 확인</strong> · 프로젝트에 <code>브랜드_기준.md</code>, <code>AGENTS.md</code>, <code>네이버블로그_SEO_작성기준.md</code>, <code>디자인</code> 폴더가 생깁니다. <code>브랜드_기준.md</code>에서 고객과 CTA가 내가 확인한 내용인지, CTA 주소가 실제 주소인지 봅니다.</p>
+<p><strong>막혔을 때</strong> · Codex가 기업자료를 찾지 못하면 현재 프로젝트와 폴더 이름을 확인합니다. 고객이나 문의 주소가 자료에 없다면 확인 가능한 정보를 직접 알려주세요. 실제 주소를 아직 모르면 <code>확인 필요</code>로 남기고 임의의 주소를 넣지 않습니다.</p>
+</section>
+<section class="chapter" id="make-post">
+<h2>7. 주제 한 줄로 원고와 카드 만들기</h2>
+<p><strong>목표</strong> · 브랜드 기준을 재사용해 고객의 질문에 답하는 원고와 카드 4장을 만듭니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>같은 프로젝트의 새 Codex 채팅에서 고객이 실제로 물어보는 질문을 주제로 보냅니다.</li>
+<li><code>블로그_결과</code>의 새 글 폴더를 열어 원고, 썸네일, 카드, 편집기 조립 순서를 봅니다. 회사 정보, 문의 주소, 이미지 글자 잘림을 확인합니다.</li>
+<li><code>로컬 초안</code>에서 멈췄다면 이 단계의 결과를 검토할 차례입니다. 수정이 필요하면 반영된 파일을 다시 열어보고, 확인이 끝나면 8단계로 갑니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>주제 한 줄로 원고 요청</span><button class="copy-button" type="button">복사</button></div><pre>나 이번에 [고객이 문의하기 전에 준비할 정보]를 주제로 블로그 글을 쓸 거야.</pre></div>
+<p><strong>완료 확인</strong> · 같은 글 폴더에 <code>원고.md</code>, <code>편집기_조립.md</code>, 썸네일 PNG 1장, 본문 카드 PNG 3장이 있습니다. 각 이미지가 열리고, 글과 같은 내용을 담고 있습니다.</p>
+<p><strong>막혔을 때</strong> · 브랜드 기준을 다시 묻거나 다른 회사 정보가 섞이면 프로젝트 위치와 <code>브랜드_기준.md</code>를 확인합니다. PNG 출력이 실패하면 Codex에 실패 원인을 확인해 달라고 요청하세요. Python 또는 Chrome·Edge가 없다고 나오면 수업에서 준비한 설치 상태를 확인한 뒤 카드 출력을 다시 요청합니다.</p>
+</section>
+<section class="chapter" id="save-draft">
+<h2>8. 확인한 원고와 카드를 Aside로 임시저장</h2>
+<p><strong>목표</strong> · 검토한 글과 이미지 파일을 내 블로그 편집기에 넣어 임시저장합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>7단계에서 만든 원고와 카드를 확인합니다. 아직 임시저장한 글이 없다면 같은 Codex 채팅에서 아래 요청의 주소를 바꾸어 보냅니다.</li>
+<li>진행 중 네이버 로그인, 저장할 블로그 확인, 실행 승인 요청이 나올 수 있습니다. 로그인은 Aside에서 직접 하고, 계정이 다르면 그 상태로 진행하지 말고 원하는 블로그 주소와 열린 계정을 확인합니다. 실행 승인은 요청의 동작과 대상을 읽고 처리합니다.</li>
+<li>편집기의 제목·본문과 사진을 봅니다. 썸네일이 첫 이미지이자 대표 사진이고, 본문 카드가 <code>편집기_조립.md</code>에 적힌 위치와 순서로 들어갔는지 확인합니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>원고와 카드를 네이버에 임시저장</span><button class="copy-button" type="button">복사</button></div><pre>$aside-browser 확인한 원고와 카드를 Aside에서 [내 네이버 블로그 주소]의 글쓰기 화면에 넣고 임시저장해줘.
+같은 글 폴더의 편집기_조립.md에 따라 제목·본문과 카드의 위치를 맞추고, 첫 이미지인 썸네일을 대표 사진으로 설정해줘.
+열린 계정과 저장 대상이 다르거나 기존 글이 편집 중이면 입력하기 전에 멈추고 알려줘. 로그인은 내가 직접 할게.
+저장한 글을 다시 열어 본문 마지막 문장, 카드 순서, 대표 사진, CTA 링크를 확인해줘.
+발행은 하지 마.</pre></div>
+<p><strong>완료 확인</strong> · 네이버에서 저장 완료 표시가 나오고 <strong>임시저장 글</strong> 목록에 방금 작업한 제목이 보입니다. Codex가 저장을 진행 중이라고 알리면 목록에서 실제 상태를 확인하세요.</p>
+<p><strong>막혔을 때</strong> · Aside가 입력이나 사진 첨부에서 멈추면 열린 편집기와 저장 상태부터 확인하세요. 필요한 부분은 <code>편집기_조립.md</code>에 따라 직접 채우고, 사진과 링크까지 확인한 뒤 편집기 상단의 <strong>저장</strong>을 누릅니다. 이미 같은 제목의 임시저장 글이 있으면 그 글을 열어 이어서 확인합니다.</p>
+</section>
+<section class="chapter" id="reopen-draft">
+<h2>9. 임시저장본을 열어 본문과 카드 확인</h2>
+<p><strong>목표</strong> · 임시저장 목록에서 다시 연 글이 검토한 원고와 같은지 확인합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>Aside의 네이버 글쓰기 화면에서 <strong>임시저장 글</strong> 목록을 열고, 방금 저장한 제목을 선택합니다. 이미 재개방된 상태라면 Aside에서 열린 제목과 본문을 직접 대조합니다.</li>
+<li>아래 항목을 차례로 확인합니다.</li>
+</ol>
+<div class="checklist">
+<label><input type="checkbox" data-check="reopen-1"><span>제목과 본문 마지막 문장이 원고와 같습니다.</span></label>
+<label><input type="checkbox" data-check="reopen-2"><span>첫 이미지가 썸네일이고, 본문 카드 3장이 조립 문서에 있는 순서와 위치로 보입니다.</span></label>
+<label><input type="checkbox" data-check="reopen-3"><span>대표 사진으로 지정된 이미지가 의도한 썸네일입니다.</span></label>
+<label><input type="checkbox" data-check="reopen-4"><span>문의·예약 등 CTA 문구에 내가 확인한 실제 주소가 연결되어 있습니다.</span></label>
+</div>
+<p><strong>복사 프롬프트</strong> · 8단계에서 저장까지만 끝났거나 확인 결과가 불분명할 때 사용합니다.</p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>임시저장본 다시 열기</span><button class="copy-button" type="button">복사</button></div><pre>$aside-browser 방금 임시저장한 글을 네이버 임시저장 목록에서 다시 열고, 편집기_조립.md와 비교해줘.
+제목과 본문 마지막 문장, 카드 순서, 대표 사진, CTA의 실제 연결 주소를 각각 확인해줘.
+화면에서 확인하지 못한 항목은 확인 대기로 알려줘. 발행은 하지 마.</pre></div>
+<p><strong>완료 확인</strong> · 목록에서 해당 글을 다시 열었고 위 네 항목을 확인했습니다. 여기까지 하면 실습 완료입니다.</p>
+<p><strong>막혔을 때</strong> · 빈 글이 열렸다면 저장한 계정과 제목이 맞는지 먼저 봅니다. 카드나 링크가 누락됐으면 같은 임시저장본에서 빠진 부분을 반영하고, 다시 저장한 뒤 같은 글을 열어 확인합니다. 대표 사진이나 주소를 화면에서 판단할 수 없다면 그 항목은 확인 대기로 둡니다.</p>
+<p><strong>실제 화면 자료</strong> · 공개 결과물에는 기업 AI 교육 문의를 주제로 한 썸네일 1장, 본문 카드 3장, 글 끝의 교육 문의 링크가 들어 있습니다. 카드 사이에 설명을 넣는 방식과 글 끝의 문의 안내를 참고하세요. 실습 중 확인할 화면은 임시저장 목록에서 다시 연 편집기입니다. <a href="https://blog.naver.com/ai_study/224481781811">카드가 포함된 최종 결과 예시</a></p>
+</section>
+</article></div></main>
+<footer><a class="brand" href="index.html?v=20261118-1">Money&amp;Works</a><p>CODEX로 만드는 문서·업무자동화 8주 · 4주차(2) 네이버 블로그 자동화</p><a href="#main">맨 위로 ↑</a></footer><div class="toast" role="status" aria-live="polite"></div><script>(()=>{'use strict';const key='snu-vibe-v1:'+document.body.dataset.page;let state={};const toast=document.querySelector('.toast');function notify(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2400)}try{state=JSON.parse(localStorage.getItem(key)||'{}')}catch{}function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch{notify('브라우저 저장을 사용할 수 없습니다. 메모를 복사해 보관하세요.')}}async function copy(text,button){try{if(!navigator.clipboard)throw Error();await navigator.clipboard.writeText(text)}catch{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.top='-1000px';document.body.append(area);area.select();const ok=document.execCommand('copy');area.remove();if(!ok){notify('본문을 직접 선택해 복사하세요.');return}}const old=button.textContent;button.textContent='복사됨';notify('복사했습니다.');setTimeout(()=>button.textContent=old,1800)}document.querySelectorAll('.copy-button').forEach(button=>button.addEventListener('click',()=>copy(button.closest('.prompt-box').querySelector('pre').textContent,button)));document.querySelectorAll('[data-check]').forEach(input=>{input.checked=!!state[input.dataset.check];input.addEventListener('change',()=>{state[input.dataset.check]=input.checked;save()})});document.querySelectorAll('textarea[data-note]').forEach(input=>{input.value=state[input.dataset.note]||'';input.addEventListener('input',()=>{state[input.dataset.note]=input.value;save()})});document.querySelectorAll('.note-copy').forEach(button=>button.addEventListener('click',()=>{const form=button.closest('.worksheet');copy([...form.querySelectorAll('textarea')].map(area=>area.getAttribute('aria-label')+'\n'+area.value).join('\n\n'),button)}));document.querySelectorAll('.choice-tabs').forEach(group=>{const buttons=[...group.querySelectorAll('button')];function activate(button){buttons.forEach(item=>{const active=item===button;item.setAttribute('aria-selected',String(active));item.tabIndex=active?0:-1;document.getElementById(item.getAttribute('aria-controls')).hidden=!active})}buttons.forEach((button,i)=>{button.addEventListener('click',()=>activate(button));button.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const n=event.key==='Home'?0:event.key==='End'?buttons.length-1:(i+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;activate(buttons[n]);buttons[n].focus()})})});document.querySelector('.print-button')?.addEventListener('click',()=>window.print());const details=[...document.querySelectorAll('details')];let opened=[];addEventListener('beforeprint',()=>{opened=details.map(item=>item.open);details.forEach(item=>item.open=true)});addEventListener('afterprint',()=>details.forEach((item,i)=>item.open=opened[i]));const links=[...document.querySelectorAll('.section-nav a')];if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>{const active=link.hash==='#'+entry.target.id;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})}})},{rootMargin:'-15% 0px -65% 0px'});document.querySelectorAll('.chapter').forEach(section=>observer.observe(section))}})();
+/* Native details handles click/keyboard opening; add dismiss behavior. */
+(()=>{const menus=[...document.querySelectorAll('.course-menu')];document.addEventListener('pointerdown',event=>{menus.forEach(menu=>{if(!menu.contains(event.target))menu.open=false})});document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;menus.forEach(menu=>{if(menu.open){menu.open=false;menu.querySelector('summary').focus();event.preventDefault()}})});menus.forEach(menu=>menu.addEventListener('toggle',()=>{if(menu.open)menus.forEach(other=>{if(other!==menu)other.open=false})}))})();
+</script></body></html>

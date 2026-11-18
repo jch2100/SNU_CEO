@@ -1,0 +1,36 @@
+body[data-page="week04-blog.html"] .chapter img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+body[data-page="week04-blog.html"] .chapter li + li {
+  margin-top: 8px;
+}
+
+body[data-page="week04-blog.html"] .section-nav a > span {
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  body[data-page="week04-blog.html"] .section-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}
+
+@media print {
+  body[data-page="week04-blog.html"] .chapter img {
+    max-height: 85mm;
+    object-fit: contain;
+    object-position: left center;
+    break-inside: avoid;
+  }
+  body[data-page="week04-blog.html"] .download-row {
+    display: none;
+  }
+}
