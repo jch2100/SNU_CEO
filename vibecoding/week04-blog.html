@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Codex와 Aside를 연결하고, 우리 회사 자료를 바탕으로 네이버 블로그 글과 카드를 만듭니다. 임시저장한 글을 다시 열어 본문과 카드가 맞게 들어갔는지 확인합니다."><title>4주차(2) 네이버 블로그 자동화 · CODEX로 만드는 문서·업무자동화 8주</title>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="네이버 블로그가 필요한 분을 위한 선택 가이드입니다. 고객 질문 한 건을 글로 쓰고 평소 브라우저에서 직접 저장합니다. 반복 작업을 자동화할 분은 Aside 심화 과정을 이어가세요."><title>4주차(2) 네이버 블로그 자동화 · CODEX로 만드는 문서·업무자동화 8주</title>
 
 <link rel="canonical" href="https://ceo-ai.org/vibecoding/week04-blog.html">
 <link rel="icon" type="image/svg+xml" href="https://ceo-ai.org/vibecoding/assets/identity/favicon.svg">
@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://ceo-ai.org/vibecoding/assets/identity/apple-touch-icon.png">
 <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="CODEX로 만드는 문서·업무자동화 8주"><meta property="og:title" content="4주차(2) 네이버 블로그 자동화 · CODEX로 만드는 문서·업무자동화 8주">
-<meta property="og:description" content="Codex와 Aside를 연결하고, 우리 회사 자료를 바탕으로 네이버 블로그 글과 카드를 만듭니다. 임시저장한 글을 다시 열어 본문과 카드가 맞게 들어갔는지 확인합니다.">
+<meta property="og:description" content="네이버 블로그가 필요한 분을 위한 선택 가이드입니다. 고객 질문 한 건을 글로 쓰고 평소 브라우저에서 직접 저장합니다. 반복 작업을 자동화할 분은 Aside 심화 과정을 이어가세요.">
 <meta property="og:url" content="https://ceo-ai.org/vibecoding/week04-blog.html">
 <meta property="og:image" content="https://ceo-ai.org/vibecoding/assets/identity/course-share-20261026.png"><meta property="og:image:secure_url" content="https://ceo-ai.org/vibecoding/assets/identity/course-share-20261026.png">
 <meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="CODEX로 만드는 문서·업무자동화 8주 과정 안내">
@@ -25,14 +25,29 @@
 @media(max-width:360px){.site-header nav{font-size:13px;gap:14px}.course-weeks{right:0;width:280px}}
 </style><link rel="stylesheet" href="assets/lesson-layout.css"><link rel="stylesheet" href="assets/week04-blog/lesson.css"></head>
 <body data-page="week04-blog.html"><a class="skip" href="#main">본문 바로가기</a>
-<header class="site-header"><a class="brand" href="index.html?v=20261118-1"><span>CODEX로 만드는 문서·업무자동화 8주<small>VIBE CODING · 8 WEEKS</small></span></a><nav aria-label="교재"><a href="index.html?v=20261118-1" >과정 안내</a><a href="prepare.html?v=20261118-1" >사전 준비</a><details class="course-menu"><summary class="current-group">교재 <span aria-hidden="true">▾</span></summary><div class="course-weeks"><a href="week01.html?v=20261118-1">1주차<small>생각과 첫 계획</small></a><a href="week02.html?v=20261118-1">2주차<small>리서치와 직원 공유</small></a><a href="week03.html?v=20261118-1">3주차<small>회사 양식과 스킬</small></a><a href="week04.html?v=20261118-1">4주차(1)<small>AI에 넣기 전 가림</small></a><a href="week04-blog.html?v=20261118-1" aria-current="page">4주차(2)<small>네이버 블로그 자동화</small></a><a href="week05.html">5주차<small>우리 회사 홈페이지와 Blog</small></a><span class="nav-unavailable" aria-disabled="true">6주차<small>준비 중</small></span><span class="nav-unavailable" aria-disabled="true">7주차<small>준비 중</small></span><span class="nav-unavailable" aria-disabled="true">8주차<small>준비 중</small></span></div></details><a href="tools.html?v=20261118-1" >참고 도구</a></nav></header>
-<main id="main"><section class="hero"><div><p class="eyebrow">2026.11.18</p><h1>4주차(2) 네이버 블로그 자동화</h1><p class="lead">Codex와 Aside를 연결하고, 우리 회사 자료를 바탕으로 네이버 블로그 글과 카드를 만듭니다. 임시저장한 글을 다시 열어 본문과 카드가 맞게 들어갔는지 확인합니다.</p><div class="hero-meta"><span>2026.10.28 — 12.16</span><span>실습 · 설치부터 임시저장본 확인까지</span></div><a class="button primary" href="#ready">실습 준비하기 <span aria-hidden="true">↗</span></a></div><aside class="hero-aside"><p class="eyebrow">실습 결과</p><h2>주제 한 줄로 글과 카드를 만듭니다</h2><p>기업자료로 고객과 문의 기준을 한 번 정해 두면, 다음 글부터는 주제만 입력해 원고·썸네일·본문 카드 3장을 만들 수 있습니다.</p><div class="mini-flow"><span>자료</span><i>→</i><span>만들기</span><i>→</i><span>확인</span></div><p class="aside-note">네이버 임시저장 목록에서 글을 다시 열어 확인하면 실습이 끝납니다.</p></aside></section>
-<div class="section-nav-wrap"><nav class="section-nav" aria-label="페이지 구간"><a href="#ready"><span>01</span>준비</a><a href="#aside-install"><span>02</span>설치</a><a href="#subscription"><span>03</span>구독 연결</a><a href="#codex-connect"><span>04</span>Codex 연결</a><a href="#intro-draft"><span>05</span>소개글</a><a href="#skill-install"><span>06</span>스킬 설치</a><a href="#brand-setup"><span>07</span>브랜드 기준</a><a href="#make-post"><span>08</span>원고·카드</a><a href="#save-draft"><span>09</span>임시저장</a><a href="#reopen-draft"><span>10</span>다시 열기</a></nav></div>
+<header class="site-header"><a class="brand" href="index.html?v=20261118-1"><span>CODEX로 만드는 문서·업무자동화 8주<small>VIBE CODING · 8 WEEKS</small></span></a><nav aria-label="교재"><a href="index.html?v=20261118-1" >과정 안내</a><a href="prepare.html?v=20261118-1" >사전 준비</a><details class="course-menu"><summary class="current-group">교재 <span aria-hidden="true">▾</span></summary><div class="course-weeks"><a href="week01.html?v=20261118-1">1주차<small>생각과 첫 계획</small></a><a href="week02.html?v=20261118-1">2주차<small>리서치와 직원 공유</small></a><a href="week03.html?v=20261118-1">3주차<small>회사 양식과 스킬</small></a><a href="week04.html?v=20261118-1">4주차(1)<small>AI에 넣기 전 가림</small></a><a href="week04-blog.html?v=20261118-1" aria-current="page">4주차(2)<small>네이버 블로그 자동화</small></a><a href="week05.html?v=20261118-1">5주차<small>우리 회사 홈페이지와 Blog</small></a><span class="nav-unavailable" aria-disabled="true">6주차<small>준비 중</small></span><span class="nav-unavailable" aria-disabled="true">7주차<small>준비 중</small></span><span class="nav-unavailable" aria-disabled="true">8주차<small>준비 중</small></span></div></details><a href="tools.html?v=20261118-1" >참고 도구</a></nav></header>
+<main id="main"><section class="hero"><div><p class="eyebrow">2026.11.18</p><h1>4주차(2) 네이버 블로그 자동화</h1><p class="lead">네이버 블로그가 필요한 분을 위한 선택 가이드입니다. 고객 질문 한 건을 글로 쓰고 평소 브라우저에서 직접 저장합니다. 반복 작업을 자동화할 분은 Aside 심화 과정을 이어가세요.</p><div class="hero-meta"><span>2026.10.28 — 12.16</span><span>선택 실습 · 직접 작성과 자동화</span></div><a class="button primary" href="#ready">실습 준비하기 <span aria-hidden="true">↗</span></a></div><aside class="hero-aside"><p class="eyebrow">실습 결과</p><h2>주제 한 줄로 글과 카드를 만듭니다</h2><p>기업자료로 고객과 문의 기준을 한 번 정해 두면, 다음 글부터는 주제만 입력해 원고·썸네일·본문 카드 3장을 만들 수 있습니다.</p><div class="mini-flow"><span>자료</span><i>→</i><span>만들기</span><i>→</i><span>확인</span></div><p class="aside-note">네이버 임시저장 목록에서 글을 다시 열어 확인하면 실습이 끝납니다.</p></aside></section>
+<div class="section-nav-wrap"><nav class="section-nav" aria-label="페이지 구간"><a href="#ready"><span>01</span>준비</a><a href="#aside-install"><span>02</span>설치</a><a href="#subscription"><span>03</span>구독 연결</a><a href="#codex-connect"><span>04</span>Codex 연결</a><a href="#intro-draft"><span>05</span>소개글</a><a href="#skill-install"><span>06</span>스킬 설치</a><a href="#brand-setup"><span>07</span>브랜드 기준</a><a href="#make-post"><span>08</span>원고·카드</a><a href="#save-draft"><span>09</span>임시저장</a><a href="#reopen-draft"><span>10</span>다시 열기</a><a href="#chrome-route"><span>11</span>크롬 경로</a><a href="#chrome-help"><span>12</span>막혔을 때</a></nav></div>
 <div class="content-layout"><aside class="margin-note"><span class="eyebrow">LEARNING GUIDE</span><p>기업자료는 공개 가능한 내용만 준비하세요.</p><button class="print-button" type="button">인쇄 / PDF</button><small>체크와 메모는 이 브라우저에만 보관됩니다. 중요한 메모는 복사해 별도로 저장하세요.</small></aside><article class="manuscript"><section class="chapter" id="ready">
-<h2>실습 준비</h2>
+<h2>선택 실습 · 고객 질문 하나를 네이버 블로그 글로 남기기</h2>
+<p>고객이 네이버에서 우리 제품이나 서비스를 찾아보거나, 직원이 같은 질문에 여러 번 답하는 회사에 적합합니다. 최근 실제로 받은 질문 하나를 고르세요. 5주차 개인 작업 시간을 홈페이지 제작에 쓰실 분은 이 가이드를 나중에 열어도 됩니다.</p>
+<h3>처음 쓰는 분 · 평소 쓰는 브라우저에서 진행하세요</h3>
+<ol><li>컴퓨터에 ‘블로그 원고’ 폴더를 만들고 Codex에서 엽니다. 공개 가능한 제품 설명이나 회사 안내 한 건을 넣으세요. 고객이 보낸 문자 대신 이름과 연락처를 뺀 질문 한 줄을 준비합니다.</li>
+<li>아래 요청을 Codex에 붙여넣고 대괄호를 바꿉니다. 예를 들어 종이 규격을 잘 모르는 고객이라면 ‘견적을 요청할 때 크기와 수량을 어떻게 적나요?’처럼 고객이 쓴 표현을 살립니다.</li></ol>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>고객 질문으로 첫 글 쓰기</span><button class="copy-button" type="button">복사</button></div><pre>이 폴더의 공개용 자료를 읽어줘. 독자는 [누구], 실제 질문은 “[질문]”이야.
+질문에 바로 답하는 제목 하나, 첫 문단의 짧은 답, 고객이 확인할 사항, 마지막 안내 문장을 써줘. 자료에 없는 가격·납기·효능은 추측하지 말고 내가 확인할 항목으로 따로 모아줘.
+제목과 본문을 복사하기 쉽게 구분해 블로그원고.txt에 저장해줘. 브라우저 입력은 내가 할게.</pre></div>
+<ol start="3"><li><strong>원고 확인.</strong> 블로그원고.txt를 열고 첫 문단이 질문에 답하는지 읽습니다. 수치와 단위를 원자료와 비교하고, 확인할 항목은 해결한 뒤 본문에서 뺍니다.</li>
+<li><strong>글쓰기.</strong> 평소 브라우저에서 <a href="https://section.blog.naver.com/">네이버 블로그</a>를 열고 직접 로그인합니다. 글을 올릴 블로그 이름을 확인한 뒤 ‘글쓰기’를 누릅니다. 제목만 복사해 제목 칸에, 본문만 복사해 본문 칸에 붙여넣습니다. 사진이 필요하면 본문에서 넣을 위치를 클릭하고 ‘사진’으로 사용 가능한 원본 파일을 선택합니다.</li>
+<li><strong>저장하고 다시 열기.</strong> PC 편집기 오른쪽 위 ‘저장’을 누릅니다. 저장 옆 숫자를 눌러 목록에서 방금 쓴 제목을 고릅니다. 첫 문단과 사진 위치가 맞는지 보고 한 문장을 수정해 다시 저장합니다. 같은 제목을 다시 열어 수정 내용이 보이면 완료입니다. <a href="https://help.naver.com/service/5593/contents/15543?lang=ko&amp;osType=PC">네이버 저장·불러오기 안내</a></li>
+<li><strong>회사 글로 공개할 때.</strong> 계정과 글 내용을 최종 확인하고 ‘발행’ 화면에서 카테고리와 공개 범위를 선택합니다. 공개할 글만 발행하고, 게시글의 주소를 새 창에서 열어 확인하세요. 연습 글은 임시저장 상태로 두면 됩니다.</li></ol>
+<p><strong>막혔을 때</strong> · ‘글쓰기’가 보이지 않으면 지금 로그인한 계정과 블로그 소유자를 확인하세요. 붙여넣은 글의 서식이 깨지면 원고를 메모장에 먼저 붙여넣고 일반 텍스트로 다시 복사합니다. 저장에 실패하면 창을 닫기 전에 원고를 로컬 파일에 보관하세요. <a href="https://help.naver.com/service/5593/contents/15658?lang=ko&amp;osType=PC">네이버 임시저장 오류 안내</a></p>
+<p><strong>다음 글</strong> · 같은 폴더에서 새 질문을 넣고 “지난 글과 겹치는 부분을 짚고 새 원고는 다른 파일명으로 저장해줘”라고 요청하세요. 기존 글의 정보를 고칠 때에는 내 블로그에서 해당 글을 열고 수정합니다.</p>
+<h3>반복 작업을 자동화하려는 분 · 아래 1~9단계</h3>
 <p><a href="week04.html">4주차(1) AI에 넣기 전 가림</a>에서 다룬 원칙을 적용해, 이번 실습에는 공개해도 되는 기업자료와 사진을 사용합니다. 짧은 기업 소개글로 먼저 연결을 확인한 뒤, 고객의 질문 하나를 글과 카드로 만들어 <strong>네이버에 임시저장하고 다시 열어 확인</strong>합니다. 교재의 실습은 여기서 끝납니다.</p>
 <p><strong>실습 준비</strong> · Codex 앱, 실습할 네이버 블로그 주소, 공개 가능한 회사 소개나 서비스 자료를 준비하세요. 5단계에서 쓸 <a href="assets/week04-blog/naver-blog-setup.zip" download="4주차_네이버블로그_세팅스킬.zip">네이버 블로그 세팅 스킬 ZIP</a>도 받을 수 있습니다.</p>
 <p><strong>프롬프트 복사 방법</strong> · 코드 블록의 문장을 복사해 Codex 채팅에 붙여넣습니다. <code>[회사 이름]</code>, <code>[하는 일 한 줄]</code>, <code>[내 네이버 블로그 주소]</code>, <code>[주제]</code> 같은 대괄호 부분은 <strong>괄호까지 지우고 실제 정보로 바꿉니다</strong>. 요구받은 로그인과 본인 인증은 해당 앱이나 웹페이지에서 직접 진행합니다. 비밀번호와 인증 코드는 채팅에 붙여넣지 않습니다.</p>
+<div class="callout info"><strong>Aside 설치나 연결이 안 되나요?</strong> 평소 쓰는 크롬으로도 같은 실습을 할 수 있습니다. 크롬 경로는 10단계부터 시작하고, 5~7단계는 그대로 함께 씁니다.<p><a class="button primary" href="#chrome-route">크롬으로 하는 방법(10단계)으로 가기 ↓</a></p></div>
 </section>
 <section class="chapter" id="aside-install">
 <h2>1. Aside 설치</h2>
@@ -44,7 +59,7 @@
 </ol>
 <p><strong>복사 프롬프트</strong> · 이 단계는 설치 파일과 앱을 직접 열면 됩니다.</p>
 <p><strong>완료 확인</strong> · Aside 창에 시작 화면 또는 로그인 화면이 보입니다.</p>
-<p><strong>막혔을 때</strong> · 자동 다운로드가 시작되지 않으면 <strong>Download Aside manually</strong>를 누릅니다. 설치 파일이 열리지 않으면 운영체제와 기기에 맞는 파일인지 확인합니다. 회사 PC에서 설치가 차단되면 강사에게 현재 화면을 보여주세요.</p>
+<p><strong>막혔을 때</strong> · 자동 다운로드가 시작되지 않으면 <strong>Download Aside manually</strong>를 누릅니다. 설치 파일이 열리지 않으면 운영체제와 기기에 맞는 파일인지 확인합니다. 회사 PC에서 설치가 차단되면 강사에게 현재 화면을 보여주세요. Aside 설치가 계속 안 되면 <a href="#chrome-route">10단계 크롬 경로</a>로 갑니다.</p>
 <p><strong>실제 캡처</strong> · 다운로드가 시작되지 않으면 파란색 수동 다운로드 링크를 누릅니다.</p>
 <p><img src="assets/week04-blog/aside-download.png" alt="Aside 공식 다운로드 화면" /></p>
 </section>
@@ -88,7 +103,7 @@
 <p><strong>복사 프롬프트</strong></p>
 <div class="prompt-box prompt-long"><div class="prompt-head"><span>Codex와 Aside 연결 점검</span><button class="copy-button" type="button">복사</button></div><pre>지금 이 컴퓨터에서 Codex와 Aside가 제대로 연결됐는지 확인해줘.&#10;문제가 있으면 원인을 찾아 수정한 뒤 다시 확인해줘.&#10;&#10;1. 스킬 확인&#10;- 현재 사용자 계정의 aside-browser 스킬을 찾아 읽어줘.&#10;- 스킬 안내에 따라 Aside CLI 가이드도 읽어줘.&#10;&#10;2. CLI 확인&#10;- aside 명령의 인식 여부와 버전을 확인해줘.&#10;- Windows에서 명령을 찾지 못하면&#10;  %LOCALAPPDATA%\Aside\CLI 아래에서 aside.exe를 찾아 전체 경로로 실행해줘.&#10;- CLI가 없거나 업데이트가 필요하면 스킬 안내에 따라 처리해줘.&#10;&#10;3. 실행 중인 Aside 프로필 확인&#10;- CLI의 기본 프로필과 실제 연결된 브라우저 프로필을 확인해줘.&#10;- 기본 프로필이 연결되지 않았다면, 연결된 프로필을 지정해 다시 시도해줘.&#10;- 연결된 프로필이 여러 개여서 선택이 불분명하면 나에게 물어봐.&#10;- 연결된 프로필이 없다면 Aside 실행 등 내가 해야 할 동작을 알려줘.&#10;- 프로필을 변경했다면 변경 내용을 알려줘.&#10;&#10;4. 실제 브라우저 제어 확인&#10;- Aside 창에서 네이버 블로그를 실제로 열어줘.&#10;- 내 블로그 주소: [여기에 실제 네이버 블로그 주소 입력]&#10;- 주소를 입력하지 않았다면, 로그인된 본인 계정의 ‘내 블로그’를 통해 접근해줘.&#10;- 로그인은 내가 직접 할게. 로그인 화면이 나오면 멈추고 알려줘.&#10;- 내가 “로그인했어”라고 하면 이어서 내 블로그의 글쓰기 화면을 열어줘.&#10;- 글 작성, 임시저장, 발행은 하지 마.&#10;&#10;5. 결과 보고&#10;- 스킬 읽기, CLI 실행, Aside 브라우저 제어, 글쓰기 화면 열기를&#10;  각각 성공·실패·확인 대기로 구분해 알려줘.&#10;- 실제 열린 URL과 화면 상태를 근거로 판단해줘.&#10;- 로그인 화면만 열렸다면 ‘브라우저 제어 성공, 글쓰기 확인 대기’로 보고해줘.&#10;- 수정한 내용과 내가 다음에 해야 할 동작을 짧게 알려줘.&#10;&#10;ChatGPT 구독 연결과 Codex의 Aside 브라우저 제어 연결은 별도로 판단해줘.</pre></div>
 <p><strong>완료 확인</strong> · 실제 Aside 창에 내 블로그의 <strong>빈 제목·본문 입력란</strong>이 보입니다. 네이버 로그인 화면까지만 열렸다면 브라우저 제어는 확인됐고 글쓰기 화면 확인이 남아 있습니다.</p>
-<p><strong>막혔을 때</strong> · Aside가 열려 있어도 Codex가 쓰는 연결 도구(CLI)가 다른 프로필을 기본으로 선택하면 실패할 수 있습니다. 위 요청으로 <strong>실제로 연결된 프로필</strong>을 확인하고, 여러 개라면 내 실습 프로필을 골라 알려주세요. 변경 후 같은 요청으로 다시 확인합니다. 스킬을 찾지 못하면 Aside의 연결 설치 상태를 확인하고 같은 프로젝트에서 새 Codex 채팅을 열어 재시도하세요.</p>
+<p><strong>막혔을 때</strong> · Aside가 열려 있어도 Codex가 쓰는 연결 도구(CLI)가 다른 프로필을 기본으로 선택하면 실패할 수 있습니다. 위 요청으로 <strong>실제로 연결된 프로필</strong>을 확인하고, 여러 개라면 내 실습 프로필을 골라 알려주세요. 변경 후 같은 요청으로 다시 확인합니다. 스킬을 찾지 못하면 Aside의 연결 설치 상태를 확인하고 같은 프로젝트에서 새 Codex 채팅을 열어 재시도하세요. 그래도 연결되지 않으면 <a href="#chrome-route">10단계 크롬 경로</a>로 갑니다.</p>
 <p><strong>실제 캡처</strong></p>
 <ul>
 <li>
@@ -173,7 +188,7 @@
 </ol>
 <p><strong>복사 프롬프트</strong></p>
 <div class="prompt-box prompt-long"><div class="prompt-head"><span>주제 한 줄로 원고 요청</span><button class="copy-button" type="button">복사</button></div><pre>나 이번에 [고객이 문의하기 전에 준비할 정보]를 주제로 블로그 글을 쓸 거야.</pre></div>
-<p><strong>완료 확인</strong> · 같은 글 폴더에 <code>원고.md</code>, <code>편집기_조립.md</code>, 썸네일 PNG 1장, 본문 카드 PNG 3장이 있습니다. 각 이미지가 열리고, 글과 같은 내용을 담고 있습니다.</p>
+<p><strong>완료 확인</strong> · 같은 글 폴더에 <code>원고.md</code>, <code>편집기_조립.md</code>, 썸네일 PNG 1장, 본문 카드 PNG 3장이 있습니다. 각 이미지가 열리고, 글과 같은 내용을 담고 있습니다. 크롬 경로로 진행 중이면 8단계 대신 <a href="#chrome-save">13단계</a>로 갑니다.</p>
 <p><strong>막혔을 때</strong> · 브랜드 기준을 다시 묻거나 다른 회사 정보가 섞이면 프로젝트 위치와 <code>브랜드_기준.md</code>를 확인합니다. PNG 출력이 실패하면 Codex에 실패 원인을 확인해 달라고 요청하세요. Python 또는 Chrome·Edge가 없다고 나오면 수업에서 준비한 설치 상태를 확인한 뒤 카드 출력을 다시 요청합니다.</p>
 </section>
 <section class="chapter" id="save-draft">
@@ -215,6 +230,165 @@
 <p><strong>완료 확인</strong> · 목록에서 해당 글을 다시 열었고 위 네 항목을 확인했습니다. 여기까지 하면 실습 완료입니다.</p>
 <p><strong>막혔을 때</strong> · 빈 글이 열렸다면 저장한 계정과 제목이 맞는지 먼저 봅니다. 카드나 링크가 누락됐으면 같은 임시저장본에서 빠진 부분을 반영하고, 다시 저장한 뒤 같은 글을 열어 확인합니다. 대표 사진이나 주소를 화면에서 판단할 수 없다면 그 항목은 확인 대기로 둡니다.</p>
 <p><strong>실제 화면 자료</strong> · 공개 결과물에는 기업 AI 교육 문의를 주제로 한 썸네일 1장, 본문 카드 3장, 글 끝의 교육 문의 링크가 들어 있습니다. 카드 사이에 설명을 넣는 방식과 글 끝의 문의 안내를 참고하세요. 실습 중 확인할 화면은 임시저장 목록에서 다시 연 편집기입니다. <a href="https://blog.naver.com/ai_study/224481781811">카드가 포함된 최종 결과 예시</a></p>
+</section>
+<section class="chapter" id="chrome-route">
+<h2>Aside가 안 될 때 · 크롬으로 하는 방법</h2>
+<p>Aside 설치나 연결이 막혔다면 여기서부터 진행합니다. Aside 대신 <strong>평소 쓰는 크롬</strong>을 Codex에 연결합니다. 크롬에 이미 네이버 로그인이 되어 있다면 다시 로그인할 필요가 없습니다.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>순서</th><th>할 일</th><th>위치</th></tr></thead>
+<tbody>
+<tr><td>①</td><td>크롬 확장 설치와 사진 접근 허용</td><td><a href="#chrome-install">10단계</a></td></tr>
+<tr><td>②</td><td>Codex에서 크롬 연결하고 글쓰기 화면 열기</td><td><a href="#chrome-connect">11단계</a></td></tr>
+<tr><td>③</td><td>짧은 기업 소개글을 임시저장하고 다시 열기</td><td><a href="#chrome-intro">12단계</a></td></tr>
+<tr><td>④</td><td>세팅 스킬 설치, 브랜드 기준 저장, 원고와 카드 만들기</td><td><a href="#skill-install"><strong>5~7단계 그대로</strong></a></td></tr>
+<tr><td>⑤</td><td>원고와 카드를 크롬으로 임시저장</td><td><a href="#chrome-save">13단계</a></td></tr>
+<tr><td>⑥</td><td>임시저장본을 열어 확인</td><td><a href="#chrome-reopen">14단계</a></td></tr>
+<tr><td>막혔을 때</td><td>상황별 대응 프롬프트</td><td><a href="#chrome-help">15단계</a></td></tr>
+</tbody></table></div>
+<p><strong>이 경로의 약속</strong> · Codex는 <strong>임시저장까지만</strong> 합니다. 발행 버튼은 내가 직접 누릅니다. 비밀번호와 인증번호는 채팅에 쓰지 않고 크롬 화면에서 직접 입력합니다.</p>
+</section>
+<section class="chapter" id="chrome-install">
+<h2>10. 크롬 확장 설치와 사진 접근 허용</h2>
+<p><strong>목표</strong> · Codex가 내 크롬을 다룰 수 있게 연결 도구(확장 프로그램)를 설치하고, 사진 파일을 올릴 수 있게 허용합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>크롬에서 <strong>실습할 네이버 블로그 계정</strong>으로 로그인되어 있는지 확인합니다. 크롬 사용자(프로필)를 여러 개 쓴다면 앞으로 이 프로필 하나만 씁니다.</li>
+<li>Codex 앱을 최신 버전으로 업데이트한 뒤 <strong>설정 → Computer Use</strong>를 엽니다.</li>
+<li>브라우저 목록에서 <strong>Google Chrome</strong>을 고르고 <strong>Install</strong>을 누릅니다. 크롬 웹스토어가 열리면 <strong>Chrome에 추가</strong>를 누르고, 권한 안내를 읽은 뒤 허용합니다.</li>
+<li>Codex 앱의 <strong>Computer Use</strong> 화면으로 돌아와 Chrome 옆에 <strong>Manage</strong>가 보이는지 확인합니다.</li>
+<li>크롬 주소창에 <code>chrome://extensions</code>를 입력합니다. <strong>ChatGPT</strong> 확장의 <strong>세부정보</strong>를 누르고 <strong>파일 URL에 대한 액세스 허용</strong>을 켭니다. 이 설정이 꺼져 있으면 사진이 올라가지 않습니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong> · 이 단계는 화면에서 직접 설치합니다.</p>
+<p><strong>완료 확인</strong> · Codex 앱 <strong>설정 → Computer Use</strong>에서 Chrome 옆에 <strong>Manage</strong>가 보이고, 크롬 확장 세부정보에서 <strong>파일 URL에 대한 액세스 허용</strong>이 켜져 있습니다.</p>
+<p><strong>막혔을 때</strong> · Computer Use 메뉴나 Chrome 항목이 보이지 않으면 앱을 다시 업데이트하고 다시 엽니다. 그래도 안 보이면 <a href="#help-connect">대응 프롬프트 A</a>를 Codex에 보냅니다. 회사 PC에서 확장 설치가 막혀 있다면 강사에게 화면을 보여 주세요.</p>
+</section>
+<section class="chapter" id="chrome-connect">
+<h2>11. Codex에서 크롬 연결하고 글쓰기 화면 열기</h2>
+<p><strong>목표</strong> · Codex가 내 크롬에서 네이버 블로그 글쓰기 화면을 실제로 여는지 확인합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>컴퓨터에 <strong>네이버 블로그 자동화</strong> 폴더가 없다면 만듭니다. Codex에서 <strong>이 컴퓨터(This computer)</strong>를 선택하고 이 폴더를 프로젝트로 엽니다.</li>
+<li>아래 요청에서 블로그 주소를 바꿔 새 채팅에 보냅니다.</li>
+<li>Codex가 네이버 사이트 사용 허락을 물으면 주소가 <code>naver.com</code>인지 확인하고 <strong>이 사이트 허용(Allow for this site)</strong>을 누릅니다. 모든 사이트 허용은 고르지 않습니다.</li>
+<li>크롬에 네이버 로그인 화면이 나오면 크롬에서 직접 로그인하고 Codex에 <code>로그인했어</code>라고 답합니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>크롬 연결과 글쓰기 화면 열기</span><button class="copy-button" type="button">복사</button></div><pre>@Chrome 내 크롬에서 네이버 블로그 글쓰기 화면을 열어줘.
+내 블로그 주소: [내 네이버 블로그 주소]&#10;
+- 다른 브라우저(내장 브라우저, Aside)로 바꾸지 말고 크롬만 써. 크롬에 연결되지 않으면 멈추고 알려줘.
+- 로그인 화면이 나오면 멈추고 알려줘. 로그인은 내가 직접 할게.
+- 열린 계정의 블로그 주소가 위 주소와 다르면 입력하지 말고 알려줘.
+- 글 작성, 임시저장, 발행은 하지 마.&#10;
+끝나면 크롬 연결, 네이버 로그인, 글쓰기 화면 열기를 각각 성공·실패·확인 대기로 알려줘.</pre></div>
+<p><strong>완료 확인</strong> · 크롬에 내 블로그의 <strong>빈 제목·본문 입력란</strong>이 보입니다.</p>
+<p><strong>막혔을 때</strong> · Codex가 크롬을 찾지 못한다고 하면 <a href="#help-connect">대응 프롬프트 A</a>를 보냅니다. 로그인 후에도 로그인 화면이 반복되면 <a href="#help-login">대응 프롬프트 B</a>를 보냅니다.</p>
+</section>
+<section class="chapter" id="chrome-intro">
+<h2>12. 짧은 기업 소개글을 임시저장하고 다시 열기</h2>
+<p><strong>목표</strong> · Codex가 쓴 소개글을 크롬의 편집기에 넣고, 임시저장한 글을 다시 열 수 있는지 확인합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>크롬에 내 블로그의 <strong>빈 글쓰기 화면</strong>이 열려 있는지 봅니다.</li>
+<li>회사 이름과 하는 일을 바꿔 같은 Codex 채팅에 보냅니다.</li>
+<li>임시저장 목록에서 제목을 찾고, 다시 열린 편집기에서 본문 마지막 문장까지 확인합니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>크롬으로 기업 소개글 임시저장</span><button class="copy-button" type="button">복사</button></div><pre>우리 회사는 [회사 이름]이고 [하는 일 한 줄]을 해.
+이 정보로 제목 한 줄과 짧은 기업 소개글을 써줘.&#10;
+이어서 @Chrome 으로 크롬에 열린 내 네이버 블로그 글쓰기 화면에 제목과 본문을 넣고 [저장]으로 임시저장해줘.
+- 본문은 문단마다 나눠 넣고, 마크다운 기호(##, **)는 쓰지 마.
+- 기존 작성 내용이 있으면 덮어쓰지 말고 알려줘.
+- 저장한 글을 임시저장 목록에서 다시 열어 제목과 본문 마지막 문장이 남아 있는지 확인해줘.
+- 발행과 삭제 버튼은 누르지 마.</pre></div>
+<p><strong>완료 확인</strong> · 소개글이 <strong>임시저장 글</strong> 목록에 있고, 다시 열었을 때 제목과 본문 마지막 문장이 보입니다.</p>
+<p><strong>막혔을 때</strong> · 목록에서 글을 눌렀을 때 <code>현재 편집 중인 문서</code>라는 알림이 나오면, 저장 완료 표시를 확인한 뒤 크롬에서 편집기를 새로고침하고 목록에서 다시 엽니다. 글이 두 번 들어갔거나 문단이 한 덩어리로 붙었다면 <a href="#help-format">대응 프롬프트 E</a>를 보냅니다.</p>
+<div class="callout info"><strong>다음 순서</strong> · 여기까지 됐다면 크롬 연결은 끝났습니다. <a href="#skill-install">5단계(ZIP으로 세팅 스킬 설치)</a>로 가서 <strong>5·6·7단계를 그대로</strong> 진행합니다. 7단계에서 원고와 카드를 확인했다면 8단계 대신 <a href="#chrome-save">13단계</a>로 돌아옵니다.</div>
+</section>
+<section class="chapter" id="chrome-save">
+<h2>13. 원고와 카드를 크롬으로 임시저장</h2>
+<p><strong>목표</strong> · 7단계에서 확인한 원고와 카드를 크롬의 편집기에 넣어 임시저장합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>7단계에서 만든 원고와 카드를 확인했는지 봅니다.</li>
+<li>같은 프로젝트의 Codex 채팅에 <strong>첫 번째 요청</strong>을 한 번만 보냅니다. 6단계에서 만든 운영 파일은 Aside로 올리도록 적혀 있어서, 크롬으로 올리도록 바꿔 두는 요청입니다.</li>
+<li>이어서 <strong>두 번째 요청</strong>의 주소를 바꿔 보냅니다. 사이트 허용이나 로그인 요청이 나오면 11단계와 같이 처리합니다.</li>
+<li>크롬 편집기에서 제목·본문과 사진 순서를 봅니다.</li>
+</ol>
+<p><strong>복사 프롬프트</strong></p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>첫 번째 요청 · 업로드 도구를 크롬으로 바꾸기 (한 번만)</span><button class="copy-button" type="button">복사</button></div><pre>앞으로 이 프로젝트에서 네이버 블로그 입력과 임시저장은 aside-browser 대신 @Chrome 으로 해줘.
+AGENTS.md의 네이버 입력 단계에 적힌 aside-browser를 @Chrome 사용으로 바꾸고, 나머지 규칙(계정 확인, 편집 서식, 임시저장과 재개방, 발행 금지)은 그대로 둬.
+바꾼 문장을 보여줘.</pre></div>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>두 번째 요청 · 원고와 카드를 크롬으로 임시저장</span><button class="copy-button" type="button">복사</button></div><pre>@Chrome 확인한 원고와 카드를 크롬에서 [내 네이버 블로그 주소]의 글쓰기 화면에 넣고 임시저장해줘.&#10;
+- 같은 글 폴더의 편집기_조립.md에 적힌 순서대로 제목, 본문, 카드를 넣어줘. 첫 이미지인 썸네일은 대표 사진으로 설정해줘.
+- 본문은 문단 단위로 넣고, 넣을 때마다 커서가 본문 안에 있는지 확인해줘. 마크다운 기호(##, **)는 쓰지 마.
+- 열린 계정이 위 블로그와 다르거나, 다른 글이 편집 중이거나, 같은 제목의 임시저장 글이 이미 있으면 입력하기 전에 멈추고 알려줘.
+- 사진이 안 올라가면 다른 방법으로 우회하지 말고, 어디까지 넣었는지 알려줘.
+- 발행과 삭제 버튼은 누르지 마. 로그인은 내가 직접 할게.&#10;
+저장한 뒤 임시저장 목록에서 다시 열어 본문 마지막 문장, 카드 순서, 대표 사진, CTA 링크를 확인해줘.</pre></div>
+<p><strong>완료 확인</strong> · 네이버에서 저장 완료 표시가 나오고, <strong>임시저장 글</strong> 목록에 방금 작업한 제목이 보입니다.</p>
+<p><strong>막혔을 때</strong> · 사진이 하나도 안 올라가면 <a href="#help-photo">대응 프롬프트 C</a>를 보냅니다. 중간에 멈췄다면 새로 시작하지 말고 <a href="#help-stopped">대응 프롬프트 D</a>로 이어서 하게 합니다.</p>
+</section>
+<section class="chapter" id="chrome-reopen">
+<h2>14. 임시저장본을 열어 확인</h2>
+<p><strong>목표</strong> · 임시저장 목록에서 다시 연 글이 검토한 원고와 같은지 확인합니다.</p>
+<p><strong>직접 할 동작</strong></p>
+<ol>
+<li>크롬의 네이버 글쓰기 화면에서 <strong>임시저장 글</strong> 목록을 열고 방금 저장한 제목을 선택합니다.</li>
+<li>아래 항목을 차례로 확인합니다.</li>
+</ol>
+<div class="checklist">
+<label><input type="checkbox" data-check="chrome-reopen-1"><span>제목과 본문 마지막 문장이 원고와 같습니다.</span></label>
+<label><input type="checkbox" data-check="chrome-reopen-2"><span>문단 사이에 빈 줄이 있고, ## 나 ** 같은 기호가 글자로 보이지 않습니다.</span></label>
+<label><input type="checkbox" data-check="chrome-reopen-3"><span>첫 이미지가 썸네일이고, 본문 카드 3장이 편집기_조립.md의 순서와 위치로 보입니다.</span></label>
+<label><input type="checkbox" data-check="chrome-reopen-4"><span>대표 사진이 의도한 썸네일입니다.</span></label>
+<label><input type="checkbox" data-check="chrome-reopen-5"><span>문의·예약 등 CTA 문구에 내가 확인한 실제 주소가 연결되어 있습니다.</span></label>
+<label><input type="checkbox" data-check="chrome-reopen-6"><span>같은 내용이 두 번 들어가지 않았습니다.</span></label>
+</div>
+<p><strong>복사 프롬프트</strong> · 직접 확인하기 어렵거나 결과가 불분명할 때 사용합니다.</p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>크롬으로 임시저장본 다시 열기</span><button class="copy-button" type="button">복사</button></div><pre>@Chrome 방금 임시저장한 글을 네이버 임시저장 목록에서 다시 열고, 편집기_조립.md와 비교해줘.
+제목과 본문 마지막 문장, 문단 사이 빈 줄, 카드 순서, 대표 사진, CTA의 실제 연결 주소, 중복된 문단이 있는지 각각 확인해줘.
+화면에서 확인하지 못한 항목은 확인 대기로 알려줘. 발행은 하지 마.</pre></div>
+<p><strong>완료 확인</strong> · 위 여섯 항목을 확인했습니다. 여기까지 하면 실습 완료입니다. 발행은 내용을 다시 읽어 본 뒤 내가 직접 합니다.</p>
+</section>
+<section class="chapter" id="chrome-help">
+<h2>15. 막혔을 때 대응 프롬프트</h2>
+<p>상황에 맞는 프롬프트를 <strong>같은 Codex 채팅</strong>에 그대로 보냅니다. 새 채팅에서 보내면 앞의 작업 내용을 모릅니다.</p>
+<h3 id="help-connect">A. 크롬 확장 설치·연결이 안 될 때</h3>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>A · 크롬 연결 점검</span><button class="copy-button" type="button">복사</button></div><pre>@Chrome 연결이 안 돼. 이 컴퓨터에서 Codex와 크롬 확장 연결 상태를 점검해줘.
+1. Codex 앱 설정의 Computer Use에 Chrome이 연결(Manage)로 보이는지 확인하는 방법을 알려줘.
+2. 확장이 설치된 크롬 프로필과 지금 열린 크롬 프로필이 같은지 확인해줘.
+3. 내가 직접 해야 할 동작(앱 업데이트, 크롬 재시작, 새 채팅 열기, 확장 다시 설치)이 있으면 순서대로 하나씩 알려줘.
+내장 브라우저나 Aside로 바꾸지 말고, 크롬 연결이 확인되면 알려줘.</pre></div>
+<p>그래도 안 되면 순서대로 해 봅니다. 크롬을 완전히 껐다 켜기 → Codex 앱 껐다 켜기 → 같은 프로젝트에서 새 채팅 열기 → <strong>설정 → Computer Use</strong>에서 Chrome 확장 다시 설치. 끝까지 안 되면 <a href="#help-paste">대응 프롬프트 F</a>로 마무리합니다.</p>
+<h3 id="help-login">B. 로그인 화면이 반복되거나 다른 계정이 열릴 때</h3>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>B · 로그인과 계정 확인</span><button class="copy-button" type="button">복사</button></div><pre>크롬에서 네이버 로그인 화면이 반복되거나 다른 계정이 열려 있어. 입력은 멈추고 아래를 확인해줘.
+1. 지금 크롬에 로그인된 네이버 계정의 블로그 주소가 [내 네이버 블로그 주소]와 같은지
+2. 다르다면 내가 크롬에서 직접 로그아웃하고 다시 로그인해야 하는지
+로그인과 인증은 내가 직접 할게. 내가 "로그인했어"라고 하면 글쓰기 화면부터 다시 열어줘.</pre></div>
+<p>보안 문자(자동입력 방지)나 본인 인증이 나오면 화면에서 직접 처리하고 <code>로그인했어</code>라고 답합니다.</p>
+<h3 id="help-photo">C. 사진이 올라가지 않을 때</h3>
+<p>먼저 <a href="#chrome-install">10단계</a>의 <strong>파일 URL에 대한 액세스 허용</strong>이 켜져 있는지 확인합니다. 켠 뒤에는 아래 요청을 보냅니다.</p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>C-1 · 빠진 사진만 다시 넣기</span><button class="copy-button" type="button">복사</button></div><pre>크롬 확장의 파일 URL 접근 허용을 켰어. @Chrome 으로 같은 임시저장 글을 다시 열고, 빠진 사진만 편집기_조립.md의 위치에 넣어줘.
+이미 들어간 글과 사진은 그대로 두고, 새 글을 만들지 마. 끝나면 [저장]으로 다시 임시저장해줘. 발행은 하지 마.</pre></div>
+<p>그래도 안 되면 사진만 직접 넣습니다. 아래 요청으로 위치를 받은 뒤, 편집기 위쪽의 <strong>사진</strong> 버튼으로 하나씩 올립니다.</p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>C-2 · 사진 넣을 위치 받기</span><button class="copy-button" type="button">복사</button></div><pre>사진은 내가 직접 넣을게. 편집기_조립.md 기준으로 어떤 사진 파일을 어느 문단 바로 다음에 넣어야 하는지 순서대로 표로 알려줘. 사진 파일이 있는 폴더도 열어줘.</pre></div>
+<h3 id="help-stopped">D. 중간에 멈췄거나 저장됐는지 모를 때</h3>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>D · 지금 상태부터 확인</span><button class="copy-button" type="button">복사</button></div><pre>@Chrome 작업이 중간에 멈췄어. 새 글을 만들지 말고 지금 상태부터 확인해줘.
+1. 크롬에 열린 편집기에 들어간 제목, 문단, 사진이 편집기_조립.md의 어디까지인지
+2. 임시저장 목록에 같은 제목의 글이 있는지
+확인한 결과를 먼저 알려주고, 내가 "이어서 해"라고 하면 빠진 부분만 넣고 임시저장해줘. 발행은 하지 마.</pre></div>
+<h3 id="help-format">E. 글이 두 번 들어갔거나 문단이 붙었을 때</h3>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>E · 중복과 서식 바로잡기</span><button class="copy-button" type="button">복사</button></div><pre>@Chrome 편집기에서 같은 내용이 두 번 들어갔거나 문단이 한 덩어리로 붙었어.
+1. 중복된 부분을 찾아 원고와 비교해서 한 번만 남겨줘.
+2. 문단 사이마다 빈 줄을 하나 넣고, 소제목 앞에는 빈 줄을 두 개 넣어줘.
+3. ##, ** 같은 기호가 글자로 보이면 지우고 소제목은 편집기의 소제목 서식으로 바꿔줘.
+고친 뒤 [저장]으로 임시저장하고, 고친 곳을 알려줘. 발행과 삭제 버튼은 누르지 마.</pre></div>
+<h3 id="help-paste">F. 끝까지 안 될 때 · 직접 붙여넣기</h3>
+<p>자동 입력이 계속 실패해도 실습은 마칠 수 있습니다. Codex가 붙여넣기용 화면을 만들어 주면 내가 복사해서 넣습니다.</p>
+<div class="prompt-box prompt-long"><div class="prompt-head"><span>F · 붙여넣기용 화면 만들기</span><button class="copy-button" type="button">복사</button></div><pre>자동 입력은 그만하고, 내가 직접 붙여넣을 수 있게 준비해줘.
+1. 같은 글 폴더에 원고를 서식이 적용된 붙여넣기용 HTML 파일로 만들어 크롬에서 열어줘. 문단 사이 빈 줄, 소제목, 굵은 글씨, CTA 링크가 보이게 하고 사진 자리는 [사진 1: 파일명]처럼 표시해줘.
+2. 사진 파일 순서와 넣을 위치를 표로 알려줘.</pre></div>
+<p>열린 화면에서 <strong>Ctrl+A → Ctrl+C</strong>(Mac은 <strong>Cmd+A → Cmd+C</strong>)로 전체를 복사합니다. 네이버 편집기 본문을 한 번 클릭한 뒤 <strong>Ctrl+V</strong>(Mac은 <strong>Cmd+V</strong>)로 붙여넣습니다. <code>[사진 1: 파일명]</code> 표시를 지우고 그 자리에 <strong>사진</strong> 버튼으로 해당 파일을 올립니다. 마지막으로 편집기 위쪽 <strong>저장</strong>을 누르고 <a href="#chrome-reopen">14단계</a>로 확인합니다.</p>
 </section>
 </article></div></main>
 <footer><a class="brand" href="index.html?v=20261118-1">Money&amp;Works</a><p>CODEX로 만드는 문서·업무자동화 8주 · 4주차(2) 네이버 블로그 자동화</p><a href="#main">맨 위로 ↑</a></footer><div class="toast" role="status" aria-live="polite"></div><script>(()=>{'use strict';const key='snu-vibe-v1:'+document.body.dataset.page;let state={};const toast=document.querySelector('.toast');function notify(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2400)}try{state=JSON.parse(localStorage.getItem(key)||'{}')}catch{}function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch{notify('브라우저 저장을 사용할 수 없습니다. 메모를 복사해 보관하세요.')}}async function copy(text,button){try{if(!navigator.clipboard)throw Error();await navigator.clipboard.writeText(text)}catch{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.top='-1000px';document.body.append(area);area.select();const ok=document.execCommand('copy');area.remove();if(!ok){notify('본문을 직접 선택해 복사하세요.');return}}const old=button.textContent;button.textContent='복사됨';notify('복사했습니다.');setTimeout(()=>button.textContent=old,1800)}document.querySelectorAll('.copy-button').forEach(button=>button.addEventListener('click',()=>copy(button.closest('.prompt-box').querySelector('pre').textContent,button)));document.querySelectorAll('[data-check]').forEach(input=>{input.checked=!!state[input.dataset.check];input.addEventListener('change',()=>{state[input.dataset.check]=input.checked;save()})});document.querySelectorAll('textarea[data-note]').forEach(input=>{input.value=state[input.dataset.note]||'';input.addEventListener('input',()=>{state[input.dataset.note]=input.value;save()})});document.querySelectorAll('.note-copy').forEach(button=>button.addEventListener('click',()=>{const form=button.closest('.worksheet');copy([...form.querySelectorAll('textarea')].map(area=>area.getAttribute('aria-label')+'\n'+area.value).join('\n\n'),button)}));document.querySelectorAll('.choice-tabs').forEach(group=>{const buttons=[...group.querySelectorAll('button')];function activate(button){buttons.forEach(item=>{const active=item===button;item.setAttribute('aria-selected',String(active));item.tabIndex=active?0:-1;document.getElementById(item.getAttribute('aria-controls')).hidden=!active})}buttons.forEach((button,i)=>{button.addEventListener('click',()=>activate(button));button.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const n=event.key==='Home'?0:event.key==='End'?buttons.length-1:(i+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;activate(buttons[n]);buttons[n].focus()})})});document.querySelector('.print-button')?.addEventListener('click',()=>window.print());const details=[...document.querySelectorAll('details')];let opened=[];addEventListener('beforeprint',()=>{opened=details.map(item=>item.open);details.forEach(item=>item.open=true)});addEventListener('afterprint',()=>details.forEach((item,i)=>item.open=opened[i]));const links=[...document.querySelectorAll('.section-nav a')];if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>{const active=link.hash==='#'+entry.target.id;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})}})},{rootMargin:'-15% 0px -65% 0px'});document.querySelectorAll('.chapter').forEach(section=>observer.observe(section))}})();
