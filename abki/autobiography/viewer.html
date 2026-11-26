@@ -363,7 +363,7 @@
 
     function makeTocPages() {
       const mobile = window.matchMedia("(max-width: 640px)").matches;
-      const itemsPerPage = mobile ? 8 : 12;
+      const itemsPerPage = mobile ? 8 : (cohort === "ABKI" ? 12 : 13);
       const pages = [];
 
       for (let start = 0; start < bookData.sections.length; start += itemsPerPage) {
@@ -507,7 +507,8 @@
         }
         current.body.removeChild(node);
         if (node.tagName === "P" && !node.classList.contains("section-continuation")) {
-          const parts = splitAtSentences(node.textContent || "");
+          const text = node.textContent || "";
+          const parts = cohort !== "ABKI" && text.includes("\n") ? text.split(/(?<=\n)/u) : splitAtSentences(text);
           parts.forEach((part, index) => appendParagraphPart(node, part, index === 0));
           return;
         }
@@ -684,7 +685,7 @@
         document.getElementById("introCover").src = bookData.cover;
         document.getElementById("introCover").alt = `${bookData.title} 표지`;
         document.getElementById("introCover").style.objectFit = bookData.coverFit || "cover";
-        document.getElementById("introKicker").textContent = "AI로 자서전 만들기 · 강사 예시";
+        document.getElementById("introKicker").textContent = cohort === "ABKI" ? "AI로 자서전 만들기 · 강사 예시" : "ABKI 자서전 플립북";
         document.getElementById("introTitle").textContent = bookData.title;
         document.getElementById("introAuthor").textContent = `${bookData.author} 자서전`;
         document.getElementById("bookTitle").textContent = bookData.title;
