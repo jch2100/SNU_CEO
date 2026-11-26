@@ -11,17 +11,21 @@
   <meta property="og:site_name" content="서울대학교 ABKI 17기">
   <meta property="og:title" content="안선희 — 자서전 성경">
   <meta property="og:description" content="안선희의 자서전">
-  <meta property="og:url" content="https://ceo-ai.org/abki/autobiography/share/an-seon-hui.html">
-  <meta property="og:image" content="https://ceo-ai.org/abki/assets/autobiography/an-seon-hui-cover.png">
+  <meta property="og:url" content="https://ceo-ai.org/abki/autobiography/share/an-seon-hui.html?v=2">
+  <meta property="og:image" content="https://ceo-ai.org/abki/assets/autobiography/an-seon-hui-preview-v2.jpg">
   <meta property="og:image:alt" content="안선희 자서전 표지">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="안선희 — 자서전 성경">
   <meta name="twitter:description" content="안선희의 자서전">
-  <meta name="twitter:image" content="https://ceo-ai.org/abki/assets/autobiography/an-seon-hui-cover.png">
-  <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#071421;color:#f6f0e4;font-family:system-ui,"Noto Sans KR",sans-serif;text-align:center}main{padding:2rem}h1{font-size:1.5rem;font-weight:600}p{color:#c8c0b3}small{color:#918879}</style>
+  <meta name="twitter:image" content="https://ceo-ai.org/abki/assets/autobiography/an-seon-hui-preview-v2.jpg">
+  <style>
+body{background:#071421;color:#f6f0e4;margin:0;font-family:system-ui,sans-serif}
+main{box-sizing:border-box;min-height:100vh;min-height:100dvh;padding:2rem;display:grid;place-content:center;justify-items:center;text-align:center}
+main img{width:min(215px,60vw);height:auto}h1{font-size:1.4rem;margin:1.2rem 0 .4rem}p{color:#c8c0b3;line-height:1.6}
+body.reading main{display:none}iframe{display:block;border:0;width:100%;height:100vh;height:100dvh}</style>
 </head>
-<body><main><h1>안선희 — 자서전 성경</h1><p>안선희의 자서전</p><small>개별 플립북을 여는 중입니다.</small></main>
+<body><main><img src="../../assets/autobiography/an-seon-hui-cover.png" alt="안선희 자서전 표지"><h1>안선희 — 자서전 성경</h1><p>본문을 열려면 전달받은 개인 링크 전체를 사용해 주세요.</p></main>
 <script>
 (() => {
   const key = new URLSearchParams(location.hash.slice(1)).get("key");
@@ -29,7 +33,13 @@
   target.searchParams.set("id", "an-seon-hui");
   target.searchParams.set("cohort", "17");
   if (key) target.hash = "key=" + encodeURIComponent(key);
-  location.replace(target.toString());
+  if (!/^[A-Za-z0-9_-]{43}$/.test(key || "")) return;
+  const reader = document.createElement("iframe");
+  reader.title = "자서전 플립북";
+  reader.referrerPolicy = "no-referrer";
+  reader.src = target.href;
+  document.body.append(reader);
+  document.body.classList.add("reading");
 })();
 </script>
 </body>
