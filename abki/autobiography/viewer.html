@@ -108,7 +108,7 @@
     #book { margin: auto; }
 
     .page {
-      width: 620px;
+      width: var(--logical-page-width, 620px);
       height: 877px;
       overflow: hidden;
       color: var(--ink);
@@ -117,7 +117,7 @@
     }
     .page-inner {
       position: relative;
-      width: 620px;
+      width: var(--logical-page-width, 620px);
       height: 877px;
       padding: 64px 58px 70px;
       overflow: hidden;
@@ -177,7 +177,7 @@
     .controls button { min-width: 44px; min-height: 44px; border: 1px solid rgba(255, 255, 255, .24); background: transparent; cursor: pointer; }
     .controls button:hover { border-color: var(--brass); background: rgba(255, 255, 255, .08); }
     #pageCount { min-width: 88px; font-size: 13px; text-align: center; }
-    #measureStage { position: fixed; z-index: -100; top: 0; left: -10000px; width: 620px; height: 877px; visibility: hidden; }
+    #measureStage { position: fixed; z-index: -100; top: 0; left: -10000px; width: var(--logical-page-width, 620px); height: 877px; visibility: hidden; }
     #measureStage .page { box-shadow: none; }
 
     @media (max-width: 640px), (orientation: landscape) and (max-height: 500px) {
@@ -264,6 +264,26 @@
       .page-num { font-size: 15px; }
       .controls { bottom: max(10px, env(safe-area-inset-bottom)); }
       #book.mobile-scroll-reader ~ #status { display: none; }
+      .compact-flip main { display: grid; padding: 8px 9px 72px; overflow: hidden; }
+      .compact-flip #book { touch-action: none; }
+    }
+    .compact-flip .page-inner { padding: 48px 39px 58px; }
+    .compact-flip .page-cover .page-inner { padding: 0; }
+    .compact-flip .body-copy p { font-size: 31px; line-height: 1.6; }
+    .compact-flip .body-copy.compact p { font-size: 30px; line-height: 1.54; }
+    .compact-flip .section-title { overflow-wrap: anywhere; }
+    .compact-flip-narrow .body-copy p { font-size: 35px; }
+    .compact-flip-narrow .body-copy.compact p { font-size: 34px; }
+    .compact-flip-wide { --logical-page-width: 1000px; }
+    .compact-flip-wide .page-cover { background: #10272c; }
+    .compact-flip-wide .page-cover img { object-fit: contain !important; }
+    .compact-flip-wide .body-copy p { font-size: 55px; line-height: 1.45; }
+    .compact-flip-wide .body-copy.compact p { font-size: 53px; line-height: 1.4; }
+    .compact-flip-wide .section-title { font-size: 43px; }
+    .compact-flip-wide .toc-text { font-size: 34px; }
+    @media (orientation: landscape) and (max-height: 500px) {
+      .compact-flip #scene.active { grid-template-rows: 44px minmax(0, 1fr); }
+      .compact-flip header { min-height: 44px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
@@ -316,7 +336,7 @@
     let mobileReaderPages = [];
     let mobileReaderIndex = 0;
 
-    function usesMobileReader() {
+    function isCompactViewport() {
       return window.matchMedia("(max-width: 640px), (orientation: landscape) and (max-height: 500px)").matches;
     }
 
@@ -362,7 +382,7 @@
     }
 
     function makeTocPages() {
-      const mobile = window.matchMedia("(max-width: 640px)").matches;
+      const mobile = window.matchMedia("(max-width: 640px)").matches || (cohort !== "ABKI" && isCompactViewport());
       const itemsPerPage = mobile ? 8 : (cohort === "ABKI" ? 12 : 13);
       const pages = [];
 
@@ -563,9 +583,8 @@
     function syncPageContentScale() {
       if (!pageFlip) return;
       requestAnimationFrame(() => {
-        const bounds = bookRoot.getBoundingClientRect();
-        const pagesAcross = pageFlip?.getOrientation() === "landscape" ? 2 : 1;
-        const scale = Math.min(bounds.width / pagesAcross / 620, bounds.height / 877, 1);
+        const bounds = pageFlip.getBoundsRect();
+        const scale = Math.min(bounds.pageWidth / pageFlip.getSettings().width, bounds.height / 877, 1);
         bookRoot.style.setProperty("--page-content-scale", String(scale));
       });
     }
@@ -596,24 +615,31 @@
     }
 
     function initPageFlip() {
+      const compact = document.body.classList.contains("compact-flip");
+      const wide = document.body.classList.contains("compact-flip-wide");
+      const pageWidth = bookRoot.querySelector(".page-inner").offsetWidth;
+      const minHeight = compact ? 180 : 424;
       const main = document.querySelector("main");
       const mainStyle = getComputedStyle(main);
       const availableHeight = main.clientHeight
         - parseFloat(mainStyle.paddingTop)
         - parseFloat(mainStyle.paddingBottom);
-      const maxHeight = Math.max(424, Math.min(877, Math.floor(availableHeight)));
-      const maxWidth = Math.max(300, Math.min(620, Math.floor(maxHeight * 620 / 877)));
+      const maxHeight = Math.max(minHeight, Math.min(877, Math.floor(availableHeight)));
+      const maxWidth = Math.max(compact ? 127 : 300, Math.min(pageWidth, Math.floor(maxHeight * pageWidth / 877)));
+      const minWidth = compact
+        ? Math.min(maxWidth, wide ? 127 : 340)
+        : 300;
       pageFlip = new St.PageFlip(bookRoot, {
-        width: 620,
+        width: pageWidth,
         height: 877,
         size: "stretch",
-        minWidth: 300,
+        minWidth,
         maxWidth,
-        minHeight: 424,
+        minHeight,
         maxHeight,
         showCover: true,
         usePortrait: true,
-        mobileScrollSupport: true,
+        mobileScrollSupport: !compact,
         maxShadowOpacity: .32,
         flippingTime: 700,
         drawShadow: true
@@ -671,6 +697,11 @@
 
     async function init() {
       try {
+        if (cohort !== "ABKI" && isCompactViewport()) {
+          document.body.classList.add("compact-flip");
+          document.body.classList.toggle("compact-flip-wide", window.matchMedia("(orientation: landscape)").matches);
+          document.body.classList.toggle("compact-flip-narrow", innerWidth <= 340);
+        }
         if (cohort === "2") {
           const backLink = document.getElementById("backLink");
           backLink.href = "../2nd/index.html";
@@ -703,7 +734,7 @@
     document.getElementById("openBook").addEventListener("click", () => {
       document.getElementById("intro").classList.add("hidden");
       document.getElementById("scene").classList.add("active");
-      if (usesMobileReader()) initMobileReader();
+      if (isCompactViewport() && cohort === "ABKI") initMobileReader();
       else initPageFlip();
     });
     document.getElementById("prev").addEventListener("click", () => {
